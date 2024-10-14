@@ -1,9 +1,11 @@
-<?php namespace antihacker_BillDiagnose;
+<?php
+
+namespace antihacker_BillDiagnose;
 // 2023-08 upd: 2023-10-17 2024-06=21
 if (!defined('ABSPATH')) {
-	die('Invalid request.');
+    die('Invalid request.');
 }
-if (function_exists('is_multisite') AND is_multisite()) {
+if (function_exists('is_multisite') and is_multisite()) {
     return;
 }
 
@@ -32,9 +34,9 @@ if (file_exists($plugin_file_path)) {
 
 
 
-if (function_exists('is_plugin_active')){
+if (function_exists('is_plugin_active')) {
     $bill_plugins_to_check = array(
-        'wptools/wptools.php',  
+        'wptools/wptools.php',
     );
 
 
@@ -55,124 +57,144 @@ if ($logErrors) {
     ini_set('log_errors', 'On');
 }
 
-class ErrorChecker {
+class ErrorChecker
+{
 
     public function bill_check_errors_today($num_days, $filter = null)
-{
-    $bill_count = 0;
-    $bill_folders = [];
+    {
+        $bill_count = 0;
+        $bill_folders = [];
 
-    $bill_themePath = get_theme_root();
+        //$bill_themePath = get_theme_root();
 
-    $error_log_path = trim(ini_get("error_log"));
-    if (!is_null($error_log_path) and $error_log_path != trim(ABSPATH . "error_log")) {
-        $bill_folders[] = $error_log_path;
-    }
-
-
-    $bill_folders[] = ABSPATH . "error_log";
-    $bill_folders[] = ABSPATH . "php_errorlog";
-    $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
-    $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";
-    $bill_folders[] = get_theme_root() . "/error_log";
-    $bill_folders[] = get_theme_root() . "/php_errorlog";
-    // Adicionar caminhos específicos de administração se existirem
-    $bill_admin_path = str_replace(
-        get_bloginfo("url") . "/",
-        ABSPATH,
-        get_admin_url()
-    );
-    $bill_folders[] = $bill_admin_path . "/error_log";
-    $bill_folders[] = $bill_admin_path . "/php_errorlog";
-    // Adicionar diretórios de plugins
-    $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
-    foreach ($bill_plugins as $bill_plugin) {
-        if (is_dir(plugin_dir_path(__FILE__). "/" . $bill_plugin)) {
-            $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/error_log";
-            $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/php_errorlog";
+        $error_log_path = trim(ini_get("error_log"));
+        if (!is_null($error_log_path) and $error_log_path != trim(ABSPATH . "error_log")) {
+            $bill_folders[] = $error_log_path;
         }
-    }
-    $bill_themes = array_slice(scandir(get_theme_root()), 2);
-    foreach ($bill_themes as $bill_theme) {
-        if (is_dir(get_theme_root() . "/" . $bill_theme)) {
-            $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
-            $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
+
+
+        $bill_folders[] = ABSPATH . "error_log";
+        $bill_folders[] = ABSPATH . "php_errorlog";
+        $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
+        $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";
+        $bill_folders[] = get_theme_root() . "/error_log";
+        $bill_folders[] = get_theme_root() . "/php_errorlog";
+        // Adicionar caminhos específicos de administração se existirem
+        $bill_admin_path = str_replace(
+            get_bloginfo("url") . "/",
+            ABSPATH,
+            get_admin_url()
+        );
+        $bill_folders[] = $bill_admin_path . "/error_log";
+        $bill_folders[] = $bill_admin_path . "/php_errorlog";
+        $bill_folders[] = WP_CONTENT_DIR . "/debug.log";
+
+        // Adicionar diretórios de plugins
+        $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
+        foreach ($bill_plugins as $bill_plugin) {
+            if (is_dir(plugin_dir_path(__FILE__) . "/" . $bill_plugin)) {
+                $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/error_log";
+                $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/php_errorlog";
+            }
         }
-    }
-
-    
-    foreach ($bill_folders as $bill_folder) {
-        if (!empty($bill_folder) && file_exists($bill_folder)) {
-            $bill_count++;
-            //$marray = $bill_read_file($bill_folder, 20);
-            $marray = $this->bill_read_file($bill_folder, 20);
-
-            if (is_array($marray) && !empty($marray)) {
-                // Iterar sobre as linhas do log
-                foreach ($marray as $line) {
-                    // javascript...
-                    if ($filter !== null && stripos($line, $filter) === false) {
-                        continue;
-                    }
+        $bill_themes = array_slice(scandir(get_theme_root()), 2);
+        foreach ($bill_themes as $bill_theme) {
+            if (is_dir(get_theme_root() . "/" . $bill_theme)) {
+                $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
+                $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
+            }
+        }
 
 
-                    $date_formats = [
-                        'Y-m-d',
-                        'Y/m/d',
-                        'Y-d-m',
-                        'Y/d/m',
-                        'd-M-Y',
-                        'd/M/Y',
-                        'M d Y',
-                        'd/m/Y',  // Formato para '16/06/2024'
-                        'd-m-Y',  // Formato para '16-06-2024'
-                    ];
 
-                    $valid_date = false;
+        foreach ($bill_folders as $bill_folder) {
+            // if (!empty($bill_folder) && file_exists($bill_folder)) {
+            if (!empty($bill_folder) && file_exists($bill_folder) && filesize($bill_folder) > 0) {
 
 
-                    $first_space_pos = strpos($line, ' ');
-                    $date_string = substr($line, 0, $first_space_pos);
 
-                    if ($first_space_pos === false) {
-                        continue;
-                    }
-                    $date_string = substr($date_string, 1);
+                //var_dump($bill_folder);
 
 
-                    // $date_string = preg_replace('/[^0-9\/\-]/', '', $date_string);
-                    //$date_string = preg_replace('/[^0-9\/-]/', '', $date_string);
-                    //$date_string = preg_replace('/[^\d\/]+/', '', $date_string);
-                    // $date_string = preg_replace('/[^0-9\-]/', '', $date_string);
-                    //$date_string = preg_replace('/[^0-9\/\-]/', '', $date_string);
-                    //$date_string = preg_replace('/[^0-9\/\-a-zA-Z]/', '', $date_string);
-                    //$date_string = preg_replace('/[^0-9a-zA-Z\-]/', '', $date_string);
-                    // $date_string = preg_replace('/[^0-9a-zA-Z\-\/]/', '', $date_string);
-                    $date_string = preg_replace('/[^0-9a-zA-Z\/\-\s]/', '', $date_string);
-   
-                    
-                    $valid_date = false;
-                    foreach ($date_formats as $format) {
-                        $date = \DateTime::createFromFormat($format, $date_string);
-                        if ($date !== false && $date->format($format) === $date_string) {
-                            $valid_date = true;
-                            break;
+
+                $bill_count++;
+                //$marray = $bill_read_file($bill_folder, 20);
+                $marray = $this->bill_read_file($bill_folder, 20);
+
+                //var_dump($marray);
+                //die();
+
+
+                if (is_array($marray) && !empty($marray)) {
+                    // Iterar sobre as linhas do log
+                    foreach ($marray as $line) {
+                        // javascript...
+                        if ($filter !== null && stripos($line, $filter) === false) {
+                            continue;
                         }
-                    }
-                    if (!$valid_date) {
-                        continue;
-                    }
-                    $log_date = $date->getTimestamp();
-                    $days_diff = floor((time() - $log_date) / (60 * 60 * 24));
-                    if ($days_diff <= $num_days) {
-                        return true; // Se encontrar uma correspondência, retorna true
+
+
+                        //echo $line;
+                        //echo '<br>';
+
+
+                        $date_formats = [
+                            'Y-m-d',
+                            'Y/m/d',
+                            'Y-d-m',
+                            'Y/d/m',
+                            'd-M-Y',
+                            'd/M/Y',
+                            'M d Y',
+                            'd/m/Y',  // Formato para '16/06/2024'
+                            'd-m-Y',  // Formato para '16-06-2024'
+                        ];
+
+                        $valid_date = false;
+
+
+                        $first_space_pos = strpos($line, ' ');
+                        $date_string = substr($line, 0, $first_space_pos);
+
+                        if ($first_space_pos === false) {
+                            continue;
+                        }
+                        $date_string = substr($date_string, 1);
+
+
+                        // $date_string = preg_replace('/[^0-9\/\-]/', '', $date_string);
+                        //$date_string = preg_replace('/[^0-9\/-]/', '', $date_string);
+                        //$date_string = preg_replace('/[^\d\/]+/', '', $date_string);
+                        // $date_string = preg_replace('/[^0-9\-]/', '', $date_string);
+                        //$date_string = preg_replace('/[^0-9\/\-]/', '', $date_string);
+                        //$date_string = preg_replace('/[^0-9\/\-a-zA-Z]/', '', $date_string);
+                        //$date_string = preg_replace('/[^0-9a-zA-Z\-]/', '', $date_string);
+                        // $date_string = preg_replace('/[^0-9a-zA-Z\-\/]/', '', $date_string);
+                        $date_string = preg_replace('/[^0-9a-zA-Z\/\-\s]/', '', $date_string);
+
+
+                        $valid_date = false;
+                        foreach ($date_formats as $format) {
+                            $date = \DateTime::createFromFormat($format, $date_string);
+                            if ($date !== false && $date->format($format) === $date_string) {
+                                $valid_date = true;
+                                break;
+                            }
+                        }
+                        if (!$valid_date) {
+                            continue;
+                        }
+                        $log_date = $date->getTimestamp();
+                        $days_diff = floor((time() - $log_date) / (60 * 60 * 24));
+                        if ($days_diff <= $num_days) {
+                            return true; // Se encontrar uma correspondência, retorna true
+                        }
                     }
                 }
             }
         }
+        return false;
     }
-    return false; 
-}
 
     /*
      public function bill_read_file($file, $lines)
@@ -221,9 +243,12 @@ class ErrorChecker {
     }
     */
 
-    public function bill_read_file($file, $lines)
+    public function bill_read_file_old($file, $lines)
     {
         $handle = fopen($file, "r");
+
+        //die(var_dump($handle));
+
         if (!$handle) {
             return "";
         }
@@ -232,11 +257,13 @@ class ErrorChecker {
         $text = [];
         $currentChunk = '';
         $linecounter = 0;
-        
+
         // Move para o final do arquivo e começa a leitura para trás
         fseek($handle, 0, SEEK_END);
         $filesize = ftell($handle);
         $pos = $filesize - $bufferSize;
+
+        die(var_dump($pos));
 
         while ($pos >= 0 && $linecounter < $lines) {
             // Se pos é menor que zero, ajusta para 0
@@ -247,16 +274,21 @@ class ErrorChecker {
             // Mover o ponteiro para a posição
             fseek($handle, $pos);
 
+
+
             // Ler o bloco
             $chunk = fread($handle, $bufferSize);
             $currentChunk = $chunk . $currentChunk;
 
+            //die(var_dump($chunk));
+
+
             // Dividir o bloco em linhas
             $linesInChunk = explode("\n", $currentChunk);
-            
+
             // O primeiro elemento pode ser uma linha parcial (incompleta)
             $currentChunk = array_shift($linesInChunk);
-            
+
             // Adiciona as linhas ao texto
             foreach (array_reverse($linesInChunk) as $line) {
                 $text[] = $line;
@@ -282,89 +314,157 @@ class ErrorChecker {
         return $text;
     }
 
+
+
+
+    public function bill_read_file($file, $lines)
+    {
+        $handle = fopen($file, "r");
+
+        if (!$handle) {
+            return "";
+        }
+
+        $bufferSize = 8192; // Tamanho do bloco de leitura (8KB)
+        $text = [];
+        $currentChunk = '';
+        $linecounter = 0;
+
+        // Move para o final do arquivo e começa a leitura para trás
+        fseek($handle, 0, SEEK_END);
+        $filesize = ftell($handle); // Tamanho do arquivo
+
+        // Ajustar bufferSize para o tamanho do arquivo se for menor que 8KB
+        if ($filesize < $bufferSize) {
+            $bufferSize = $filesize;
+        }
+
+        $pos = $filesize - $bufferSize;
+
+        while ($pos >= 0 && $linecounter < $lines) {
+            if ($pos < 0) {
+                $pos = 0;
+            }
+
+            fseek($handle, $pos);
+
+            $chunk = fread($handle, $bufferSize);
+            $currentChunk = $chunk . $currentChunk;
+
+            $linesInChunk = explode("\n", $currentChunk);
+            $currentChunk = array_shift($linesInChunk);
+
+            foreach (array_reverse($linesInChunk) as $line) {
+                $text[] = $line;
+                $linecounter++;
+                if ($linecounter >= $lines) {
+                    break 2;
+                }
+            }
+
+            $pos -= $bufferSize;
+        }
+
+        if (!empty($currentChunk)) {
+            $text[] = $currentChunk;
+        }
+
+        fclose($handle);
+
+        return $text;
+    }
 } // end class error checker
 
 
-class MemoryChecker {
+
+
+
+
+
+
+
+
+
+
+class MemoryChecker
+{
 
     public function check_memory()
-{
-    try {
-        // Check if ini_get function exists
-        if (!function_exists('ini_get')) {
+    {
+        try {
+            // Check if ini_get function exists
+            if (!function_exists('ini_get')) {
+                $wpmemory["msg_type"] = "notok";
+                return $wpmemory;
+            } else {
+                // Get the PHP memory limit
+                $wpmemory["limit"] = (int) ini_get("memory_limit");
+            }
+
+            // Check if the memory limit is numeric
+            if (!is_numeric($wpmemory["limit"])) {
+                $wpmemory["msg_type"] = "notok";
+                return $wpmemory;
+            }
+
+            // Convert the memory limit from bytes to megabytes if it is excessively high
+            if ($wpmemory["limit"] > 9999999) {
+                $wpmemory["limit"] = $wpmemory["limit"] / 1024 / 1024;
+            }
+
+            // Check if memory_get_usage function exists
+            if (!function_exists('memory_get_usage')) {
+                $wpmemory["msg_type"] = "notok";
+                return $wpmemory;
+            } else {
+                // Get the current memory usage
+                $wpmemory["usage"] = memory_get_usage();
+            }
+
+            // Check if the memory usage is valid
+            if ($wpmemory["usage"] < 1) {
+                $wpmemory["msg_type"] = "notok";
+                return $wpmemory;
+            } else {
+                // Convert the memory usage to megabytes
+                $wpmemory["usage"] = round($wpmemory["usage"] / 1024 / 1024, 0);
+            }
+
+            // Check if the usage value is numeric
+            if (!is_numeric($wpmemory["usage"])) {
+                $wpmemory["msg_type"] = "notok";
+                return $wpmemory;
+            }
+
+            // Check if WP_MEMORY_LIMIT is defined
+            if (!defined("WP_MEMORY_LIMIT")) {
+                $wpmemory["wp_limit"] = 40; // Default value of 40M
+            } else {
+                $wp_memory_limit = WP_MEMORY_LIMIT;
+                $wpmemory["wp_limit"] = (int) $wp_memory_limit;
+            }
+
+            // Calculate the percentage of memory usage
+            $wpmemory["percent"] = $wpmemory["usage"] / $wpmemory["wp_limit"];
+            $wpmemory["color"] = "font-weight:normal;";
+            if ($wpmemory["percent"] > 0.7) {
+                $wpmemory["color"] = "font-weight:bold;color:#E66F00";
+            }
+            if ($wpmemory["percent"] > 0.85) {
+                $wpmemory["color"] = "font-weight:bold;color:red";
+            }
+
+            // Calculate the available free memory
+            $wpmemory["free"] = $wpmemory["wp_limit"] - $wpmemory["usage"];
+            $wpmemory["msg_type"] = "ok";
+        } catch (Exception $e) {
             $wpmemory["msg_type"] = "notok";
             return $wpmemory;
-        } else {
-            // Get the PHP memory limit
-            $wpmemory["limit"] = (int) ini_get("memory_limit");
         }
-
-        // Check if the memory limit is numeric
-        if (!is_numeric($wpmemory["limit"])) {
-            $wpmemory["msg_type"] = "notok";
-            return $wpmemory;
-        }
-
-        // Convert the memory limit from bytes to megabytes if it is excessively high
-        if ($wpmemory["limit"] > 9999999) {
-            $wpmemory["limit"] = $wpmemory["limit"] / 1024 / 1024;
-        }
-
-        // Check if memory_get_usage function exists
-        if (!function_exists('memory_get_usage')) {
-            $wpmemory["msg_type"] = "notok";
-            return $wpmemory;
-        } else {
-            // Get the current memory usage
-            $wpmemory["usage"] = memory_get_usage();
-        }
-
-        // Check if the memory usage is valid
-        if ($wpmemory["usage"] < 1) {
-            $wpmemory["msg_type"] = "notok";
-            return $wpmemory;
-        } else {
-            // Convert the memory usage to megabytes
-            $wpmemory["usage"] = round($wpmemory["usage"] / 1024 / 1024, 0);
-        }
-
-        // Check if the usage value is numeric
-        if (!is_numeric($wpmemory["usage"])) {
-            $wpmemory["msg_type"] = "notok";
-            return $wpmemory;
-        }
-
-        // Check if WP_MEMORY_LIMIT is defined
-        if (!defined("WP_MEMORY_LIMIT")) {
-            $wpmemory["wp_limit"] = 40; // Default value of 40M
-        } else {
-            $wp_memory_limit = WP_MEMORY_LIMIT;
-            $wpmemory["wp_limit"] = (int) $wp_memory_limit;
-        }
-
-        // Calculate the percentage of memory usage
-        $wpmemory["percent"] = $wpmemory["usage"] / $wpmemory["wp_limit"];
-        $wpmemory["color"] = "font-weight:normal;";
-        if ($wpmemory["percent"] > 0.7) {
-            $wpmemory["color"] = "font-weight:bold;color:#E66F00";
-        }
-        if ($wpmemory["percent"] > 0.85) {
-            $wpmemory["color"] = "font-weight:bold;color:red";
-        }
-
-        // Calculate the available free memory
-        $wpmemory["free"] = $wpmemory["wp_limit"] - $wpmemory["usage"];
-        $wpmemory["msg_type"] = "ok";
-    } catch (Exception $e) {
-        $wpmemory["msg_type"] = "notok";
         return $wpmemory;
     }
-    return $wpmemory;
 }
 
-
-}
-    
 
 class recaptcha_for_all_Bill_Diagnose
 {
@@ -384,18 +484,21 @@ class recaptcha_for_all_Bill_Diagnose
 
 
         //$this->global_variable_has_errors = $this->bill_check_errors_today();
-        $errorChecker = new ErrorChecker();//
+        $errorChecker = new ErrorChecker(); //
         //
         $this->global_variable_has_errors  = $errorChecker->bill_check_errors_today(1);
 
-//
+
+        // die(var_dump($this->global_variable_has_errors));
+
+        //
 
 
 
 
 
-        $this->global_variable_has_errors = true;
-// >>>>>>>>>>>>>>>>>>>
+        // $this->global_variable_has_errors = true;
+        // >>>>>>>>>>>>>>>>>>>
 
 
 
@@ -413,12 +516,12 @@ class recaptcha_for_all_Bill_Diagnose
 
         // Adicionando as ações dentro do construtor
         add_action("admin_notices", [$this, "show_dismissible_notification"]);
-        add_action("admin_notices", [$this, "show_dismissible_notification2"]);
+        //add_action("admin_notices", [$this, "show_dismissible_notification2"]);
         // 2024
-        if($this->global_variable_has_errors)
-           add_action("admin_bar_menu", [$this, "add_site_health_link_to_admin_toolbar"], 999);
-        add_action("admin_head", [$this,"custom_help_tab"]);
-        
+        if ($this->global_variable_has_errors)
+            add_action("admin_bar_menu", [$this, "add_site_health_link_to_admin_toolbar"], 999);
+        add_action("admin_head", [$this, "custom_help_tab"]);
+
         $memory = $this->global_variable_memory;
         if (
             $memory["free"] < 30 or
@@ -465,19 +568,21 @@ class recaptcha_for_all_Bill_Diagnose
     }
     */
 
-    public function get_plugin_slug() {
+    public function get_plugin_slug()
+    {
         // Get the plugin directory path
         $plugin_dir = plugin_dir_path(__FILE__);
-        
+
         // Function to get the base directory of the plugin
-        function get_base_plugin_dir($dir, $base_dir) {
+        function get_base_plugin_dir($dir, $base_dir)
+        {
             // Remove the base directory part from the full path
             $relative_path = str_replace($base_dir, '', $dir);
             // Get the first directory in the relative path
             $parts = explode('/', trim($relative_path, '/'));
             return $parts[0];
         }
-        
+
         // Check if the plugin is in the normal plugins directory
         if (strpos($plugin_dir, WP_PLUGIN_DIR) === 0) {
             $plugin_slug = get_base_plugin_dir($plugin_dir, WP_PLUGIN_DIR);
@@ -489,24 +594,28 @@ class recaptcha_for_all_Bill_Diagnose
             // If the plugin is not in any expected directory, return an empty string
             return '';
         }
-    
+
         return $plugin_slug;
     }
-    
 
-    public function setNotificationUrl($notification_url) {
+
+    public function setNotificationUrl($notification_url)
+    {
         $this->notification_url = $notification_url;
     }
 
-    public function setNotificationUrl2($notification_url2) {
+    public function setNotificationUrl2($notification_url2)
+    {
         $this->notification_url2 = $notification_url2;
     }
 
-    public function setPluginTextDomain($plugin_text_domain) {
+    public function setPluginTextDomain($plugin_text_domain)
+    {
         $this->plugin_text_domain = $plugin_text_domain;
     }
 
-    public function setPluginSlug($plugin_slug) {
+    public function setPluginSlug($plugin_slug)
+    {
         $this->plugin_slug =  $this->get_plugin_slug();
     }
 
@@ -591,7 +700,7 @@ class recaptcha_for_all_Bill_Diagnose
     */
 
 
-    
+
     public function show_dismissible_notification()
     {
         if ($this->is_notification_displayed_today()) {
@@ -602,7 +711,7 @@ class recaptcha_for_all_Bill_Diagnose
             return;
         }
         $message = esc_attr__("Our plugin", 'restore-classic-widgets');
-        $message .= ' ('.$this->plugin_slug.') ' ;
+        $message .= ' (' . $this->plugin_slug . ') ';
         $message .= esc_attr__("cannot function properly because your WordPress Memory Limit is too low. Your site will experience serious issues, even if you deactivate our plugin.", 'restore-classic-widgets');
         $message .=
             '<a href="' .
@@ -615,6 +724,7 @@ class recaptcha_for_all_Bill_Diagnose
         echo '<p style="color: red;">' . wp_kses_post($message) . "</p>";
         echo "</div>";
     }
+    /*
     public function show_dismissible_notification2()
     {
         if ($this->is_notification_displayed_today()) {
@@ -638,6 +748,7 @@ class recaptcha_for_all_Bill_Diagnose
             echo "</div>";
         }
     }
+    */
     // Helper function to check if a notification has been displayed today
     public function is_notification_displayed_today()
     {
@@ -661,8 +772,7 @@ class recaptcha_for_all_Bill_Diagnose
     // Add Content
     public function site_health_tab_content($tab)
     {
-        if(!function_exists('recaptcha_for_all_bill_strip_strong99'))
-        {
+        if (!function_exists('recaptcha_for_all_bill_strip_strong99')) {
             function recaptcha_for_all_bill_strip_strong99($htmlString)
             {
                 // return $htmlString;
@@ -682,7 +792,7 @@ class recaptcha_for_all_Bill_Diagnose
         } ?>
 
 
-        <div class="wrap health-check-body, privacy-settings-body" >
+        <div class="wrap health-check-body, privacy-settings-body">
 
 
 
@@ -690,79 +800,79 @@ class recaptcha_for_all_Bill_Diagnose
 
 
             <p style="border: 1px solid #000; padding: 10px;">
-            <strong>
-            <?php 
-                echo esc_attr__("Displaying the latest recurring errors from your error log file and eventually alert about low WordPress memory limit is a courtesy of plugin", 'restore-classic-widgets');
-                echo ': '.esc_attr($this->global_plugin_slug).'. ';
-                echo esc_attr__("Disabling our plugin does not stop the errors from occurring; 
+                <strong>
+                    <?php
+                    echo esc_attr__("Displaying the latest recurring errors from your error log file and eventually alert about low WordPress memory limit is a courtesy of plugin", 'restore-classic-widgets');
+                    echo ': ' . esc_attr($this->global_plugin_slug) . '. ';
+                    echo esc_attr__("Disabling our plugin does not stop the errors from occurring; 
                 it simply means you will no longer be notified here that they are happening, but they can still harm your site.", 'restore-classic-widgets');
-            ?>
-            </strong>
+                    ?>
+                </strong>
             </p>
 
             <h3 style="color: red;">
-            <?php 
-            echo esc_attr__("Potential Problems", 'restore-classic-widgets');
-            ?>
+                <?php
+                echo esc_attr__("Potential Problems", 'restore-classic-widgets');
+                ?>
             </h3>
             <?php
             $memory = $this->global_variable_memory;
             $wpmemory = $memory;
-            if ($memory["free"] < 30 or $wpmemory["percent"] > 85) { ?> 
-            <h2 style="color: red;">
-            <?php $message = esc_attr__("Low WordPress Memory Limit", 'restore-classic-widgets');?>
+            if ($memory["free"] < 30 or $wpmemory["percent"] > 85) { ?>
+                <h2 style="color: red;">
+                    <?php $message = esc_attr__("Low WordPress Memory Limit", 'restore-classic-widgets'); ?>
                 </h2>
+                <?php
+                $mb = "MB";
+                echo "<b>";
+                echo "WordPress Memory Limit: " .
+                    esc_attr($wpmemory["wp_limit"]) .
+                    esc_attr($mb) .
+                    "&nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;";
+                $perc = $wpmemory["usage"] / $wpmemory["wp_limit"];
+                if ($perc > 0.7) {
+                    echo '<span style="color:' . esc_attr($wpmemory["color"]) . ';">';
+                }
+                echo esc_attr__("Your usage now", 'restore-classic-widgets') .
+                    ": " .
+                    esc_attr($wpmemory["usage"]) .
+                    "MB &nbsp;&nbsp;&nbsp;";
+                if ($perc > 0.7) {
+                    echo "</span>";
+                }
+                echo "|&nbsp;&nbsp;&nbsp;" .
+                    esc_attr__("Total Php Server Memory", 'restore-classic-widgets') .
+                    " : " .
+                    esc_attr($wpmemory["limit"]) .
+                    "MB";
+                echo "</b>";
+                echo "</center>";
+                echo "<hr>";
+                $free = $wpmemory["wp_limit"] - $wpmemory["usage"];
+                echo '<p>';
+                echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'restore-classic-widgets');
+                echo '</b>';
+                ?>
+                </b>
+                <a href="https://wpmemory.com/fix-low-memory-limit/">
+                    <?php
+                    echo esc_attr__("Learn More", 'restore-classic-widgets');
+                    ?>
+                </a>
+                </p>
+                <br>
             <?php
-            $mb = "MB";
-            echo "<b>";
-            echo "WordPress Memory Limit: " .
-                esc_attr($wpmemory["wp_limit"]) .
-                esc_attr($mb) .
-                "&nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;";
-            $perc = $wpmemory["usage"] / $wpmemory["wp_limit"];
-            if ($perc > 0.7) {
-                echo '<span style="color:' . esc_attr($wpmemory["color"]) . ';">';
             }
-            echo esc_attr__("Your usage now", 'restore-classic-widgets') .
-                ": " .
-                esc_attr($wpmemory["usage"]) .
-                "MB &nbsp;&nbsp;&nbsp;";
-            if ($perc > 0.7) {
-                echo "</span>";
-            }
-            echo "|&nbsp;&nbsp;&nbsp;" .
-                esc_attr__("Total Php Server Memory", 'restore-classic-widgets') .
-                " : " .
-                esc_attr($wpmemory["limit"]) .
-                "MB";
-            echo "</b>";
-            echo "</center>";
-            echo "<hr>";
-            $free = $wpmemory["wp_limit"] - $wpmemory["usage"];
-            echo '<p>';
-            echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'restore-classic-widgets');
-            echo '</b>';
-            ?>                                                                                              
-            </b>
-            <a href= "https://wpmemory.com/fix-low-memory-limit/">
-            <?php 
-            echo esc_attr__("Learn More", 'restore-classic-widgets');
-            ?>
-            </a>
-            </p>
-            <br>
-            <?php 
-              }
 
             // end block memory...
-            
+
             ?>
 
 
 
 
 
-          
+
 
 
             <?php
@@ -771,24 +881,24 @@ class recaptcha_for_all_Bill_Diagnose
             // Errors ...
 
 
-              
+
             if ($this->global_variable_has_errors) { ?>
-                       <h2 style="color: red;">
-                       <?php
-                       echo esc_attr__("Site Errors", 'restore-classic-widgets');
-                       ?> 
-                    </h2>
+                <h2 style="color: red;">
+                    <?php
+                    echo esc_attr__("Site Errors", 'restore-classic-widgets');
+                    ?>
+                </h2>
                 <p>
-                <?php 
-                echo esc_attr__("Your site has experienced errors for the past 2 days. These errors, including JavaScript issues, can result in visual problems or disrupt functionality, ranging from minor glitches to critical site failures. JavaScript errors can terminate JavaScript execution, leaving all subsequent commands inoperable.", 'restore-classic-widgets');
-                ?> 
-                <a href= "https://wptoolsplugin.com/site-language-error-can-crash-your-site/">
-                <?php 
-                echo esc_attr__("Learn More", 'restore-classic-widgets');
-                ?>
-                </a>
+                    <?php
+                    echo esc_attr__("Your site has experienced errors for the past 2 days. These errors, including JavaScript issues, can result in visual problems or disrupt functionality, ranging from minor glitches to critical site failures. JavaScript errors can terminate JavaScript execution, leaving all subsequent commands inoperable.", 'restore-classic-widgets');
+                    ?>
+                    <a href="https://wptoolsplugin.com/site-language-error-can-crash-your-site/">
+                        <?php
+                        echo esc_attr__("Learn More", 'restore-classic-widgets');
+                        ?>
+                    </a>
                 </p>
-                <?php
+    <?php
                 $bill_count = 0;
                 $bill_folders = [];
 
@@ -800,7 +910,7 @@ class recaptcha_for_all_Bill_Diagnose
                 ) {
                     $bill_folders[] = $error_log_path;
                 }
-            
+
                 $bill_folders[] = ABSPATH . "error_log";
                 $bill_folders[] = ABSPATH . "php_errorlog";
                 $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
@@ -827,21 +937,21 @@ class recaptcha_for_all_Bill_Diagnose
                     }
                 }
 
-               
+
                 $bill_themes = array_slice(scandir(get_theme_root()), 2);
                 foreach ($bill_themes as $bill_theme) {
                     if (is_dir(get_theme_root() . "/" . $bill_theme)) {
                         $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
                         $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
                     }
-                }          
+                }
 
 
                 echo "<br />";
                 echo esc_attr__("This is a partial list of the errors found.", 'restore-classic-widgets');
                 echo "<br />";
                 // Comeca a mostrar erros...
-//
+                //
                 foreach ($bill_folders as $bill_folder) {
                     $files = glob($bill_folder);
                     if ($files === false) {
@@ -849,8 +959,7 @@ class recaptcha_for_all_Bill_Diagnose
                     }
 
                     // foreach (glob($bill_folder) as $bill_filename) 
-                    foreach ($files as $bill_filename) 
-                    {
+                    foreach ($files as $bill_filename) {
                         if (strpos($bill_filename, "backup") != true) {
                             echo "<strong>";
                             echo esc_attr($bill_filename);
@@ -878,19 +987,19 @@ class recaptcha_for_all_Bill_Diagnose
                                 if ($total > 1000) {
                                     $total = 1000;
                                 }
-            
+
                                 for ($i = 0; $i < $total; $i++) {
                                     if (strpos(trim($marray[$i]), "[") !== 0) {
                                         continue; // Skip lines without correct date format
                                     }
-            
+
                                     $logs = [];
-            
+
                                     $line = trim($marray[$i]);
                                     if (empty($line)) {
                                         continue;
                                     }
-            
+
                                     //  stack trace
                                     //[30-Sep-2023 11:28:52 UTC] PHP Stack trace:
                                     $pattern = "/PHP Stack trace:/";
@@ -903,35 +1012,35 @@ class recaptcha_for_all_Bill_Diagnose
                                         continue;
                                     }
                                     //  end stack trace
-            
+
                                     // Javascript ?
                                     if (strpos($line, "Javascript") !== false) {
                                         $is_javascript = true;
                                     } else {
                                         $is_javascript = false;
                                     }
-            
+
                                     if ($is_javascript) {
                                         $matches = [];
-            
+
                                         // die($line);
-            
+
                                         $apattern = [];
                                         $apattern[] =
                                             "/(Error|Syntax|Type|TypeError|Reference|ReferenceError|Range|Eval|URI|Error .*?): (.*?) - URL: (https?:\/\/\S+).*?Line: (\d+).*?Column: (\d+).*?Error object: ({.*?})/";
-            
+
                                         //$apattern[] =
                                         //    "/(Error|Syntax|Type|TypeError|Reference|ReferenceError|Range|Eval|URI|Error .*?): (.*?) - URL: (https?:\/\/\S+).*?Line: (\d+)/";
-            
-            
+
+
                                         $apattern[] =
                                             "/(SyntaxError|Error|Syntax|Type|TypeError|Reference|ReferenceError|Range|Eval|URI|Error .*?): (.*?) - URL: (https?:\/\/\S+).*?Line: (\d+)/";
-                        
+
                                         // Google Maps !
                                         //$apattern[] = "/Script error(?:\. - URL: (https?:\/\/\S+))?/i";
-            
+
                                         $pattern = $apattern[0];
-            
+
                                         for ($j = 0; $j < count($apattern); $j++) {
                                             if (
                                                 preg_match($apattern[$j], $line, $matches)
@@ -940,8 +1049,8 @@ class recaptcha_for_all_Bill_Diagnose
                                                 break;
                                             }
                                         }
-            
-        
+
+
                                         if (preg_match($pattern, $line, $matches)) {
                                             $matches[1] = str_replace(
                                                 "Javascript ",
@@ -949,18 +1058,18 @@ class recaptcha_for_all_Bill_Diagnose
                                                 $matches[1]
                                             );
 
-                                           $filteredDate = strstr(substr($line, 1, 26), ']', true);
+                                            $filteredDate = strstr(substr($line, 1, 26), ']', true);
 
-                                           // die(var_export(substr($line, 1, 25)));
-
-
-                                           // $filteredDate = substr($line, 1, 20);
+                                            // die(var_export(substr($line, 1, 25)));
 
 
-            
+                                            // $filteredDate = substr($line, 1, 20);
+
+
+
                                             if (count($matches) == 2) {
                                                 $log_entry = [
-                                                    "Date" => $filteredDate ,
+                                                    "Date" => $filteredDate,
                                                     "Message Type" => "Script error",
                                                     "Problem Description" => "N/A",
                                                     "Script URL" => $matches[1],
@@ -968,47 +1077,47 @@ class recaptcha_for_all_Bill_Diagnose
                                                 ];
                                             } else {
                                                 $log_entry = [
-                                                    "Date" => $filteredDate ,
+                                                    "Date" => $filteredDate,
                                                     "Message Type" => $matches[1],
                                                     "Problem Description" => $matches[2],
                                                     "Script URL" => $matches[3],
                                                     "Line" => $matches[4],
                                                 ];
                                             }
-            
-            
-            
-            
+
+
+
+
                                             $script_path = $matches[3];
                                             $script_info = pathinfo($script_path);
-                    
-                    
+
+
                                             // Dividir o nome do script com base em ":"
                                             $parts = explode(":", $script_info["basename"]);
-                    
+
                                             // O nome do script agora está na primeira parte
                                             $scriptName = $parts[0];
-                    
+
                                             $log_entry["Script Name"] = $scriptName; // Get the script name
-                    
+
                                             $log_entry["Script Location"] =
                                                 $script_info["dirname"]; // Get the script location
-                    
-                                            if($log_entry["Script Location"] == 'http:' or $log_entry["Script Location"] == 'https:' )
-                                            $log_entry["Script Location"] = $matches[3];
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+                                            if ($log_entry["Script Location"] == 'http:' or $log_entry["Script Location"] == 'https:')
+                                                $log_entry["Script Location"] = $matches[3];
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             if (
                                                 strpos(
                                                     $log_entry["Script URL"],
@@ -1025,9 +1134,9 @@ class recaptcha_for_all_Bill_Diagnose
                                                     $log_entry["File Type"] = "Plugin";
                                                     $log_entry["Plugin Name"] =
                                                         $plugin_parts[0];
-                                                //   $log_entry["Script Location"] =
-                                                //      "/wp-content/plugins/" .
-                                                //       $plugin_parts[0];
+                                                    //   $log_entry["Script Location"] =
+                                                    //      "/wp-content/plugins/" .
+                                                    //       $plugin_parts[0];
                                                 }
                                             } elseif (
                                                 strpos(
@@ -1045,15 +1154,15 @@ class recaptcha_for_all_Bill_Diagnose
                                                     $log_entry["File Type"] = "Theme";
                                                     $log_entry["Theme Name"] =
                                                         $theme_parts[0];
-                                                // $log_entry["Script Location"] =
-                                                //     "/wp-content/themes/" .
-                                                //     $theme_parts[0];
+                                                    // $log_entry["Script Location"] =
+                                                    //     "/wp-content/themes/" .
+                                                    //     $theme_parts[0];
                                                 }
                                             } else {
                                                 // Caso não seja um tema nem um plugin, pode ser necessário ajustar o comportamento aqui.
                                                 //$log_entry["Script Location"] = $matches[1];
                                             }
-            
+
                                             // Extrair o nome do script do URL
                                             $script_name = basename(
                                                 wp_parse_url(
@@ -1062,10 +1171,10 @@ class recaptcha_for_all_Bill_Diagnose
                                                 )
                                             );
                                             $log_entry["Script Name"] = $script_name;
-            
+
                                             //echo $line."\n";
-            
-                                
+
+
 
 
 
@@ -1102,7 +1211,7 @@ class recaptcha_for_all_Bill_Diagnose
                                             }
 
 
-            
+
                                             echo "------------------------\n";
                                             continue;
                                         } else {
@@ -1117,19 +1226,19 @@ class recaptcha_for_all_Bill_Diagnose
 
 
                                         // ---- PHP // 
-            
-            
+
+
                                         // continue;
-            
-            
+
+
                                         $apattern = [];
                                         $apattern[] =
                                             "/^\[.*\] PHP (Warning|Error|Notice|Fatal error|Parse error): (.*) in \/([^ ]+) on line (\d+)/";
                                         $apattern[] =
                                             "/^\[.*\] PHP (Warning|Error|Notice|Fatal error|Parse error): (.*) in \/([^ ]+):(\d+)$/";
-            
+
                                         $pattern = $apattern[0];
-            
+
                                         for ($j = 0; $j < count($apattern); $j++) {
                                             if (
                                                 preg_match($apattern[$j], $line, $matches)
@@ -1138,41 +1247,41 @@ class recaptcha_for_all_Bill_Diagnose
                                                 break;
                                             }
                                         }
-            
+
                                         if (preg_match($pattern, $line, $matches)) {
                                             //die(var_export($matches));
-            
+
 
                                             $filteredDate = strstr(substr($line, 1, 26), ']', true);
 
                                             $log_entry = [
-                                                "Date" => $filteredDate ,
+                                                "Date" => $filteredDate,
                                                 "News Type" => $matches[1],
                                                 "Problem Description" => recaptcha_for_all_bill_strip_strong99(
                                                     $matches[2]
                                                 ),
                                             ];
-            
-            
-            
+
+
+
                                             $script_path = $matches[3];
                                             $script_info = pathinfo($script_path);
-            
+
                                             // Dividir o nome do script com base em ":"
                                             $parts = explode(":", $script_info["basename"]);
-            
+
                                             // O nome do script agora está na primeira parte
                                             $scriptName = $parts[0];
-            
+
                                             $log_entry["Script Name"] = $scriptName; // Get the script name
-            
+
                                             $log_entry["Script Location"] =
                                                 $script_info["dirname"]; // Get the script location
-            
+
                                             $log_entry["Line"] = $matches[4];
-            
-            
-            
+
+
+
                                             // Check if the "Script Location" contains "/plugins/" or "/themes/"
                                             if (
                                                 strpos(
@@ -1213,7 +1322,7 @@ class recaptcha_for_all_Bill_Diagnose
                                             // stack trace...
                                             $pattern = "/\[.*?\] PHP\s+\d+\.\s+(.*)/";
                                             preg_match($pattern, $line, $matches);
-            
+
                                             if (!preg_match($pattern, $line)) {
                                                 echo "-----------y-------------\n";
                                                 echo esc_html($line);
@@ -1221,10 +1330,10 @@ class recaptcha_for_all_Bill_Diagnose
                                             }
                                             continue;
                                         }
-            
+
                                         //$in_error_block = false; // End the error block
                                         $logs[] = $log_entry; // Add this log entry to the array of logs
-            
+
                                         foreach ($logs as $log) {
                                             if (isset($log["Date"])) {
                                                 echo 'DATE: ' . esc_html($log["Date"]) . "\n";
@@ -1235,49 +1344,44 @@ class recaptcha_for_all_Bill_Diagnose
                                             if (isset($log["Problem Description"])) {
                                                 echo 'PROBLEM DESCRIPTION: ' . esc_html($log["Problem Description"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'Script Name' key exists before printing
                                             if (isset($log["Script Name"]) && !empty(trim($log["Script Name"]))) {
                                                 echo 'SCRIPT NAME: ' . esc_html($log["Script Name"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'Line' key exists before printing
                                             if (isset($log["Line"])) {
                                                 echo 'LINE: ' . esc_html($log["Line"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'Script Location' key exists before printing
                                             if (isset($log["Script Location"])) {
                                                 echo 'SCRIPT LOCATION: ' . esc_html($log["Script Location"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'File Type' key exists before printing
                                             if (isset($log["File Type"])) {
                                                 // echo "FILE TYPE: " . esc_html($log["File Type"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'Plugin Name' key exists before printing
                                             if (isset($log["Plugin Name"]) && !empty(trim($log["Plugin Name"]))) {
                                                 echo 'PLUGIN NAME: ' . esc_html($log["Plugin Name"]) . "\n";
                                             }
-                                        
+
                                             // Check if the 'Theme Name' key exists before printing
                                             if (isset($log["Theme Name"])) {
                                                 echo 'THEME NAME: ' . esc_html($log["Theme Name"]) . "\n";
                                             }
-                                        
+
                                             echo "------------------------\n";
                                         }
-                                        
                                     }
                                     // end if PHP ...
                                 } // end for...
-            
+
                                 echo "</textarea>";
-
-
-
-
                             }
                             echo "<br />";
                         }
@@ -1286,28 +1390,27 @@ class recaptcha_for_all_Bill_Diagnose
 
 
             } // end tem errors...
-            
-
-
-        echo "</div>";
-
-    } // end function site_health_tab_content($tab)
-
-
-     //
 
 
 
-   
+            echo "</div>";
+        } // end function site_health_tab_content($tab)
 
 
-    public function add_site_health_link_to_admin_toolbar($wp_admin_bar)
-    {
+        //
+
+
+
+
+
+
+        public function add_site_health_link_to_admin_toolbar($wp_admin_bar)
+        {
             $logourl = plugin_dir_url(__FILE__) . "bell.png";
             $wp_admin_bar->add_node([
                 "id" => "site-health",
                 "title" =>
-                    '<span style="background-color: #ff0000; color: #fff; display: flex; align-items: center; padding: 0px 10px  0px 10px; ">' .
+                '<span style="background-color: #ff0000; color: #fff; display: flex; align-items: center; padding: 0px 10px  0px 10px; ">' .
                     '<span style="border-radius: 50%; padding: 4px; display: inline-block; width: 20px; height: 20px; text-align: center; font-size: 12px; background-color: #ff0000; background-image: url(\'' .
                     esc_url($logourl) .
                     '\'); background-repeat: no-repeat; background-position: 0 6px; background-size: 20px;"></span> ' .
@@ -1315,34 +1418,34 @@ class recaptcha_for_all_Bill_Diagnose
                     "</span>",
                 "href" => admin_url("site-health.php?tab=Critical+Issues"),
             ]);
-    }
-
-    public function custom_help_tab()
-    {
-        $screen = get_current_screen();
-        // Verifique se você está na página desejada
-        if ("site-health" === $screen->id) {
-            // Adicione uma guia de ajuda
-            $message = esc_attr__("These are critical issues that can have a significant impact on your site's performance. They can cause many plugins and functionalities to malfunction and, in some cases, render your site completely inoperative, depending on their severity. Address them promptly.", 'restore-classic-widgets');
-            $screen->add_help_tab([
-                "id" => "custom-help-tab",
-                "title" => "Critical Issues",
-                "content" =>
-                    "<p>".esc_attr($message)."</p>",
-            ]);
         }
-    }
-   // add_action("admin_head", "custom_help_tab");
-} // end class
-/*
+
+        public function custom_help_tab()
+        {
+            $screen = get_current_screen();
+            // Verifique se você está na página desejada
+            if ("site-health" === $screen->id) {
+                // Adicione uma guia de ajuda
+                $message = esc_attr__("These are critical issues that can have a significant impact on your site's performance. They can cause many plugins and functionalities to malfunction and, in some cases, render your site completely inoperative, depending on their severity. Address them promptly.", 'restore-classic-widgets');
+                $screen->add_help_tab([
+                    "id" => "custom-help-tab",
+                    "title" => "Critical Issues",
+                    "content" =>
+                    "<p>" . esc_attr($message) . "</p>",
+                ]);
+            }
+        }
+        // add_action("admin_head", "custom_help_tab");
+    } // end class
+    /*
 $plugin_slug = "database-backup"; // Replace with your actual text domain
 $plugin_text_domain = "database-backup"; // Replace with your actual text domain
 $notification_url = "https://wpmemory.com/fix-low-memory-limit/";
 $notification_url2 =
     "https://billplugin.com/site-language-error-can-crash-your-site/";
 */
-$diagnose_instance = recaptcha_for_all_Bill_Diagnose::get_instance(
-    $notification_url,
-    $notification_url2,
-);
-update_option("recaptcha_for_all_bill_show_warnings", date("Y-m-d"));
+    $diagnose_instance = recaptcha_for_all_Bill_Diagnose::get_instance(
+        $notification_url,
+        $notification_url2,
+    );
+    update_option("recaptcha_for_all_bill_show_warnings", date("Y-m-d"));

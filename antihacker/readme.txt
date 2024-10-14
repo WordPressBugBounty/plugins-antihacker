@@ -4,7 +4,7 @@ Donate link:http://antihackerplugin.com/?p=25
 Tags: Block Tor, Disable, wordpress security tools, malware scanner, antimalware
 Requires at least: 4.0
 Tested up to: 6.6
-Stable tag: 5.29
+Stable tag: 5.30
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
