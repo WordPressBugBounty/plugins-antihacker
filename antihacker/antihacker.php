@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.30
+version: 5.31
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -1442,6 +1442,25 @@ function antihacker_new_more_plugins()
   $plugin = new antihacker_Bill_show_more_plugins();
   $plugin->bill_show_plugins();
 }
+
+
+
+function antihacker_load_chat()
+{
+  global $antihacker_is_admin;
+    if ($antihacker_is_admin and current_user_can("manage_options")) {
+			// ob_start();
+			//debug2();
+
+			if ( ! class_exists( 'antihacker_BillChat\ChatPlugin' ) ) {
+				require_once dirname(__FILE__) . "/includes/chat/class_bill_chat.php";
+
+			}
+		}
+}
+add_action('wp_loaded', 'antihacker_load_chat');
+
+
 //debug2();
 function antihacker_bill_hooking_diagnose()
 {

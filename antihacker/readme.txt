@@ -4,7 +4,7 @@ Donate link:http://antihackerplugin.com/?p=25
 Tags: Block Tor, Disable, wordpress security tools, malware scanner, antimalware
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 5.30
+Stable tag: 5.31
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -396,6 +396,9 @@ Only in this case, when applying your purchase code, it will be sent to our serv
 == External service 3 ==
 The Anti Hacker plugin will retrieve tips and news from our site BillMinozzi.com. This information will be displayed in the plugin dashboard, in the right-hand column under the title "Tips and News." No data is sent to our server. Learn about the terms of use for our plugins and themes at this link:
 https://siterightaway.net/terms-of-use-of-our-plugins-and-themes/
+
+== External service 4 ==
+When using our chat, only some information about issues, such as your language and data from the Diagnose tab, may be sent to our server. We do not share, publish, or disclose any information with third parties.
 
 
 == Look the file changelog.txt for details ==

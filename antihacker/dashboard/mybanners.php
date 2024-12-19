@@ -219,6 +219,9 @@ if ($cached_coupon_data !== '' && $cached_coupon_data !== false) {
 
 if (empty($antihacker_checkversion) or trim($type) == 'news') {
     // free always or news
+    if(!isset($termina))
+      $termina = time() * 2;
+
     if ((strtotime($termina) > time()) and !empty($title) and  !empty($image)) {
         // show block...
         echo '<ul>';

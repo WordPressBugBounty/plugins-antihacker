@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
-"POT-Creation-Date: 2024-09-25 13:20+0100\n"
+"POT-Creation-Date: 2024-12-19 08:35+0000\n"
 "PO-Revision-Date: 2018-08-28 16:58-0000\n"
 "Last-Translator: Bill <sergiominozzi@gmail.com>\n"
 "Language-Team: Bill Minozzi <sergiominozzi@gmail.com>\n"
@@ -159,8 +159,10 @@ msgstr ""
 #: dashboard/dashboard.php:85 dashboard/dashboard.php:97
 #: dashboard/dashboard.php:164 dashboard/dashboard.php:177
 #: dashboard/dashboard.php:191 dashboard/memory.php:77
-#: dashboard/mybanners.php:49 includes/diagnose/class_bill_diagnose.php:749
-#: includes/diagnose/class_bill_diagnose.php:787
+#: dashboard/mybanners.php:49 includes/diagnose/_class_bill_diagnose.php:859
+#: includes/diagnose/_class_bill_diagnose.php:897
+#: includes/diagnose/class_bill_diagnose.php:936
+#: includes/diagnose/class_bill_diagnose.php:974
 #: includes/functions/functions.php:3029
 #: includes/install-checkup/_class_bill_install.php:315
 #: includes/install-checkup/_class_bill_install.php:384
@@ -407,32 +409,32 @@ msgstr ""
 msgid "More..."
 msgstr ""
 
-#: dashboard/mybanners.php:244
+#: dashboard/mybanners.php:247
 msgid "Did you like the AntiHacker Plugin?"
 msgstr ""
 
-#: dashboard/mybanners.php:246
+#: dashboard/mybanners.php:249
 msgid ""
 "Please support us by rating our plugin on WordPress.org. Help us keep this "
 "plugin live and updated."
 msgstr ""
 
-#: dashboard/mybanners.php:249
+#: dashboard/mybanners.php:252
 msgid "Rate or Share"
 msgstr ""
 
-#: dashboard/mybanners.php:252
+#: dashboard/mybanners.php:255
 msgid "Please help us keep the plugin live & up-to-date"
 msgstr ""
 
-#: dashboard/mybanners.php:255
+#: dashboard/mybanners.php:258
 msgid ""
 "If you use & enjoy Anti Hacker Plugin, please rate it on WordPress.org. It "
 "only takes a second and helps us keep the plugin live and maintained. Thank "
 "you!"
 msgstr ""
 
-#: dashboard/mybanners.php:258
+#: dashboard/mybanners.php:261
 msgid "Rate"
 msgstr ""
 
@@ -644,67 +646,109 @@ msgstr ""
 msgid "That is all. Enjoy it!"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:604
-#: includes/diagnose/class_bill_diagnose.php:625
+#: includes/chat/class_bill_chat.php:43
+msgid "Chat messages reset successfully."
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:44
+msgid "Error resetting chat messages."
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:45
+msgid "Invalid message received:"
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:46
+msgid "Invalid response format:"
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:47
+msgid "Error processing server response:"
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:48
+msgid "Response is not valid JSON."
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:49
+msgid "AJAX request failed:"
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:50
+msgid "Error sending the message. Please try again later."
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:51
+msgid "Please enter a message!"
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:211
+msgid ""
+"Error contacting the Artificial Intelligence (API). Please try again later."
+msgstr ""
+
+#: includes/chat/class_bill_chat.php:230
+msgid "Error to get response from AI source!"
+msgstr ""
+
+#: includes/diagnose/_class_bill_diagnose.php:713
+#: includes/diagnose/class_bill_diagnose.php:760
 msgid "Our plugin"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:606
+#: includes/diagnose/_class_bill_diagnose.php:715
+#: includes/diagnose/class_bill_diagnose.php:762
 msgid ""
 "cannot function properly because your WordPress Memory Limit is too low. "
 "Your site will experience serious issues, even if you deactivate our plugin."
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:612
-#: includes/diagnose/class_bill_diagnose.php:633
+#: includes/diagnose/_class_bill_diagnose.php:721
+#: includes/diagnose/class_bill_diagnose.php:768
 msgid "Learn more"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:624
-msgid "Your site has errors."
-msgstr ""
-
-#: includes/diagnose/class_bill_diagnose.php:627
-msgid ""
-"can't function as intended. Errors, including JavaScript errors, may lead to "
-"visual problems or disrupt functionality, from minor glitches to critical "
-"site failures. Promptly address these issues before continuing."
-msgstr ""
-
-#: includes/diagnose/class_bill_diagnose.php:653
+#: includes/diagnose/_class_bill_diagnose.php:764
+#: includes/diagnose/class_bill_diagnose.php:811
+#: includes/diagnose/class_bill_diagnose.php:1533
 msgid "Critical Issues"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:695
+#: includes/diagnose/_class_bill_diagnose.php:805
 msgid ""
 "Displaying the latest recurring errors from your error log file and "
 "eventually alert about low WordPress memory limit is a courtesy of plugin"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:697
+#: includes/diagnose/_class_bill_diagnose.php:807
 msgid ""
 "Disabling our plugin does not stop the errors from occurring; \n"
 "                it simply means you will no longer be notified here that "
 "they are happening, but they can still harm your site."
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:705
+#: includes/diagnose/_class_bill_diagnose.php:815
+#: includes/diagnose/class_bill_diagnose.php:892
 msgid "Potential Problems"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:713
+#: includes/diagnose/_class_bill_diagnose.php:823
+#: includes/diagnose/class_bill_diagnose.php:900
 msgid "Low WordPress Memory Limit"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:726
+#: includes/diagnose/_class_bill_diagnose.php:836
+#: includes/diagnose/class_bill_diagnose.php:913
 msgid "Your usage now"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:734
+#: includes/diagnose/_class_bill_diagnose.php:844
+#: includes/diagnose/class_bill_diagnose.php:921
 msgid "Total Php Server Memory"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:743
+#: includes/diagnose/_class_bill_diagnose.php:853
+#: includes/diagnose/class_bill_diagnose.php:930
 #: includes/install-checkup/_class_bill_install.php:306
 #: includes/install-checkup/class_bill_install.php:324
 msgid ""
@@ -713,11 +757,13 @@ msgid ""
 "continuing."
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:778
+#: includes/diagnose/_class_bill_diagnose.php:888
+#: includes/diagnose/class_bill_diagnose.php:965
 msgid "Site Errors"
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:783
+#: includes/diagnose/_class_bill_diagnose.php:893
+#: includes/diagnose/class_bill_diagnose.php:970
 msgid ""
 "Your site has experienced errors for the past 2 days. These errors, "
 "including JavaScript issues, can result in visual problems or disrupt "
@@ -726,16 +772,69 @@ msgid ""
 "commands inoperable."
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:841
+#: includes/diagnose/_class_bill_diagnose.php:951
+#: includes/diagnose/class_bill_diagnose.php:1028
 msgid "This is a partial list of the errors found."
 msgstr ""
 
-#: includes/diagnose/class_bill_diagnose.php:1326
+#: includes/diagnose/_class_bill_diagnose.php:1429
+#: includes/diagnose/class_bill_diagnose.php:1527
 msgid ""
 "These are critical issues that can have a significant impact on your site's "
 "performance. They can cause many plugins and functionalities to malfunction "
 "and, in some cases, render your site completely inoperative, depending on "
 "their severity. Address them promptly."
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:87
+msgid ""
+"Here are some details about error and memory monitoring for your plugin. "
+"Errors and low memory can prevent your site from functioning properly. On "
+"this page, you will find a partial list of the most recent errors and "
+"warnings. If you need more details, use the chat form, which will search for "
+"additional information using Artificial Intelligence.  \n"
+"If you need to dive deeper, install the free plugin WPTools, which provides "
+"more in-depth insights."
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:95
+msgid "Memory & Error Monitoring"
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:96
+msgid "Welcome to plugin Insights!"
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:852
+msgid ""
+"Displaying the latest recurring errors (Javascript Included) from your error "
+"log file and eventually alert about low WordPress memory limit is a courtesy "
+"of plugin"
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:854
+msgid ""
+"Disabling our plugin does not stop the errors from occurring; it simply "
+"means you will no longer be notified here that they are happening, but they "
+"can still harm your site."
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:856
+msgid ""
+"Click the help button in the top right or go directly to the AI chat box "
+"below for more specific information on the issues listed."
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:865
+msgid "Artificial Intelligence Support Chat for Issues and Solutions"
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:874
+msgid "Enter your message..."
+msgstr ""
+
+#: includes/diagnose/class_bill_diagnose.php:875
+msgid "Send"
 msgstr ""
 
 #: includes/feedback-last/feedback-last.php:272
