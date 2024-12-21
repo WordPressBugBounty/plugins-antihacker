@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.32 24-12-21 added chat with IA on deactivation.
+
 5.31 24-12-19 added chat with IA.
 
 5.30 24-10-12 Improved error handle.

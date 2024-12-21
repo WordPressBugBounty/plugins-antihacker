@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 08:36+0000\n"
-"PO-Revision-Date: 2024-12-19 09:04+0000\n"
+"POT-Creation-Date: 2024-12-21 17:08+0000\n"
+"PO-Revision-Date: 2024-12-21 17:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -757,7 +757,7 @@ msgstr "Online-Leitfaden"
 msgid "Faq Page"
 msgstr "FAQ-Seite"
 
-#: guide/guide.php:88 includes/feedback-last/feedback-last.php:304
+#: guide/guide.php:88 includes/feedback-last/feedback-last.php:361
 msgid "Support Page"
 msgstr "Support-Seite"
 
@@ -802,14 +802,14 @@ msgstr ""
 msgid "Please enter a message!"
 msgstr "Bitte geben Sie eine Nachricht ein!"
 
-#: includes/chat/class_bill_chat.php:211
+#: includes/chat/class_bill_chat.php:212
 msgid ""
 "Error contacting the Artificial Intelligence (API). Please try again later."
 msgstr ""
 "Fehler beim Kontaktieren der Künstlichen Intelligenz (API). Bitte versuchen "
 "Sie es später erneut."
 
-#: includes/chat/class_bill_chat.php:230
+#: includes/chat/class_bill_chat.php:242
 msgid "Error to get response from AI source!"
 msgstr "Fehler beim Abrufen der Antwort von der KI-Quelle!"
 
@@ -988,76 +988,42 @@ msgstr ""
 "zu erhalten."
 
 #: includes/diagnose/class_bill_diagnose.php:865
+#: includes/feedback-last/feedback-last.php:325
 msgid "Artificial Intelligence Support Chat for Issues and Solutions"
 msgstr "Künstliche Intelligenz-Support-Chat für Probleme und Lösungen"
 
 #: includes/diagnose/class_bill_diagnose.php:874
+#: includes/feedback-last/feedback-last.php:341
 msgid "Enter your message..."
 msgstr "Geben Sie Ihre Nachricht ein..."
 
 #: includes/diagnose/class_bill_diagnose.php:875
+#: includes/feedback-last/feedback-last.php:342
 msgid "Send"
 msgstr "Schicken"
 
-#: includes/feedback-last/feedback-last.php:272
-msgid "We're sorry to hear that you're leaving."
-msgstr "Wir bedauern Ihr Weggehen."
+#: includes/feedback-last/feedback-last.php:307
+msgid "What can we do to resolve the problem you're facing?"
+msgstr ""
+"Was können wir tun, um das Problem zu lösen, mit dem Sie konfrontiert sind?"
 
-#: includes/feedback-last/feedback-last.php:274
-msgid "Hello,"
-msgstr "Hallo,"
-
-#: includes/feedback-last/feedback-last.php:278
+#: includes/feedback-last/feedback-last.php:315
 msgid ""
-"Thank you for using our products. Before you deactivate, we'd like to offer "
-"a few options to improve your experience:"
+"Depending on your response, we can help keep the plugin running smoothly for "
+"you immediately!"
 msgstr ""
-"Vielen Dank, dass Sie unsere Produkte verwenden. Bevor Sie sie deaktivieren, "
-"möchten wir Ihnen einige Optionen zur Verbesserung Ihres Erlebnisses "
-"anbieten:"
+"Je nach Ihrer Antwort können wir sofort helfen, das Plugin für Sie "
+"reibungslos am Laufen zu halten!"
 
-#: includes/feedback-last/feedback-last.php:281
-msgid "Explore more plugins - Discover our other free plugins and themes."
-msgstr ""
-"Weitere Plugins erkunden – Entdecken Sie unsere anderen kostenlosen Plugins "
-"und Designs."
-
-#: includes/feedback-last/feedback-last.php:283
-msgid "Support - Need help? Visit our support page."
-msgstr "Support - Brauchen Sie Hilfe? Besuchen Sie unsere Support-Seite."
-
-#: includes/feedback-last/feedback-last.php:285
-msgid "Cancel deactivation - Changed your mind? Keep using this plugin."
-msgstr ""
-"Deaktivierung abbrechen – Sie haben es sich anders überlegt? Verwenden Sie "
-"dieses Plugin weiterhin."
-
-#: includes/feedback-last/feedback-last.php:287
-msgid "Deactivate - Proceed with deactivation."
-msgstr "Deaktivieren – Mit der Deaktivierung fortfahren."
-
-#: includes/feedback-last/feedback-last.php:290
-msgid ""
-"Trusted by over 50,000 users, our 20+ free plugins and 6 themes can "
-"supercharge your site's security, functionality, and backups."
-msgstr ""
-"Mehr als 50.000 Benutzer vertrauen auf unsere über 20 kostenlosen Plug-Ins "
-"und 6 Designs, die die Sicherheit, Funktionalität und Backups Ihrer Site "
-"optimieren können."
-
-#: includes/feedback-last/feedback-last.php:292
-msgid "Best regards!"
-msgstr "Beste grüße!"
-
-#: includes/feedback-last/feedback-last.php:301
+#: includes/feedback-last/feedback-last.php:358
 msgid "Discover New FREE Plugins"
 msgstr "Entdecken Sie neue KOSTENLOSE Plugins"
 
-#: includes/feedback-last/feedback-last.php:307
+#: includes/feedback-last/feedback-last.php:364
 msgid "Cancel"
 msgstr "Stornieren"
 
-#: includes/feedback-last/feedback-last.php:310
+#: includes/feedback-last/feedback-last.php:367
 msgid "Just Deactivate"
 msgstr "Einfach deaktivieren"
 
@@ -2334,3 +2300,44 @@ msgstr "Kaufcode:"
 #: table/visitors_render.php:18
 msgid "Empty Table. Please, try again later."
 msgstr "Leere Tabelle. Bitte versuchen Sie es später erneut."
+
+#~ msgid "We're sorry to hear that you're leaving."
+#~ msgstr "Wir bedauern Ihr Weggehen."
+
+#~ msgid "Hello,"
+#~ msgstr "Hallo,"
+
+#~ msgid ""
+#~ "Thank you for using our products. Before you deactivate, we'd like to "
+#~ "offer a few options to improve your experience:"
+#~ msgstr ""
+#~ "Vielen Dank, dass Sie unsere Produkte verwenden. Bevor Sie sie "
+#~ "deaktivieren, möchten wir Ihnen einige Optionen zur Verbesserung Ihres "
+#~ "Erlebnisses anbieten:"
+
+#~ msgid "Explore more plugins - Discover our other free plugins and themes."
+#~ msgstr ""
+#~ "Weitere Plugins erkunden – Entdecken Sie unsere anderen kostenlosen "
+#~ "Plugins und Designs."
+
+#~ msgid "Support - Need help? Visit our support page."
+#~ msgstr "Support - Brauchen Sie Hilfe? Besuchen Sie unsere Support-Seite."
+
+#~ msgid "Cancel deactivation - Changed your mind? Keep using this plugin."
+#~ msgstr ""
+#~ "Deaktivierung abbrechen – Sie haben es sich anders überlegt? Verwenden "
+#~ "Sie dieses Plugin weiterhin."
+
+#~ msgid "Deactivate - Proceed with deactivation."
+#~ msgstr "Deaktivieren – Mit der Deaktivierung fortfahren."
+
+#~ msgid ""
+#~ "Trusted by over 50,000 users, our 20+ free plugins and 6 themes can "
+#~ "supercharge your site's security, functionality, and backups."
+#~ msgstr ""
+#~ "Mehr als 50.000 Benutzer vertrauen auf unsere über 20 kostenlosen Plug-"
+#~ "Ins und 6 Designs, die die Sicherheit, Funktionalität und Backups Ihrer "
+#~ "Site optimieren können."
+
+#~ msgid "Best regards!"
+#~ msgstr "Beste grüße!"

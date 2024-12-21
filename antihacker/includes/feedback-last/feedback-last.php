@@ -1,18 +1,20 @@
-<?php namespace  AntiHacker_last_feedback  {
+<?php
+
+namespace  antihacker_last_feedback {
     if (!defined("ABSPATH")) {
         exit(); // Exit if accessed directly
     }
-    $bill_debug = true;
+    //$bill_debug = true;
     $bill_debug = false;
     //
     //
 
-	if (function_exists('is_multisite') AND is_multisite()) {
-		return;
-	}
-// >>>>>>>>>>>>>>>>>>>>>>>>>
-// call 
-/*
+    if (function_exists('is_multisite') and is_multisite()) {
+        return;
+    }
+    // >>>>>>>>>>>>>>>>>>>>>>>>>
+    // call 
+    /*
 function wpmemory_load_feedback()
 {
 	if (function_exists('is_admin') && function_exists('current_user_can')) {
@@ -25,27 +27,9 @@ function wpmemory_load_feedback()
 }
 add_action('wp_loaded', 'wpmemory_load_feedback');
 */
-//>>>>>>>>>>>>>>>>>>>>>>>>
-// debug2();
+    //>>>>>>>>>>>>>>>>>>>>>>>>
+    // debug2();
     // https://minozzi.eu/wp-admin/plugins.php?action=deactivate&plugin=stopbadbots%2Fstopbadbots.php&plugin_status=all&paged=1&s&_wpnonce=ef9a34aa27
-
-    if (__NAMESPACE__ == "AntiHacker_last_feedback") {
-        define(__NAMESPACE__ . "\PRODCLASS", "antihacker");
-        define(__NAMESPACE__ . "\VERSION", ANTIHACKERVERSION);
-        define(__NAMESPACE__ . "\PRODUCTNAME", "Anti Hacker Plugin");
-        $admin_url = admin_url('admin.php?page=antihacker_new_more_plugins');
-        //            https://minozzi.eu/wp-admin//admin.php?page=antihacker_new_more_plugins
-        //https://minozzi.eu/wp-admin/admin.php?page=stop_bad_bots_plugin&tab=more
-          https://antihackerplugin.com/wp-admin/admin.php?page=anti_hacker_plugin
-        define(__NAMESPACE__ . "\PAGE", $admin_url);
-        define(__NAMESPACE__ . "\URL", ANTIHACKERURL);
-        // page=stopbadbots_new_more_plugins
-        define(__NAMESPACE__ . "\LAST", "antihacker_last_feedback");
-        //
-    }
-
-
-
     if (__NAMESPACE__ == "HideSiteTitle") {
         define(__NAMESPACE__ . "\PRODCLASS", "stopbadbots");
         define(__NAMESPACE__ . "\VERSION", HIDE_SITE_TITLE_VERSION);
@@ -74,6 +58,50 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         define(__NAMESPACE__ . "\LAST", "stopbadbots_last_feedback");
         //
     }
+    //
+    //
+    if (__NAMESPACE__ == "EasyUpdateUrls_last_feedback") {
+        define(__NAMESPACE__ . "\PRODCLASS", "easy-update-urls");
+        define(__NAMESPACE__ . "\VERSION", EASY_UPDATE_URLS_VERSION);
+        define(__NAMESPACE__ . "\PRODUCTNAME", "Easy Update Urls");
+        $admin_url = admin_url('tools.php?page=easy_update_urls_admin_page&tab=more');
+
+        define(__NAMESPACE__ . "\PAGE", $admin_url);
+        define(__NAMESPACE__ . "\URL", EASY_UPDATE_URLS_URL);
+        // page=cardealers_new_more_plugins
+        define(__NAMESPACE__ . "\LAST", "easy_update_urls_last_feedback");
+    }
+
+    if (__NAMESPACE__ == "antihacker_last_feedback") {
+        define(__NAMESPACE__ . "\PRODCLASS", "antihacker");
+        define(__NAMESPACE__ . "\VERSION", ANTIHACKERVERSION);
+        define(__NAMESPACE__ . "\PRODUCTNAME", "Anti Hacker");
+        //$admin_url = admin_url('admin.php?page=anti_hacker_plugin');
+        // https://minozzi.eu/wp-admin/admin.php?page=anti_hacker_plugin
+
+        //$admin_url = admin_url('admin.php?page=anti_hacker_plugin');
+
+
+        //$admin_url = admin_url('admin.php?page=antihacker_new_more_plugins');
+        $admin_url = admin_url('admin.php?page=anti_hacker_plugin&tab=freebies');
+
+
+
+
+
+
+        define(__NAMESPACE__ . "\PAGE", $admin_url);
+        define(__NAMESPACE__ . "\URL", ANTIHACKERURL);
+        // page=cardealers_new_more_plugins
+        define(__NAMESPACE__ . "\LAST", "ANTIHACKERURL");
+    }
+
+    //define(__NAMESPACE__ . "\LANGUAGE", "wptools");
+    //define(__NAMESPACE__ . "\PAGE", "settings");
+    //define(__NAMESPACE__ . "\OPTIN", "wp_tools_optin");
+    // define(__NAMESPACE__ . "\LAST", "wp_tools_last_feedback");
+
+
 
     if (__NAMESPACE__ == "RecaptchaForAll_last_feedback") {
         define(__NAMESPACE__ . "\PRODCLASS", "recaptcha-for-all");
@@ -81,32 +109,33 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         define(__NAMESPACE__ . "\PRODUCTNAME", "Recaptcha For All Plugin");
         $admin_url = admin_url('tools.php?page=recaptcha_for_all_admin_page&tab=tools');
         //https://minozzi.eu/wp-admin/tools.php?page=recaptcha_for_all_admin_page&tab=tools&_wpnonce=c075808fd9 
-       //
-       //
-       //debug2($admin_url);
+        //
+        //
+        //debug2($admin_url);
 
         define(__NAMESPACE__ . "\PAGE", $admin_url);
         define(__NAMESPACE__ . "\URL", RECAPTCHA_FOR_ALLURL);
         // page=cardealers_new_more_plugins
         define(__NAMESPACE__ . "\LAST", "recaptcha_for_all_last_feedback");
-
     }
+
+
 
     if (__NAMESPACE__ == "RestoreClassicWidgets") {
         define(__NAMESPACE__ . "\PRODCLASS", "restore-classic-widgets");
-        define(__NAMESPACE__ . "\VERSION", ANTIHACKERVERSION);
+        define(__NAMESPACE__ . "\VERSION", RESTORECLASSICVERSION);
         define(__NAMESPACE__ . "\PRODUCTNAME", "Restore Classic Widgets Plugin");
         $admin_url = admin_url('tools.php?page=restore_classic_widgets_new_more_plugins');
         define(__NAMESPACE__ . "\PAGE", $admin_url);
-        define(__NAMESPACE__ . "\URL", ANTIHACKERURL);
+        define(__NAMESPACE__ . "\URL", RESTORECLASSICURL);
 
         // page=restore_classic_widgets_new_more_plugins
         define(__NAMESPACE__ . "\LAST", "restore_classic_widget_last_feedback");
         //
-       // https://minozzi.eu/wp-admin/tools.php?page=restore_classic_widgets&active_tab=3
+        // https://minozzi.eu/wp-admin/tools.php?page=restore_classic_widgets&active_tab=3
     }
 
-    
+
 
     if (__NAMESPACE__ == "CarDealer_last_feedback") {
         define(__NAMESPACE__ . "\PRODCLASS", "cardealer");
@@ -118,7 +147,7 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         // page=cardealers_new_more_plugins
         define(__NAMESPACE__ . "\LAST", "cardealer_last_feedback");
         //
-       // https://minozzi.eu/wp-admin/tools.php?page=cardealers&active_tab=3
+        // https://minozzi.eu/wp-admin/tools.php?page=cardealers&active_tab=3
     }
 
     if (__NAMESPACE__ == "wpmemory_last_feedback") {
@@ -143,15 +172,17 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         define(__NAMESPACE__ . "\LAST", "wp_tools_last_feedback");
         define(__NAMESPACE__ . "\URL", WPTOOLSURL);
     }
-//
-    if($bill_debug)
-      update_option(LAST, '1');
+    //
+    if ($bill_debug) {
+        update_option(LAST, '1');
+        debug2();
+    }
 
 
     $last_feedback =  sanitize_text_field(get_option(LAST, "1"));
-    $last_feedback =  intval(  $last_feedback);
+    $last_feedback =  intval($last_feedback);
 
-    //debug2($last_feedback );
+    //debug2($last_feedback);
 
 
     if ($last_feedback === '0' || !is_numeric($last_feedback)) {
@@ -173,8 +204,8 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
 
 
 
-  
-    
+
+
 
 
     if ($last_feedback + $delta <= time()) {
@@ -185,7 +216,7 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         return;
     }
 
-    // debug2(WPMSHOW);
+    //debug2(WPMSHOW);
 
 
 
@@ -202,7 +233,8 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
             add_action("load-plugins.php", [__CLASS__, "init"]);
             add_action("wp_ajax_bill_feedback", [__CLASS__, "feedback"]);
         }
-        public static function get_plugin_slug() {
+        public static function get_plugin_slug()
+        {
             // Verificar se já calculamos o slug antes
             if (isset(self::$plugin_slug)) {
                 return self::$plugin_slug;
@@ -234,9 +266,10 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         public static function register()
         {
             wp_enqueue_style(
-                PRODCLASS,
+                PRODCLASS . "-style",
                 URL . "includes/feedback-last/feedback-last.css"
             );
+
             if (WPMSHOW) {
                 wp_register_script(
                     PRODCLASS,
@@ -258,65 +291,88 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
         {
             if (!update_option(LAST, time())) {
                 add_option(LAST, time());
-            } 
-           $slug = self::$plugin_slug;
-            ?>  
+            }
+
+
+?>
             <div class="<?php echo esc_attr(
-                    PRODCLASS
-                ); ?>-wrap-deactivate" style="display:none">
-                            <div class="bill-vote-gravatar"><a href="https://profiles.wordpress.org/sminozzi" target="_blank"><img src="https://en.gravatar.com/userimage/94727241/31b8438335a13018a1f52661de469b60.jpg?size=100" alt="Bill Minozzi" width="70" height="70"></a></div>
-            <div class="bill-vote-message">
-                                    <?php
-                        echo '<h2 style="color:blue;">';
-                        echo esc_attr(PRODUCTNAME) . " - ";
-                        echo esc_attr__("We're sorry to hear that you're leaving.", $slug);
-                        echo "</h2>";
-                        esc_attr_e("Hello,", $slug);
-                        echo "<br />";
-                        echo "<br />";
-                        ?>
-                        <?php esc_attr_e("Thank you for using our products. Before you deactivate, we'd like to offer a few options to improve your experience:", $slug); ?>
-                        <br><br>
-                        <strong>
-                        1. <?php esc_attr_e("Explore more plugins - Discover our other free plugins and themes.", $slug); ?>
-                        <br>
-                        2. <?php esc_attr_e("Support - Need help? Visit our support page.", $slug); ?>
-                        <br>
-                        3. <?php esc_attr_e("Cancel deactivation - Changed your mind? Keep using this plugin.", $slug); ?>
-                        <br>
-                        4. <?php esc_attr_e("Deactivate - Proceed with deactivation.", $slug); ?>
-                        </strong>
-                        <br><br>
-                        <?php esc_attr_e("Trusted by over 50,000 users, our 20+ free plugins and 6 themes can supercharge your site's security, functionality, and backups.", $slug); ?>
-                        <br><br>
-                        <?php esc_attr_e("Best regards!", $slug); ?>
-                        <br><br>
-                            Bill Minozzi<br /> 
-                            Plugin Developer
-        `                    <br /> <br /> 
-            </div>
-            <br>
-            <div class="bill-minozzi-button-group">
-                <a href="<?php echo esc_url(PAGE); ?>" class="button button-primary <?php echo esc_attr(PRODCLASS); ?>-close-submit_lf discover-plugins-btn">
-                    <?php esc_attr_e("Discover New FREE Plugins", $slug); ?>
-                </a>
-                <a href="https://BillMinozzi.com/dove/" class="button button-primary <?php echo esc_attr(PRODCLASS); ?>-close-dialog_lf support-page-btn">
-                    <?php esc_attr_e("Support Page", $slug); ?>
-                </a>
-                <a href="#" class="button <?php echo esc_attr(PRODCLASS); ?>-close-dialog_lf cancel-btn_feedback">
-                    <?php esc_attr_e("Cancel", $slug); ?>
-                </a>
-                <a href="#" class="button <?php echo esc_attr(PRODCLASS); ?>-deactivate_lf deactivate-btn">
-                    <?php esc_attr_e("Just Deactivate", $slug); ?>
-                </a>
-            </div>
-            <br><br>
+                            PRODCLASS
+                        ); ?>-wrap-deactivate" style="display:none">
+                <div class="bill-vote-gravatar"><a href="https://profiles.wordpress.org/sminozzi" target="_blank"><img src="https://en.gravatar.com/userimage/94727241/31b8438335a13018a1f52661de469b60.jpg?size=100" alt="Bill Minozzi" width="70" height="70"></a></div>
+                <div class="bill-vote-message">
+                    <?php
+                    echo '<h2 style="color:blue;">';
+                    // echo esc_attr(PRODUCTNAME);
+                    //echo "<br />";
+                    echo esc_attr__("What can we do to resolve the problem you're facing?", "antihacker");
 
-               
-			 </div> 
-					<?php
+                    echo "</h2>";
+
+
+
+                    ?>
+                    <big><strong>
+                            <?php esc_attr_e("Depending on your response, we can help keep the plugin running smoothly for you immediately!", "antihacker"); ?>
+
+
+                        </strong></big>
+
+
+
+                    <!-- chat -->
+                    <div id="chat-box">
+                        <div id="chat-header">
+                            <h2><?php echo esc_attr__("Artificial Intelligence Support Chat for Issues and Solutions", "stopbadbots"); ?></h2>
+                        </div>
+                        <div id="gif-container">
+                            <div class="spinner999"></div>
+                        </div> <!-- Onde o efeito será exibido -->
+                        <div id="chat-messages"></div>
+                        <div id="error-message" style="display:none;"></div> <!-- Mensagem de erro -->
+
+                        <form id="chat-form">
+
+
+
+
+                            <input type="hidden" id="chat-type" value="last-feedback" />
+                            <!-- Novo parâmetro -->
+
+                            <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'stopbadbots'); ?>" />
+                            <button type="submit"><?php echo esc_attr__('Send', 'stopbadbots'); ?></button>
+
+                        </form>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+                <br>
+                <div class="bill-minozzi-button-group">
+                    <a href="<?php echo esc_url(PAGE); ?>" class="button button-primary <?php echo esc_attr(PRODCLASS); ?>-close-submit_lf discover-plugins-btn">
+                        <?php esc_attr_e("Discover New FREE Plugins", "antihacker"); ?>
+                    </a>
+                    <a href="https://BillMinozzi.com/dove/" class="button button-primary <?php echo esc_attr(PRODCLASS); ?>-close-dialog_lf support-page-btn">
+                        <?php esc_attr_e("Support Page", "antihacker"); ?>
+                    </a>
+                    <a href="#" class="button <?php echo esc_attr(PRODCLASS); ?>-close-dialog_lf cancel-btn_feedback">
+                        <?php esc_attr_e("Cancel", "antihacker"); ?>
+                    </a>
+                    <a href="#" class="button <?php echo esc_attr(PRODCLASS); ?>-deactivate_lf deactivate-btn">
+                        <?php esc_attr_e("Just Deactivate", "antihacker"); ?>
+                    </a>
+                </div>
+                <br><br>
+
+
+            </div>
+<?php
         }
-
     } //end class
     new Bill_mConfig();
     $stringtime = strval(time());
@@ -324,7 +380,7 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
     if (!update_option(LAST, $stringtime)) {
         add_option(LAST, $stringtime);
     }
-//
+    //
     //$last_feedback =  sanitize_text_field(get_option(LAST, "1"));
     //debug2($last_feedback);
 } // End Namespace ...

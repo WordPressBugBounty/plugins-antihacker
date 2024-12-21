@@ -139,6 +139,11 @@ jQuery(document).ready(function ($) {
     billChatForm.on('submit', function (e) {
         e.preventDefault();
         const message = billChatInput.val().trim();
+
+        const chatType = $('#chat-type').length ? $('#chat-type').val() : 'default';
+
+
+
         const billChaterrorMessage = $('#error-message');
         if (message !== '') {
             $('.spinner999').css('display', 'block');
@@ -148,7 +153,8 @@ jQuery(document).ready(function ($) {
                 method: 'POST',
                 data: {
                     action: 'bill_chat_send_message',
-                    message: message
+                    message: message,
+                    chat_type: chatType // Inclui o chat-type no envio
                 },
                 timeout: 60000,
                 success: function () {

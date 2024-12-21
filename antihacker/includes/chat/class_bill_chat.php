@@ -120,7 +120,7 @@ class ChatPlugin
     /**
      * Função para chamar a API do ChatGPT.
      */
-    public function bill_chat_call_chatgpt_api($data)
+    public function bill_chat_call_chatgpt_api($data, $chatType)
     {
         //ini_set('display_errors', 1);
         //ini_set('display_startup_errors', 1);
@@ -189,6 +189,7 @@ class ChatPlugin
             'param4' => $language,
             'param5' => $plugin_slug,
             'param6' => $domain,
+            'param7' => $chatType,
         ];
 
 
@@ -217,10 +218,21 @@ class ChatPlugin
      */
     public function bill_chat_send_message()
     {
-        // Sanitiza a mensagem enviada
+
+
+        // Captura e sanitiza a mensagem
         $message = sanitize_text_field($_POST['message']);
+
+        // Verifica e sanitiza o chat_type, atribuindo 'default' caso não exista
+        $chatType = isset($_POST['chat_type']) ? sanitize_text_field($_POST['chat_type']) : 'default';
+
+
+
+
+
+
         // Chama a API e obtém a resposta
-        $response_data = $this->bill_chat_call_chatgpt_api($message);
+        $response_data = $this->bill_chat_call_chatgpt_api($message, $chatType);
         // Verifique se a resposta foi obtida corretamente
         if (!empty($response_data)) {
             $output = $response_data;
