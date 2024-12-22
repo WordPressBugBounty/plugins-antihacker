@@ -216,7 +216,7 @@ if ($cached_coupon_data !== '' && $cached_coupon_data !== false) {
 }
 
 
-
+$type = isset($type) ? trim($type) : 'news';
 if (empty($antihacker_checkversion) or trim($type) == 'news') {
     // free always or news
     if(!isset($termina))
