@@ -80,6 +80,8 @@ $current_table = $wpdb->prefix . "ah_scan";
 $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
 $current_table = $wpdb->prefix . "ah_rules";
 $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
+$current_table = $wpdb->prefix . 'wptools_page_load_times';
+$wpdb->query( "DROP TABLE IF EXISTS $current_table" );
 
 register_deactivation_hook(__FILE__, 'antihacker_deactivation');
 

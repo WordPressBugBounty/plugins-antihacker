@@ -287,13 +287,16 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
             // var_dump(__LINE__);
         }
         //
+
+
+
+
+
         public static function message()
         {
             if (!update_option(LAST, time())) {
                 add_option(LAST, time());
             }
-
-
 ?>
             <div class="<?php echo esc_attr(
                             PRODCLASS
@@ -305,20 +308,11 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
                     // echo esc_attr(PRODUCTNAME);
                     //echo "<br />";
                     echo esc_attr__("What can we do to resolve the problem you're facing?", "antihacker");
-
                     echo "</h2>";
-
-
-
                     ?>
                     <big><strong>
                             <?php esc_attr_e("Depending on your response, we can help keep the plugin running smoothly for you immediately!", "antihacker"); ?>
-
-
                         </strong></big>
-
-
-
                     <!-- chat -->
                     <div id="chat-box">
                         <div id="chat-header">
@@ -329,28 +323,13 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
                         </div> <!-- Onde o efeito será exibido -->
                         <div id="chat-messages"></div>
                         <div id="error-message" style="display:none;"></div> <!-- Mensagem de erro -->
-
                         <form id="chat-form">
-
-
-
-
                             <input type="hidden" id="chat-type" value="last-feedback" />
                             <!-- Novo parâmetro -->
-
                             <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'stopbadbots'); ?>" />
                             <button type="submit"><?php echo esc_attr__('Send', 'stopbadbots'); ?></button>
-
                         </form>
                     </div>
-
-
-
-
-
-
-
-
                 </div>
                 <br>
                 <div class="bill-minozzi-button-group">
@@ -368,11 +347,15 @@ add_action('wp_loaded', 'wpmemory_load_feedback');
                     </a>
                 </div>
                 <br><br>
-
-
             </div>
 <?php
-        }
+        } // end message
+
+
+
+        
+
+
     } //end class
     new Bill_mConfig();
     $stringtime = strval(time());

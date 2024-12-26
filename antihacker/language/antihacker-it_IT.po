@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AntiHacker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-21 17:07+0000\n"
-"PO-Revision-Date: 2024-12-21 17:08+0000\n"
+"POT-Creation-Date: 2024-12-26 17:13+0000\n"
+"PO-Revision-Date: 2024-12-26 17:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -174,8 +174,8 @@ msgstr "Protezione Premium abilitata"
 #: dashboard/dashboard.php:191 dashboard/memory.php:77
 #: dashboard/mybanners.php:49 includes/diagnose/_class_bill_diagnose.php:859
 #: includes/diagnose/_class_bill_diagnose.php:897
-#: includes/diagnose/class_bill_diagnose.php:936
-#: includes/diagnose/class_bill_diagnose.php:974
+#: includes/diagnose/class_bill_diagnose.php:1114
+#: includes/diagnose/class_bill_diagnose.php:1143
 #: includes/functions/functions.php:3029
 #: includes/install-checkup/_class_bill_install.php:315
 #: includes/install-checkup/_class_bill_install.php:384
@@ -722,7 +722,7 @@ msgstr "Guida in linea"
 msgid "Faq Page"
 msgstr "Pagina FAQ"
 
-#: guide/guide.php:88 includes/feedback-last/feedback-last.php:361
+#: guide/guide.php:88 includes/feedback-last/feedback-last.php:340
 msgid "Support Page"
 msgstr "Pagina di Supporto"
 
@@ -730,60 +730,60 @@ msgstr "Pagina di Supporto"
 msgid "That is all. Enjoy it!"
 msgstr "Questo è tutto. Godetevelo!"
 
-#: includes/chat/class_bill_chat.php:43
+#: includes/chat/_class_bill_chat.php:43 includes/chat/class_bill_chat.php:43
 msgid "Chat messages reset successfully."
 msgstr "I messaggi della chat sono stati reimpostati correttamente."
 
-#: includes/chat/class_bill_chat.php:44
+#: includes/chat/_class_bill_chat.php:44 includes/chat/class_bill_chat.php:44
 msgid "Error resetting chat messages."
 msgstr "Errore durante la reimpostazione dei messaggi della chat."
 
-#: includes/chat/class_bill_chat.php:45
+#: includes/chat/_class_bill_chat.php:45 includes/chat/class_bill_chat.php:45
 msgid "Invalid message received:"
 msgstr "Messaggio non valido ricevuto:"
 
-#: includes/chat/class_bill_chat.php:46
+#: includes/chat/_class_bill_chat.php:46 includes/chat/class_bill_chat.php:46
 msgid "Invalid response format:"
 msgstr "Formato di risposta non valido:"
 
-#: includes/chat/class_bill_chat.php:47
+#: includes/chat/_class_bill_chat.php:47 includes/chat/class_bill_chat.php:47
 msgid "Error processing server response:"
 msgstr "Errore durante l'elaborazione della risposta del server:"
 
-#: includes/chat/class_bill_chat.php:48
+#: includes/chat/_class_bill_chat.php:48 includes/chat/class_bill_chat.php:48
 msgid "Response is not valid JSON."
 msgstr "La risposta non è un JSON valido."
 
-#: includes/chat/class_bill_chat.php:49
+#: includes/chat/_class_bill_chat.php:49 includes/chat/class_bill_chat.php:49
 msgid "AJAX request failed:"
 msgstr "AJAX Problemi:"
 
-#: includes/chat/class_bill_chat.php:50
+#: includes/chat/_class_bill_chat.php:50 includes/chat/class_bill_chat.php:50
 msgid "Error sending the message. Please try again later."
 msgstr "Errori inviando messagi.  Per favore, riprova più tardi."
 
-#: includes/chat/class_bill_chat.php:51
+#: includes/chat/_class_bill_chat.php:51 includes/chat/class_bill_chat.php:51
 msgid "Please enter a message!"
 msgstr "Inserisci un messaggio!"
 
-#: includes/chat/class_bill_chat.php:212
+#: includes/chat/_class_bill_chat.php:212 includes/chat/class_bill_chat.php:212
 msgid ""
 "Error contacting the Artificial Intelligence (API). Please try again later."
 msgstr ""
 "Errore durante il contatto con l'intelligenza artificiale (API). Riprova più "
 "tardi."
 
-#: includes/chat/class_bill_chat.php:242
+#: includes/chat/_class_bill_chat.php:242 includes/chat/class_bill_chat.php:242
 msgid "Error to get response from AI source!"
 msgstr "Errore durante l'ottenimento della risposta dalla fonte AI!"
 
 #: includes/diagnose/_class_bill_diagnose.php:713
-#: includes/diagnose/class_bill_diagnose.php:760
+#: includes/diagnose/class_bill_diagnose.php:788
 msgid "Our plugin"
 msgstr "Il nostro plugin"
 
 #: includes/diagnose/_class_bill_diagnose.php:715
-#: includes/diagnose/class_bill_diagnose.php:762
+#: includes/diagnose/class_bill_diagnose.php:790
 msgid ""
 "cannot function properly because your WordPress Memory Limit is too low. "
 "Your site will experience serious issues, even if you deactivate our plugin."
@@ -793,7 +793,7 @@ msgstr ""
 "nostro plugin."
 
 #: includes/diagnose/_class_bill_diagnose.php:721
-#: includes/diagnose/class_bill_diagnose.php:768
+#: includes/diagnose/class_bill_diagnose.php:796
 msgid "Learn more"
 msgstr "Approfondisci"
 
@@ -817,27 +817,27 @@ msgstr ""
 "verificando, ma possono comunque danneggiare il tuo sito."
 
 #: includes/diagnose/_class_bill_diagnose.php:815
-#: includes/diagnose/class_bill_diagnose.php:892
+#: includes/diagnose/class_bill_diagnose.php:1070
 msgid "Potential Problems"
 msgstr "Potenziali problemi"
 
 #: includes/diagnose/_class_bill_diagnose.php:823
-#: includes/diagnose/class_bill_diagnose.php:900
+#: includes/diagnose/class_bill_diagnose.php:1078
 msgid "Low WordPress Memory Limit"
 msgstr "Limite di memoria WordPress basso"
 
 #: includes/diagnose/_class_bill_diagnose.php:836
-#: includes/diagnose/class_bill_diagnose.php:913
+#: includes/diagnose/class_bill_diagnose.php:1091
 msgid "Your usage now"
 msgstr "Il tuo utilizzo ora"
 
 #: includes/diagnose/_class_bill_diagnose.php:844
-#: includes/diagnose/class_bill_diagnose.php:921
+#: includes/diagnose/class_bill_diagnose.php:1099
 msgid "Total Php Server Memory"
 msgstr "Limite di memoria PHP totale (server)"
 
 #: includes/diagnose/_class_bill_diagnose.php:853
-#: includes/diagnose/class_bill_diagnose.php:930
+#: includes/diagnose/class_bill_diagnose.php:1108
 #: includes/install-checkup/_class_bill_install.php:306
 #: includes/install-checkup/class_bill_install.php:324
 msgid ""
@@ -850,12 +850,12 @@ msgstr ""
 "subito questo problema prima di continuare."
 
 #: includes/diagnose/_class_bill_diagnose.php:888
-#: includes/diagnose/class_bill_diagnose.php:965
+#: includes/diagnose/class_bill_diagnose.php:1134
 msgid "Site Errors"
 msgstr "Errori del sito"
 
 #: includes/diagnose/_class_bill_diagnose.php:893
-#: includes/diagnose/class_bill_diagnose.php:970
+#: includes/diagnose/class_bill_diagnose.php:1139
 msgid ""
 "Your site has experienced errors for the past 2 days. These errors, "
 "including JavaScript issues, can result in visual problems or disrupt "
@@ -870,12 +870,12 @@ msgstr ""
 "JavaScript, lasciando tutti i comandi successivi inutilizzabili."
 
 #: includes/diagnose/_class_bill_diagnose.php:951
-#: includes/diagnose/class_bill_diagnose.php:1028
+#: includes/diagnose/class_bill_diagnose.php:1197
 msgid "This is a partial list of the errors found."
 msgstr "Questo è un elenco parziale degli errori riscontrati."
 
 #: includes/diagnose/_class_bill_diagnose.php:1429
-#: includes/diagnose/class_bill_diagnose.php:1527
+#: includes/diagnose/class_bill_diagnose.php:1693
 msgid ""
 "These are critical issues that can have a significant impact on your site's "
 "performance. They can cause many plugins and functionalities to malfunction "
@@ -887,7 +887,7 @@ msgstr ""
 "plugin e funzionalità e, in alcuni casi, rendere il tuo sito completamente "
 "inoperativo, a seconda della loro gravità. Risolvili tempestivamente."
 
-#: includes/diagnose/class_bill_diagnose.php:87
+#: includes/diagnose/class_bill_diagnose.php:115
 msgid ""
 "Here are some details about error and memory monitoring for your plugin. "
 "Errors and low memory can prevent your site from functioning properly. On "
@@ -906,15 +906,15 @@ msgstr ""
 "Se hai bisogno di approfondire, installa il plugin gratuito WPTools, che "
 "fornisce approfondimenti più approfonditi."
 
-#: includes/diagnose/class_bill_diagnose.php:95
+#: includes/diagnose/class_bill_diagnose.php:123
 msgid "Memory & Error Monitoring"
 msgstr "Monitoraggio della memoria e degli errori"
 
-#: includes/diagnose/class_bill_diagnose.php:96
+#: includes/diagnose/class_bill_diagnose.php:124
 msgid "Welcome to plugin Insights!"
 msgstr "Benvenuti al plugin Insights!"
 
-#: includes/diagnose/class_bill_diagnose.php:852
+#: includes/diagnose/class_bill_diagnose.php:886
 msgid ""
 "Displaying the latest recurring errors (Javascript Included) from your error "
 "log file and eventually alert about low WordPress memory limit is a courtesy "
@@ -924,7 +924,7 @@ msgstr ""
 "errori e l'eventuale avviso sul limite di memoria basso di WordPress sono "
 "una cortesia del plugin"
 
-#: includes/diagnose/class_bill_diagnose.php:854
+#: includes/diagnose/class_bill_diagnose.php:888
 msgid ""
 "Disabling our plugin does not stop the errors from occurring; it simply "
 "means you will no longer be notified here that they are happening, but they "
@@ -934,7 +934,7 @@ msgstr ""
 "significa semplicemente che non sarai più avvisato qui che si stanno "
 "verificando, ma possono comunque danneggiare il tuo sito."
 
-#: includes/diagnose/class_bill_diagnose.php:856
+#: includes/diagnose/class_bill_diagnose.php:890
 msgid ""
 "Click the help button in the top right or go directly to the AI chat box "
 "below for more specific information on the issues listed."
@@ -943,31 +943,67 @@ msgstr ""
 "pulsante della guida in alto a destra o andare direttamente alla casella "
 "della chat AI qui sotto."
 
-#: includes/diagnose/class_bill_diagnose.php:865
-#: includes/feedback-last/feedback-last.php:325
+#: includes/diagnose/class_bill_diagnose.php:899
+#: includes/feedback-last/feedback-last.php:319
 msgid "Artificial Intelligence Support Chat for Issues and Solutions"
 msgstr ""
 "Chat di supporto per l'intelligenza artificiale per problemi e soluzioni"
 
-#: includes/diagnose/class_bill_diagnose.php:874
-#: includes/feedback-last/feedback-last.php:341
+#: includes/diagnose/class_bill_diagnose.php:908
+#: includes/feedback-last/feedback-last.php:329
 msgid "Enter your message..."
 msgstr "Inserisci il tuo messaggio..."
 
-#: includes/diagnose/class_bill_diagnose.php:875
-#: includes/feedback-last/feedback-last.php:342
+#: includes/diagnose/class_bill_diagnose.php:909
+#: includes/feedback-last/feedback-last.php:330
 msgid "Send"
 msgstr "Inviare"
 
-#: includes/diagnose/class_bill_diagnose.php:1533
+#: includes/diagnose/class_bill_diagnose.php:1032
+msgid "The page load time is poor."
+msgstr "Il tempo di caricamento della pagina è scarso."
+
+#: includes/diagnose/class_bill_diagnose.php:1034
+msgid "The page load time is very poor!"
+msgstr "Il tempo di caricamento della pagina è pessimo!"
+
+#: includes/diagnose/class_bill_diagnose.php:1039
+msgid "The Load average of yours front pages is: "
+msgstr "Il carico medio delle tue pagine iniziali è:"
+
+#: includes/diagnose/class_bill_diagnose.php:1042
+msgid "Loading time can significantly impact your SEO."
+msgstr "Il tempo di caricamento può avere un impatto significativo sulla SEO."
+
+#: includes/diagnose/class_bill_diagnose.php:1044
+msgid "Many users will abandon the site before it fully loads."
+msgstr ""
+"Molti utenti abbandoneranno il sito prima che si carichi completamente."
+
+#: includes/diagnose/class_bill_diagnose.php:1046
+msgid ""
+"Search engines prioritize faster-loading pages, as they improve user "
+"experience and reduce bounce rates."
+msgstr ""
+"I motori di ricerca danno priorità alle pagine che si caricano più "
+"velocemente, poiché migliorano l'esperienza utente e riducono i tassi di "
+"rimbalzo."
+
+#: includes/diagnose/class_bill_diagnose.php:1051
+msgid "Learn more about Page Load Times and their negative impact on SEO"
+msgstr ""
+"Scopri di più sui tempi di caricamento delle pagine e il loro impatto "
+"negativo sulla SEO"
+
+#: includes/diagnose/class_bill_diagnose.php:1699
 msgid "Critical Issues"
 msgstr "Problemi critici"
 
-#: includes/feedback-last/feedback-last.php:307
+#: includes/feedback-last/feedback-last.php:310
 msgid "What can we do to resolve the problem you're facing?"
 msgstr "Cosa possiamo fare per risolvere il problema che stai affrontando?"
 
-#: includes/feedback-last/feedback-last.php:315
+#: includes/feedback-last/feedback-last.php:314
 msgid ""
 "Depending on your response, we can help keep the plugin running smoothly for "
 "you immediately!"
@@ -975,15 +1011,15 @@ msgstr ""
 "A seconda della tua risposta, possiamo aiutarti a mantenere il plugin "
 "funzionante correttamente per te immediatamente!"
 
-#: includes/feedback-last/feedback-last.php:358
+#: includes/feedback-last/feedback-last.php:337
 msgid "Discover New FREE Plugins"
 msgstr "Scopri nuovi plugin GRATUITI"
 
-#: includes/feedback-last/feedback-last.php:364
+#: includes/feedback-last/feedback-last.php:343
 msgid "Cancel"
 msgstr "Annulla"
 
-#: includes/feedback-last/feedback-last.php:367
+#: includes/feedback-last/feedback-last.php:346
 msgid "Just Deactivate"
 msgstr "Disattiva solo"
 
@@ -2222,43 +2258,3 @@ msgstr "Codice di Acquisto:"
 #: table/visitors_render.php:18
 msgid "Empty Table. Please, try again later."
 msgstr "Tabella vuota. Per favore, riprova più tardi."
-
-#~ msgid "We're sorry to hear that you're leaving."
-#~ msgstr "Ci dispiace sapere che te ne vai."
-
-#~ msgid "Hello,"
-#~ msgstr "Ciao,"
-
-#~ msgid ""
-#~ "Thank you for using our products. Before you deactivate, we'd like to "
-#~ "offer a few options to improve your experience:"
-#~ msgstr ""
-#~ "Grazie per aver utilizzato i nostri prodotti. Prima di disattivarli, "
-#~ "vorremmo offrirti alcune opzioni per migliorare la tua esperienza:"
-
-#~ msgid "Explore more plugins - Discover our other free plugins and themes."
-#~ msgstr ""
-#~ "Esplora altri plugin - Scopri i nostri altri plugin e temi gratuiti."
-
-#~ msgid "Support - Need help? Visit our support page."
-#~ msgstr ""
-#~ "Supporto - Hai bisogno di aiuto? Visita la nostra pagina di supporto."
-
-#~ msgid "Cancel deactivation - Changed your mind? Keep using this plugin."
-#~ msgstr ""
-#~ "Annulla disattivazione - Hai cambiato idea? Continua a usare questo "
-#~ "plugin."
-
-#~ msgid "Deactivate - Proceed with deactivation."
-#~ msgstr "Disattiva - Procedi con la disattivazione."
-
-#~ msgid ""
-#~ "Trusted by over 50,000 users, our 20+ free plugins and 6 themes can "
-#~ "supercharge your site's security, functionality, and backups."
-#~ msgstr ""
-#~ "Con la fiducia di oltre 50.000 utenti, i nostri oltre 20 plugin gratuiti "
-#~ "e 6 temi possono potenziare la sicurezza, la funzionalità e i backup del "
-#~ "tuo sito."
-
-#~ msgid "Best regards!"
-#~ msgstr "Distinti saluti!"

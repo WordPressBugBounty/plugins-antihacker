@@ -1,6 +1,6 @@
 <?php
 
-namespace stopbadbots_BillDiagnose;
+namespace antihacker_BillDiagnose;
 // 2023-08 upd: 2023-10-17 2024-06=21
 if (!defined('ABSPATH')) {
     die('Invalid request.');
@@ -8,6 +8,15 @@ if (!defined('ABSPATH')) {
 if (function_exists('is_multisite') and is_multisite()) {
     return;
 }
+
+
+
+
+
+
+
+
+
 
 /*
 // >>>>>>>>>>>>>>>> call
@@ -25,6 +34,24 @@ function recaptcha_for_all_bill_hooking_diagnose()
 add_action("plugins_loaded", "recaptcha_for_all_bill_hooking_diagnose");
 // end >>>>>>>>>>>>>>>>>>>>>>>>>
 */
+
+
+
+
+
+$plugin_file_path = __DIR__ . '/function_time_loading.php';
+
+
+
+
+if (file_exists($plugin_file_path)) {
+    include_once($plugin_file_path);
+} else {
+    error_log("File not found: " . $plugin_file_path);
+}
+
+
+
 
 
 $plugin_file_path = ABSPATH . 'wp-admin/includes/plugin.php';
@@ -77,23 +104,24 @@ function debug_screen_id_current_screen($screen)
 
 
 // Função para adicionar uma aba de ajuda
-function add_help_tab_to_screen() {
+function add_help_tab_to_screen()
+{
     // Verifica se estamos na tela correta
     $screen = get_current_screen();
-    
+
     // Verifica se o screen é o 'site-health' antes de adicionar a aba
     if ($screen && 'site-health' === $screen->id) {
         $hmessage = esc_attr__(
             'Here are some details about error and memory monitoring for your plugin. Errors and low memory can prevent your site from functioning properly. On this page, you will find a partial list of the most recent errors and warnings. If you need more details, use the chat form, which will search for additional information using Artificial Intelligence.  
 If you need to dive deeper, install the free plugin WPTools, which provides more in-depth insights.',
-            'stopbadbots'
+            'antihacker'
         );
 
         // Adiciona a aba de ajuda
         $screen->add_help_tab([
             'id'      => 'site-health', // ID único para a aba
-            'title'   => esc_attr__('Memory & Error Monitoring', 'stopbadbots'), // Título da aba
-            'content' => '<p>' . esc_attr__('Welcome to plugin Insights!', 'stopbadbots') . '</p>
+            'title'   => esc_attr__('Memory & Error Monitoring', 'antihacker'), // Título da aba
+            'content' => '<p>' . esc_attr__('Welcome to plugin Insights!', 'antihacker') . '</p>
                           <p>' . $hmessage . '</p>',
         ]);
     }
@@ -757,15 +785,15 @@ class recaptcha_for_all_Bill_Diagnose
         if ($memory["free"] > 30 and $wpmemory["percent"] < 85) {
             return;
         }
-        $message = esc_attr__("Our plugin", 'stopbadbots');
+        $message = esc_attr__("Our plugin", 'antihacker');
         $message .= ' (' . $this->plugin_slug . ') ';
-        $message .= esc_attr__("cannot function properly because your WordPress Memory Limit is too low. Your site will experience serious issues, even if you deactivate our plugin.", 'stopbadbots');
+        $message .= esc_attr__("cannot function properly because your WordPress Memory Limit is too low. Your site will experience serious issues, even if you deactivate our plugin.", 'antihacker');
         $message .=
             '<a href="' .
             esc_url($this->notification_url) .
             '">' .
             " " .
-            esc_attr__("Learn more", 'stopbadbots') .
+            esc_attr__("Learn more", 'antihacker') .
             "</a>";
         echo '<div class="notice notice-error is-dismissible">';
         echo '<p style="color: red;">' . wp_kses_post($message) . "</p>";
@@ -778,16 +806,16 @@ class recaptcha_for_all_Bill_Diagnose
             return;
         }
         if ($this->global_variable_has_errors) {
-                $message = esc_attr__("Your site has errors.", 'stopbadbots');
-                $message .= esc_attr__("Our plugin", 'stopbadbots');
+                $message = esc_attr__("Your site has errors.", 'antihacker');
+                $message .= esc_attr__("Our plugin", 'antihacker');
                 $message .= ' ('.$this->plugin_slug.') ' ;
-                $message .= esc_attr__("can't function as intended. Errors, including JavaScript errors, may lead to visual problems or disrupt functionality, from minor glitches to critical site failures. Promptly address these issues before continuing.", 'stopbadbots');
+                $message .= esc_attr__("can't function as intended. Errors, including JavaScript errors, may lead to visual problems or disrupt functionality, from minor glitches to critical site failures. Promptly address these issues before continuing.", 'antihacker');
                 $message .=
                 '<a href="' .
                 esc_url($this->notification_url2) .
                 '">' .
                 " " .
-                esc_attr__("Learn more", 'stopbadbots') .
+                esc_attr__("Learn more", 'antihacker') .
                 "</a>";
             echo '<div class="notice notice-error is-dismissible">';
             //$content_with_formatting = wpautop($content);
@@ -810,7 +838,7 @@ class recaptcha_for_all_Bill_Diagnose
         $tabs["Critical Issues"] = esc_html_x(
             "Critical Issues",
             "Site Health",
-            'stopbadbots'
+            'antihacker'
         );
         return $tabs;
     }
@@ -819,6 +847,12 @@ class recaptcha_for_all_Bill_Diagnose
     // Add Content
     public function site_health_tab_content($tab)
     {
+
+
+
+
+
+
         if (!function_exists('recaptcha_for_all_bill_strip_strong99')) {
             function recaptcha_for_all_bill_strip_strong99($htmlString)
             {
@@ -849,55 +883,199 @@ class recaptcha_for_all_Bill_Diagnose
             <p style="border: 1px solid #000; padding: 10px;">
                 <strong>
                     <?php
-                    echo esc_attr__("Displaying the latest recurring errors (Javascript Included) from your error log file and eventually alert about low WordPress memory limit is a courtesy of plugin", 'stopbadbots');
+                    echo esc_attr__("Displaying the latest recurring errors (Javascript Included) from your error log file and eventually alert about low WordPress memory limit is a courtesy of plugin", 'antihacker');
                     echo ': ' . esc_attr($this->global_plugin_slug) . '. ';
-                    echo esc_attr__("Disabling our plugin does not stop the errors from occurring; it simply means you will no longer be notified here that they are happening, but they can still harm your site.", 'stopbadbots');
+                    echo esc_attr__("Disabling our plugin does not stop the errors from occurring; it simply means you will no longer be notified here that they are happening, but they can still harm your site.", 'antihacker');
                     echo '<br>';
-                    echo esc_attr__("Click the help button in the top right or go directly to the AI chat box below for more specific information on the issues listed.", 'stopbadbots');
-               
+                    echo esc_attr__("Click the help button in the top right or go directly to the AI chat box below for more specific information on the issues listed.", 'antihacker');
+
                     ?>
                 </strong>
             </p>
 
-<!-- chat -->
-<div id="chat-box">
-    <div id="chat-header">
-        <h2><?php echo esc_attr__("Artificial Intelligence Support Chat for Issues and Solutions", "stopbadbots");?></h2>
-    </div>
-    <div id="gif-container">
-        <div class="spinner999"></div>
-    </div> <!-- Onde o efeito será exibido -->
-    <div id="chat-messages"></div>
-    <div id="error-message" style="display:none;"></div> <!-- Mensagem de erro -->
+            <!-- chat -->
+            <div id="chat-box">
+                <div id="chat-header">
+                    <h2><?php echo esc_attr__("Artificial Intelligence Support Chat for Issues and Solutions", "antihacker"); ?></h2>
+                </div>
+                <div id="gif-container">
+                    <div class="spinner999"></div>
+                </div> <!-- Onde o efeito será exibido -->
+                <div id="chat-messages"></div>
+                <div id="error-message" style="display:none;"></div> <!-- Mensagem de erro -->
 
-    <form id="chat-form">
-    <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'stopbadbots'); ?>" />
-    <button type="submit"><?php echo esc_attr__('Send', 'stopbadbots'); ?></button>
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'antihacker'); ?>" />
+                    <button type="submit"><?php echo esc_attr__('Send', 'antihacker'); ?></button>
 
-    </form>
-</div>
+                </form>
+            </div>
 
-<?php
-//
-//
-//
-//
-//
-?>
-
-
-
-            <h3 style="color: red;">
-                <?php
-                echo esc_attr__("Potential Problems", 'stopbadbots');
-                ?>
-            </h3>
             <?php
+
+            // echo (var_export(__LINE__));
+
+
+
+            /* --------------------- PAGE LOAD -----------------------------*/
+
+
+            function antihacker_check_page_load()
+            {
+                global $wpdb;
+                $table_name = $wpdb->prefix . 'wptools_page_load_times';
+
+
+                if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+                    $charset_collate = $wpdb->get_charset_collate();
+                    $sql = "CREATE TABLE $table_name (
+                    id INT PRIMARY KEY AUTO_INCREMENT,
+                    page_url VARCHAR(255) NOT NULL,
+                    load_time FLOAT NOT NULL,
+                    timestamp DATETIME NOT NULL
+                ) $charset_collate;";
+                    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+                    dbDelta($sql);
+                    // echo var_export($sql);
+                }
+
+
+
+
+
+                $query = "SELECT DATE(timestamp) AS date, AVG(load_time) AS average_load_time
+          FROM $table_name
+          WHERE timestamp >= CURDATE() - INTERVAL 6 DAY
+            AND NOT page_url LIKE 'wp-admin'
+          GROUP BY DATE(timestamp)
+          ORDER BY date";
+
+
+
+
+                $results9 = $wpdb->get_results($query, ARRAY_A);
+
+                if ($results9) {
+                    $total = count($results9);
+                    if ($total < 1) {
+                        $antihacker_empty = true;
+                        return false;
+                    }
+                } else {
+                    $antihacker_empty = true;
+                    return false;
+                }
+
+
+                //echo var_export($results9);
+
+                // Calcula a média
+                $total = 0;
+                $count = 0;
+
+                foreach ($results9 as $entry) {
+                    $total += (float)$entry['average_load_time'];
+                    $count++;
+                }
+
+                $average = $total / $count;
+                $roundedAverage = round($average); // Arredonda para o número mais próximo
+                return $roundedAverage;
+            }
+
+
+
+
+
+
+
+
+
+
+            $average  = antihacker_check_page_load();
+
+            //echo 'Average: ' . var_export($average);
+
+
+
+
+
+            //  $average = 9;
+
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+
+
+            echo '<br>';
+
+            //Excelente: Menos de 2 segundos
+            //Bom: Entre 2 e 3 segundos
+            //Regular: Entre 3 e 5 segundos
+            //Pobre: Entre 5 e 8 segundos
+            //Muito pobre: Mais de 8 segundos
+
+
+
+
+
+            if ($average > 5) {
+
+                echo '<hr>';
+                echo '<h3 style="color: red;">';
+
+                if ($average <= 8) {
+                    $message = esc_attr__("The page load time is poor.", "antihacker");
+                } else {
+                    $message = esc_attr__("The page load time is very poor!", "antihacker");
+                }
+                if ($average > 5) {
+                    echo $message;
+                    echo '</h3>';
+                    echo esc_attr__("The Load average of yours front pages is: ", "antihacker");
+                    echo esc_attr($average);
+                    echo '<br>';
+                    echo  esc_attr__("Loading time can significantly impact your SEO.", "antihacker");
+                    echo '<br>';
+                    echo esc_attr__("Many users will abandon the site before it fully loads.", "antihacker");
+                    echo '<br>';
+                    echo esc_attr__("Search engines prioritize faster-loading pages, as they improve user experience and reduce bounce rates.", "antihacker");
+                }
+
+                echo '<br>';
+                echo '<a href="https://wptoolsplugin.com/page-load-times-and-their-negative-impact-on-seo/" >';
+                echo esc_attr__("Learn more about Page Load Times and their negative impact on SEO", "antihacker") . "...";
+                echo "</a>";
+
+
+                echo '<hr>';
+                echo '<br>';
+            }
+
+
+
+
+            //} // end page load
+
+
+            /* --------------------- End PAGE LOAD -----------------------------*/
+
+
+            echo '<h3 style="color: red;">';
+
+            echo esc_attr__("Potential Problems", 'antihacker');
+
+            echo '</h3>';
+
             $memory = $this->global_variable_memory;
             $wpmemory = $memory;
             if ($memory["free"] < 30 or $wpmemory["percent"] > 85) { ?>
                 <h2 style="color: red;">
-                    <?php $message = esc_attr__("Low WordPress Memory Limit", 'stopbadbots'); ?>
+                    <?php $message = esc_attr__("Low WordPress Memory Limit", 'antihacker'); ?>
                 </h2>
                 <?php
                 $mb = "MB";
@@ -910,7 +1088,7 @@ class recaptcha_for_all_Bill_Diagnose
                 if ($perc > 0.7) {
                     echo '<span style="color:' . esc_attr($wpmemory["color"]) . ';">';
                 }
-                echo esc_attr__("Your usage now", 'stopbadbots') .
+                echo esc_attr__("Your usage now", 'antihacker') .
                     ": " .
                     esc_attr($wpmemory["usage"]) .
                     "MB &nbsp;&nbsp;&nbsp;";
@@ -918,7 +1096,7 @@ class recaptcha_for_all_Bill_Diagnose
                     echo "</span>";
                 }
                 echo "|&nbsp;&nbsp;&nbsp;" .
-                    esc_attr__("Total Php Server Memory", 'stopbadbots') .
+                    esc_attr__("Total Php Server Memory", 'antihacker') .
                     " : " .
                     esc_attr($wpmemory["limit"]) .
                     "MB";
@@ -927,13 +1105,13 @@ class recaptcha_for_all_Bill_Diagnose
                 echo "<hr>";
                 $free = $wpmemory["wp_limit"] - $wpmemory["usage"];
                 echo '<p>';
-                echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'stopbadbots');
+                echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'antihacker');
                 echo '</b>';
                 ?>
                 </b>
                 <a href="https://wpmemory.com/fix-low-memory-limit/">
                     <?php
-                    echo esc_attr__("Learn More", 'stopbadbots');
+                    echo esc_attr__("Learn More", 'antihacker');
                     ?>
                 </a>
                 </p>
@@ -943,16 +1121,7 @@ class recaptcha_for_all_Bill_Diagnose
 
             // end block memory...
 
-            ?>
 
-
-
-
-
-
-
-
-            <?php
 
 
             // Errors ...
@@ -962,16 +1131,16 @@ class recaptcha_for_all_Bill_Diagnose
             if ($this->global_variable_has_errors) { ?>
                 <h2 style="color: red;">
                     <?php
-                    echo esc_attr__("Site Errors", 'stopbadbots');
+                    echo esc_attr__("Site Errors", 'antihacker');
                     ?>
                 </h2>
                 <p>
                     <?php
-                    echo esc_attr__("Your site has experienced errors for the past 2 days. These errors, including JavaScript issues, can result in visual problems or disrupt functionality, ranging from minor glitches to critical site failures. JavaScript errors can terminate JavaScript execution, leaving all subsequent commands inoperable.", 'stopbadbots');
+                    echo esc_attr__("Your site has experienced errors for the past 2 days. These errors, including JavaScript issues, can result in visual problems or disrupt functionality, ranging from minor glitches to critical site failures. JavaScript errors can terminate JavaScript execution, leaving all subsequent commands inoperable.", 'antihacker');
                     ?>
                     <a href="https://wptoolsplugin.com/site-language-error-can-crash-your-site/">
                         <?php
-                        echo esc_attr__("Learn More", 'stopbadbots');
+                        echo esc_attr__("Learn More", 'antihacker');
                         ?>
                     </a>
                 </p>
@@ -1025,7 +1194,7 @@ class recaptcha_for_all_Bill_Diagnose
 
 
                 echo "<br />";
-                echo esc_attr__("This is a partial list of the errors found.", 'stopbadbots');
+                echo esc_attr__("This is a partial list of the errors found.", 'antihacker');
                 echo "<br />";
                 // Comeca a mostrar erros...
                 //
@@ -1139,12 +1308,10 @@ class recaptcha_for_all_Bill_Diagnose
 
                                             if (preg_match("/\[(.*?)\]/", $line, $dateMatches)) {
                                                 $filteredDate = $dateMatches[1];
+                                            } else {
+                                                $filteredDate = '';
                                             }
-                                            else
-                                            {
-                                                $filteredDate = ''; 
-                                            }
-                                            
+
 
                                             // die(var_export(substr($line, 1, 25)));
 
@@ -1343,10 +1510,8 @@ class recaptcha_for_all_Bill_Diagnose
 
                                             if (preg_match("/\[(.*?)\]/", $line, $dateMatches)) {
                                                 $filteredDate = $dateMatches[1];
-                                            }
-                                            else
-                                            {
-                                                $filteredDate = ''; 
+                                            } else {
+                                                $filteredDate = '';
                                             }
 
 
@@ -1517,25 +1682,26 @@ class recaptcha_for_all_Bill_Diagnose
             ]);
         }
 
-        public function custom_help_tab() {
+        public function custom_help_tab()
+        {
             $screen = get_current_screen();
-        
+
             // Verifique se você está na página desejada
             if ("site-health" === $screen->id) {
                 // Adicione uma guia de ajuda
                 $message = esc_attr__(
                     "These are critical issues that can have a significant impact on your site's performance. They can cause many plugins and functionalities to malfunction and, in some cases, render your site completely inoperative, depending on their severity. Address them promptly.",
-                    'stopbadbots'
+                    'antihacker'
                 );
-        
+
                 $screen->add_help_tab([
                     "id"      => "custom-help-tab",
-                    "title"   => esc_attr__("Critical Issues", 'stopbadbots'),
+                    "title"   => esc_attr__("Critical Issues", 'antihacker'),
                     "content" => "<p>" . $message . "</p>",
                 ]);
             }
         }
-        
+
         // add_action("admin_head", "custom_help_tab");
     } // end class
     /*
