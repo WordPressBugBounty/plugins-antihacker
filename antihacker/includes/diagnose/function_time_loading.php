@@ -13,7 +13,7 @@ if (!function_exists('wptools_enqueue_scripts_with_nonce')) {
     function wptools_enqueue_scripts_with_nonce()
     {
         // Enfileirar seu script no frontend
-        wp_enqueue_script('wptools-loading-time-js', plugin_dir_url(__FILE__) . 'loading-time.js', array('jquery'), null, true);
+        wp_enqueue_script('wptools-loading-time-admin-js', plugin_dir_url(__FILE__) . 'loading-time.js', array('jquery'), null, true);
 
         // $nonce = wp_create_nonce('wptools-add-loading-info');
         $nonce = substr(NONCE_SALT, 0, 10);
