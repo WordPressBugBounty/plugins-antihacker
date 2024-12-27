@@ -2,12 +2,7 @@
 if (!defined("ABSPATH")) {
     exit();
 } // Exit if accessed directly
-//
-//
-//
-//
-//
-//
+
 
 if (!function_exists('wptools_enqueue_scripts_with_nonce')) {
     function wptools_enqueue_scripts_with_nonce()

@@ -2,7 +2,7 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
-5.34/35 24-12-27 Improved Diagnose with page load.
+5.34/36 24-12-27 Improved Diagnose with page load.
 
 5.33 24-12-21 Defined Type.
 
