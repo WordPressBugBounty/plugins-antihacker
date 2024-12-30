@@ -64,15 +64,35 @@
 }
 
 /* Estilo para o formulário */
+
+
+#action-instruction {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+}
+
+
+
 #chat-form {
     display: flex;
-    padding: 10px;
+    flex-direction: column;
+    /* Organiza os itens em coluna */
     gap: 10px;
+    padding: 10px;
     border-top: 1px solid #ddd;
+}
+
+#input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    /* Garante que o grupo de input e botão ocupem toda a largura */
 }
 
 #chat-input {
     flex: 1;
+    /* Permite que o campo de entrada ocupe o espaço restante */
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -86,6 +106,49 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+#auto-checkup {
+    display: flex;
+    align-items: center;
+    /* Alinha a imagem e o texto verticalmente */
+    justify-content: center;
+    /* Alinha o conteúdo no centro do botão */
+}
+
+#auto-checkup img {
+    margin-right: 8px;
+    /* Espaço entre a imagem e o texto */
+}
+
+.auto-checkup-container {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+#auto-checkup-button {
+    margin-top: 10px;
+    align-self: center;
+    max-width: 300px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #chat-form button:hover {
     background-color: #0056b3;

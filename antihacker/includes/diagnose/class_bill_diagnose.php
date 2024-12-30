@@ -20,7 +20,7 @@ if (function_exists('is_multisite') and is_multisite()) {
 
 /*
 // >>>>>>>>>>>>>>>> call
-function recaptcha_for_all_bill_hooking_diagnose()
+function antihacker_bill_hooking_diagnose()
 {
     if (function_exists('is_admin') && function_exists('current_user_can')) {
         if(is_admin() and current_user_can("manage_options")){
@@ -31,7 +31,7 @@ function recaptcha_for_all_bill_hooking_diagnose()
         }
     }
 }
-add_action("plugins_loaded", "recaptcha_for_all_bill_hooking_diagnose");
+add_action("plugins_loaded", "antihacker_bill_hooking_diagnose");
 // end >>>>>>>>>>>>>>>>>>>>>>>>>
 */
 
@@ -541,7 +541,7 @@ class MemoryChecker
 }
 
 
-class recaptcha_for_all_Bill_Diagnose
+class antihacker_Bill_Diagnose
 {
     private static $instance = null;
 
@@ -827,7 +827,7 @@ class recaptcha_for_all_Bill_Diagnose
     // Helper function to check if a notification has been displayed today
     public function is_notification_displayed_today()
     {
-        $last_notification_date = get_option("recaptcha_for_all_bill_show_warnings");
+        $last_notification_date = get_option("antihacker_bill_show_warnings");
         $today = date("Y-m-d");
         return $last_notification_date === $today;
     }
@@ -853,8 +853,8 @@ class recaptcha_for_all_Bill_Diagnose
 
 
 
-        if (!function_exists('recaptcha_for_all_bill_strip_strong99')) {
-            function recaptcha_for_all_bill_strip_strong99($htmlString)
+        if (!function_exists('antihacker_bill_strip_strong99')) {
+            function antihacker_bill_strip_strong99($htmlString)
             {
                 // return $htmlString;
                 // Use preg_replace para remover as tags <strong>
@@ -903,15 +903,29 @@ class recaptcha_for_all_Bill_Diagnose
                 </div> <!-- Onde o efeito será exibido -->
                 <div id="chat-messages"></div>
                 <div id="error-message" style="display:none;"></div> <!-- Mensagem de erro -->
-
                 <form id="chat-form">
-                    <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'antihacker'); ?>" />
-                    <button type="submit"><?php echo esc_attr__('Send', 'antihacker'); ?></button>
-
+                    <div id="input-group">
+                        <input type="text" id="chat-input" placeholder="<?php echo esc_attr__('Enter your message...', 'antihacker'); ?>" />
+                        <button type="submit"><?php echo esc_attr__('Send', 'antihacker'); ?></button>
+                    </div>
+                    <div id="action-instruction" style="text-align: center; margin-top: 10px;">
+                        <span><?php echo esc_attr__("Enter a message and click 'Send', or just click 'Auto Checkup' to analyze the site's error log.", 'antihacker'); ?></span>
+                    </div>
+                    <div class="auto-checkup-container" style="text-align: center; margin-top: 10px;">
+                        <button type="button" id="auto-checkup">
+                            <img src="<?php echo plugin_dir_url(__FILE__) . 'robot2.png'; ?>" alt="" width="35" height="30">
+                            <?php echo esc_attr__('Auto Checkup', 'antihacker'); ?>
+                        </button>
+                    </div>
                 </form>
             </div>
 
             <?php
+
+
+
+
+
 
             // echo (var_export(__LINE__));
 
@@ -920,7 +934,7 @@ class recaptcha_for_all_Bill_Diagnose
             /* --------------------- PAGE LOAD -----------------------------*/
 
 
-            function antihacker_check_page_load()
+            function wptools_check_page_load()
             {
                 global $wpdb;
                 $table_name = $wpdb->prefix . 'wptools_page_load_times';
@@ -958,11 +972,11 @@ class recaptcha_for_all_Bill_Diagnose
                 if ($results9) {
                     $total = count($results9);
                     if ($total < 1) {
-                        $antihacker_empty = true;
+                        $wptools_empty = true;
                         return false;
                     }
                 } else {
-                    $antihacker_empty = true;
+                    $wptools_empty = true;
                     return false;
                 }
 
@@ -992,7 +1006,7 @@ class recaptcha_for_all_Bill_Diagnose
 
 
 
-            $average  = antihacker_check_page_load();
+            $average  = wptools_check_page_load();
 
             //echo 'Average: ' . var_export($average);
 
@@ -1029,26 +1043,26 @@ class recaptcha_for_all_Bill_Diagnose
                 echo '<h3 style="color: red;">';
 
                 if ($average <= 8) {
-                    $message = esc_attr__("The page load time is poor.", "antihacker");
+                    $message = esc_attr__("The page load time is poor.", "wptools");
                 } else {
-                    $message = esc_attr__("The page load time is very poor!", "antihacker");
+                    $message = esc_attr__("The page load time is very poor!", "wptools");
                 }
                 if ($average > 5) {
                     echo $message;
                     echo '</h3>';
-                    echo esc_attr__("The Load average of yours front pages is: ", "antihacker");
+                    echo esc_attr__("The Load average of yours front pages is: ", "wptools");
                     echo esc_attr($average);
                     echo '<br>';
-                    echo  esc_attr__("Loading time can significantly impact your SEO.", "antihacker");
+                    echo  esc_attr__("Loading time can significantly impact your SEO.", "wptools");
                     echo '<br>';
-                    echo esc_attr__("Many users will abandon the site before it fully loads.", "antihacker");
+                    echo esc_attr__("Many users will abandon the site before it fully loads.", "wptools");
                     echo '<br>';
-                    echo esc_attr__("Search engines prioritize faster-loading pages, as they improve user experience and reduce bounce rates.", "antihacker");
+                    echo esc_attr__("Search engines prioritize faster-loading pages, as they improve user experience and reduce bounce rates.", "wptools");
                 }
 
                 echo '<br>';
                 echo '<a href="https://wptoolsplugin.com/page-load-times-and-their-negative-impact-on-seo/" >';
-                echo esc_attr__("Learn more about Page Load Times and their negative impact on SEO", "antihacker") . "...";
+                echo esc_attr__("Learn more about Page Load Times and their negative impact on SEO", "wptools") . "...";
                 echo "</a>";
 
 
@@ -1519,7 +1533,7 @@ class recaptcha_for_all_Bill_Diagnose
                                             $log_entry = [
                                                 "Date" => $filteredDate,
                                                 "News Type" => $matches[1],
-                                                "Problem Description" => recaptcha_for_all_bill_strip_strong99(
+                                                "Problem Description" => antihacker_bill_strip_strong99(
                                                     $matches[2]
                                                 ),
                                             ];
@@ -1711,8 +1725,8 @@ $notification_url = "https://wpmemory.com/fix-low-memory-limit/";
 $notification_url2 =
     "https://billplugin.com/site-language-error-can-crash-your-site/";
 */
-    $diagnose_instance = recaptcha_for_all_Bill_Diagnose::get_instance(
+    $diagnose_instance = antihacker_Bill_Diagnose::get_instance(
         $notification_url,
         $notification_url2,
     );
-    update_option("recaptcha_for_all_bill_show_warnings", date("Y-m-d"));
+    update_option("antihacker_bill_show_warnings", date("Y-m-d"));
