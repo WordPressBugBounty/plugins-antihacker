@@ -2642,7 +2642,8 @@ function antihacker_first_time2()
         AND `date` >=  CURDATE()- interval 7 day ORDER BY `date` DESC", $antihacker_ip ));
 
 }
-function antihacker_cron_function_clean_db()
+/*
+function antihacker_cron_function_clean_db_old()
 {
     global $wpdb;
     //global $antihacker_rate_penalty;
@@ -2667,6 +2668,7 @@ function antihacker_cron_function_clean_db()
          WHERE `date` = %s", $wdata));
 
 }
+         */
 /*
 function antihacker_create_schedule()
 {

@@ -1,20 +1,25 @@
 /* Estilo para o container do chat box */
 #chat-box {
-    max-width: 600px;
+    max-width: 700px;
     /* Largura máxima */
     margin: 20px auto;
     /* Centraliza o chat */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     /* Sombra */
-    overflow: hidden;
+    overflow: auto;
+    /* Permite o scroll interno */
     border: 1px solid #ddd;
     background-color: #fff;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+
+    resize: both;
+    /* Permite redimensionar em ambas as direções */
 }
+
 
 /* Estilo para o cabeçalho */
 #chat-header {
@@ -39,6 +44,8 @@
     background: #f9f9f9;
     font-family: Arial, sans-serif;
     font-size: 14px;
+    white-space: pre-line;
+    /* Permite quebras de linha com <br> */
 }
 
 #chat-messages div {

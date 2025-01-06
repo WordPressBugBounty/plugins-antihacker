@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.37
+version: 5.38
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -718,11 +718,16 @@ if ($antihacker_block_all_feeds == 'yes') {
   }
 }
 $antihacker_block_media_comments = trim(sanitize_text_field(get_site_option('antihacker_block_media_comments', 'yes')));
+
+
+
+
 if ($antihacker_block_media_comments == 'yes') {
   function anti_hacker_filter_media_comment($open, $post_id)
   {
     $post = get_post($post_id);
-    if ($post->post_type == 'attachment') {
+    //if ($post->post_type == 'attachment') {
+    if ($post && $post->post_type == 'attachment') {
       return false;
     }
     return $open;
@@ -730,6 +735,13 @@ if ($antihacker_block_media_comments == 'yes') {
   add_filter('comments_open', 'anti_hacker_filter_media_comment', 10, 2);
   add_action('template_redirect', 'antihacker_final_step');
 }
+
+
+
+
+
+
+
 if (!empty($antihacker_checkversion))
   add_action('plugins_loaded', 'antihacker_update');
 if (antihacker_check_blocklist($antihacker_ip)) {
@@ -1266,7 +1278,7 @@ add_filter('cron_schedules', 'antihacker_add_cron_interval_update_tor');
 function antihacker_add_cron_interval_update_tor($schedules)
 {
   $schedules['antihacker_daily-tor'] = array(
-    'interval' => (60 * 24),
+    'interval' => (60 * 60 * 24),
     'display'  => 'Daily'
   );
   return $schedules;
@@ -1278,6 +1290,7 @@ add_action('antihacker_cron_event_update_tor', 'antihacker_upd_tor_db');
 
 // 3 antihacker_cron_function_clean_db daily
 
+/*
 add_action('init', 'antihacker_schedule_cron_event_clean_db');
 
 function antihacker_schedule_cron_event_clean_db()
@@ -1295,7 +1308,7 @@ add_filter('cron_schedules', 'antihacker_add_cron_interval_clean_db');
 function antihacker_add_cron_interval_clean_db($schedules)
 {
   $schedules['antihacker_daily_clean'] = array(
-    'interval' => (60 * 24),
+    'interval' => (60 * 60 * 24),
     'display'  => 'Daily'
   );
   return $schedules;
@@ -1304,6 +1317,8 @@ function antihacker_add_cron_interval_clean_db($schedules)
 // Function to be executed by the cron event
 add_action('antihacker_cron_event_clean_db', 'antihacker_cron_function_clean_db');
 // cron 24 end
+
+*/
 
 /*
 function antihacker_findip()
@@ -1358,6 +1373,125 @@ function antihacker_findip()
         return 'unknow';
 }
 */
+
+/*  INICIO CRON com problema */
+function antihacker_cron_function_clean_db()
+{
+  // Função que executa o trabalho desejado no cron
+  global $wpdb;
+
+  // Limpeza do banco de dados (exemplo)
+  $table_name = $wpdb->prefix . "ah_blockeds";
+  $wpdb->query("DELETE FROM $table_name WHERE `date` < CURDATE() - INTERVAL 1 DAY");
+
+  $table_name = $wpdb->prefix . "ah_visitorslog";
+  $wpdb->query("DELETE FROM $table_name WHERE `date` < CURDATE() - INTERVAL 30 DAY");
+
+  $table_name = $wpdb->prefix . "ah_fingerprint";
+  $wpdb->query("DELETE FROM $table_name WHERE `data` < CURDATE() - INTERVAL 60 DAY");
+
+  $wdata = date("md", strtotime('tomorrow'));
+  $table_name = $wpdb->prefix . "ah_stats";
+
+  $wpdb->get_results($wpdb->prepare(
+    "UPDATE $table_name 
+         SET qrate='', qnoref='', qtools='', qblank='', qlogin='', qtor='', qfire='', qenum='', qtotal='', qplugin='', qtema='', qfalseg='', qblack=''
+         WHERE `date` = %s",
+    $wdata
+  ));
+}
+
+// 1. Primeiro, registramos o filtro para adicionar o intervalo de cron (1 dia)
+
+
+
+
+
+add_filter('cron_schedules', 'antihacker_add_cron_interval_clean_db');
+
+
+/*
+function antihacker_add_cron_interval_clean_db($schedules)
+{
+  // Intervalo de 1 dia (60 segundos * 60 minutos * 24 horas)
+  $schedules['antihacker_daily_clean'] = array(
+    'interval' => 60 * 60 * 24,  // 1 dia
+    'display'  => 'Daily'        // Descrição para o intervalo
+  );
+  return $schedules;
+}
+  */
+
+
+//
+
+function antihacker_add_cron_interval_clean_db($schedules)
+{
+  try {
+    // Tente registrar o intervalo
+    $schedules['antihacker_daily_clean'] = array(
+      'interval' => 60 * 60 * 24,  // 1 dia em segundos
+      'display'  => 'Daily'
+    );
+
+    // Se a adição do intervalo falhar, uma exceção será lançada
+    if (empty($schedules['antihacker_daily_clean'])) {
+      throw new Exception('Fail: Unable to record cron interval "antihacker_daily_clean"');
+    }
+  } catch (Exception $e) {
+    // Não registramos no error_log, apenas capturamos a exceção
+    // Aqui você pode fazer qualquer outra coisa, se necessário, mas sem logar no arquivo de erros
+  }
+
+  return $schedules;
+}
+
+
+/////
+
+
+
+
+
+// 2. Depois, agendamos o evento cron para rodar com o intervalo registrado
+add_action('init', 'antihacker_schedule_cron_event_clean_db');
+
+/*
+function antihacker_schedule_cron_event_clean_db()
+{
+  // Verifica se o evento já está agendado
+  if (!wp_next_scheduled('antihacker_cron_event_clean_db')) {
+    // Agenda o evento para rodar diariamente com o intervalo 'antihacker_daily_clean'
+    wp_schedule_event(time(), 'antihacker_daily_clean', 'antihacker_cron_event_clean_db');
+  }
+}
+  */
+
+function antihacker_schedule_cron_event_clean_db()
+{
+  try {
+    // Verifica se o evento já está agendado
+    if (!wp_next_scheduled('antihacker_cron_event_clean_db')) {
+      // Agenda o evento para rodar diariamente com o intervalo 'antihacker_daily_clean'
+      wp_schedule_event(time(), 'antihacker_daily_clean', 'antihacker_cron_event_clean_db');
+    }
+  } catch (Exception $e) {
+    // Captura a exceção e não faz log no error_log
+    // Aqui você pode adicionar algum tratamento se necessário, mas sem registrar no error_log
+  }
+}
+
+// 3. Função a ser chamada quando o cron job for executado
+add_action('antihacker_cron_event_clean_db', 'antihacker_cron_function_clean_db');
+
+
+
+
+
+
+/*  FIM CRON com problema */
+
+
 
 function antihacker_check_wordpress_logged_in_cookie()
 {
@@ -1448,15 +1582,14 @@ function antihacker_new_more_plugins()
 function antihacker_load_chat()
 {
   global $antihacker_is_admin;
-    if ($antihacker_is_admin and current_user_can("manage_options")) {
-			// ob_start();
-			//debug2();
+  if ($antihacker_is_admin and current_user_can("manage_options")) {
+    // ob_start();
+    //debug2();
 
-			if ( ! class_exists( 'antihacker_BillChat\ChatPlugin' ) ) {
-				require_once dirname(__FILE__) . "/includes/chat/class_bill_chat.php";
-
-			}
-		}
+    if (! class_exists('antihacker_BillChat\ChatPlugin')) {
+      require_once dirname(__FILE__) . "/includes/chat/class_bill_chat.php";
+    }
+  }
 }
 add_action('wp_loaded', 'antihacker_load_chat');
 

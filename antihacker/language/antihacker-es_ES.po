@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 16:18+0000\n"
-"PO-Revision-Date: 2024-12-30 16:24+0000\n"
+"POT-Creation-Date: 2025-01-06 17:35+0000\n"
+"PO-Revision-Date: 2025-01-06 17:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -87,6 +87,16 @@ msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr ""
 "Panel de control => Anti Hacker => Configuración => Configuración de "
 "notificaciones (pestaña)"
+
+#: dashboard/_tools.php:30 dashboard/tools.php:15
+msgid "If you need support, please, copy and paste the info below in our"
+msgstr ""
+"Si necesita ayuda, por favor, copie y pegue la siguiente información en "
+"nuestro"
+
+#: dashboard/_tools.php:31 dashboard/tools.php:17
+msgid "Support Site"
+msgstr "Página de soporte"
 
 #: dashboard/attacksgraph_pie.php:23 dashboard/calcula_stats_pie2.php:21
 msgid ""
@@ -173,8 +183,8 @@ msgstr "Protección Premium habilitada"
 #: dashboard/dashboard.php:191 dashboard/memory.php:77
 #: dashboard/mybanners.php:49 includes/diagnose/_class_bill_diagnose.php:859
 #: includes/diagnose/_class_bill_diagnose.php:897
-#: includes/diagnose/class_bill_diagnose.php:1128
-#: includes/diagnose/class_bill_diagnose.php:1157
+#: includes/diagnose/class_bill_diagnose.php:608
+#: includes/diagnose/class_bill_diagnose.php:629
 #: includes/functions/functions.php:3029
 #: includes/install-checkup/_class_bill_install.php:315
 #: includes/install-checkup/_class_bill_install.php:384
@@ -609,16 +619,6 @@ msgstr "Temas"
 msgid "No inactive Themes! All right."
 msgstr "¡No hay temas inactivos! Está bien."
 
-#: dashboard/tools.php:30
-msgid "If you need support, please, copy and paste the info below in our"
-msgstr ""
-"Si necesita ayuda, por favor, copie y pegue la siguiente información en "
-"nuestro"
-
-#: dashboard/tools.php:31
-msgid "Support Site"
-msgstr "Página de soporte"
-
 #: guide/guide.php:13
 msgid "General Settings Tab:"
 msgstr "Pestaña Configuración general:"
@@ -747,60 +747,60 @@ msgstr "Página de soporte"
 msgid "That is all. Enjoy it!"
 msgstr "Eso es todo. ¡Disfrútalo!"
 
-#: includes/chat/_class_bill_chat.php:43 includes/chat/class_bill_chat.php:43
+#: includes/chat/_class_bill_chat.php:43 includes/chat/class_bill_chat.php:44
 msgid "Chat messages reset successfully."
 msgstr "Los mensajes de chat se restablecieron correctamente."
 
-#: includes/chat/_class_bill_chat.php:44 includes/chat/class_bill_chat.php:44
+#: includes/chat/_class_bill_chat.php:44 includes/chat/class_bill_chat.php:45
 msgid "Error resetting chat messages."
 msgstr "Error al restablecer los mensajes de chat."
 
-#: includes/chat/_class_bill_chat.php:45 includes/chat/class_bill_chat.php:45
+#: includes/chat/_class_bill_chat.php:45 includes/chat/class_bill_chat.php:46
 msgid "Invalid message received:"
 msgstr "Mensaje no válido recibido:"
 
-#: includes/chat/_class_bill_chat.php:46 includes/chat/class_bill_chat.php:46
+#: includes/chat/_class_bill_chat.php:46 includes/chat/class_bill_chat.php:47
 msgid "Invalid response format:"
 msgstr "Formato de respuesta no válido:"
 
-#: includes/chat/_class_bill_chat.php:47 includes/chat/class_bill_chat.php:47
+#: includes/chat/_class_bill_chat.php:47 includes/chat/class_bill_chat.php:48
 msgid "Error processing server response:"
 msgstr "Error al procesar la respuesta del servidor:"
 
-#: includes/chat/_class_bill_chat.php:48 includes/chat/class_bill_chat.php:48
+#: includes/chat/_class_bill_chat.php:48 includes/chat/class_bill_chat.php:49
 msgid "Response is not valid JSON."
 msgstr "La respuesta no es un JSON válido."
 
-#: includes/chat/_class_bill_chat.php:49 includes/chat/class_bill_chat.php:49
+#: includes/chat/_class_bill_chat.php:49 includes/chat/class_bill_chat.php:50
 msgid "AJAX request failed:"
 msgstr "AJAX Falhou:"
 
-#: includes/chat/_class_bill_chat.php:50 includes/chat/class_bill_chat.php:50
+#: includes/chat/_class_bill_chat.php:50 includes/chat/class_bill_chat.php:51
 msgid "Error sending the message. Please try again later."
 msgstr "Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde."
 
-#: includes/chat/_class_bill_chat.php:51 includes/chat/class_bill_chat.php:51
+#: includes/chat/_class_bill_chat.php:51 includes/chat/class_bill_chat.php:52
 msgid "Please enter a message!"
 msgstr "¡Por favor ingrese un mensaje!"
 
-#: includes/chat/_class_bill_chat.php:212 includes/chat/class_bill_chat.php:213
+#: includes/chat/_class_bill_chat.php:212 includes/chat/class_bill_chat.php:268
 msgid ""
 "Error contacting the Artificial Intelligence (API). Please try again later."
 msgstr ""
 "Error al contactar con la Inteligencia Artificial (API). Inténtalo de nuevo "
 "más tarde."
 
-#: includes/chat/_class_bill_chat.php:242 includes/chat/class_bill_chat.php:247
+#: includes/chat/_class_bill_chat.php:242 includes/chat/class_bill_chat.php:294
 msgid "Error to get response from AI source!"
 msgstr "¡Error al obtener respuesta de la fuente de IA!"
 
 #: includes/diagnose/_class_bill_diagnose.php:713
-#: includes/diagnose/class_bill_diagnose.php:788
+#: includes/diagnose/class_bill_diagnose.php:471
 msgid "Our plugin"
 msgstr "Nuestro complemento"
 
 #: includes/diagnose/_class_bill_diagnose.php:715
-#: includes/diagnose/class_bill_diagnose.php:790
+#: includes/diagnose/class_bill_diagnose.php:473
 msgid ""
 "cannot function properly because your WordPress Memory Limit is too low. "
 "Your site will experience serious issues, even if you deactivate our plugin."
@@ -810,7 +810,7 @@ msgstr ""
 "desactiva nuestro complemento."
 
 #: includes/diagnose/_class_bill_diagnose.php:721
-#: includes/diagnose/class_bill_diagnose.php:796
+#: includes/diagnose/class_bill_diagnose.php:479
 msgid "Learn more"
 msgstr "Más información"
 
@@ -834,27 +834,27 @@ msgstr ""
 "ocurrencia, pero aún pueden dañar su sitio."
 
 #: includes/diagnose/_class_bill_diagnose.php:815
-#: includes/diagnose/class_bill_diagnose.php:1084
+#: includes/diagnose/class_bill_diagnose.php:564
 msgid "Potential Problems"
 msgstr "Problemas potenciales"
 
 #: includes/diagnose/_class_bill_diagnose.php:823
-#: includes/diagnose/class_bill_diagnose.php:1092
+#: includes/diagnose/class_bill_diagnose.php:572
 msgid "Low WordPress Memory Limit"
 msgstr "Límite de memoria bajo de WordPress"
 
 #: includes/diagnose/_class_bill_diagnose.php:836
-#: includes/diagnose/class_bill_diagnose.php:1105
+#: includes/diagnose/class_bill_diagnose.php:585
 msgid "Your usage now"
 msgstr "Su uso ahora"
 
 #: includes/diagnose/_class_bill_diagnose.php:844
-#: includes/diagnose/class_bill_diagnose.php:1113
+#: includes/diagnose/class_bill_diagnose.php:593
 msgid "Total Php Server Memory"
 msgstr "Memoria total del servidor PHP"
 
 #: includes/diagnose/_class_bill_diagnose.php:853
-#: includes/diagnose/class_bill_diagnose.php:1122
+#: includes/diagnose/class_bill_diagnose.php:602
 #: includes/install-checkup/_class_bill_install.php:306
 #: includes/install-checkup/class_bill_install.php:324
 msgid ""
@@ -867,12 +867,12 @@ msgstr ""
 "problema de inmediato antes de continuar."
 
 #: includes/diagnose/_class_bill_diagnose.php:888
-#: includes/diagnose/class_bill_diagnose.php:1148
+#: includes/diagnose/class_bill_diagnose.php:620
 msgid "Site Errors"
 msgstr "Errores del sitio"
 
 #: includes/diagnose/_class_bill_diagnose.php:893
-#: includes/diagnose/class_bill_diagnose.php:1153
+#: includes/diagnose/class_bill_diagnose.php:625
 msgid ""
 "Your site has experienced errors for the past 2 days. These errors, "
 "including JavaScript issues, can result in visual problems or disrupt "
@@ -887,12 +887,12 @@ msgstr ""
 "JavaScript y dejar inoperativos todos los comandos posteriores."
 
 #: includes/diagnose/_class_bill_diagnose.php:951
-#: includes/diagnose/class_bill_diagnose.php:1211
+#: includes/diagnose/class_bill_diagnose.php:674
 msgid "This is a partial list of the errors found."
 msgstr "Esta es una lista parcial de los errores encontrados."
 
 #: includes/diagnose/_class_bill_diagnose.php:1429
-#: includes/diagnose/class_bill_diagnose.php:1707
+#: includes/diagnose/class_bill_diagnose.php:1093
 msgid ""
 "These are critical issues that can have a significant impact on your site's "
 "performance. They can cause many plugins and functionalities to malfunction "
@@ -905,7 +905,7 @@ msgstr ""
 "sitio completamente inoperativo, según su gravedad. Trate de solucionarlos "
 "de inmediato."
 
-#: includes/diagnose/class_bill_diagnose.php:115
+#: includes/diagnose/class_bill_diagnose.php:82
 msgid ""
 "Here are some details about error and memory monitoring for your plugin. "
 "Errors and low memory can prevent your site from functioning properly. On "
@@ -924,15 +924,15 @@ msgstr ""
 "Si necesita profundizar, instale el complemento gratuito WPTools, que brinda "
 "información más detallada."
 
-#: includes/diagnose/class_bill_diagnose.php:123
+#: includes/diagnose/class_bill_diagnose.php:89
 msgid "Memory & Error Monitoring"
 msgstr "Monitoreo de memoria y errores"
 
-#: includes/diagnose/class_bill_diagnose.php:124
+#: includes/diagnose/class_bill_diagnose.php:90
 msgid "Welcome to plugin Insights!"
 msgstr "¡Bienvenido al complemento Insights!"
 
-#: includes/diagnose/class_bill_diagnose.php:886
+#: includes/diagnose/class_bill_diagnose.php:527
 msgid ""
 "Displaying the latest recurring errors (Javascript Included) from your error "
 "log file and eventually alert about low WordPress memory limit is a courtesy "
@@ -942,7 +942,7 @@ msgstr ""
 "y eventualmente alertar sobre el límite bajo de memoria de WordPress es una "
 "cortesía del complemento"
 
-#: includes/diagnose/class_bill_diagnose.php:888
+#: includes/diagnose/class_bill_diagnose.php:529
 msgid ""
 "Disabling our plugin does not stop the errors from occurring; it simply "
 "means you will no longer be notified here that they are happening, but they "
@@ -952,7 +952,7 @@ msgstr ""
 "simplemente significa que ya no recibirá notificaciones aquí sobre su "
 "ocurrencia, pero aún pueden dañar su sitio."
 
-#: includes/diagnose/class_bill_diagnose.php:890
+#: includes/diagnose/class_bill_diagnose.php:531
 msgid ""
 "Click the help button in the top right or go directly to the AI chat box "
 "below for more specific information on the issues listed."
@@ -961,22 +961,22 @@ msgstr ""
 "directamente al cuadro de chat de IA a continuación para obtener información "
 "más específica sobre los problemas enumerados."
 
-#: includes/diagnose/class_bill_diagnose.php:899
+#: includes/diagnose/class_bill_diagnose.php:538
 #: includes/feedback-last/feedback-last.php:319
 msgid "Artificial Intelligence Support Chat for Issues and Solutions"
 msgstr "Chat de soporte de inteligencia artificial para problemas y soluciones"
 
-#: includes/diagnose/class_bill_diagnose.php:908
+#: includes/diagnose/class_bill_diagnose.php:547
 #: includes/feedback-last/feedback-last.php:329
 msgid "Enter your message..."
 msgstr "Ingrese su mensaje..."
 
-#: includes/diagnose/class_bill_diagnose.php:909
+#: includes/diagnose/class_bill_diagnose.php:548
 #: includes/feedback-last/feedback-last.php:330
 msgid "Send"
 msgstr "Enviar"
 
-#: includes/diagnose/class_bill_diagnose.php:912
+#: includes/diagnose/class_bill_diagnose.php:551
 msgid ""
 "Enter a message and click 'Send', or just click 'Auto Checkup' to analyze "
 "the site's error log."
@@ -984,46 +984,27 @@ msgstr ""
 "Escriba un mensaje y haga clic en 'Enviar', o simplemente haga clic en "
 "'Verificación Automática' para analizar el registro de errores del sitio."
 
-#: includes/diagnose/class_bill_diagnose.php:917
+#: includes/diagnose/class_bill_diagnose.php:556
 msgid "Auto Checkup"
 msgstr "Revisión automática"
 
-#: includes/diagnose/class_bill_diagnose.php:1046
-msgid "The page load time is poor."
-msgstr "El tiempo de carga de la página es pobre."
+#: includes/diagnose/class_bill_diagnose.php:686
+msgid "File not readable."
+msgstr "Archivo no legible."
 
-#: includes/diagnose/class_bill_diagnose.php:1048
-msgid "The page load time is very poor!"
-msgstr "¡El tiempo de carga de la página es muy pobre!"
+#: includes/diagnose/class_bill_diagnose.php:691
+msgid "Size not determined."
+msgstr "Tamaño no determinado."
 
-#: includes/diagnose/class_bill_diagnose.php:1053
-msgid "The Load average of yours front pages is: "
-msgstr "El promedio de carga de sus páginas de inicio es:"
+#: includes/diagnose/class_bill_diagnose.php:705
+msgid "Invalid size."
+msgstr "Tamaño inválido."
 
-#: includes/diagnose/class_bill_diagnose.php:1056
-msgid "Loading time can significantly impact your SEO."
-msgstr "El tiempo de carga puede afectar significativamente tu SEO."
+#: includes/diagnose/class_bill_diagnose.php:729
+msgid "File Size: "
+msgstr "Tamaño del archivo:"
 
-#: includes/diagnose/class_bill_diagnose.php:1058
-msgid "Many users will abandon the site before it fully loads."
-msgstr ""
-"Muchos usuarios abandonarán el sitio antes de que se cargue completamente."
-
-#: includes/diagnose/class_bill_diagnose.php:1060
-msgid ""
-"Search engines prioritize faster-loading pages, as they improve user "
-"experience and reduce bounce rates."
-msgstr ""
-"Los motores de búsqueda priorizan las páginas que se cargan más rápido, ya "
-"que mejoran la experiencia del usuario y reducen las tasas de rebote."
-
-#: includes/diagnose/class_bill_diagnose.php:1065
-msgid "Learn more about Page Load Times and their negative impact on SEO"
-msgstr ""
-"Obtenga más información sobre los tiempos de carga de página y su impacto "
-"negativo en el SEO"
-
-#: includes/diagnose/class_bill_diagnose.php:1713
+#: includes/diagnose/class_bill_diagnose.php:1098
 msgid "Critical Issues"
 msgstr "Problemas Críticos"
 
