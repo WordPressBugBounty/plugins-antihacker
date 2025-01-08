@@ -2,13 +2,14 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.39
+version: 5.40
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
 Author URI: http://billminozzi.com
-License: GPL-2.0-or-later
+License: GPL-2.0
 */
+
 // ob_start();
 if (!defined('ABSPATH'))
   exit; // Exit if accessed directly
@@ -371,6 +372,7 @@ require_once(ANTIHACKERPATH . 'scan/dashboard_scan.php');
 if ($antihacker_is_admin) {
 
   require_once(ANTIHACKERPATH . 'includes/functions/health.php');
+  require_once(ANTIHACKERPATH . 'includes/functions/function_sysinfo.php');
 
   add_action('setup_theme', 'antihacker_load_settings');
 
@@ -1232,6 +1234,8 @@ function antihacker_CheckPluginUpdate($plugin)
 //$out2 = ob_get_contents();
 //ob_end_clean ( );
 
+/*
+
 add_action('init', 'antihacker_schedule_cron_event_plugins_scan');
 
 function antihacker_schedule_cron_event_plugins_scan()
@@ -1257,6 +1261,36 @@ function antihacker_add_cron_interval_plugins_scan($schedules)
 
 // Function to be executed by the cron event
 add_action('antihacker_cron_event_plugins_scan', 'antihacker_automatic_plugin_scan');
+*/
+
+
+// Adiciona o intervalo personalizado de 1 semana
+add_filter('cron_schedules', 'antihacker_add_cron_interval_plugins_scan');
+function antihacker_add_cron_interval_plugins_scan($schedules)
+{
+    $schedules['antihacker_once_week'] = array(
+        'interval' => 60 * 60 * 24 * 7, // 1 semana em segundos
+        'display'  => __('Once Per Week')
+    );
+    return $schedules;
+}
+
+// Agendamento do evento de cron
+add_action('init', 'antihacker_schedule_cron_event_plugins_scan');
+function antihacker_schedule_cron_event_plugins_scan()
+{
+    // Verifica se o evento já está agendado
+    if (!wp_next_scheduled('antihacker_cron_event_plugins_scan')) {
+        // Agende o evento para o intervalo personalizado
+        wp_schedule_event(time(), 'antihacker_once_week', 'antihacker_cron_event_plugins_scan');
+    }
+}
+
+// Função a ser executada pelo evento de cron
+add_action('antihacker_cron_event_plugins_scan', 'antihacker_automatic_plugin_scan');
+
+
+
 
 
 // 2 antihacker_upd_tor_db -> daily

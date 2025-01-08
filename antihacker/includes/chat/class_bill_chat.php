@@ -9,6 +9,10 @@ if (!defined('ABSPATH')) {
 if (function_exists('is_multisite') && is_multisite()) {
     return;
 }
+
+
+
+//debug3();
 class ChatPlugin
 {
     public function __construct()
@@ -59,6 +63,7 @@ class ChatPlugin
 
     public function bill_chat_load_messages()
     {
+        //\debug3();
         $messages = get_option('chat_messages', []);
         $last_count = isset($_POST['last_count']) ? intval($_POST['last_count']) : 0;
         // Verifica se há novas mensagens
@@ -166,6 +171,8 @@ class ChatPlugin
         //$current_date = date('Y-m-d H:i:s'); // Formato da data: Ano-Mês-Dia Hora:Minuto:Segundo
         //set_transient($transient_name, $current_date, DAY_IN_SECONDS); // Transiente com duração de 1 dia
         $bill_chat_erros = '';
+        // \debug3();
+
         try {
             function filter_log_content($content)
             {
@@ -220,6 +227,9 @@ class ChatPlugin
             //debug2("An error occurred to read error logs: ");
         }
         //debug2($bill_chat_erros);
+
+        // \debug3($bill_chat_erros);
+
         if (is_array($bill_chat_erros)) {
             $bill_chat_erros = filter_log_content($bill_chat_erros);
         } elseif (is_object($bill_chat_erros)) {
@@ -229,7 +239,7 @@ class ChatPlugin
         }
         // debug2($bill_chat_erros);
         // Filtra $bill_chat_erros novamente (caso tenha sido modificado)
-        $bill_chat_erros = filter_log_content($bill_chat_erros);
+        //$bill_chat_erros = filter_log_content($bill_chat_erros);
         $plugin_path = plugin_basename(__FILE__); // Retorna algo como "plugin-folder/plugin-file.php"
         $language = get_locale();
         $plugin_slug = explode('/', $plugin_path)[0]; // Pega apenas o primeiro diretório (a raiz)
@@ -238,6 +248,16 @@ class ChatPlugin
             $bill_chat_erros = 'No errors found!';
         }
         //debug2($bill_chat_erros);
+        // \debug3();
+
+       //2025
+       $antihacker_checkup = \antihacker_sysinfo_get();
+      //  \debug3( \antihacker_sysinfo_get());
+
+       //\debug3($antihacker_checkup);
+
+
+
         $data2 = [
             'param1' => $data,
             'param2' => $antihacker_checkup,
@@ -275,6 +295,7 @@ class ChatPlugin
      */
     public function bill_chat_send_message()
     {
+        // \debug3();
         // Captura e sanitiza a mensagem
         $message = sanitize_text_field($_POST['message']);
         if (empty($message)) {
