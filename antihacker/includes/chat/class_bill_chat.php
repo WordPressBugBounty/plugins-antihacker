@@ -63,6 +63,9 @@ class ChatPlugin
 
     public function bill_chat_load_messages()
     {
+        if (ob_get_length()) {
+            ob_clean();
+        }
         //\debug3();
         $messages = get_option('chat_messages', []);
         $last_count = isset($_POST['last_count']) ? intval($_POST['last_count']) : 0;
