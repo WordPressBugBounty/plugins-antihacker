@@ -88,4 +88,7 @@ register_deactivation_hook(__FILE__, 'antihacker_deactivation');
 wp_clear_scheduled_hook('antihacker_weekly_scan');
 wp_clear_scheduled_hook('antihacker_cron_hook');
 wp_clear_scheduled_hook('antihacker_cron_hook2');
+
+wp_clear_scheduled_hook('antihacker_cron_event_plugins_scan');
+
 ?>

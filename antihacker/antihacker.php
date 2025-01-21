@@ -2,19 +2,17 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.41
+version: 5.43
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
 Author URI: http://billminozzi.com
 License: GPL-2.0
 */
-
 // ob_start();
 if (!defined('ABSPATH'))
   exit; // Exit if accessed directly
 // Fix memory
-
 $antihacker_maxMemory = @ini_get('memory_limit');
 $antihacker_last = strtolower(substr($antihacker_maxMemory, -1));
 $antihacker_maxMemory = (int) $antihacker_maxMemory;
@@ -1268,22 +1266,22 @@ add_action('antihacker_cron_event_plugins_scan', 'antihacker_automatic_plugin_sc
 add_filter('cron_schedules', 'antihacker_add_cron_interval_plugins_scan');
 function antihacker_add_cron_interval_plugins_scan($schedules)
 {
-    $schedules['antihacker_once_week'] = array(
-        'interval' => 60 * 60 * 24 * 7, // 1 semana em segundos
-        'display'  => __('Once Per Week')
-    );
-    return $schedules;
+  $schedules['antihacker_once_week'] = array(
+    'interval' => 60 * 60 * 24 * 7, // 1 semana em segundos
+    'display'  => __('Once Per Week')
+  );
+  return $schedules;
 }
 
 // Agendamento do evento de cron
 add_action('init', 'antihacker_schedule_cron_event_plugins_scan');
 function antihacker_schedule_cron_event_plugins_scan()
 {
-    // Verifica se o evento já está agendado
-    if (!wp_next_scheduled('antihacker_cron_event_plugins_scan')) {
-        // Agende o evento para o intervalo personalizado
-        wp_schedule_event(time(), 'antihacker_once_week', 'antihacker_cron_event_plugins_scan');
-    }
+  // Verifica se o evento já está agendado
+  if (!wp_next_scheduled('antihacker_cron_event_plugins_scan')) {
+    // Agende o evento para o intervalo personalizado
+    wp_schedule_event(time(), 'antihacker_once_week', 'antihacker_cron_event_plugins_scan');
+  }
 }
 
 // Função a ser executada pelo evento de cron
@@ -1670,6 +1668,8 @@ function antihacker_bill_hooking_catch_errors()
   require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
 }
 add_action("init", "antihacker_bill_hooking_catch_errors", 15);
+// ---------------------------
+
 
 
 
@@ -1762,4 +1762,23 @@ function antihacker_get_request_method()
 
   // Fallback: assume GET request if nothing else matches
   return 'GET';
+}
+// ------------------------------------
+
+
+
+// Hook para ativação do plugin
+//register_activation_hook(__FILE__, 'capture_unexpected_output');
+
+function capture_unexpected_output()
+{
+  // Captura e limpa qualquer saída inesperada
+  $output = ob_get_clean();
+
+  // Verifica se há saída inesperada
+  // if (!empty($output)) {
+  // Grava a saída no log de erros do PHP
+  debug4("[Plugin Activation Output] " . $output);
+  // die(var_dump($output));
+  // }
 }
