@@ -179,104 +179,90 @@ class ErrorChecker
         );
     }
 
+
+
+    /**
+     * Retrieves an array of paths to potential error log files.
+     *
+     * This function searches for common locations where error logs might be stored,
+     * including PHP error logs, WordPress root directory, plugin and theme directories,
+     * and the administration area.
+     *
+     * @return array An array of strings, where each string is a potential path to an error log file.
+     */
+    public static function get_path_logs()
+    {
+        $bill_folders = [];
+
+        // PHP error log (defined in php.ini)
+        $error_log_path = trim(ini_get("error_log"));
+        if (!is_null($error_log_path) && $error_log_path != trim(ABSPATH . "error_log")) {
+            $bill_folders[] = $error_log_path;
+        }
+
+        // Logs in WordPress root directory
+        $bill_folders[] = ABSPATH . "error_log";
+        $bill_folders[] = ABSPATH . "php_errorlog";
+        $bill_folders[] = WP_CONTENT_DIR . "/debug.log";
+
+        // Logs in current plugin directory
+        $bill_folders[] = plugin_dir_path(__FILE__) . "error_log";
+        $bill_folders[] = plugin_dir_path(__FILE__) . "php_errorlog";
+
+        // Logs in current theme directory
+        $bill_folders[] = get_theme_root() . "/error_log";
+        $bill_folders[] = get_theme_root() . "/php_errorlog";
+
+        // Logs in administration area (if it exists)
+        $bill_admin_path = str_replace(get_bloginfo("url") . "/", ABSPATH, get_admin_url());
+        $bill_folders[] = $bill_admin_path . "/error_log";
+        $bill_folders[] = $bill_admin_path . "/php_errorlog";
+
+        // Logs in plugin subdirectories
+        $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
+        foreach ($bill_plugins as $bill_plugin) {
+            $plugin_path = plugin_dir_path(__FILE__) . $bill_plugin;
+            if (is_dir($plugin_path)) {
+                $bill_folders[] = $plugin_path . "/error_log";
+                $bill_folders[] = $plugin_path . "/php_errorlog";
+            }
+        }
+
+        // Logs in theme subdirectories
+        $bill_themes = array_slice(scandir(get_theme_root()), 2);
+        foreach ($bill_themes as $bill_theme) {
+            $theme_path = get_theme_root() . "/" . $bill_theme;
+            if (is_dir($theme_path)) {
+                $bill_folders[] = $theme_path . "/error_log";
+                $bill_folders[] = $theme_path . "/php_errorlog";
+            }
+        }
+
+        return $bill_folders;
+    }
+
+
+
+
+
+
+
     public function bill_check_errors_today($num_days, $filter = null)
     {
         // return true;
 
 
         $bill_count = 0;
-        $bill_folders = [];
-        //$bill_themePath = get_theme_root();
-        $error_log_path = trim(ini_get("error_log"));
-        if (!is_null($error_log_path) and $error_log_path != trim(ABSPATH . "error_log")) {
-            $bill_folders[] = $error_log_path;
-        }
-
-
-
-        $bill_folders[] = ABSPATH . "error_log";
 
 
 
 
 
+        // $bill_folders = get_path_logs();
+        $bill_folders = ErrorChecker::get_path_logs();
 
 
 
-
-
-        $bill_folders[] = ABSPATH . "php_errorlog";
-        $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
-        $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";
-        $bill_folders[] = get_theme_root() . "/error_log";
-        $bill_folders[] = get_theme_root() . "/php_errorlog";
-        // Adicionar caminhos específicos de administração se existirem
-        $bill_admin_path = str_replace(
-            get_bloginfo("url") . "/",
-            ABSPATH,
-            get_admin_url()
-        );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $bill_folders[] = $bill_admin_path . "/error_log";
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $bill_folders[] = $bill_admin_path . "/php_errorlog";
-        $bill_folders[] = WP_CONTENT_DIR . "/debug.log";
-        // Adicionar diretórios de plugins
-        $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
-        foreach ($bill_plugins as $bill_plugin) {
-            if (is_dir(plugin_dir_path(__FILE__) . "/" . $bill_plugin)) {
-                $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/error_log";
-                $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/php_errorlog";
-            }
-        }
-        $bill_themes = array_slice(scandir(get_theme_root()), 2);
-        foreach ($bill_themes as $bill_theme) {
-            if (is_dir(get_theme_root() . "/" . $bill_theme)) {
-                $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
-                $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
-            }
-        }
         // Data limite para comparação
         //$dateThreshold = new DateTime('now');
         $dateThreshold = new \DateTime('now');
@@ -988,84 +974,16 @@ class antihacker_Bill_Diagnose
                 </p>
     <?php
                 $bill_count = 0;
-                $bill_folders = [];
-                $bill_themePath = get_theme_root();
-                $error_log_path = trim(ini_get("error_log"));
-                if (
-                    !is_null($error_log_path) and $error_log_path != trim(ABSPATH . "error_log")
-                ) {
-                    $bill_folders[] = $error_log_path;
-                }
 
 
 
 
+                // Crie um objeto da classe ErrorChecker:
+                $errorChecker = new ErrorChecker();
 
+                // Chame o método get_path_logs() no objeto:
+                $bill_folders = $errorChecker->get_path_logs(); // Use -> (flecha)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                $bill_folders[] = ABSPATH . "error_log";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                $bill_folders[] = ABSPATH . "php_errorlog";
-                $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
-                $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";
-                $bill_folders[] = get_theme_root() . "/error_log";
-                $bill_folders[] = get_theme_root() . "/php_errorlog";
-                // Adicionar caminhos específicos de administração se existirem
-                $bill_admin_path = str_replace(
-                    get_bloginfo("url") . "/",
-                    ABSPATH,
-                    get_admin_url()
-                );
-                $bill_folders[] = $bill_admin_path . "/error_log";
-                $bill_folders[] = $bill_admin_path . "/php_errorlog";
-                // Adicionar diretórios de plugins
-                //$bill_plugins = array_slice(scandir(WPTOOLSPATH), 2);
-                $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
-                foreach ($bill_plugins as $bill_plugin) {
-                    if (is_dir(plugin_dir_path(__FILE__) . "/" . $bill_plugin)) {
-                        $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/error_log";
-                        $bill_folders[] = plugin_dir_path(__FILE__) . "/" . $bill_plugin . "/php_errorlog";
-                    }
-                }
-                $bill_themes = array_slice(scandir(get_theme_root()), 2);
-                foreach ($bill_themes as $bill_theme) {
-                    if (is_dir(get_theme_root() . "/" . $bill_theme)) {
-                        $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
-                        $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
-                    }
-                }
                 echo "<br />";
                 echo esc_attr__("This is a partial list of the errors found.", 'antihacker');
                 echo "<br />";
@@ -1111,6 +1029,13 @@ class antihacker_Bill_Diagnose
                 }
                 // Comeca a mostrar erros...
                 //
+
+                // debug4($bill_folders);
+
+                // print_r($bill_folders);
+
+
+
                 foreach ($bill_folders as $bill_folder) {
                     $files = glob($bill_folder);
                     if ($files === false) {
