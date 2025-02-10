@@ -144,9 +144,25 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         const clickedButtonId = $(this).attr('id'); // Identifica qual botão foi clicado
         const message = billChatInput.val().trim();
-        const chatType = clickedButtonId === 'auto-checkup' ? 'auto-checkup' : ($('#chat-type').length ? $('#chat-type').val() : 'default');
+        //const chatType = clickedButtonId === 'auto-checkup' ? 'auto-checkup' : ($('#chat-type').length ? $('#chat-type').val() : 'default');
+
+        const chatType = (clickedButtonId === 'auto-checkup' || clickedButtonId === 'auto-checkup2')
+            ? clickedButtonId
+            : ($('#chat-type').length ? $('#chat-type').val() : 'default');
+
+
+
+
+
+
+
+
+
+
         const billChaterrorMessage = $('#error-message');
-        if ((chatType === 'auto-checkup') || (chatType !== 'auto-checkup' && message !== '')) {
+        // if ((chatType === 'auto-checkup') || (chatType !== 'auto-checkup' && message !== '')) {
+        if ((chatType === 'auto-checkup' || chatType === 'auto-checkup2') || (chatType !== 'auto-checkup' && chatType !== 'auto-checkup2' && message !== '')) {
+
             $('.spinner999').css('display', 'block');
             $('#chat-form button').prop('disabled', true);
             $.ajax({

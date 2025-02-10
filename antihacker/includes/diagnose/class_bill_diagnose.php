@@ -9,8 +9,7 @@ if (function_exists('is_multisite') and is_multisite()) {
     return;
 }
 
-
-
+//debug4();
 
 /*
 // >>>>>>>>>>>>>>>> call
@@ -96,8 +95,28 @@ If you need to dive deeper, install the free plugin WPTools, which provides more
 add_action('current_screen', __NAMESPACE__ . '\\add_help_tab_to_screen');
 class ErrorChecker
 {
+    public function __construct()
+    {
+        // Chama a função de enfileiramento de scripts automaticamente ao carregar a classe
+        // add_action('admin_enqueue_scripts', array($this, 'enqueue_diagnose_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_diagnose_scripts'));
+    }
+
+    public function limparString($string)
+    {
+        return preg_replace('/[[:^print:]]/', '', $string);
+    }
     public function bill_parseDate($dateString, $locale)
     {
+
+
+        if (isset($dateString) && !empty($dateString)) {
+            $dateString = trim($dateString); // Remover espaços extras
+            $dateString = ErrorChecker::limparString($dateString); // Remover caracteres invisíveis
+        } else {
+            return false;
+        }
+
         // Mapeamento de formatos de data por idioma
         $dateFormatsByLanguage = [
             'pt' => 'd/m/Y', // 31/12/2024 (Português)
@@ -109,10 +128,18 @@ class ErrorChecker
         ];
         // Extrai o código de idioma do locale (ex: 'pt_BR' -> 'pt')
         $language = substr($locale, 0, 2);
+        // debug4($language);
+
         // Obtém o formato de data correspondente ao idioma
         $format = $dateFormatsByLanguage[$language] ?? 'Y-m-d'; // Fallback para um formato padrão
         // Tenta criar o DateTime com o formato correspondente
+
+        // debug4($format);
+
         $date = \DateTime::createFromFormat($format, $dateString);
+
+        // debug4($date);
+
         if ($date !== false) {
             return $date;
         }
@@ -128,7 +155,10 @@ class ErrorChecker
         ];
         foreach ($possibleFormats as $format) {
             $date = \DateTime::createFromFormat($format, $dateString);
+            // debug4($date);
+            // debug4($format);
             if ($date !== false) {
+                // debug4($date);
                 return $date;
             }
         }
@@ -136,6 +166,19 @@ class ErrorChecker
         // throw new \Exception("Falha ao parsear a data: " . $dateString);
         return false;
     }
+    public function enqueue_diagnose_scripts()
+    {
+        wp_enqueue_script('jquery-ui-accordion'); // Enfileira o jQuery UI Accordion
+
+        wp_enqueue_script(
+            'diagnose-script',
+            plugin_dir_url(__FILE__) . 'diagnose.js',
+            array('jquery', 'jquery-ui-accordion'),
+            '',
+            true
+        );
+    }
+
     public function bill_check_errors_today($num_days, $filter = null)
     {
         // return true;
@@ -148,7 +191,20 @@ class ErrorChecker
         if (!is_null($error_log_path) and $error_log_path != trim(ABSPATH . "error_log")) {
             $bill_folders[] = $error_log_path;
         }
+
+
+
         $bill_folders[] = ABSPATH . "error_log";
+
+
+
+
+
+
+
+
+
+
         $bill_folders[] = ABSPATH . "php_errorlog";
         $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
         $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";
@@ -160,7 +216,50 @@ class ErrorChecker
             ABSPATH,
             get_admin_url()
         );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $bill_folders[] = $bill_admin_path . "/error_log";
+
+
+
+
+
+
+
+
+
+
+
+
+
         $bill_folders[] = $bill_admin_path . "/php_errorlog";
         $bill_folders[] = WP_CONTENT_DIR . "/debug.log";
         // Adicionar diretórios de plugins
@@ -195,16 +294,20 @@ class ErrorChecker
             '/\d{4}\/\d{2}\/\d{2}/',         // YYYY/MM/DD (ex: 2024/12/31)
         ];
 
-    
+
         // Obtém o locale do WordPress
         $locale = get_locale(); // Exemplo: 'pt_BR', 'en_US', etc.
         $language = substr($locale, 0, 2); // Extrai o código de idioma (ex: 'pt', 'en')
         // Itera sobre as pastas de faturas
         foreach ($bill_folders as $bill_folder) {
             if (!empty($bill_folder) && file_exists($bill_folder) && filesize($bill_folder) > 0) {
+
+                //debug4($bill_folder);
+
                 $bill_count++;
                 $marray = $this->bill_read_file($bill_folder, 20);
                 if (is_array($marray) && !empty($marray)) {
+                    // debug4($marray);
                     foreach ($marray as $line) {
                         if (empty($line)) {
                             continue;
@@ -221,17 +324,30 @@ class ErrorChecker
                                 try {
                                     // Usa a função parseDate para interpretar a data
                                     // $date = bill_parseDate($matches[0], $locale);
+
+                                    // debug4($matches[0]);
+                                    // debug4($locale);
+
+
+
                                     $date = $this->bill_parseDate($matches[0], $locale);
 
-                                    if (!$date)
-                                        return false;
+                                    // debug4($date);
+
+                                    if (!$date) {
+                                        continue;
+                                    }
+                                    // >>>>>>>>>>>>>>>  mudar todos
+                                    //    return false;
+
+                                    // debug4($date);
                                     // Verifica se a data é anterior ao limite
                                     // debug2($date);
                                     if ($date < $dateThreshold) {
                                         // debug2('Antiga');
-                                        // debug2("Data antiga encontrada: " . $date->format('Y-m-d'));
+                                        // debug4("Data antiga encontrada: " . $date->format('Y-m-d'));
                                     } else {
-                                        // debug2('Data Nova encontrada');
+                                        // debug4('Data Nova encontrada');
                                         return true;
                                     }
                                 } catch (Exception $e) {
@@ -339,12 +455,12 @@ class MemoryChecker
                 $wpmemory["msg_type"] = "notok";
                 return $wpmemory;
             }
-            // Check if WP_MEMORY_LIMIT is defined
+            // Check if antihacker_LIMIT is defined
             if (!defined("WP_MEMORY_LIMIT")) {
                 $wpmemory["wp_limit"] = 40; // Default value of 40M
             } else {
-                $wp_memory_limit = WP_MEMORY_LIMIT;
-                $wpmemory["wp_limit"] = (int) $wp_memory_limit;
+                $antihacker_limit = WP_MEMORY_LIMIT;
+                $wpmemory["wp_limit"] = (int) $antihacker_limit;
             }
             // Calculate the percentage of memory usage
             $wpmemory["percent"] = $wpmemory["usage"] / $wpmemory["wp_limit"];
@@ -368,7 +484,6 @@ class MemoryChecker
 class antihacker_Bill_Diagnose
 {
     protected $global_plugin_slug;
-    
     private static $instance = null;
     private $notification_url;
     private $notification_url2;
@@ -387,8 +502,7 @@ class antihacker_Bill_Diagnose
 
 
 
-
-        //  \debug3($this->global_variable_has_errors);
+        //debug4($this->global_variable_has_errors);
 
 
         // NOT same class
@@ -399,6 +513,7 @@ class antihacker_Bill_Diagnose
         add_action("admin_notices", [$this, "show_dismissible_notification"]);
         //add_action("admin_notices", [$this, "show_dismissible_notification2"]);
         // 2024
+        // debug4($this->global_variable_has_errors);
         if ($this->global_variable_has_errors) {
             add_action("admin_bar_menu", [$this, "add_site_health_link_to_admin_toolbar"], 999);
             // debug2('global_variable_has_errors');
@@ -407,7 +522,7 @@ class antihacker_Bill_Diagnose
         $memory = $this->global_variable_memory;
         if (
             $memory["free"] < 30 or
-            $memory["percent"] > 85 or
+            $memory["percent"] > 0.85 or
             $this->global_variable_has_errors
         ) {
             add_filter("site_health_navigation_tabs", [
@@ -481,7 +596,7 @@ class antihacker_Bill_Diagnose
             return;
         }
         $memory = $this->global_variable_memory;
-        if ($memory["free"] > 30 and $wpmemory["percent"] < 85) {
+        if ($memory["free"] > 30 and $wpmemory["percent"] < 0.85) {
             return;
         }
         $message = esc_attr__("Our plugin", 'antihacker');
@@ -537,7 +652,7 @@ class antihacker_Bill_Diagnose
             return;
         } ?>
         <div class="wrap health-check-body, privacy-settings-body">
-            <p style="border: 1px solid #000; padding: 10px;">
+            <p style="border: 1px solid red; padding: 10px;">
                 <strong>
                     <?php
                     echo esc_attr__("Displaying the latest recurring errors (Javascript Included) from your error log file and eventually alert about low WordPress memory limit is a courtesy of plugin", 'antihacker');
@@ -551,7 +666,7 @@ class antihacker_Bill_Diagnose
             <!-- chat -->
             <div id="chat-box">
                 <div id="chat-header">
-                    <h2><?php echo esc_attr__("Artificial Intelligence Support Chat for Issues and Solutions", "antihacker"); ?></h2>
+                    <h2><?php echo esc_attr__("Artificial Intelligence Support Chat for Issues and Solutions", "wp-memory"); ?></h2>
                 </div>
                 <div id="gif-container">
                     <div class="spinner999"></div>
@@ -564,71 +679,296 @@ class antihacker_Bill_Diagnose
                         <button type="submit"><?php echo esc_attr__('Send', 'antihacker'); ?></button>
                     </div>
                     <div id="action-instruction" style="text-align: center; margin-top: 10px;">
-                        <span><?php echo esc_attr__("Enter a message and click 'Send', or just click 'Auto Checkup' to analyze the site's error log.", 'antihacker'); ?></span>
+                        <span><?php echo esc_attr__("Enter a message and click 'Send', or just click 'Auto Checkup' to analyze error log ou server info configuration.", 'antihacker'); ?></span>
                     </div>
                     <div class="auto-checkup-container" style="text-align: center; margin-top: 10px;">
+
                         <button type="button" id="auto-checkup">
                             <img src="<?php echo plugin_dir_url(__FILE__) . 'robot2.png'; ?>" alt="" width="35" height="30">
-                            <?php echo esc_attr__('Auto Checkup', 'antihacker'); ?>
+                            <?php echo esc_attr__('Auto Checkup for Errors', 'antihacker'); ?>
                         </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" id="auto-checkup2">
+                            <img src="<?php echo plugin_dir_url(__FILE__) . 'robot2.png'; ?>" alt="" width="35" height="30">
+                            <?php echo esc_attr__('Auto Checkup Server ', 'antihacker'); ?>
+                        </button>
+
+
                     </div>
                 </form>
             </div>
             <!-- end chat -->
+
+
+            <br>
+
             <h3 style="color: red;">
                 <?php
                 echo esc_attr__("Potential Problems", 'antihacker');
                 ?>
             </h3>
-            <?php
-            $memory = $this->global_variable_memory;
-            $wpmemory = $memory;
-            if ($memory["free"] < 30 or $wpmemory["percent"] > 85) { ?>
-                <h2 style="color: red;">
-                    <?php $message = esc_attr__("Low WordPress Memory Limit", 'antihacker'); ?>
-                </h2>
+
+
+            <!--  // --------------------   Memory   -->
+
+            <div id="accordion2">
                 <?php
-                $mb = "MB";
-                echo "<b>";
-                echo "WordPress Memory Limit: " .
-                    esc_attr($wpmemory["wp_limit"]) .
-                    esc_attr($mb) .
-                    "&nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;";
-                $perc = $wpmemory["usage"] / $wpmemory["wp_limit"];
-                if ($perc > 0.7) {
-                    echo '<span style="color:' . esc_attr($wpmemory["color"]) . ';">';
-                }
-                echo esc_attr__("Your usage now", 'antihacker') .
-                    ": " .
-                    esc_attr($wpmemory["usage"]) .
-                    "MB &nbsp;&nbsp;&nbsp;";
-                if ($perc > 0.7) {
-                    echo "</span>";
-                }
-                echo "|&nbsp;&nbsp;&nbsp;" .
-                    esc_attr__("Total Php Server Memory", 'antihacker') .
-                    " : " .
-                    esc_attr($wpmemory["limit"]) .
-                    "MB";
-                echo "</b>";
-                echo "</center>";
-                echo "<hr>";
-                $free = $wpmemory["wp_limit"] - $wpmemory["usage"];
-                echo '<p>';
-                echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'antihacker');
-                echo '</b>';
+                $memory = $this->global_variable_memory;
+                $wpmemory = $memory;
+                if ($memory["free"] < 30 || $wpmemory["percent"] > 0.85) {
                 ?>
-                </b>
-                <a href="https://wpmemory.com/fix-low-memory-limit/">
-                    <?php
-                    echo esc_attr__("Learn More", 'antihacker');
-                    ?>
-                </a>
-                </p>
-                <br>
+                    <!-- Título da seção -->
+                    <h2 style="color: red;">
+                        <?php echo esc_attr__("Low WordPress Memory Limit (click to open)", 'antihacker'); ?>
+                    </h2>
+
+                    <!-- Conteúdo da seção -->
+                    <div>
+                        <b>
+                            <?php
+                            $mb = "MB";
+                            echo "WordPress Memory Limit: " . esc_attr($wpmemory["wp_limit"]) . esc_attr($mb) .
+                                "&nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;";
+                            $perc = $wpmemory["usage"] / $wpmemory["wp_limit"];
+                            if ($perc > 0.7) {
+                                echo '<span style="color:' . esc_attr($wpmemory["color"]) . ';">';
+                            }
+                            echo esc_attr__("Your usage now", 'antihacker') . ": " . esc_attr($wpmemory["usage"]) . "MB &nbsp;&nbsp;&nbsp;";
+                            if ($perc > 0.7) {
+                                echo "</span>";
+                            }
+                            echo "|&nbsp;&nbsp;&nbsp;" . esc_attr__("Total Php Server Memory", 'antihacker') . " : " . esc_attr($wpmemory["limit"]) . "MB";
+                            ?>
+                        </b>
+                        <hr>
+                        <?php
+                        $free = $wpmemory["wp_limit"] - $wpmemory["usage"];
+                        echo '<p>';
+                        echo esc_attr__("Your WordPress Memory Limit is too low, which can lead to critical issues on your site due to insufficient resources. Promptly address this issue before continuing.", 'antihacker');
+                        echo '</p>';
+                        ?>
+                        <a href="https://wpmemory.com/fix-low-memory-limit/">
+                            <?php echo esc_attr__("Learn More", 'antihacker'); ?>
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+
             <?php
+            // --------------------   End Memory
+
+
+            /* --------------------- PAGE LOAD -----------------------------*/
+
+
+
+            function wptools_check_page_load()
+            {
+                global $wpdb;
+                $table_name = $wpdb->prefix . 'wptools_page_load_times';
+
+
+                if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+                    $charset_collate = $wpdb->get_charset_collate();
+                    $sql = "CREATE TABLE $table_name (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            page_url VARCHAR(255) NOT NULL,
+            load_time FLOAT NOT NULL,
+            timestamp DATETIME NOT NULL
+            ) $charset_collate;";
+                    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+                    dbDelta($sql);
+                    // echo var_export($sql);
+                }
+
+                $query = "SELECT DATE(timestamp) AS date, AVG(load_time) AS average_load_time
+            FROM $table_name
+            WHERE timestamp >= CURDATE() - INTERVAL 6 DAY
+            AND NOT page_url LIKE 'wp-admin'
+            GROUP BY DATE(timestamp)
+            ORDER BY date";
+
+                $results9 = $wpdb->get_results($query, ARRAY_A);
+
+                if ($results9) {
+                    $total = count($results9);
+                    if ($total < 1) {
+                        $wptools_empty = true;
+                        return false;
+                    }
+                } else {
+                    $wptools_empty = true;
+                    return false;
+                }
+
+
+
+                // Calcula a média
+                $total = 0;
+                $count = 0;
+
+                foreach ($results9 as $entry) {
+                    $total += (float)$entry['average_load_time'];
+                    $count++;
+                }
+
+                $average = $total / $count;
+                $roundedAverage = round($average); // Arredonda para o número mais próximo
+                return $roundedAverage;
             }
-            // end block memory...
+
+
+            $average  = wptools_check_page_load();
+
+            // $average = 7;
+
+
+            // echo '<br>';
+
+            //Excelente: Menos de 2 segundos
+            //Bom: Entre 2 e 3 segundos
+            //Regular: Entre 3 e 5 segundos
+            //Pobre: Entre 5 e 8 segundos
+            //Muito pobre: Mais de 8 segundos
+
+
+            if ($average > 5) {
+                echo '<br>';
+
+                echo '<div id="accordion1">';
+
+                // echo '<hr>';
+
+                echo '<h2 style="color: red;">';
+
+                // Determina a mensagem com base na média
+                if ($average <= 8) {
+                    $message = esc_html__("The page load time is poor (click to open)", "antihacker");
+                } else {
+                    $message = esc_html__("The page load time is very poor (click to open)", "antihacker");
+                }
+
+                echo $message; // Exibe a mensagem diretamente
+
+                echo '</h2>';
+
+                echo '<div>';
+
+                //  if ($average > 5) {
+                // Exibe as informações quando a média for maior que 5
+                echo esc_html__("The Load average of your front pages is: ", "antihacker");
+                echo esc_html($average);
+                echo '<br>';
+                echo esc_html__("Loading time can significantly impact your SEO.", "antihacker");
+                echo '<br>';
+                echo esc_html__("Many users will abandon the site before it fully loads.", "antihacker");
+                echo '<br>';
+                echo esc_html__("Search engines prioritize faster-loading pages, as they improve user experience and reduce bounce rates.", "antihacker");
+                //}
+                echo '<br>';
+                echo '<br>';
+                echo '<strong>';
+                echo esc_html__("Suggestions:", "antihacker") . '<br>';
+                echo '</strong>';
+                echo esc_html__("Block bots: They overload the server and steal your content. Install our free plugin Antihacker.", "antihacker") . '<br>';
+                echo esc_html__("Protect against hackers: They use bots to search for vulnerabilities and overload the server. Install our free plugin AntiHacker", "antihacker") . '<br>';
+
+                echo esc_html__("Check your site for errors with free plugin wpTools. Errors and warnings can increase page load time by being recorded in log files, consuming resources and slowing down performance.", "antihacker");
+                echo '<br>';
+
+                echo '<br>';
+                echo '<a href="https://wptoolsplugin.com/page-load-times-and-their-negative-impact-on-seo/">';
+                echo esc_html__("Learn more about Page Load Times and their negative impact on SEO and more", "antihacker") . "...";
+                echo "</a>";
+
+                // echo '<hr>';
+                // echo '<br>';
+                echo '</div>';
+
+                echo '</div>'; // end accordion
+
+                //  echo '<br>';
+            }
+
+
+            /* --------------------- End PAGE LOAD -----------------------------*/
+
+
+
+
+            // -----------------Plugins -----------------------
+
+
+
+            $updates = get_plugin_updates();
+            $muplugins = get_mu_plugins();
+            $plugins = get_plugins();
+            $active_plugins = get_option('active_plugins', array());
+
+            $return = '';
+
+            // Verifica se há atualizações disponíveis
+            $update_plugins = array_filter($plugins, function ($plugin_path) use ($updates) {
+                return array_key_exists($plugin_path, $updates);
+            }, ARRAY_FILTER_USE_KEY);
+
+            // Se houver plugins com atualização, inicializa o acordeão
+            if (count($update_plugins) > 0) {
+
+                echo '<br>';
+
+                echo '<div id="accordion3">';
+                //echo '<hr>';
+                echo '<h2 style="color: red;">Plugins with Updates Available (click to open)</h2>';
+                echo '<div>';
+
+                esc_attr_e("Keeping your plugins up to date is crucial for ensuring security, performance, and compatibility with the latest features and improvements.", "antihacker");
+                echo '<br>';
+                echo '<strong>';
+                esc_attr_e("Our free AntiHacker plugin can even check for abandoned plugins that you are using, as these plugins may no longer receive security updates, leaving your site vulnerable to attacks and potential exploits, which can compromise your site's integrity and data.", "antihacker");
+                echo '<strong>';
+                echo '<hr>';
+                foreach ($update_plugins as $plugin_path => $plugin) {
+                    // Obtém a versão do plugin e a versão da atualização disponível
+                    $update_version = $updates[$plugin_path]->update->new_version;
+
+                    // Obtém a URL do plugin (caso exista)
+                    $plugin_url = '';
+                    if (!empty($plugin['PluginURI'])) {
+                        $plugin_url = $plugin['PluginURI'];
+                    } elseif (!empty($plugin['AuthorURI'])) {
+                        $plugin_url = $plugin['AuthorURI'];
+                    } elseif (!empty($plugin['Author'])) {
+                        $plugin_url = $plugin['Author'];
+                    }
+                    if ($plugin_url) {
+                        $plugin_url = "\n" . $plugin_url;
+                    }
+
+                    // Exibe as informações do plugin
+                    // echo '<div>';
+                    echo $plugin['Name'] . ': ' . $plugin['Version'] . ' (Update Available - ' . $update_version . ')' . $plugin_url;
+                    echo '<br>';
+
+                    // echo '</div>';
+                }
+
+
+                echo '</div>';
+
+                //echo '<hr>';
+                echo '</div>';  // Fecha o acordeão
+            } else {
+                // echo '<p>No plugins require updates at the moment.</p>';
+            }
+
+
+            // -----------------END Plugins -----------------------
+
+
+
+
+
             // Errors ...
             if ($this->global_variable_has_errors) { ?>
                 <h2 style="color: red;">
@@ -656,7 +996,47 @@ class antihacker_Bill_Diagnose
                 ) {
                     $bill_folders[] = $error_log_path;
                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 $bill_folders[] = ABSPATH . "error_log";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 $bill_folders[] = ABSPATH . "php_errorlog";
                 $bill_folders[] = plugin_dir_path(__FILE__) . "/error_log";
                 $bill_folders[] = plugin_dir_path(__FILE__) . "/php_errorlog";

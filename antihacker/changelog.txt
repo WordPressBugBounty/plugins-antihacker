@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.44 25-02-10 Improved Error Management.
+
 5.43 25-01-21 Remove blank spaces on ativation.
 
 5.42 25-01-20 Clean Hook when deinstall.

@@ -114,7 +114,8 @@
     cursor: pointer;
 }
 
-#auto-checkup {
+#auto-checkup,
+#auto-checkup2 {
     display: flex;
     align-items: center;
     /* Alinha a imagem e o texto verticalmente */

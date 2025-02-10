@@ -62,6 +62,8 @@ for ($i = 0; $i < $wnum; $i++)
  // For site options in Multisite
  delete_site_option( $antihacker_option_name[$i] );    
 }
+
+/*
 // Drop a custom db table
 global $wpdb;
 $current_table = $wpdb->prefix . 'ah_stats';
@@ -82,6 +84,36 @@ $current_table = $wpdb->prefix . "ah_rules";
 $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
 $current_table = $wpdb->prefix . 'wptools_page_load_times';
 $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
+*/
+
+global $wpdb;
+
+$antihacker_tables = [
+    'ah_stats',
+    'ah_blockeds',
+    'ah_visitorslog',
+    'ah_fingerprint',
+    'ah_tor',
+    'ah_scan_files',
+    'ah_scan',
+    'ah_rules',
+    'wptools_page_load_times'
+];
+
+foreach ($antihacker_tables as $table) {
+    try {
+        $current_table = $wpdb->prefix . $table;
+        $drop_result = $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
+        
+        if ( false === $drop_result ) {
+           // throw new Exception("Falha ao tentar excluir a tabela: $current_table");
+        }
+    } catch (Exception $e) {
+        // Ignore o erro ou registre uma mensagem personalizada
+        // error_log($e->getMessage());  // Opcional: descomente se quiser registrar o erro
+    }
+}
+
 
 register_deactivation_hook(__FILE__, 'antihacker_deactivation');
 
@@ -91,4 +123,50 @@ wp_clear_scheduled_hook('antihacker_cron_hook2');
 
 wp_clear_scheduled_hook('antihacker_cron_event_plugins_scan');
 
-?>
+
+
+
+
+
+/*
+[ 27-Jan-2025 08:45:03 UTC] 
+WordPress database error DROP command denied to user 
+'galtour1_catering-new'@'localhost' 
+for table `galtour1_catering-new`.`dcgl_ah_rules` 
+for query 
+DROP TABLE IF EXISTS dcgl_ah_rules 
+made by require('/usr/local/cpanel/3rdparty/wp-toolkit/plib/vendor/wp-cli/
+wpt-wp-cli.php'), 
+require_once('/usr/local/cpanel/3rdparty/wp-toolkit/plib/vendor/wp-cli/
+vendor/wp-cli/wp-cli/php/boot-fs.php'), 
+require_once('/usr/local/cpanel/3rdparty/wp-toolkit/plib/vendor/wp-cli/vendor
+/wp-cli/wp-cli/php/wp-cli.php'), WP_CLIbootstrap, 
+WP_CLIBootstrapLaunchRunner->process, WP_CLIRunner->start, 
+WP_CLIRunner->run_command_and_exit, WP_CLIRunner->run_command, 
+WP_CLIDispatcherSubcommand->invoke, call_user_func, 
+WP_CLIDispatcherCommandFactory::WP_CLIDispatcher{closure}, 
+call_user_func, Plugin_Command->
+uninstall, uninstall_plugin, include_once('/plugins/antihacker/uninstall.php')","
+*/
+
+$plugin_name = 'bill-catch-errors.php'; // Name of the plugin file to be removed
+
+// Retrieve all must-use plugins
+$wp_mu_plugins = get_mu_plugins();
+
+// MU-Plugins directory
+$mu_plugins_dir = WPMU_PLUGIN_DIR;
+
+if (isset($wp_mu_plugins[$plugin_name])) {
+    // Get the plugin's destination path
+    $destination = $mu_plugins_dir . '/' . $plugin_name;
+
+    // Attempt to remove the plugin
+    if (!unlink($destination)) {
+        // Log the error if the file could not be deleted
+        error_log("Error removing the plugin file from the MU-Plugins directory: $destination");
+    } else {
+        // Optionally, log success if the plugin is removed successfully
+        // error_log("Successfully removed the plugin file: $destination");
+    }
+}
