@@ -484,7 +484,7 @@ class antihacker_Bill_Diagnose
         //$this->global_variable_has_errors = $this->bill_check_errors_today();
         $errorChecker = new ErrorChecker(); //
         //
-        $this->global_variable_has_errors  = $errorChecker->bill_check_errors_today(1);
+        $this->global_variable_has_errors  = $errorChecker->bill_check_errors_today(3);
 
 
 
