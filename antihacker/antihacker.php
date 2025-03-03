@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.48
+version: 5.49
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -1664,16 +1664,21 @@ add_action("init", "antihacker_bill_hooking_diagnose", 10);
 
 function antihacker_bill_hooking_catch_errors()
 {
+  global $antihacker_is_admin;
   global $antihacker_plugin_slug;
 
-  $declared_classes = get_declared_classes();
-  foreach ($declared_classes as $class_name) {
-    if (strpos($class_name, "bill_catch_errors") !== false) {
-      return;
-    }
-  }
+	if (!function_exists("bill_check_install_mu_plugin")) {
+		require_once dirname(__FILE__) . "/includes/catch-errors/bill_install_catch_errors.php";
+	}
+
+	$declared_classes = get_declared_classes();
+	foreach ($declared_classes as $class_name) {
+		if (strpos($class_name, "bill_catch_errors") !== false) {
+			return;
+		}
+	}
   $antihacker_plugin_slug = 'antihacker';
-  require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
+	require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
 }
 add_action("init", "antihacker_bill_hooking_catch_errors", 15);
 // ---------------------------
