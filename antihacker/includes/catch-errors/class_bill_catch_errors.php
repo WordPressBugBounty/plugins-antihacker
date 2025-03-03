@@ -2,7 +2,7 @@
 
 namespace antihacker_BillCatchErrors;
 // created 06/23/23
-// upd: 2023-10-16 -  2024-06-17
+// upd: 2023-10-16 -  2025-02-27
 
 if (!defined("ABSPATH")) {
     die("Invalid request.");
@@ -11,49 +11,49 @@ if (function_exists('is_multisite') and is_multisite()) {
     return;
 }
 
-
-// return;
-
-
-
+//die(var_dump(__LINE__));
 
 /*
 call it
-function antihacker_bill_hooking_catch_errors()
+function wpmemory_bill_hooking_catch_errors()
 {
-        if (function_exists('is_admin') && function_exists('current_user_can')) {
-            if(is_admin() and current_user_can("manage_options")){
-                $declared_classes = get_declared_classes();
-                foreach ($declared_classes as $class_name) {
-                    if (strpos($class_name, "bill_catch_errors") !== false) {
-                        return;
-                    }
-                }
-                require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
-            }
-        }
-}
-add_action("init", "antihacker_bill_hooking_catch_errors",15);
+	global $wpmemory_is_admin;
+	global $wpmemory_plugin_slug;
 
+		require_once dirname(__FILE__) . "/includes/catch-errors/bill_install_catch_errors.php";
+		$declared_classes = get_declared_classes();
+		foreach ($declared_classes as $class_name) {
+			if (strpos($class_name, "bill_catch_errors") !== false) {
+				return;
+			}
+		}
+		$wpmemory_plugin_slug = 'wp-memory';
+		require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
+}
+add_action("init", "wpmemory_bill_hooking_catch_errors", 15);
 */
 
-/*
+
+
+
+
+
 if (file_exists(WPMU_PLUGIN_DIR . '/bill-catch-errors.php')) {
     return;
 }
-    */
 
 
 
-$plugin_file_path = ABSPATH . 'wp-admin/includes/plugin.php';
-if (file_exists($plugin_file_path)) {
-    include_once($plugin_file_path);
+
+$plugin_file_path1 = ABSPATH . 'wp-admin/includes/plugin.php';
+if (file_exists($plugin_file_path1)) {
+    include_once($plugin_file_path1);
 }
 
 /*
     if (function_exists('is_plugin_active')){
         $bill_plugins_to_check = array(
-            'antihacker/antihacker.php',  
+            'wp_memory/wp_memory.php',  
         );
         foreach ($bill_plugins_to_check as $plugin_path) {
             if (is_plugin_active($plugin_path)) 
@@ -65,164 +65,100 @@ if (file_exists($plugin_file_path)) {
 
 // debug4();
 
-$plugin_name = 'bill-catch-errors.php';
-
-// Retrieve all must-use plugins
-$wp_mu_plugins = get_mu_plugins();
-
-// Check if the plugin exists in the list of mu-plugins
-
-if (isset($wp_mu_plugins[$plugin_name])) {
-    //debug4();
-
-    // Get the plugin's data
-    $plugin_data = $wp_mu_plugins[$plugin_name];
-    $plugin_version = $plugin_data['Version'];
-
-
-    // Check the version
-
-    if (version_compare($plugin_version, '1.4', '>=')) {
-        // A versão do plugin é 1.4 ou superior
-        // nada a fazer, deixa rolar...
-        return;
-    }
-} else {
-    //debug4();
-
-    //debug4('The Bill Catch Errors plugin is not installed or loaded.');
-    bill_install_mu_plugin();
-    return;
-}
-
-function bill_install_mu_plugin()
-{
-    //debug4();
-
-    $plugin_file = 'bill-catch-errors.php';
-    //'bill-catch-errors.php'; // Name of the plugin file to be copied
-    $antihacker_mu_plugin_dir = WP_PLUGIN_DIR . '/antihacker/includes/mu-plugins'; // Current path inside antihacker
-    $mu_plugins_dir = WPMU_PLUGIN_DIR; // MU-Plugins directory
-
-
-    try {
-        // Check if the MU-Plugins directory exists
-        if (!is_dir($mu_plugins_dir)) {
-            // Try to create the directory with the appropriate permissions
-            if (!mkdir($mu_plugins_dir, 0755, true)) {
-                error_log("Unable to create the MU-Plugins directory: " . $mu_plugins_dir);
-            }
-        }
-
-        // Check if the MU-Plugins directory is readable and writable
-        if (!is_readable($mu_plugins_dir) || !is_writable($mu_plugins_dir)) {
-            error_log("The MU-Plugins directory does not have the appropriate permissions: " . $mu_plugins_dir);
-        }
-
-        // Define the plugin file path in the antihacker directory
-        $source = $antihacker_mu_plugin_dir . '/' . $plugin_file;
-        $destination = $mu_plugins_dir . '/' . $plugin_file;
-
-        //debug4($source);
-        //debug4($destination);
-
-        // Check if the plugin file exists in the source directory
-        if (!file_exists($source)) {
-            error_log("The plugin file was not found in the source directory: " . $source);
-        }
-
-        // Copy the plugin file to the MU-Plugins directory
-        if (!copy($source, $destination)) {
-            error_log("Unable to copy the plugin file to the MU-Plugins directory: " . $destination);
-        }
-
-        // Success
-
-
-        return true;
-    } catch (Exception $e) {
-        // Log the error
-        error_log("Error copying the plugin file to the MU-Plugins directory: " . $e->getMessage());
-        return false;
-    }
-}
 
 
 add_action("wp_ajax_bill_minozzi_js_error_catched", "antihacker_BillCatchErrors\\bill_minozzi_js_error_catched");
 add_action("wp_ajax_nopriv_bill_minozzi_js_error_catched", "antihacker_BillCatchErrors\\bill_minozzi_js_error_catched");
+
+
+//die(var_dump(__LINE__));
+
+
 function bill_minozzi_js_error_catched()
 {
-    global $antihacker_plugin_slug;
-    if (isset($_REQUEST)) {
-        if (!isset($_REQUEST["bill_js_error_catched"])) {
-            die("empty error");
-        }
-        if (
-            !wp_verify_nonce(
-                sanitize_text_field($_POST["_wpnonce"]),
-                "bill-catch-js-errors"
-            )
-        ) {
-            status_header(406, "Invalid nonce");
-            die();
-        }
-        $bill_js_error_catched = sanitize_text_field(
-            $_REQUEST["bill_js_error_catched"]
-        );
-        $bill_js_error_catched = trim($bill_js_error_catched);
-        // Split the error message
-        $errors = explode(" | ", $bill_js_error_catched);
-        foreach ($errors as $error) {
-            // Explode the error message into parts
-            $parts = explode(" - ", $error);
-            if (count($parts) < 3) {
-                continue;
-            }
-            $errorMessage = $parts[0];
-            $errorURL = $parts[1];
-            $errorLine = $parts[2];
-            $logMessage = "Javascript " . $errorMessage . " - " . $errorURL . " - " . $errorLine;
-            $date_format = get_option('date_format', '');
+    // global $wp_memory_plugin_slug;
 
-
-            if (!empty($date_format)) {
-                $formattedMessage = "[" . date_i18n($date_format) . ' ' . date('H:i:s') . "] - " . $logMessage;
-            } else {
-                $formattedMessage = "[" . date('M-d-Y H:i:s') . "] - " . $logMessage;
-            }
-
-
-            $logFile =  trailingslashit(ABSPATH) . 'error_log';
-            if (!file_exists(dirname($logFile))) {
-                mkdir(dirname($logFile), 0755, true);
-            }
-            $log_error = true;
-            if (!function_exists('error_log')) {
-                $log_error = false;
-            }
-            if ($log_error) {
-
-                if ($antihacker_plugin_slug  == 'antihacker')
-                    antihackerErrorHandler('Javascript', $errorMessage, $errorURL, $errorLine);
-
-                if (error_log("\n" . $formattedMessage, 3, $logFile)) {
-                    $ret_error_log = true;
-                } else {
-                    $ret_error_log = false;
-                }
-            }
-            if (!$ret_error_log or !$log_error) {
-                $formattedMessage = PHP_EOL . $formattedMessage;
-                $r = file_put_contents($logFile, $formattedMessage, FILE_APPEND | LOCK_EX);
-                if (!$r) {
-                    $timestamp_string = strval(time());
-                    update_option('bill_minozzi_error_log_status', $timestamp_string);
-                }
-            }
-        }
-        die("OK!");
+    if (!isset($_REQUEST) || !isset($_REQUEST["bill_js_error_catched"])) {
+        die("empty error");
     }
-    die("NOT OK!");
+    if (!wp_verify_nonce(sanitize_text_field($_POST["_wpnonce"]), "bill-catch-js-errors")) {
+        status_header(406, "Invalid nonce");
+        die();
+    }
+
+    $bill_js_error_catched = sanitize_text_field($_REQUEST["bill_js_error_catched"]);
+    $bill_js_error_catched = trim($bill_js_error_catched);
+    if (empty($bill_js_error_catched)) {
+        die("empty error");
+    }
+
+    // Split the error message
+    $errors = explode(" | ", $bill_js_error_catched);
+
+    // Configuração do arquivo de log (fora do loop)
+    $logFile = ini_get("error_log");
+    if (!empty($logFile)) {
+        $logFile = trim($logFile);
+    }
+    if (empty($logFile)) {
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            $logFile = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
+        } else {
+            $logFile = trailingslashit(ABSPATH) . 'error_log';
+        }
+    }
+
+    $dir = dirname($logFile);
+    if (!file_exists($dir)) {
+        if (!mkdir($dir, 0755, true)) {
+            wp_die("Folder doesn't exist and unable to create: " . $dir);
+        }
+    }
+    if (!is_writable($dir) || !is_readable($dir)) {
+        if (!chmod($dir, 0755)) {
+            wp_die("Log file directory does not have adequate permissions: " . $dir);
+        }
+        if (!is_writable($dir) || !is_readable($dir)) {
+            wp_die("Log file directory does not have adequate permissions (2): " . $dir);
+        }
+    }
+
+    // Loop para gravar os erros
+    foreach ($errors as $error) {
+        $parts = explode(" - ", $error);
+        if (count($parts) < 3) {
+            continue;
+        }
+        $errorMessage = $parts[0];
+        $errorURL = $parts[1];
+        $errorLine = $parts[2];
+        $logMessage = "Javascript " . $errorMessage . " - " . $errorURL . " - " . $errorLine;
+
+        /*
+        $date_format = get_option('date_format', '');
+        if (!empty($date_format)) {
+            $formattedMessage = "[" . date_i18n($date_format) . ' ' . date('H:i:s') . "] - " . $logMessage;
+        } else {
+            $formattedMessage = "[" . date('M-d-Y H:i:s') . "] - " . $logMessage;
+        }
+        */
+        //$default_format = 'Y-m-d H:i:s';
+        $formattedMessage = "[" . date('Y-m-d H:i:s') . "] - " . $logMessage;
+
+        $formattedMessage .= PHP_EOL;
+
+        if (error_log($formattedMessage, 3, $logFile)) {
+            $ret_error_log = true;
+        } else {
+            $r = file_put_contents($logFile, $formattedMessage, FILE_APPEND | LOCK_EX);
+            if (!$r) {
+                $timestamp_string = strval(time());
+                update_option('bill_minozzi_error_log_status', $timestamp_string);
+            }
+        }
+    }
+
+    die("OK!");
 }
 class antihacker_bill_catch_errors
 {
@@ -237,14 +173,19 @@ class antihacker_bill_catch_errors
         $ajax_url = esc_js($this->get_ajax_url()) . "?action=bill_minozzi_js_error_catched&_wpnonce=" . $nonce;
 ?>
         <script>
+            // console.log("Linha 192");
+            // alert();
+
             var errorQueue = [];
-            var timeout;
+            let timeout;
+            var errorMessage = '';
 
             function isBot() {
-                const bots = ['bot', 'googlebot', 'bingbot', 'facebook', 'slurp', 'twitter', 'yahoo'];
+                const bots = ['crawler', 'spider', 'baidu', 'duckduckgo', 'bot', 'googlebot', 'bingbot', 'facebook', 'slurp', 'twitter', 'yahoo'];
                 const userAgent = navigator.userAgent.toLowerCase();
                 return bots.some(bot => userAgent.includes(bot));
             }
+            /*
             window.onerror = function(msg, url, line) {
                 var errorMessage = [
                     'Message: ' + msg,
@@ -264,6 +205,72 @@ class antihacker_bill_catch_errors
                     timeout = setTimeout(sendErrorsToServer, 5000);
                 }
             }
+                */
+
+
+            // Captura erros síncronos e alguns assíncronos
+
+
+
+
+            window.addEventListener('error', function(event) {
+
+                // errorMessage = '';
+
+                var msg = event.message;
+                if (msg === "Script error.") {
+                    console.error("Script error detected - maybe problem cross-origin");
+                    return;
+                }
+                errorMessage = [
+                    'Message: ' + msg,
+                    'URL: ' + event.filename,
+                    'Line: ' + event.lineno
+                ].join(' - ');
+
+
+                //  console.log(errorMessage);
+
+
+
+                if (isBot()) {
+                    return;
+                }
+                errorQueue.push(errorMessage);
+                handleErrorQueue();
+
+                //console.log(errorMessage);
+                //console.log(msg);
+
+
+            });
+
+            // Captura rejeições de promessas
+            window.addEventListener('unhandledrejection', function(event) {
+                errorMessage = 'Promise Rejection: ' + (event.reason || 'Unknown reason');
+                if (isBot()) {
+                    return;
+                }
+                errorQueue.push(errorMessage);
+                handleErrorQueue();
+            });
+
+            /// console.log(msg);
+
+
+            // Função auxiliar para gerenciar a fila de erros
+            function handleErrorQueue() {
+
+                // console.log(errorQueue);
+
+                if (errorQueue.length >= 5) {
+                    sendErrorsToServer();
+                } else {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(sendErrorsToServer, 5000);
+                }
+            }
+
 
             function sendErrorsToServer() {
                 if (errorQueue.length > 0) {

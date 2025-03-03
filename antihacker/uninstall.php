@@ -1,10 +1,11 @@
 <?php
+
 /**
  * @author William Sergio Minossi
  * @copyright 2016
  */
 // If uninstall is not called from WordPress, exit
-if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (!defined('WP_UNINSTALL_PLUGIN')) {
     exit();
 }
 $antihacker_option_name[] = 'my_radio_xml_rpc';
@@ -46,21 +47,20 @@ $antihacker_option_name[] = 'antihacker_update_http_tools';
 $antihacker_option_name[] = 'anti_hacker_last_feedback';
 $antihacker_option_name[] = 'antihacker_optin';
 $antihacker_option_name[] = 'antihacker_show_widget';
-$antihacker_option_name[] ='antihacker_notif_scan';
-$antihacker_option_name[] ='antihacker_notif_level';
-$antihacker_option_name[] ='antihacker_notif_visit';
-$antihacker_option_name[] ='antihacker_last_scan';
-$antihacker_option_name[] ='antihacker_last_plugin_scan';
-$antihacker_option_name[] ='antihacker_last_theme_scan';
-$antihacker_option_name[] ='antihacker_last_theme_update';
-$antihacker_option_name[] ='antihacker_disable_sitemap';
+$antihacker_option_name[] = 'antihacker_notif_scan';
+$antihacker_option_name[] = 'antihacker_notif_level';
+$antihacker_option_name[] = 'antihacker_notif_visit';
+$antihacker_option_name[] = 'antihacker_last_scan';
+$antihacker_option_name[] = 'antihacker_last_plugin_scan';
+$antihacker_option_name[] = 'antihacker_last_theme_scan';
+$antihacker_option_name[] = 'antihacker_last_theme_update';
+$antihacker_option_name[] = 'antihacker_disable_sitemap';
 
 $wnum = count($antihacker_option_name);
-for ($i = 0; $i < $wnum; $i++)
-{
- delete_option( $antihacker_option_name[$i] );
- // For site options in Multisite
- delete_site_option( $antihacker_option_name[$i] );    
+for ($i = 0; $i < $wnum; $i++) {
+    delete_option($antihacker_option_name[$i]);
+    // For site options in Multisite
+    delete_site_option($antihacker_option_name[$i]);
 }
 
 /*
@@ -97,16 +97,17 @@ $antihacker_tables = [
     'ah_scan_files',
     'ah_scan',
     'ah_rules',
-    'wptools_page_load_times'
+    'wptools_page_load_times',
+    'bill_catch_some_bots'
 ];
 
 foreach ($antihacker_tables as $table) {
     try {
         $current_table = $wpdb->prefix . $table;
-        $drop_result = $wpdb->query( "DROP TABLE IF EXISTS $current_table" );
-        
-        if ( false === $drop_result ) {
-           // throw new Exception("Falha ao tentar excluir a tabela: $current_table");
+        $drop_result = $wpdb->query("DROP TABLE IF EXISTS $current_table");
+
+        if (false === $drop_result) {
+            // throw new Exception("Falha ao tentar excluir a tabela: $current_table");
         }
     } catch (Exception $e) {
         // Ignore o erro ou registre uma mensagem personalizada

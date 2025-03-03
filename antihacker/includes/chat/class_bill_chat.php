@@ -5,14 +5,10 @@ namespace antihacker_BillChat;
 if (!defined('ABSPATH')) {
     die('Invalid request.');
 }
-
 if (function_exists('is_multisite') && is_multisite()) {
     return;
 }
 
-
-
-//debug3();
 class ChatPlugin
 {
     public function __construct()
@@ -59,14 +55,11 @@ class ChatPlugin
     /**
      * Função para carregar as mensagens do chat.
      */
-
-
     public function bill_chat_load_messages()
     {
         if (ob_get_length()) {
             ob_clean();
         }
-        //\debug3();
         $messages = get_option('chat_messages', []);
         $last_count = isset($_POST['last_count']) ? intval($_POST['last_count']) : 0;
         // Verifica se há novas mensagens
@@ -86,24 +79,19 @@ class ChatPlugin
         ]);
         wp_die();
     }
-
-
     public function bill_chat_load_messages_NEW()
     {
         // Verifica se é uma solicitação AJAX
         if (!wp_doing_ajax()) {
             wp_die('Acesso negado', 403);
         }
-
         $messages = get_option('chat_messages', []);
         $last_count = isset($_POST['last_count']) ? intval($_POST['last_count']) : 0;
-
         // Verifica se há novas mensagens
         $new_messages = [];
         if (count($messages) > $last_count) {
             $new_messages = array_slice($messages, $last_count);
         }
-
         // Retorna as mensagens no formato JSON
         wp_send_json([
             'message_count' => count($messages),
@@ -115,26 +103,61 @@ class ChatPlugin
             }, $new_messages)
         ]);
     }
-
     public function bill_read_file($file, $lines)
     {
+        // Check if the file exists and is readable
+        clearstatcache(true, $file); // Clear cache to ensure current file state
+        if (!file_exists($file) || !is_readable($file)) {
+            return []; // Return empty array in case of error
+        }
+        $text = [];
+        // Check if SplFileObject is available
+        /*
+        if (class_exists('SplFileObject')) {
+            try {
+                // Open the file with SplFileObject (using global namespace)
+                $fileObj = new \SplFileObject($file, 'r');
+                // Move to the end to count total lines
+                $fileObj->seek(PHP_INT_MAX);
+                $totalLines = $fileObj->key(); // Total number of lines (zero-based index)
+                // Calculate the starting line for the last $lines
+                $startLine = max(0, $totalLines - $lines);
+                // Move the pointer to the starting line
+                $fileObj->seek($startLine);
+                // Read lines until the end
+                while (!$fileObj->eof() && count($text) < $lines) {
+                    $line = $fileObj->fgets();
+                    if ($line === false && file_exists($file)) {
+                        usleep(500000); // Wait 0.5 seconds if reading fails
+                        $line = $fileObj->fgets(); // Retry reading the line
+                    }
+                    if ($line !== false) {
+                        $text[] = rtrim($line); // Remove trailing newlines
+                    }
+                }
+            } catch (\Exception $e) {
+                // In case of error, return empty array and log the issue
+                error_log("Error reading $file with SplFileObject: " . $e->getMessage());
+                return [];
+            }
+        } else {
+        */
+        // Fallback to original method with fopen
         $handle = fopen($file, "r");
         if (!$handle) {
-            return "";
+            return [];
         }
-        $bufferSize = 8192; // Tamanho do bloco de leitura (8KB)
-        $text = [];
+        $bufferSize = 8192; // 8KB
         $currentChunk = '';
         $linecounter = 0;
-        // Move para o final do arquivo e começa a leitura para trás
         fseek($handle, 0, SEEK_END);
-        $filesize = ftell($handle); // Tamanho do arquivo
-        // Ajustar bufferSize para o tamanho do arquivo se for menor que 8KB
+        $filesize = ftell($handle);
         if ($filesize < $bufferSize) {
             $bufferSize = $filesize;
         }
         if ($bufferSize < 1) {
-            return "";
+            fclose($handle);
+            return [];
         }
         $pos = $filesize - $bufferSize;
         while ($pos >= 0 && $linecounter < $lines) {
@@ -143,6 +166,10 @@ class ChatPlugin
             }
             fseek($handle, $pos);
             $chunk = fread($handle, $bufferSize);
+            if ($chunk === false && file_exists($file)) {
+                usleep(500000); // Wait 0.5 seconds if reading fails
+                $chunk = fread($handle, $bufferSize); // Retry reading the chunk
+            }
             $currentChunk = $chunk . $currentChunk;
             $linesInChunk = explode("\n", $currentChunk);
             $currentChunk = array_shift($linesInChunk);
@@ -159,6 +186,7 @@ class ChatPlugin
             $text[] = $currentChunk;
         }
         fclose($handle);
+        // }
         return $text;
     }
     /**
@@ -176,8 +204,6 @@ class ChatPlugin
         //$current_date = date('Y-m-d H:i:s'); // Formato da data: Ano-Mês-Dia Hora:Minuto:Segundo
         //set_transient($transient_name, $current_date, DAY_IN_SECONDS); // Transiente com duração de 1 dia
         $bill_chat_erros = '';
-        // \debug3();
-
         try {
             function filter_log_content($content)
             {
@@ -193,56 +219,24 @@ class ChatPlugin
                     return $content;
                 }
             }
-            // Verifica se o WP_DEBUG está ativado
-            if (defined('WP_DEBUG') && WP_DEBUG) {
-                // Caminho para o arquivo de debug do WordPress
-                $file = WP_CONTENT_DIR . "/debug.log";
-                $log_type = "WordPress Debug Log";
-            } else {
-                // Caminho para o error_log padrão do PHP
-                $file = ABSPATH . "error_log";
-                $log_type = "PHP Error Log";
-            }
-            //debug2($log_type);
-            // Verifica se o arquivo existe e é legível
-            if (file_exists($file) && is_readable($file)) {
-                // Lê as últimas 40 linhas do arquivo
-                $bill_chat_erros = $this->bill_read_file($file, 40);
-            } else {
-                $bill_chat_erros = ""; // "Log ($log_type) not found or not readable.";
-            }
-            $bill_chat_erros = filter_log_content($bill_chat_erros);
-            // debug2($bill_chat_erros);
-            // Se $bill_chat_erros estiver vazio e o caminho foi WP_DEBUG, tenta procurar o error_log na raiz
-            if (empty($bill_chat_erros) && defined('WP_DEBUG') && WP_DEBUG) {
-                $file = ABSPATH . "error_log"; // Caminho para o error_log na raiz
-                $log_type = "PHP Error Log";
-                //debug2("Trying to read $log_type at $file");
-                // Verifica se o arquivo existe e é legível
-                if (file_exists($file) && is_readable($file)) {
-                    // Lê as últimas 40 linhas do arquivo
-                    $bill_chat_erros = $this->bill_read_file($file, 40);
-                } else {
-                    $bill_chat_erros = "Log ($log_type) not found or not readable.";
+            $bill_folders = ChatPlugin::get_path_logs();
+            $log_type = "PHP Error Log";
+            $bill_chat_erros = "Log ($log_type) not found or not readable.";
+            foreach ($bill_folders as $bill_folder) {
+                if (!file_exists($bill_folder) && !is_readable($bill_folder)) {
+                    continue;
+                }
+                $returned_bill_chat_erros = $this->bill_read_file($bill_folder, 40);
+                $returned_bill_chat_erros = filter_log_content($returned_bill_chat_erros);
+                $returned_bill_chat_erros = filter_log_content($returned_bill_chat_erros);
+                if (! empty($returned_bill_chat_erros)) {
+                    $bill_chat_erros = $returned_bill_chat_erros;
+                    break;
                 }
             }
         } catch (Exception $e) {
-            // error_log("Error reading the log file: " . $e->getMessage());
             $bill_chat_erros = "An error occurred to read error logs: " . $e->getMessage();
-            //debug2("An error occurred to read error logs: ");
         }
-        //debug2($bill_chat_erros);
-
-        // \debug3($bill_chat_erros);
-
-        if (is_array($bill_chat_erros)) {
-            $bill_chat_erros = filter_log_content($bill_chat_erros);
-        } elseif (is_object($bill_chat_erros)) {
-            // Se $bill_chat_erros for um objeto, você pode convertê-lo para array ou tratar de outra forma
-            // error_log('$bill_chat_erros é um objeto e não pode ser filtrado como array.');
-            $bill_chat_erros = '';
-        }
-        // debug2($bill_chat_erros);
         // Filtra $bill_chat_erros novamente (caso tenha sido modificado)
         //$bill_chat_erros = filter_log_content($bill_chat_erros);
         $plugin_path = plugin_basename(__FILE__); // Retorna algo como "plugin-folder/plugin-file.php"
@@ -252,17 +246,8 @@ class ChatPlugin
         if (empty($bill_chat_erros)) {
             $bill_chat_erros = 'No errors found!';
         }
-        //debug2($bill_chat_erros);
-        // \debug3();
-
         //2025
         $antihacker_checkup = \antihacker_sysinfo_get();
-        //  \debug3( \antihacker_sysinfo_get());
-
-        //\debug3($antihacker_checkup);
-
-
-
         $data2 = [
             'param1' => $data,
             'param2' => $antihacker_checkup,
@@ -286,46 +271,133 @@ class ChatPlugin
             $body = sanitize_text_field(wp_remote_retrieve_body($response));
             $data = json_decode($body, true);
         }
-        //debug2($data);
         if (isset($data['success']) && $data['success'] === true) {
             $message = $data['message'];
         } else {
-            $message = esc_attr__("Error contacting the Artificial Intelligence (API). Please try again later.", "antihacker");
+            $message = esc_attr__("Error contacting the Artificial Intelligence (API). Please try again later.", 'antihacker');
         }
-        // debug2($message);
         return $message;
     }
     /**
      * Função para enviar a mensagem do usuário e obter a resposta do ChatGPT.
      */
-
-
-    public function bill_chat_send_message()
+    public static function get_path_logs()
     {
-        // \debug3();
-        // Captura e sanitiza a mensagem
-        $message = sanitize_text_field($_POST['message']);
+        $bill_folders = [];
+
+        /*
+        $caminho_padrao = realpath(ABSPATH . "error_log");
+        $bill_folders[] = $caminho_padrao;
+        $bill_folders[] = realpath(ABSPATH . "php_errorlog");
+        */
+        /*
+         // PHP error log (defined in php.ini)
+         $error_log_path = trim(ini_get("error_log"));
+         if (!is_null($error_log_path) && $error_log_path != trim(ABSPATH . "error_log")) {
+             $bill_folders[] = $error_log_path;
+         }
+         */
+        // Opção 2 (mais robusta): Adiciona se estiver definido e for diferente do padrão
+
+        //$error_log_path = trim(ini_get("error_log"));
 
 
-        // Verifica e sanitiza o chat_type, atribuindo 'default' caso não exista
-        $chatType = isset($_POST['chat_type']) ? sanitize_text_field($_POST['chat_type']) : 'default';
-
-        if (empty($message)) {
-            if ($chatType == 'auto-checkup') {
-                $message = esc_attr("Auto Checkup for Erros button clicked...", "antihacker");
-            } elseif ($chatType == 'auto-checkup2') {
-                $message = esc_attr("Auto Checkup Server button clicked...", "antihacker");
+        $error_log_path = ini_get("error_log");
+        if (!empty($error_log_path)) {
+            $error_log_path = trim($error_log_path);
+        } else {
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                $error_log_path = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
+            } else {
+                $error_log_path = trailingslashit(ABSPATH) . 'error_log';
             }
         }
 
+        $bill_folders[] = $error_log_path;
+
+        /*
+        $caminho_padrao = realpath(ABSPATH . "error_log");
+        $caminho_atual = realpath($error_log_path);
+
+        if (!empty($error_log_path) && $caminho_atual != $caminho_padrao && !in_array($error_log_path, $bill_folders)) {
+            $bill_folders[] = $error_log_path;
+        }
+        */
+        // Logs in WordPress root directory
+        //
+        $bill_folders[] = WP_CONTENT_DIR . "/debug.log";
+        // Logs in current plugin directory
+        $bill_folders[] = plugin_dir_path(__FILE__) . "error_log";
+        $bill_folders[] = plugin_dir_path(__FILE__) . "php_errorlog";
+        // Logs in current theme directory
+        $bill_folders[] = get_theme_root() . "/error_log";
+        $bill_folders[] = get_theme_root() . "/php_errorlog";
+        // Logs in administration area (if it exists)
+        $bill_admin_path = str_replace(get_bloginfo("url") . "/", ABSPATH, get_admin_url());
+        $bill_folders[] = $bill_admin_path . "/error_log";
+        $bill_folders[] = $bill_admin_path . "/php_errorlog";
+        // Logs in plugin subdirectories
+        try {
+            $bill_plugins = array_slice(scandir(plugin_dir_path(__FILE__)), 2);
+            foreach ($bill_plugins as $bill_plugin) {
+                $plugin_path = plugin_dir_path(__FILE__) . $bill_plugin;
+                if (is_dir($plugin_path)) {
+                    $bill_folders[] = $plugin_path . "/error_log";
+                    $bill_folders[] = $plugin_path . "/php_errorlog";
+                }
+            }
+        } catch (Exception $e) {
+            // Handle the exception
+            error_log("Error scanning plugins directory: " . $e->getMessage());
+        }
+        // Logs in theme subdirectories
+        /*
+         $bill_themes = array_slice(scandir(get_theme_root()), 2);
+         foreach ($bill_themes as $bill_theme) {
+             $theme_path = get_theme_root() . "/" . $bill_theme;
+             if (is_dir($theme_path)) {
+                 $bill_folders[] = $theme_path . "/error_log";
+                 $bill_folders[] = $theme_path . "/php_errorlog";
+             }
+         }
+         */
+        try {
+            $bill_themes = array_slice(scandir(get_theme_root()), 2);
+            foreach ($bill_themes as $bill_theme) {
+                if (is_dir(get_theme_root() . "/" . $bill_theme)) {
+                    $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/error_log";
+                    $bill_folders[] = get_theme_root() . "/" . $bill_theme . "/php_errorlog";
+                }
+            }
+        } catch (Exception $e) {
+            // Handle the exception
+            error_log("Error scanning theme directory: " . $e->getMessage());
+        }
+
+        //error_log(var_export($bill_folders));
+        //debug4($bill_folders);
+        //die();
+
+
+        return $bill_folders;
+    }
+    public function bill_chat_send_message()
+    {
+        // Captura e sanitiza a mensagem
+        $message = sanitize_text_field($_POST['message']);
+        // Verifica e sanitiza o chat_type, atribuindo 'default' caso não exista
+        $chatType = isset($_POST['chat_type']) ? sanitize_text_field($_POST['chat_type']) : 'default';
+        if (empty($message)) {
+            if ($chatType == 'auto-checkup') {
+                $message = esc_attr("Auto Checkup for Erros button clicked...", 'antihacker');
+            } elseif ($chatType == 'auto-checkup2') {
+                $message = esc_attr("Auto Checkup Server button clicked...", 'antihacker');
+            }
+        }
         //  if (empty($message)) {
-        //    $message = esc_attr("Auto Checkup button clicked...", "antihacker");
+        //    $message = esc_attr("Auto Checkup button clicked...", 'antihacker');
         // }
-
-
-
         // error_log(var_export($chatType));
-
         $chatVersion = isset($_POST['chat_version']) ? sanitize_text_field($_POST['chat_version']) : '1.00';
         // Chama a API e obtém a resposta
         $response_data = $this->bill_chat_call_chatgpt_api($message, $chatType, $chatVersion);
@@ -335,7 +407,7 @@ class ChatPlugin
             $resposta_formatada = $output;
         } else {
             $output = "Error to get response from AI source!";
-            $output = esc_attr__("Error to get response from AI source!", "antihacker");
+            $output = esc_attr__("Error to get response from AI source!", 'antihacker');
         }
         // Prepara as mensagens
         $messages = get_option('chat_messages', []);
@@ -350,8 +422,6 @@ class ChatPlugin
         update_option('chat_messages', $messages);
         wp_die();
     }
-
-
     /**
      * Função para resetar as mensagens.
      */

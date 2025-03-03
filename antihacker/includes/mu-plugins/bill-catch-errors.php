@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bill Catch Errors
  * Description: Captures JavaScript errors and logs them on the server.
- * Version: 1.4
+ * Version: 4.1
  * Author: Bill Minozzi
  * Author URI: https://BillMinozzi.com
  * Text Domain: bill-catch-errors
@@ -13,8 +13,6 @@ if (!defined("ABSPATH")) {
     die("Invalid request.");
 }
 // 2 2025 ==========================
-//register_tick_function('debug5');
-//declare(ticks=1);
 if (function_exists('is_multisite') && is_multisite()) {
     return;
 }
@@ -23,13 +21,29 @@ if (!$bill_format_error_log_data) {
     $bill_format_error_log_info = bill_get_error_log_date_string();
     $bill_format_error_log_data = bill_detect_error_log_date_format($bill_format_error_log_info);
 }
+
+/*
+die(var_dump($bill_format_error_log_data));
+string(11) "d-M-Y H:i:s"
+*/
+
+
 function bill_get_error_log_date_string()
 {
-    if (defined('WP_DEBUG') && WP_DEBUG) {
-        $logFile = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
+
+    $error_log_path = ini_get("error_log");
+    if (!empty($error_log_path)) {
+        $error_log_path = trim($error_log_path);
     } else {
-        $logFile = trailingslashit(ABSPATH) . 'error_log';
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            $error_log_path = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
+        } else {
+            $error_log_path = trailingslashit(ABSPATH) . 'error_log';
+        }
     }
+    $logFile = $error_log_path;
+
+
     // Check if log file exists and is readable
     if (!file_exists($logFile) || !is_readable($logFile)) {
         // debug5("Log file not found or not readable: $logFile");
@@ -53,6 +67,7 @@ function bill_get_error_log_date_string()
         return bill_fallback_date_format();
     }
 }
+
 function bill_fallback_date_format()
 {
     $default_format = 'Y-m-d H:i:s';
@@ -145,7 +160,14 @@ function bill_split_line($logLine)
         return null;
     }
 }
-function bill_detect_error_log_date_format($logLine)
+
+/* Detect date format 
+A função analisa uma linha de log ($logLine) para detectar o formato de data em inglês 
+(ex.: "29 January 2025 12:44:30" ou "02-Feb-2025 12:34:56 UTC") 
+e retorna uma string no formato reconhecido com hora e, opcionalmente, fuso horário. 
+Ela armazena o formato detectado em um transient para uso futuro.
+*/
+function bill_detect_error_log_date_format_old($logLine)
 {
     /*
     $logLine = "29 janeiro 2025";  // Exemplo de data
@@ -289,121 +311,268 @@ function bill_detect_error_log_date_format($logLine)
     } else {
         return bill_fallback_date_format();
     }
+} // end function
+
+
+function bill_detect_error_log_date_format($logLine)
+{
+    $bill_used_separators = ['-', '/', ' '];
+    $bill_separador_used_in_error_log_date = null;
+    foreach ($bill_used_separators as $separator) {
+        if (strpbrk($logLine, $separator) !== false) {
+            $bill_separador_used_in_error_log_date = $separator;
+            break;
+        }
+    }
+
+    $r = bill_split_line($logLine);
+    $data_partes = $r['data'];
+    $fuso = $r['fuso'];
+
+    $dia = null;
+    $mes = null;
+    $ano = null;
+    $numeros_menores_12 = 0; // Contador para detectar ambiguidade
+
+    foreach ($data_partes as $data_parte) {
+        if (isset($dia) && isset($mes) && isset($ano)) {
+            break;
+        }
+        try {
+            if (!isset($mes) && preg_match('/[a-zA-Z]+/', $data_parte)) {
+                $mes = $data_parte; // Mês com letras, sem ambiguidade
+            } elseif (!isset($ano) && strlen($data_parte) == 4 && is_numeric($data_parte)) {
+                $ano = $data_parte; // Ano com 4 dígitos, sem ambiguidade
+            } elseif (!isset($dia) && is_numeric($data_parte) && strlen($data_parte) <= 2) {
+                $valor = intval($data_parte);
+                if ($valor > 12 && $valor <= 31) {
+                    $dia = $data_parte; // Dia claro, sem ambiguidade
+                } elseif ($valor <= 12) {
+                    $numeros_menores_12++; // Incrementa contador de ambiguidade
+                    if (!isset($dia)) {
+                        $dia = $data_parte; // Pode ser dia ou mês
+                    } elseif (!isset($mes)) {
+                        $mes = $data_parte; // Pode ser dia ou mês
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            return bill_fallback_date_format();
+        }
+    }
+
+    // Se houver ambiguidade (dois números <= 12), retorna fallback
+    if ($numeros_menores_12 >= 2 && !isset($mes) || (isset($dia) && isset($mes) && intval($dia) <= 12 && intval($mes) <= 12)) {
+        //debug4("Ambiguidade detectada na data: $logLine");
+        return bill_fallback_date_format();
+    }
+
+    $original = $logLine;
+    $format = '';
+    if ($dia && $mes && $ano) {
+        $separador = $bill_separador_used_in_error_log_date ?? ' ';
+        if (strpos($original, $dia) !== false && strpos($original, $mes) !== false && strpos($original, $ano) !== false) {
+            if (preg_match('/[a-zA-Z]/', $mes)) {
+                $format = "d{$separador}M{$separador}Y";
+            } else {
+                $format = "d{$separador}m{$separador}Y";
+            }
+        } elseif (strpos($original, $mes) !== false && strpos($original, $dia) !== false && strpos($original, $ano) !== false) {
+            if (preg_match('/[a-zA-Z]/', $mes)) {
+                $format = "M{$separador}d{$separador}Y";
+            } else {
+                $format = "m{$separador}d{$separador}Y";
+            }
+        } elseif (strpos($original, $ano) !== false && strpos($original, $mes) !== false && strpos($original, $dia) !== false) {
+            if (strlen($ano) == 4) {
+                $format = preg_match('/[a-zA-Z]/', $mes) ? "Y{$separador}M{$separador}d" : "Y{$separador}m{$separador}d";
+            } else {
+                $format = preg_match('/[a-zA-Z]/', $mes) ? "y{$separador}M{$separador}d" : "y{$separador}m{$separador}d";
+            }
+        }
+    }
+
+    if (empty($format)) {
+        $format = bill_fallback_date_format();
+    }
+    if (strpos($format, 'H:i:s') === false) {
+        $format .= " H:i:s";
+    }
+
+    set_transient('bill_error_log_date_format', $format, 30 * DAY_IN_SECONDS);
+    $listaFusos = timezone_identifiers_list();
+    $retorno = !empty($fuso) && in_array($fuso, $listaFusos) ? date($format) . ' ' . $fuso : date($format);
+
+    return $retorno;
 }
+
+
+
 add_action("wp_ajax_bill_minozzi_js_error_catched", "bill_minozzi_js_error_catched");
 add_action("wp_ajax_nopriv_bill_minozzi_js_error_catched", "bill_minozzi_js_error_catched");
+
 function bill_minozzi_js_error_catched()
 {
+
     $bill_format_error_log_data = get_transient('bill_error_log_date_format');
     if (!$bill_format_error_log_data) {
-        $bill_format_error_log_data  = bill_fallback_date_format();
+        $bill_format_error_log_data = bill_fallback_date_format();
     }
     $error_log_updated = "NOT OK!";
-    if (isset($_REQUEST)) {
-        // debug5();
-        if (!isset($_REQUEST["bill_js_error_catched"])) {
-            wp_die("empty error");
+
+    if (!isset($_REQUEST) || !isset($_REQUEST["bill_js_error_catched"])) {
+        wp_die("empty error");
+    }
+    if (!wp_verify_nonce(sanitize_text_field($_POST["_wpnonce"]), "bill-catch-js-errors")) {
+        status_header(406, "Invalid nonce");
+        wp_die("Bad Nonce!");
+    }
+
+    $bill_js_error_catched = sanitize_text_field($_REQUEST["bill_js_error_catched"]);
+    $bill_js_error_catched = trim($bill_js_error_catched);
+    if (empty($bill_js_error_catched)) {
+        wp_die("empty error");
+    }
+
+
+    // Split the error message
+    $errors = explode(" | ", $bill_js_error_catched);
+
+    // Configuração do arquivo de log (fora do loop)
+    $logFile = ini_get("error_log");
+    if (!empty($logFile)) {
+        $logFile = trim($logFile);
+    }
+    if (empty($logFile)) {
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            $logFile = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
+        } else {
+            $logFile = trailingslashit(ABSPATH) . 'error_log';
         }
-        if (
-            !wp_verify_nonce(
-                sanitize_text_field($_POST["_wpnonce"]),
-                "bill-catch-js-errors"
-            )
-        ) {
-            status_header(406, "Invalid nonce");
-            wp_die("Bad Nonce!");
+    }
+
+    $dir = dirname($logFile);
+    if (!file_exists($dir)) {
+        if (!mkdir($dir, 0755, true)) {
+            wp_die("Folder doesn't exist and unable to create: " . $dir);
         }
-        $bill_js_error_catched = sanitize_text_field(
-            $_REQUEST["bill_js_error_catched"]
-        );
-        $bill_js_error_catched = trim($bill_js_error_catched);
-        if (empty($bill_js_error_catched)) {
-            wp_die("empty error");
+    }
+    if (!is_writable($dir) || !is_readable($dir)) {
+        if (!chmod($dir, 0755)) {
+            wp_die("Log file directory does not have adequate permissions: " . $dir);
         }
-        // Split the error message
-        $errors = explode(" | ", $bill_js_error_catched);
-        //$errorCount = count($errors);
-        foreach ($errors as $error) {
-            // Split the error message into parts
-            $parts = explode(" - ", $error);
-            if (count($parts) < 3) {
-                continue;
-            }
-            $errorMessage = $parts[0];
-            $errorURL = $parts[1];
-            $errorLine = $parts[2];
-            $logMessage = "Javascript " . $errorMessage . " - " . $errorURL . " - " . $errorLine;
-            $formattedMessage = "[" . date($bill_format_error_log_data) . "] - " . $logMessage;
-            //$formattedMessage = PHP_EOL . $formattedMessage;
-            // Adiciona a nova linha no final de cada erro
-            $formattedMessage .= PHP_EOL;
-            if (defined('WP_DEBUG') && WP_DEBUG) {
-                $logFile = trailingslashit(WP_CONTENT_DIR) . 'debug.log';
-            } else {
-                $logFile = trailingslashit(ABSPATH) . 'error_log';
-            }
-            $dir = dirname($logFile);
-            try {
-                if (!file_exists($dir)) {
-                    wp_die("Folder doesn't exist: " . $dir);
-                }
-                if (!is_writable($dir) || !is_readable($dir)) {
-                    wp_die("Log file directory does not have adequate permissions: " . $dir);
-                }
-            } catch (Exception $e) {
-                wp_die("Fail to check folders permissions " . $e->getMessage());
-            }
-            // $formattedMessage = PHP_EOL . $formattedMessage;
+        if (!is_writable($dir) || !is_readable($dir)) {
+            wp_die("Log file directory does not have adequate permissions (2): " . $dir);
+        }
+    }
+
+
+    // Loop para gravar os erros
+    foreach ($errors as $error) {
+        $parts = explode(" - ", $error);
+        if (count($parts) < 3) {
+            continue;
+        }
+        $errorMessage = $parts[0];
+        $errorURL = $parts[1];
+        $errorLine = $parts[2];
+        $logMessage = "Javascript " . $errorMessage . " - " . $errorURL . " - " . $errorLine;
+        $formattedMessage = "[" . date($bill_format_error_log_data) . "] - " . $logMessage . PHP_EOL;
+
+        //$ret_error_log = false;
+        if (error_log($formattedMessage, 3, $logFile)) {
+            //$ret_error_log = true;
+            $error_log_updated = "OK!";
+        } else {
             try {
                 $r = file_put_contents($logFile, $formattedMessage, FILE_APPEND | LOCK_EX);
+                if ($r) {
+                    $error_log_updated = "OK!";
+                } else {
+                    $timestamp_string = strval(time());
+                    update_option('bill_minozzi_error_log_status', $timestamp_string);
+                }
             } catch (Exception $e) {
                 wp_die("Fail to write at error_log " . $e->getMessage());
             }
-            if ($r) {
-                $error_log_updated = "OK!";
-            } else {
-                $timestamp_string = strval(time());
-                update_option('bill_minozzi_error_log_status', $timestamp_string);
-            }
-        } // loop
-        die($error_log_updated);
+        }
     }
-    //fail...
+
     die($error_log_updated);
 }
+
 class bill_minozzi_bill_catch_errors
 {
     public function __construct()
     {
         add_action("wp_head", [$this, "add_bill_javascript_to_header"]);
         add_action("admin_head", [$this, "add_bill_javascript_to_header"]);
+        // $this->gravar2(__LINE__);
     }
+
     public function add_bill_javascript_to_header()
     {
+        // $this->gravar2(__LINE__);
         $nonce = wp_create_nonce("bill-catch-js-errors");
         $ajax_url = esc_js($this->get_ajax_url()) . "?action=bill_minozzi_js_error_catched&_wpnonce=" . $nonce;
 ?>
         <script>
             var errorQueue = [];
-            var timeout;
+            let timeout;
+
+            var errorMessage = '';
+
 
             function isBot() {
-                const bots = ['bot', 'googlebot', 'bingbot', 'facebook', 'slurp', 'twitter', 'yahoo'];
+                const bots = ['crawler', 'spider', 'baidu', 'duckduckgo', 'bot', 'googlebot', 'bingbot', 'facebook', 'slurp', 'twitter', 'yahoo'];
                 const userAgent = navigator.userAgent.toLowerCase();
                 return bots.some(bot => userAgent.includes(bot));
             }
+
+            /*
             window.onerror = function(msg, url, line) {
+            // window.addEventListener('error', function(event) {
+                console.error("Linha 600");
+
                 var errorMessage = [
                     'Message: ' + msg,
                     'URL: ' + url,
                     'Line: ' + line
                 ].join(' - ');
-                // Filter out bot errors...
+                */
+
+
+            // Captura erros síncronos e alguns assíncronos
+            window.addEventListener('error', function(event) {
+                var msg = event.message;
+                if (msg === "Script error.") {
+                    console.error("Script error detected - maybe problem cross-origin");
+                    return;
+                }
+                errorMessage = [
+                    'Message: ' + msg,
+                    'URL: ' + event.filename,
+                    'Line: ' + event.lineno
+                ].join(' - ');
                 if (isBot()) {
                     return;
                 }
-                //console.log(errorMessage);
                 errorQueue.push(errorMessage);
+                handleErrorQueue();
+            });
+
+            // Captura rejeições de promessas
+            window.addEventListener('unhandledrejection', function(event) {
+                errorMessage = 'Promise Rejection: ' + (event.reason || 'Unknown reason');
+                if (isBot()) {
+                    return;
+                }
+                errorQueue.push(errorMessage);
+                handleErrorQueue();
+            });
+
+            // Função auxiliar para gerenciar a fila de erros
+            function handleErrorQueue() {
                 if (errorQueue.length >= 5) {
                     sendErrorsToServer();
                 } else {
@@ -411,6 +580,10 @@ class bill_minozzi_bill_catch_errors
                     timeout = setTimeout(sendErrorsToServer, 5000);
                 }
             }
+
+
+
+
 
             function sendErrorsToServer() {
                 if (errorQueue.length > 0) {
@@ -492,6 +665,7 @@ class bill_minozzi_bill_catch_errors
         </script>
 <?php
     }
+
     private function get_ajax_url()
     {
         return esc_attr(admin_url("admin-ajax.php"));
