@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.54 25-04-19 Let you choose them duration of keep visit's log.
+
 5.52/53 25-04-12 Added File Integrity Checker (verify the integrity of your WordPress core files).
 
 5.51 25-04-01 Improved Diagnose.

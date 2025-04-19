@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.53
+version: 5.54
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -1425,8 +1425,14 @@ function antihacker_cron_function_clean_db()
   $table_name = $wpdb->prefix . "ah_blockeds";
   $wpdb->query("DELETE FROM $table_name WHERE `date` < CURDATE() - INTERVAL 1 DAY");
 
+
   $table_name = $wpdb->prefix . "ah_visitorslog";
-  $wpdb->query("DELETE FROM $table_name WHERE `date` < CURDATE() - INTERVAL 30 DAY");
+  $keep_log_setting = get_option('antihacker_keep_log', '30');
+  $wpdb->query($wpdb->prepare(
+    "DELETE FROM {$table_name} WHERE `date` < CURDATE() - INTERVAL %d DAY",
+    absint($keep_log_setting)
+  ));
+  // $wpdb->query("DELETE FROM $table_name WHERE `date` < CURDATE() - INTERVAL 30 DAY");
 
   $table_name = $wpdb->prefix . "ah_fingerprint";
   $wpdb->query("DELETE FROM $table_name WHERE `data` < CURDATE() - INTERVAL 60 DAY");
@@ -1627,7 +1633,7 @@ function antihacker_load_chat()
     // ob_start();
     //debug2();
 
-    if (! class_exists('antihacker_BillChat\ChatPlugin')) {
+    if (!class_exists('antihacker_BillChat\ChatPlugin')) {
       require_once dirname(__FILE__) . "/includes/chat/class_bill_chat.php";
     }
   }
@@ -1668,18 +1674,18 @@ function antihacker_bill_hooking_catch_errors()
   global $antihacker_is_admin;
   global $antihacker_plugin_slug;
 
-	if (!function_exists("bill_check_install_mu_plugin")) {
-		require_once dirname(__FILE__) . "/includes/catch-errors/bill_install_catch_errors.php";
-	}
+  if (!function_exists("bill_check_install_mu_plugin")) {
+    require_once dirname(__FILE__) . "/includes/catch-errors/bill_install_catch_errors.php";
+  }
 
-	$declared_classes = get_declared_classes();
-	foreach ($declared_classes as $class_name) {
-		if (strpos($class_name, "bill_catch_errors") !== false) {
-			return;
-		}
-	}
+  $declared_classes = get_declared_classes();
+  foreach ($declared_classes as $class_name) {
+    if (strpos($class_name, "bill_catch_errors") !== false) {
+      return;
+    }
+  }
   $antihacker_plugin_slug = 'antihacker';
-	require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
+  require_once dirname(__FILE__) . "/includes/catch-errors/class_bill_catch_errors.php";
 }
 add_action("init", "antihacker_bill_hooking_catch_errors", 15);
 // ---------------------------
