@@ -11,10 +11,10 @@ if (!defined('ABSPATH'))  exit;
 //error_reporting: Define quais tipos de erros serão reportados.
 //display_errors: Define se os erros serão exibidos na tela ou apenas registrados no log.
 
-function stopbadbots_sysinfo_get()
+function antihacker_sysinfo_get()
 {
     global $wpdb;
-    $stopbadbots_userAgentOri = stopbadbots_get_ua2();
+    $antihacker_userAgentOri = antihacker_get_ua2();
 
     // Get theme info
     $theme_data   = wp_get_theme();
@@ -27,7 +27,7 @@ function stopbadbots_sysinfo_get()
     // Try to identify the hosting provider
     $host = gethostname();
     if ($host === false) {
-        $host = stopbadbots_get_host();
+        $host = antihacker_get_host();
     }
     $return  = '=== Begin System Info v 2.1a (Generated ' . date('Y-m-d H:i:s') . ') ===' . "\n\n";
 
@@ -45,7 +45,7 @@ function stopbadbots_sysinfo_get()
     $plugin_folder_name = reset($path_array);
     $return .= '-- Plugin' . "\n\n";
     $return .= 'Name:                  ' .  $plugin_folder_name . "\n";
-    $return .= 'Version:                  ' . STOPBADBOTSVERSION;
+    $return .= 'Version:                  ' . ANTIHACKERVERSION;
     $return .= "\n\n";
     $return .= '-- Site Info' . "\n\n";
     $return .= 'Site URL:                 ' . site_url() . "\n";
@@ -64,44 +64,44 @@ function stopbadbots_sysinfo_get()
 
 
     try {
-        $stopbadbots_cpu_info = stopbadbots_get_full_cpu_info();
+        $antihacker_cpu_info = antihacker_get_full_cpu_info();
         $cpu_section_written = false;
 
-        if (!empty($stopbadbots_cpu_info['cores']) && $stopbadbots_cpu_info['cores'] !== 'Unknown') {
+        if (!empty($antihacker_cpu_info['cores']) && $antihacker_cpu_info['cores'] !== 'Unknown') {
             if (!$cpu_section_written) {
                 $return .= "\n-- CPU Information\n\n";
                 $cpu_section_written = true;
             }
-            $return .= 'Number of Cores:          ' . $stopbadbots_cpu_info['cores'] . "\n";
+            $return .= 'Number of Cores:          ' . $antihacker_cpu_info['cores'] . "\n";
         }
 
-        if (!empty($stopbadbots_cpu_info['architecture']) && $stopbadbots_cpu_info['architecture'] !== 'Unknown') {
+        if (!empty($antihacker_cpu_info['architecture']) && $antihacker_cpu_info['architecture'] !== 'Unknown') {
             if (!$cpu_section_written) {
                 $return .= "\n-- CPU Information\n\n";
                 $cpu_section_written = true;
             }
-            $return .= 'Architecture:             ' . $stopbadbots_cpu_info['architecture'] . "\n";
+            $return .= 'Architecture:             ' . $antihacker_cpu_info['architecture'] . "\n";
         }
 
-        if (!empty($stopbadbots_cpu_info['model']) && $stopbadbots_cpu_info['model'] !== 'Unknown') {
+        if (!empty($antihacker_cpu_info['model']) && $antihacker_cpu_info['model'] !== 'Unknown') {
             if (!$cpu_section_written) {
                 $return .= "\n-- CPU Information\n\n";
                 $cpu_section_written = true;
             }
-            $return .= 'Model:                    ' . $stopbadbots_cpu_info['model'] . "\n";
+            $return .= 'Model:                    ' . $antihacker_cpu_info['model'] . "\n";
         }
 
         // Load Averages
-        //$stopbadbots_load = stopbadbots_get_load_averages();
-        //stopbadbots_get_load_average
-        $stopbadbots_load = stopbadbots_get_load_average();
-        //stopbadbots_calculate_load_percentage
-        $stopbadbots_cores = is_numeric($stopbadbots_cpu_info['cores']) ? (int)$stopbadbots_cpu_info['cores'] : 1;
-        if (!empty($stopbadbots_load)) {
+        //$antihacker_load = antihacker_get_load_averages();
+        //antihacker_get_load_average
+        $antihacker_load = antihacker_get_load_average();
+        //antihacker_calculate_load_percentage
+        $antihacker_cores = is_numeric($antihacker_cpu_info['cores']) ? (int)$antihacker_cpu_info['cores'] : 1;
+        if (!empty($antihacker_load)) {
             $return .= "\n-- System Load Averages\n\n";
             foreach (['1min', '5min', '15min'] as $interval) {
-                $value = $stopbadbots_load[$interval] ?? null;
-                $percent = stopbadbots_calculate_load_percentage($value, $stopbadbots_cores);
+                $value = $antihacker_load[$interval] ?? null;
+                $percent = antihacker_calculate_load_percentage($value, $antihacker_cores);
                 $display_value = $value !== null ? $value : 'N/A';
                 $display_percent = $percent !== null ? $percent . '%' : 'N/A';
                 $return .= 'Load Average (' . $interval . '):     ' . $display_value . ' (' . $display_percent . ")\n";
@@ -138,7 +138,7 @@ function stopbadbots_sysinfo_get()
 
 
     $return .= "\n" . '-- User Browser' . "\n\n";
-    $return .= $stopbadbots_userAgentOri; // $browser;
+    $return .= $antihacker_userAgentOri; // $browser;
     $return .= "\n\n";
     $locale = get_locale();
     // WordPress configuration
@@ -151,9 +151,9 @@ function stopbadbots_sysinfo_get()
         //$return .= 'Parent Theme:             ' . $parent_theme . "\n";
     }
     $return .= 'ABSPATH:                  ' . ABSPATH . "\n";
-    $return .= 'Plugin Dir:                  ' . STOPBADBOTSPATH . "\n";
+    $return .= 'Plugin Dir:                  ' . ANTIHACKERPATH . "\n";
     $return .= 'Table Prefix:             ' . 'Length: ' . strlen($wpdb->prefix) . '   Status: ' . (strlen($wpdb->prefix) > 16 ? 'ERROR: Too long' : 'Acceptable') . "\n";
-    //$return .= 'Admin AJAX:               ' . ( stopbadbots_test_ajax_works() ? 'Accessible' : 'Inaccessible' ) . "\n";
+    //$return .= 'Admin AJAX:               ' . ( antihacker_test_ajax_works() ? 'Accessible' : 'Inaccessible' ) . "\n";
 
     if (defined('WP_DEBUG')) {
         $return .= 'WP_DEBUG:                 ' . (WP_DEBUG ? 'Enabled' : 'Disabled');
@@ -488,7 +488,7 @@ function stopbadbots_sysinfo_get()
     }
     // Server configuration 
     $return .= "\n" . '-- Webserver Configuration' . "\n\n";
-    $return .= 'OS Type & Version:        ' . stopbadbots_OSName();
+    $return .= 'OS Type & Version:        ' . antihacker_OSName();
     $return .= 'PHP Version:              ' . PHP_VERSION . "\n";
     $return .= 'MySQL Version:            ' . $wpdb->db_version() . "\n";
     $return .= 'Webserver Info:           ' . sanitize_text_field($_SERVER['SERVER_SOFTWARE']) . "\n";
@@ -508,7 +508,7 @@ function stopbadbots_sysinfo_get()
 
 
     try {
-        $return .= 'Error Reporting:          ' . stopbadbots_readable_error_reporting(error_reporting()) . "\n";
+        $return .= 'Error Reporting:          ' . antihacker_readable_error_reporting(error_reporting()) . "\n";
     } catch (Exception $e) {
 
         $return .= 'Error Reporting: Fail to get  error_reporting(): ' . $e . '\n';
@@ -545,7 +545,7 @@ function stopbadbots_sysinfo_get()
 }
 
 
-function stopbadbots_readable_error_reporting($level)
+function antihacker_readable_error_reporting($level)
 {
     $error_levels = [
         E_ALL => 'E_ALL',
@@ -579,7 +579,7 @@ function stopbadbots_readable_error_reporting($level)
 
 
 
-function stopbadbots_OSName()
+function antihacker_OSName()
 {
     try {
         if (false == function_exists("shell_exec") || false == @is_readable("/etc/os-release")) {
@@ -592,7 +592,7 @@ function stopbadbots_OSName()
         return false;
     }
 }
-function stopbadbots_get_host()
+function antihacker_get_host()
 {
     if (isset($_SERVER['SERVER_NAME'])) {
         $server_name = sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME']));
@@ -602,7 +602,7 @@ function stopbadbots_get_host()
     $host = 'DBH: ' . DB_HOST . ', SRV: ' . $server_name;
     return $host;
 }
-function stopbadbots_get_ua2()
+function antihacker_get_ua2()
 {
     if (!isset($_SERVER['HTTP_USER_AGENT'])) {
         return '';
@@ -619,23 +619,23 @@ function stopbadbots_get_ua2()
  * Get system load averages
  * @return array Load averages for 1, 5, and 15 minutes
  */
-function stopbadbots_get_load_average()
+function antihacker_get_load_average()
 {
     try {
         // Attempt to use sys_getloadavg()
         if (function_exists('sys_getloadavg')) {
-            $stopbadbots_load = sys_getloadavg();
-            if ($stopbadbots_load !== false && is_array($stopbadbots_load)) {
+            $antihacker_load = sys_getloadavg();
+            if ($antihacker_load !== false && is_array($antihacker_load)) {
                 return [
-                    '1min'  => $stopbadbots_load[0],
-                    '5min'  => $stopbadbots_load[1],
-                    '15min' => $stopbadbots_load[2],
+                    '1min'  => $antihacker_load[0],
+                    '5min'  => $antihacker_load[1],
+                    '15min' => $antihacker_load[2],
                 ];
             }
         }
 
         // Fallback to reading /proc/loadavg
-        return stopbadbots_get_load_average_from_proc();
+        return antihacker_get_load_average_from_proc();
     } catch (Exception $e) {
         return [
             '1min'  => null,
@@ -649,18 +649,18 @@ function stopbadbots_get_load_average()
  * Fallback function to read load averages from /proc/loadavg
  * @return array Load averages for 1, 5, and 15 minutes
  */
-function stopbadbots_get_load_average_from_proc()
+function antihacker_get_load_average_from_proc()
 {
     try {
         if (file_exists('/proc/loadavg')) {
-            $stopbadbots_contents = @file_get_contents('/proc/loadavg');
-            if ($stopbadbots_contents !== false) {
-                $stopbadbots_parts = explode(' ', trim($stopbadbots_contents));
-                if (count($stopbadbots_parts) >= 3) {
+            $antihacker_contents = @file_get_contents('/proc/loadavg');
+            if ($antihacker_contents !== false) {
+                $antihacker_parts = explode(' ', trim($antihacker_contents));
+                if (count($antihacker_parts) >= 3) {
                     return [
-                        '1min'  => (float) $stopbadbots_parts[0],
-                        '5min'  => (float) $stopbadbots_parts[1],
-                        '15min' => (float) $stopbadbots_parts[2],
+                        '1min'  => (float) $antihacker_parts[0],
+                        '5min'  => (float) $antihacker_parts[1],
+                        '15min' => (float) $antihacker_parts[2],
                     ];
                 }
             }
@@ -683,9 +683,9 @@ function stopbadbots_get_load_average_from_proc()
  * Get the number of CPU cores
  * @return int|string Number of cores or error message
  */
-function stopbadbots_get_cpu_cores()
+function antihacker_get_cpu_cores()
 {
-    $stopbadbots_cores = false;
+    $antihacker_cores = false;
 
     // Método 1: exec()
     if (function_exists('exec')) {
@@ -699,7 +699,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 2: system()
-    if ($stopbadbots_cores === false && function_exists('system')) {
+    if ($antihacker_cores === false && function_exists('system')) {
         try {
             ob_start();
             @system('nproc --all');
@@ -712,7 +712,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 3: passthru()
-    if ($stopbadbots_cores === false && function_exists('passthru')) {
+    if ($antihacker_cores === false && function_exists('passthru')) {
         try {
             ob_start();
             @passthru('nproc --all');
@@ -725,7 +725,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 4: popen()
-    if ($stopbadbots_cores === false && function_exists('popen')) {
+    if ($antihacker_cores === false && function_exists('popen')) {
         try {
             $handle = @popen('nproc --all', 'r');
             $output = $handle ? trim(fread($handle, 128)) : '';
@@ -740,7 +740,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 5: proc_open()
-    if ($stopbadbots_cores === false && function_exists('proc_open')) {
+    if ($antihacker_cores === false && function_exists('proc_open')) {
         try {
             $descriptorspec = [
                 1 => ['pipe', 'w']
@@ -759,7 +759,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 6: getenv() para Windows
-    if ($stopbadbots_cores === false) {
+    if ($antihacker_cores === false) {
         try {
             $env = @getenv('NUMBER_OF_PROCESSORS');
             if ($env && is_numeric($env)) {
@@ -770,7 +770,7 @@ function stopbadbots_get_cpu_cores()
     }
 
     // Método 7: Contagem de "processor" em /proc/cpuinfo (Linux)
-    if ($stopbadbots_cores === false && is_readable('/proc/cpuinfo')) {
+    if ($antihacker_cores === false && is_readable('/proc/cpuinfo')) {
         try {
             $cpuinfo = @file_get_contents('/proc/cpuinfo');
             if ($cpuinfo !== false) {
@@ -791,9 +791,9 @@ function stopbadbots_get_cpu_cores()
  * Get full CPU information
  * @return array CPU cores, architecture, and model
  */
-function stopbadbots_get_full_cpu_info()
+function antihacker_get_full_cpu_info()
 {
-    $stopbadbots_info = [
+    $antihacker_info = [
         'cores' => null,
         'architecture' => null,
         'model' => null,
@@ -801,18 +801,18 @@ function stopbadbots_get_full_cpu_info()
 
     try {
         // 1. Get cores
-        $stopbadbots_cores = stopbadbots_get_cpu_cores();
-        if (is_numeric($stopbadbots_cores)) {
-            $stopbadbots_info['cores'] = $stopbadbots_cores;
+        $antihacker_cores = antihacker_get_cpu_cores();
+        if (is_numeric($antihacker_cores)) {
+            $antihacker_info['cores'] = $antihacker_cores;
         } else {
-            $stopbadbots_info['cores'] = 'Unknown';
+            $antihacker_info['cores'] = 'Unknown';
         }
 
         // 2. Get architecture
         try {
-            $stopbadbots_info['architecture'] = php_uname('m') ?: 'Unknown';
+            $antihacker_info['architecture'] = php_uname('m') ?: 'Unknown';
         } catch (Exception $e) {
-            $stopbadbots_info['architecture'] = 'Unknown';
+            $antihacker_info['architecture'] = 'Unknown';
         }
 
         // 3. Get model (prefer /proc/cpuinfo)
@@ -820,9 +820,9 @@ function stopbadbots_get_full_cpu_info()
 
         if (file_exists('/proc/cpuinfo') && is_readable('/proc/cpuinfo')) {
             try {
-                $stopbadbots_cpuinfo = @file_get_contents('/proc/cpuinfo');
-                if ($stopbadbots_cpuinfo !== false && preg_match('/model name\s+:\s+(.+)/', $stopbadbots_cpuinfo, $matches)) {
-                    $stopbadbots_info['model'] = trim($matches[1]);
+                $antihacker_cpuinfo = @file_get_contents('/proc/cpuinfo');
+                if ($antihacker_cpuinfo !== false && preg_match('/model name\s+:\s+(.+)/', $antihacker_cpuinfo, $matches)) {
+                    $antihacker_info['model'] = trim($matches[1]);
                     $cpu_model_found = true;
                 }
             } catch (Exception $e) {
@@ -834,7 +834,7 @@ function stopbadbots_get_full_cpu_info()
         if (!$cpu_model_found && function_exists('shell_exec')) {
             $lscpu_output = @shell_exec('lscpu 2>/dev/null');
             if (!empty($lscpu_output) && preg_match('/Model name:\s+(.+)/', $lscpu_output, $matches)) {
-                $stopbadbots_info['model'] = trim($matches[1]);
+                $antihacker_info['model'] = trim($matches[1]);
                 $cpu_model_found = true;
             }
         }
@@ -846,7 +846,7 @@ function stopbadbots_get_full_cpu_info()
             if (!empty($output)) {
                 foreach ($output as $line) {
                     if (stripos($line, 'Model name:') === 0) {
-                        $stopbadbots_info['model'] = trim(substr($line, strpos($line, ':') + 1));
+                        $antihacker_info['model'] = trim(substr($line, strpos($line, ':') + 1));
                         $cpu_model_found = true;
                         break;
                     }
@@ -858,7 +858,7 @@ function stopbadbots_get_full_cpu_info()
         if (!$cpu_model_found && function_exists('shell_exec') && stripos(PHP_OS, 'Darwin') === 0) {
             $sysctl_output = @shell_exec("sysctl -n machdep.cpu.brand_string");
             if (!empty($sysctl_output)) {
-                $stopbadbots_info['model'] = trim($sysctl_output);
+                $antihacker_info['model'] = trim($sysctl_output);
                 $cpu_model_found = true;
             }
         }
@@ -867,19 +867,19 @@ function stopbadbots_get_full_cpu_info()
         if (!$cpu_model_found && function_exists('shell_exec') && stripos(PHP_OS, 'WIN') === 0) {
             $wmic_output = @shell_exec("wmic cpu get Name /format:list");
             if (!empty($wmic_output) && preg_match('/Name=(.+)/i', $wmic_output, $matches)) {
-                $stopbadbots_info['model'] = trim($matches[1]);
+                $antihacker_info['model'] = trim($matches[1]);
                 $cpu_model_found = true;
             }
         }
 
         // Final fallback
         if (!$cpu_model_found) {
-            $stopbadbots_info['model'] = 'Unknown';
+            $antihacker_info['model'] = 'Unknown';
         }
 
-        return $stopbadbots_info;
+        return $antihacker_info;
     } catch (Exception $e) {
-        return $stopbadbots_info;
+        return $antihacker_info;
     }
 }
 
@@ -890,7 +890,7 @@ function stopbadbots_get_full_cpu_info()
  * @param int $cores Number of CPU cores
  * @return float|null Percentage or null if invalid
  */
-function stopbadbots_calculate_load_percentage($load, $cores)
+function antihacker_calculate_load_percentage($load, $cores)
 {
     try {
         if ($cores <= 0 || $load === null) {
