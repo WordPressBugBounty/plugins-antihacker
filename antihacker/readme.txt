@@ -14,10 +14,16 @@ Firewall, Scanner, block user enumeration & TOR, disable Json API, xmlrpc & Ping
 **ANTI HACKER PLUGIN**
 ★★★★★<br>
 
->No matter how small or big your server is, hackers may attempt to use it to send spam, steal traffic, and attack other computers. According to Security magazine, there is a hacker attack every 39 seconds.
+> **Even Small Sites Are At Risk!**
+>Cloudflare, the internet security giant, reported blocking an average of 166 BILLION cyberthreats PER DAY in early 2024 – that's nearly **2 million attacks every second** sweeping across the web. In Q1 2025, Cloudflare blocked 20.5 million DDoS attacks, a massive 358% year-over-year (YoY) increase."
+>Threats to WordPress sites have also skyrocketed, according to Defiant Inc: **+68% new vulnerabilities in 2024.**
+> Hackers use **automated bots that don't pick and choose; they attack all sites, large or small**, 24/7, by exploiting vulnerabilities.
+>And the trend for 2025 points to an even **greater increase**: Artificial Intelligence (AI) is empowering even less-skilled attackers to create bots to steal information, while ready-made attack kits are sold on the dark web, amplifying both the volume and sophistication of threats.
+>No matter how small or big your server is, hackers may attempt to use it to send spam, steal traffic, and attack other computers. 
 >In fact, some studies suggest that the majority of attacks against websites begin to occur within the first 24 hours of a site going online.
-.
->Improve system security, protect login (Login Security), firewall, scan for malware, block user enumeration and TOR, disable Json WordPress Rest API, xmlrpc (xml-rpc) & Pingback and more a lot of security tools. Translation ready. Files included: Dutch, English, French, Italian, Portuguese, Spanish, and German.
+
+Our free plugin Improve system security, protect login (Login Security), firewall, scan for malware, block user enumeration and TOR, disable Json WordPress Rest API, xmlrpc (xml-rpc) & Pingback and more a lot of security tools. 
+Translation ready. Files included: Dutch, English, French, Italian, Portuguese, Spanish, and German.
 .
 >Italian: Migliora la sicurezza del sistema, proteggi l'accesso (sicurezza dell'accesso), firewall, cerca malware, blocca l'enumerazione degli utenti e TOR, disabilita l'API Rest di Json WordPress, xmlrpc (xml-rpc) e Pingback e molti altri strumenti di sicurezza. Multilingua pronto. Inclusi anche file in lingua italiana e portoghese.
 .
