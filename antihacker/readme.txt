@@ -22,6 +22,9 @@ Firewall, Scanner, block user enumeration & TOR, disable Json API, xmlrpc & Ping
 >No matter how small or big your server is, hackers may attempt to use it to send spam, steal traffic, and attack other computers. 
 >In fact, some studies suggest that the majority of attacks against websites begin to occur within the first 24 hours of a site going online.
 
+>**Amplify Your Server's Defenses!** Optional. When AntiHacker blocks a threat, it **automatically sets up Fail2Ban** to intercept and block that IP on all **future attempts before they even reach your WordPress site**. So, if you manage your own VPS, Cloud, or Dedicated server with Fail2Ban installed, **this is a game-changer!**
+
+
 Our free plugin Improve system security, protect login (Login Security), firewall, scan for malware, block user enumeration and TOR, disable Json WordPress Rest API, xmlrpc (xml-rpc) & Pingback and more a lot of security tools. 
 Translation ready. Files included: Dutch, English, French, Italian, Portuguese, Spanish, and German.
 .
@@ -57,6 +60,12 @@ Translation ready. Files included: Dutch, English, French, Italian, Portuguese, 
 * Disable Pingback
 * Protect Against Cyber Attack
 * hardening wordpress
+
+== Optional Fail2ban Monitor integration with GUI ==
+Available in our plugin Stop Bad Bots
+Please ensure Fail2Ban is installed and operational on your server, VPS or Cloud VPS for this monitor to function. 
+Currently, you can track key Fail2ban details like the offending IP, when the last attempt occurred, the specific Security Rule (jail) triggered, the number of attempts, and how long the ban lasts. This is your first step towards richer insights like daily totals, activity graphs, and more detailed ban reasons.
+
 
 == Malware Scanner ==
 * Security Malware scanner (one click scan) for **797 malwares** also in free version (unlimited files).
