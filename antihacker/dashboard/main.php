@@ -88,6 +88,7 @@ function antihacker_options_page()
             <a href="?page=anti_hacker_plugin&tab=memory" class="nav-tab">Memory Check Up</a>
             <!--   <a href="?page=anti_hacker_plugin&tab=errors" class="nav-tab">Site Errors</a> -->
             <a href="?page=anti_hacker_plugin&tab=plugins" class="nav-tab">Check Plugins</a>
+            <a href="?page=anti_hacker_plugin&tab=muplugins" class="nav-tab">Must Use Plugins</a>
             <a href="?page=anti_hacker_plugin&tab=notifications" class="nav-tab">Notifications</a>
             <a href="?page=anti_hacker_plugin&tab=check_file_integrity" class="nav-tab">File Integrity Checker</a>
             <a href="?page=anti_hacker_plugin&tab=freebies" class="nav-tab">More Tools</a>
@@ -109,6 +110,11 @@ function antihacker_options_page()
             echo '<div id="antihacker-dashboard-wrap">';
             echo '<div id="antihacker-dashboard-left">';
             require_once(ANTIHACKERPATH . 'dashboard/check_plugins.php');
+        } elseif ($active_tab == 'muplugins') {
+            //die(var_dump(__LINE__));
+            echo '<div id="antihacker-dashboard-wrap">';
+            echo '<div id="antihacker-dashboard-left">';
+            require_once(ANTIHACKERPATH . 'dashboard/must_use_plugins.php');
         } elseif ($active_tab == 'freebies') {
             echo '<div id="antihacker-dashboard-wrap">';
             echo '<div id="antihacker-dashboard-left">';
@@ -146,7 +152,7 @@ function antihacker_options_page()
 require_once(ABSPATH . 'wp-admin/includes/screen.php');
 // ob_end_clean();
 include_once(ABSPATH . 'wp-includes/pluggable.php');
-if (! function_exists('antihacker_is_bill_theme')) {
+if (!function_exists('antihacker_is_bill_theme')) {
     function antihacker_is_bill_theme()
     {
         $my_theme = wp_get_theme();
@@ -171,7 +177,7 @@ if (! function_exists('antihacker_is_bill_theme')) {
 }
 function antihackerCheckThemeDead()
 {
-    if (! function_exists('themes_api')) {
+    if (!function_exists('themes_api')) {
         require_once(ABSPATH . 'wp-admin/includes/theme.php');
     }
     $my_theme = wp_get_theme();

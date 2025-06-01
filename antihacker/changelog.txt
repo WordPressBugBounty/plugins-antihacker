@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.58 25-06-01 Included table of Must Use Plugins.
+
 5.56/57 25-05-10 Small Improvements.
 
 5.55 25-05-07 Small Improvements.
