@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.58
+version: 5.59
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -338,11 +338,12 @@ $antihacker_disable_sitemap = sanitize_text_field(get_option('antihacker_disable
 
 
 $antihacker_plugin_abandoned_email = sanitize_text_field(get_option('antihacker_plugin_abandoned_email', 'yes'));
-$antihacker_auto_updates = sanitize_text_field(get_option('antihacker_auto_updates', ''));
-
+$antihacker_auto_updates = "no";
 
 
 if (!empty($antihacker_checkversion)) {
+  $antihacker_disable_reinstall = sanitize_text_field(get_option('antihacker_disable_reinstall', ''));
+
   // $antihacker_block_tor = trim(sanitize_text_field(get_site_option('antihacker_block_tor', 'no')));
   // $antihacker_block_falsegoogle = trim(sanitize_text_field(get_site_option('antihacker_block_falsegoogle', 'no')));
   $antihacker_block_search_plugins = trim(sanitize_text_field(get_site_option('antihacker_block_search_plugins', 'no')));
@@ -1801,4 +1802,113 @@ function capture_unexpected_output()
   debug4("[Plugin Activation Output] " . $output);
   // die(var_dump($output));
   // }
+}
+
+// Include necessary WordPress files
+function antihacker_include_plugin_api()
+{
+  if (!function_exists('plugins_api')) {
+    require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+  }
+  if (!class_exists('Plugin_Upgrader')) {
+    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+  }
+}
+add_action('admin_init', 'antihacker_include_plugin_api');
+
+// Allow overwriting without aborting for .zip uploads
+add_filter('upgrader_package_options', 'antihacker_upgrader_package_options');
+function antihacker_upgrader_package_options($options)
+{
+  $options['abort_if_destination_exists'] = false;
+  $options['clear_destination'] = false; // Ensure no deletion
+  return $options;
+}
+
+if ($antihacker_disable_reinstall == 'yes') {
+  // Add "Reinstall Files" link to plugin actions
+  function antihacker_add_reinstall_link($actions, $plugin_file, $plugin_data, $context)
+  {
+    if (antihacker_is_plugin_from_wporg($plugin_file) && current_user_can('install_plugins')) {
+      $plugin = sanitize_text_field(wp_unslash($plugin_file));
+      $reinstall_url = wp_nonce_url(
+        admin_url('plugins.php?action=antihacker_reinstall_plugin&plugin=' . urlencode($plugin)),
+        'antihacker_reinstall_plugin_' . $plugin
+      );
+      $actions['antihacker_reinstall'] = '<a href="' . esc_url($reinstall_url) . '">' . esc_html__('Reinstall Files', 'antihacker') . '</a>';
+    }
+    return $actions;
+  }
+  add_filter('plugin_action_links', 'antihacker_add_reinstall_link', 10, 4);
+
+  // Handle reinstall action
+  function antihacker_handle_reinstall_plugin()
+  {
+    global $pagenow;
+    if ($pagenow === 'plugins.php' && isset($_GET['action']) && $_GET['action'] === 'antihacker_reinstall_plugin' && !empty($_GET['plugin']) && current_user_can('install_plugins')) {
+      $plugin = sanitize_text_field(wp_unslash($_GET['plugin']));
+      check_admin_referer('antihacker_reinstall_plugin_' . $plugin);
+
+      require_once ABSPATH . 'wp-admin/includes/plugin.php';
+      $plugin_slug = dirname($plugin);
+      $plugin_file = WP_PLUGIN_DIR . '/' . $plugin;
+      $plugin_data = get_plugin_data($plugin_file);
+      $plugin_name = sanitize_text_field($plugin_data['Name']);
+
+      // Get plugin info from WordPress.org
+      $api = plugins_api('plugin_information', [
+        'slug' => $plugin_slug,
+        'fields' => ['sections' => false],
+      ]);
+
+      if (is_wp_error($api)) {
+        wp_die(esc_html($api->get_error_message()));
+      }
+
+      // Reinstall without deleting
+      $upgrader = new Plugin_Upgrader(new WP_Ajax_Upgrader_Skin());
+      $upgrader->init();
+      $upgrader->upgrade_strings();
+
+      $options = [
+        'package' => $api->download_link,
+        'destination' => WP_PLUGIN_DIR . '/' . $plugin_slug,
+        'clear_destination' => false,
+        'abort_if_destination_exists' => false,
+        'is_multi' => false,
+        'hook_extra' => ['plugin' => $plugin]
+      ];
+
+      $result = $upgrader->run($options);
+
+      if (is_wp_error($result)) {
+        wp_die(esc_html__('Failed to reinstall the plugin: ', 'antihacker') . esc_html($result->get_error_message()));
+      }
+
+      wp_safe_redirect(add_query_arg('reinstalled_name', urlencode($plugin_name), wp_get_referer()));
+      exit;
+    }
+  }
+  add_action('admin_init', 'antihacker_handle_reinstall_plugin');
+
+  // Check if plugin is from WordPress.org
+  function antihacker_is_plugin_from_wporg($plugin_file)
+  {
+    $plugin_slug = dirname(sanitize_text_field($plugin_file));
+    $api = plugins_api('plugin_information', [
+      'slug' => $plugin_slug,
+      'fields' => ['sections' => false],
+    ]);
+    return !is_wp_error($api);
+  }
+
+  // Show success message
+  function antihacker_show_reinstall_message()
+  {
+    if (!empty($_GET['reinstalled_name']) && current_user_can('install_plugins')) {
+      $plugin_name = sanitize_text_field(wp_unslash($_GET['reinstalled_name']));
+      echo '<div class="updated"><p>' . esc_html(sprintf(__('The plugin %s files have been reinstalled successfully.', 'antihacker'), '<strong>' . $plugin_name . '</strong>')) . '</p></div>';
+    }
+  }
+  add_action('admin_notices', 'antihacker_show_reinstall_message');
 }

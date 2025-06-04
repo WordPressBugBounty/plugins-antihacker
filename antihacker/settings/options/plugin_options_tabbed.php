@@ -287,6 +287,28 @@ $fields[] = array(
 	),
 );
 
+
+
+$fields[] = array(
+	'type' 	=> 'radio',
+	'name' 	=> 'antihacker_disable_sitemap',
+	'label' => esc_attr__("Disable WordPress Native XML Sitemap for USER Listings.(This is not about the site's main XML sitemap)", "antihacker"),
+	'radio_options' => array(
+		array('value' => 'yes', 'label' => esc_attr__('Yes, disable', "antihacker")),
+		array('value' => 'no', 'label' => esc_attr__('No', "antihacker")),
+	)
+);
+
+$fields[] = array(
+	'type' 	=> 'radio',
+	'name' 	=> 'antihacker_disable_reinstall',
+	'label' => esc_attr__("Allow the administrator to reinstall plugins without modifying the database. Check AntiHacker > Dashboard > Plugin Integrity Checker first and reinstall only if necessary.(Only Premium)", "antihacker"),
+	'radio_options' => array(
+		array('value' => 'yes', 'label' => esc_attr__('Yes, enable reinstall', "antihacker")),
+		array('value' => 'no', 'label' => esc_attr__('No', "antihacker")),
+	)
+);
+
 $settings['General Settings']['settings']['fields'] = $fields;
 
 

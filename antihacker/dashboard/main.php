@@ -91,12 +91,20 @@ function antihacker_options_page()
             <a href="?page=anti_hacker_plugin&tab=muplugins" class="nav-tab">Must Use Plugins</a>
             <a href="?page=anti_hacker_plugin&tab=notifications" class="nav-tab">Notifications</a>
             <a href="?page=anti_hacker_plugin&tab=check_file_integrity" class="nav-tab">File Integrity Checker</a>
+            <a href="?page=anti_hacker_plugin&tab=plugin_check_file_integrity" class="nav-tab">Plugin Integrity Checker</a>
+
             <a href="?page=anti_hacker_plugin&tab=freebies" class="nav-tab">More Tools</a>
         </h2>
         <?php
 
 
         //debug2();
+
+        //die(var_dump($active_tab));
+
+        error_log(var_export($active_tab, true));
+        debug4(var_export($active_tab, true));
+
 
         if ($active_tab == 'memory') {
             echo '<div id="antihacker-dashboard-wrap">';
@@ -128,6 +136,14 @@ function antihacker_options_page()
             echo '<div id="antihacker-dashboard-left">';
             require_once(ANTIHACKERPATH . '/dashboard/check_file_integrity.php');
             // $antihacker_file_integrity_checker->run_files_integrity_check();
+
+        } elseif ($active_tab == 'plugin_check_file_integrity') {
+
+            debug4();
+
+            echo '<div id="antihacker-dashboard-wrap">';
+            echo '<div id="antihacker-dashboard-left">';
+            require_once(ANTIHACKERPATH . '/dashboard/plugin_check_file_integrity.php');
         } else {
             echo '<div id="antihacker-dashboard-wrap">';
             echo '<div id="antihacker-dashboard-left">';

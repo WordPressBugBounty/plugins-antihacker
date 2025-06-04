@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-03 12:52+0000\n"
-"PO-Revision-Date: 2025-03-03 13:02+0000\n"
+"POT-Creation-Date: 2025-06-04 08:46+0100\n"
+"PO-Revision-Date: 2025-06-04 08:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -11,21 +11,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
 "esc_html__;esc_html_e;esc_html_x\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: antihacker.php:97
+#: antihacker.php:98
 msgid ""
 "Anti Hacker Plugin: Could not load the localization file (Language file)"
 msgstr ""
 "Plugin Anti Hacker : Impossible de charger le fichier de localisation "
 "(fichier de langue)"
 
-#: antihacker.php:99
+#: antihacker.php:100
 msgid ""
 "Please, take a look in our site, FAQ page, item => How can i translate this "
 "plugin?"
@@ -33,31 +33,31 @@ msgstr ""
 "S'il vous plaît, jetez un œil sur notre site, page FAQ, article => Comment "
 "puis-je traduire ce plugin ?"
 
-#: antihacker.php:459
+#: antihacker.php:461
 msgid "Wrong Username, Password or eMail"
 msgstr "Nom d'utilisateur, mot de passe ou adresse e-mail incorrects"
 
-#: antihacker.php:499
+#: antihacker.php:501
 msgid "Empty email"
 msgstr "E-mail vide"
 
-#: antihacker.php:530
+#: antihacker.php:532
 msgid "Wrong Username or Password"
 msgstr "Nom d'utilisateur ou mot de passe incorrect"
 
-#: antihacker.php:1136 includes/functions/functions.php:324
+#: antihacker.php:1138 includes/functions/functions.php:324
 #: includes/functions/functions.php:432 includes/functions/functions.php:471
 #: includes/functions/functions.php:514 includes/functions/functions.php:551
 #: includes/functions/functions.php:3506
 msgid "This email was sent from your website"
 msgstr "Cet e-mail a été envoyé depuis votre site Web"
 
-#: antihacker.php:1136 includes/functions/functions.php:325
+#: antihacker.php:1138 includes/functions/functions.php:325
 #: includes/functions/functions.php:553
 msgid "by the AntiHacker plugin."
 msgstr "par le plugin AntiHacker."
 
-#: antihacker.php:1138
+#: antihacker.php:1140
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
@@ -68,11 +68,11 @@ msgstr ""
 "à jour au cours de l'année dernière sont susceptibles d'être abandonnés et "
 "nous vous suggérons de les remplacer."
 
-#: antihacker.php:1139
+#: antihacker.php:1141
 msgid "Some plugins on the site require attention."
 msgstr "Certains plugins sur le site nécessitent une attention particulière."
 
-#: antihacker.php:1141
+#: antihacker.php:1143
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
@@ -80,19 +80,33 @@ msgstr ""
 "Visitez le tableau de bord du plugin Anti Hacker pour obtenir des conseils "
 "supplémentaires sur l'amélioration de la sécurité du site."
 
-#: antihacker.php:1142
+#: antihacker.php:1144
 msgid "You can stop emails at the Notifications Tab."
 msgstr "Vous pouvez arrêter les e-mails dans l'onglet Notifications."
 
-#: antihacker.php:1143
+#: antihacker.php:1145
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr ""
 "Tableau de bord => Anti Hacker => Paramètres => Paramètres des notifications "
 "(onglet)"
 
-#: antihacker.php:1279
+#: antihacker.php:1281
 msgid "Once Per Week"
 msgstr "Une fois par semaine"
+
+#: antihacker.php:1838
+msgid "Reinstall Files"
+msgstr "Réinstaller les fichiers"
+
+#: antihacker.php:1885
+#| msgid "Failed to retrieve plugins."
+msgid "Failed to reinstall the plugin: "
+msgstr "Échec de la réinstallation du plugin :"
+
+#: antihacker.php:1910
+#, php-format
+msgid "The plugin %s files have been reinstalled successfully."
+msgstr "Les fichiers du plugin %s ont été réinstallés avec succès."
 
 #: dashboard/_tools.php:30 dashboard/tools.php:15
 msgid "If you need support, please, copy and paste the info below in our"
@@ -120,7 +134,7 @@ msgid "Humans"
 msgstr "Les humains"
 
 #: dashboard/checa-plugins-novo.php:18 dashboard/checa-plugins-novo.php:94
-#: dashboard/check_plugins.php:66
+#: dashboard/check_plugins.php:66 dashboard/must_use_plugins.php:145
 msgid "Last check for updates made (Y-M-D):"
 msgstr "Dernière vérification des mises à jour effectuées (A-M-D) :"
 
@@ -135,14 +149,17 @@ msgstr ""
 "consulter la liste ci-dessous :"
 
 #: dashboard/checa-plugins-novo.php:78 dashboard/check_plugins.php:50
+#: dashboard/must_use_plugins.php:129
 msgid "Check Plugins"
 msgstr "Vérifier les plugins"
 
 #: dashboard/checa-plugins-novo.php:82 dashboard/check_plugins.php:54
+#: dashboard/must_use_plugins.php:133
 msgid "Check Plugins for updates."
 msgstr "Vérifiez les plugins pour les mises à jour."
 
 #: dashboard/checa-plugins-novo.php:85 dashboard/check_plugins.php:57
+#: dashboard/must_use_plugins.php:136
 msgid ""
 "This test will check all your plugins against WordPress repository to see \n"
 "    if they are updated last one year. Plugins not updated last one year\n"
@@ -155,8 +172,59 @@ msgstr ""
 "sont suspectés d'être abandonnés et nous vous suggérons de les remplacer."
 
 #: dashboard/checa-plugins-novo.php:100 dashboard/check_plugins.php:72
+#: dashboard/must_use_plugins.php:151
 msgid "Check Plugins Now"
 msgstr "Vérifiez les plugins maintenant"
+
+#: dashboard/check_file_integrity.php:16
+msgid "File Integrity Checker"
+msgstr "Vérificateur d'intégrité des fichiers"
+
+#: dashboard/check_file_integrity.php:46
+msgid ""
+"Click the button below to verify the integrity of your WordPress core files."
+msgstr ""
+"Cliquez sur le bouton ci-dessous pour vérifier l'intégrité de vos fichiers "
+"principaux WordPress."
+
+#: dashboard/check_file_integrity.php:50
+msgid "Run Integrity Check"
+msgstr "Exécuter la vérification d'intégrité"
+
+#: dashboard/check_file_integrity.php:58
+msgid "All core files passed the integrity check. Everything seems to be OK!"
+msgstr ""
+"Tous les fichiers principaux ont passé avec succès le contrôle d'intégrité. "
+"Tout semble être en ordre !"
+
+#: dashboard/check_file_integrity.php:60
+msgid "Some core files may have been modified or are missing:"
+msgstr ""
+"Certains fichiers principaux peuvent avoir été modifiés ou sont manquants :"
+
+#: dashboard/check_file_integrity.php:61
+#: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:157
+msgid "File"
+msgstr "Fichier"
+
+#: dashboard/check_file_integrity.php:61
+#: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:160
+msgid "Reason"
+msgstr "Raison"
+
+#: dashboard/check_file_integrity.php:71
+#: dashboard/plugin_check_file_integrity.php:300
+msgid "Additional issues not shown (limit reached)."
+msgstr "Problèmes supplémentaires non affichés (limite atteinte)."
+
+#: dashboard/check_file_integrity.php:84
+#| msgid "Error sending the message. Please try again later."
+msgid "Failed to retrieve file integrity data. Please try again later."
+msgstr ""
+"Échec de la récupération des données d'intégrité du fichier. Veuillez "
+"réessayer plus tard."
 
 #: dashboard/dashboard.php:12
 msgid "Anti Hacker Plugin Activated"
@@ -426,8 +494,8 @@ msgstr ""
 "si vous n'exécutez qu'un petit \n"
 "site avec des fonctions de base sans Page Builder ni options de thème (par "
 "exemple le Twenty Twenty natif). Cependant, une fois que \n"
-"vous utilisez un thème WordPress Premium et que vous commencez à "
-"rencontrer \n"
+"vous utilisez un thème WordPress Premium et que vous commencez à rencontrer "
+"\n"
 "des problèmes inattendus, il est peut-être temps d'ajuster votre limite de "
 "mémoire \n"
 "pour répondre aux normes d'une installation WordPress moderne."
@@ -446,6 +514,68 @@ msgstr ""
 #: dashboard/memory.php:136
 msgid "Here is the link:"
 msgstr "Voici le lien:"
+
+#: dashboard/must_use_plugins.php:18
+#| msgid "Check Plugins"
+msgid "Must Use Plugins"
+msgstr "Extensions obligatoires"
+
+#: dashboard/must_use_plugins.php:34
+#| msgid "Check Plugins"
+msgid "Must-Use Plugins"
+msgstr "Extensions obligatoires"
+
+#: dashboard/must_use_plugins.php:36
+msgid ""
+"Must-Use plugins, located in the `mu-plugins` directory, are automatically "
+"activated WordPress plugins that cannot be disabled via the admin panel, "
+"often used for critical security or functionality. Regular inspection "
+"ensures they are updated and were intentionally installed and not introduced "
+"by malware or hackers. Verify their source and integrity to maintain a "
+"secure environment."
+msgstr ""
+"Les plugins obligatoires, situés dans le répertoire `mu-plugins`, sont des "
+"plugins WordPress automatiquement activés qui ne peuvent pas être désactivés "
+"via le panneau d'administration, souvent utilisés pour la sécurité ou la "
+"fonctionnalité critique. Une inspection régulière garantit qu'ils sont mis à "
+"jour et ont été installés intentionnellement et non introduits par des "
+"logiciels malveillants ou des pirates. Vérifiez leur source et leur "
+"intégrité pour maintenir un environnement sécurisé."
+
+#: dashboard/must_use_plugins.php:42
+#| msgid "Plugins"
+msgid "Plugin"
+msgstr "Extension"
+
+#: dashboard/must_use_plugins.php:43
+msgid "Description"
+msgstr "Description"
+
+#: dashboard/must_use_plugins.php:44
+msgid "Version"
+msgstr "Version"
+
+#: dashboard/must_use_plugins.php:45
+#: includes/functions/function-site-integrity.php:154
+msgid "Status"
+msgstr "État"
+
+#: dashboard/must_use_plugins.php:52
+#| msgid "No Plugins Found!"
+msgid "No Must-Use plugins found."
+msgstr "Aucun plugin obligatoire trouvé."
+
+#: dashboard/must_use_plugins.php:57
+msgid "No description"
+msgstr "Aucune description"
+
+#: dashboard/must_use_plugins.php:58
+msgid "Not specified"
+msgstr "Non spécifié"
+
+#: dashboard/must_use_plugins.php:59
+msgid "Active"
+msgstr "Actif"
 
 #: dashboard/mybanners.php:24
 msgid "Get Extra Protection and Maximize Your Site's Defense"
@@ -613,6 +743,211 @@ msgstr "Cliquez simplement sur l'onglet Tableau de bord"
 #: dashboard/notifications.php:172
 msgid "No notifications at this time!"
 msgstr "Aucune notification pour le moment !"
+
+#: dashboard/plugin_check_file_integrity.php:20
+msgid "Plugin Integrity Checker"
+msgstr "Vérificateur d'intégrité de plugin"
+
+#: dashboard/plugin_check_file_integrity.php:26
+#| msgid "Critical"
+msgid "Critical Error:"
+msgstr "Erreur critique :"
+
+#: dashboard/plugin_check_file_integrity.php:26
+msgid ""
+"The PHP ZipArchive extension is required for this feature to function, but "
+"it is not installed or enabled on your server. Please contact your server "
+"administrator."
+msgstr ""
+"L'extension PHP ZipArchive est requise pour que cette fonctionnalité "
+"fonctionne, mais elle n'est pas installée ou activée sur votre serveur. "
+"Veuillez contacter votre administrateur de serveur."
+
+#: dashboard/plugin_check_file_integrity.php:29
+msgid ""
+"Select a plugin and click the button below to verify its file integrity "
+"against the WordPress repository."
+msgstr ""
+"Sélectionnez un plugin et cliquez sur le bouton ci-dessous pour vérifier "
+"l'intégrité de son fichier par rapport au référentiel WordPress."
+
+#: dashboard/plugin_check_file_integrity.php:32
+msgid "Select a plugin:"
+msgstr "Sélectionner un plugin :"
+
+#: dashboard/plugin_check_file_integrity.php:34
+msgid "-- Select --"
+msgstr "-- Sélectionner --"
+
+#: dashboard/plugin_check_file_integrity.php:42
+#| msgid "No Plugins Found!"
+msgid "No plugins found"
+msgstr "Aucun plugin trouvé"
+
+#: dashboard/plugin_check_file_integrity.php:46
+msgid "Check Integrity"
+msgstr "Vérifier l'intégrité"
+
+#: dashboard/plugin_check_file_integrity.php:60
+msgid "Please select a plugin to check."
+msgstr "Veuillez sélectionner un plugin à vérifier."
+
+#: dashboard/plugin_check_file_integrity.php:83
+msgid "Error:"
+msgstr "Erreur :"
+
+#: dashboard/plugin_check_file_integrity.php:83
+msgid "The PHP ZipArchive extension is required and not available."
+msgstr "L'extension PHP ZipArchive est requise et n'est pas disponible."
+
+#: dashboard/plugin_check_file_integrity.php:106
+#| msgid "Check Plugins"
+msgid "Checking Plugin:"
+msgstr "Vérification du plugin :"
+
+#: dashboard/plugin_check_file_integrity.php:106
+msgid "API Slug:"
+msgstr "Chemin d'accès API :"
+
+#: dashboard/plugin_check_file_integrity.php:106
+msgid "Local Version:"
+msgstr "Version locale :"
+
+#: dashboard/plugin_check_file_integrity.php:120
+msgid "Error querying the WordPress API for slug"
+msgstr "Erreur lors de l'interrogation de l'API WordPress pour le slug"
+
+#: dashboard/plugin_check_file_integrity.php:125
+#| msgid "Plugins"
+msgid "Plugin with slug"
+msgstr "Extension avec slug"
+
+#: dashboard/plugin_check_file_integrity.php:125
+msgid "not found in the official repository or download link unavailable."
+msgstr ""
+"non trouvé dans le référentiel officiel ou lien de téléchargement "
+"indisponible."
+
+#: dashboard/plugin_check_file_integrity.php:154
+#, php-format
+msgid ""
+"The local plugin version (%s) differs from the repository version used for "
+"comparison (%s). The comparison will use version %s from the repository. "
+"This may result in many differences if you are not using that version."
+msgstr ""
+"La version du plugin local (%s) diffère de la version du référentiel "
+"utilisée pour la comparaison (%s). La comparaison utilisera la version %s du "
+"référentiel. Cela peut entraîner de nombreuses différences si vous "
+"n'utilisez pas cette version."
+
+#: dashboard/plugin_check_file_integrity.php:161
+msgid "Comparing with repository version:"
+msgstr "Comparaison avec la version du référentiel :"
+
+#: dashboard/plugin_check_file_integrity.php:167
+msgid "Error downloading the plugin ZIP file:"
+msgstr "Erreur lors du téléchargement du fichier ZIP du plugin :"
+
+#: dashboard/plugin_check_file_integrity.php:169
+#, php-format
+msgid ""
+"This may be due to permission issues in the server’s temporary directory (%s)"
+", firewall settings, or the download link may be incorrect/unavailable for "
+"this version."
+msgstr ""
+"Ceci peut être dû à des problèmes de permissions dans le répertoire "
+"temporaire du serveur (%s), aux paramètres du pare-feu, ou au fait que le "
+"lien de téléchargement est incorrect ou indisponible pour cette version."
+
+#: dashboard/plugin_check_file_integrity.php:209
+msgid "Warning: Could not read file"
+msgstr "Avertissement : Impossible de lire le fichier"
+
+#: dashboard/plugin_check_file_integrity.php:209
+msgid "from ZIP."
+msgstr "à partir du code postal."
+
+#: dashboard/plugin_check_file_integrity.php:215
+#, php-format
+msgid ""
+"Error opening the downloaded ZIP file (%s). The file may be corrupted, an "
+"error HTML (e.g., 404), or inaccessible."
+msgstr ""
+"Erreur lors de l'ouverture du fichier ZIP téléchargé (%s). Le fichier peut "
+"être corrompu, une erreur HTML (par exemple, 404) ou inaccessible."
+
+#: dashboard/plugin_check_file_integrity.php:239
+msgid "No files found locally or in the ZIP for comparison."
+msgstr "Aucun fichier trouvé localement ou dans le ZIP pour comparaison."
+
+#: dashboard/plugin_check_file_integrity.php:271
+#: includes/functions/function-site-integrity.php:212
+msgid "Modified"
+msgstr "Modifié"
+
+#: dashboard/plugin_check_file_integrity.php:276
+msgid "Extra local file (does not exist in repository)"
+msgstr "Fichier local supplémentaire (n'existe pas dans le référentiel)"
+
+#: dashboard/plugin_check_file_integrity.php:280
+msgid "Missing locally (exists in repository)"
+msgstr "Manquant localement (existe dans le référentiel)"
+
+#: dashboard/plugin_check_file_integrity.php:289
+#, php-format
+msgid ""
+"No differences found. Local plugin files match the repository (version %s)."
+msgstr ""
+"Aucune différence trouvée. Les fichiers du plugin local correspondent au "
+"référentiel (version %s)."
+
+#: dashboard/plugin_check_file_integrity.php:293
+msgid "Some plugin files may have been modified, are extra, or are missing:"
+msgstr ""
+"Certains fichiers de plugin peuvent avoir été modifiés, sont supplémentaires "
+"ou manquants :"
+
+#: dashboard/plugin_check_file_integrity.php:310
+msgid "Verification Summary:"
+msgstr "Résumé de la vérification :"
+
+#: dashboard/plugin_check_file_integrity.php:312
+msgid "Identical files:"
+msgstr "Fichiers identiques :"
+
+#: dashboard/plugin_check_file_integrity.php:314
+#| msgid "on file:"
+msgid "Modified files:"
+msgstr "Fichiers modifiés :"
+
+#: dashboard/plugin_check_file_integrity.php:317
+msgid "Extra local files:"
+msgstr "Fichiers locaux supplémentaires :"
+
+#: dashboard/plugin_check_file_integrity.php:320
+msgid "Missing local files:"
+msgstr "Fichiers locaux manquants :"
+
+#: dashboard/plugin_check_file_integrity.php:331
+#, php-format
+msgid "Local plugin directory (%s) does not exist."
+msgstr "Répertoire de plugins local (%s) introuvable."
+
+#: dashboard/plugin_check_file_integrity.php:360
+#, php-format
+msgid ""
+"Error reading local plugin directory (%s): %s. Check server permissions or "
+"restrictions (e.g., open_basedir)."
+msgstr ""
+"Erreur lors de la lecture du répertoire de plugins local (%s) : %s. Vérifiez "
+"les autorisations du serveur ou les restrictions (par exemple, open_basedir)."
+
+#: dashboard/plugin_check_file_integrity.php:367
+#, php-format
+msgid "Unexpected error reading local plugin directory (%s): %s."
+msgstr ""
+"Erreur inattendue lors de la lecture du répertoire de plugins local (%s) : "
+"%s."
 
 #: dashboard/root_folder.php:65
 msgid "ERROR on Search the root folder. Maybe no Hosting permissions."
@@ -912,8 +1247,8 @@ msgid ""
 "means you will no longer be notified here that they are happening, but they "
 "can still harm your site."
 msgstr ""
-"La désactivation de notre plugin n'empêche pas les erreurs de se "
-"produire ; \n"
+"La désactivation de notre plugin n'empêche pas les erreurs de se produire ; "
+"\n"
 "cela signifie simplement que vous ne serez plus averti ici qu'elles se "
 "produisent, mais elles peuvent toujours nuire à votre site."
 
@@ -1209,7 +1544,6 @@ msgid "seconds"
 msgstr "secondes"
 
 #: includes/diagnose/class_bill_diagnose.php:1290
-#| msgid "5 per minute"
 msgid "minutes"
 msgstr "minutes"
 
@@ -1272,8 +1606,8 @@ msgid ""
 "Our free <a href=\"%1$s\">antihacker</a> and <a href=\"%2$s\">AntiHacker</a> "
 "plugins help safeguard your site."
 msgstr ""
-"Nos plugins <a href=\"%1$s\">antihacker</a> et <a href=\"%2$s\">AntiHacker</"
-"a> gratuits aident à protéger votre site."
+"Nos plugins <a href=\"%1$s\">antihacker</a> et <a href=\"%2$s\">"
+"AntiHacker</a> gratuits aident à protéger votre site."
 
 #: includes/feedback-last/feedback-last.php:310
 msgid "What can we do to resolve the problem you're facing?"
@@ -1298,6 +1632,54 @@ msgstr "Annuler"
 #: includes/feedback-last/feedback-last.php:346
 msgid "Just Deactivate"
 msgstr "Il suffit de désactiver"
+
+#: includes/functions/function-site-integrity.php:85
+msgid "Content changed"
+msgstr "Contenu modifié"
+
+#: includes/functions/function-site-integrity.php:87
+msgid "(View Diff)"
+msgstr "(Voir les différences)"
+
+#: includes/functions/function-site-integrity.php:90
+#| msgid "File not readable."
+msgid "File not found"
+msgstr "Fichier non trouvé"
+
+#: includes/functions/function-site-integrity.php:109
+#: includes/functions/function-site-integrity.php:120
+msgid "This is an unknown file"
+msgstr "Ceci est un fichier inconnu"
+
+#: includes/functions/function-site-integrity.php:140
+msgid "All files passed the check. Everything seems to be OK!"
+msgstr "Tous les fichiers ont passé le contrôle. Tout semble être en ordre !"
+
+#: includes/functions/function-site-integrity.php:146
+msgid "It appears some files may have been modified."
+msgstr "Il semble que certains fichiers aient été modifiés."
+
+#: includes/functions/function-site-integrity.php:167
+#| msgid "Site Errors"
+msgid "Error"
+msgstr "Erreur"
+
+#: includes/functions/function-site-integrity.php:197
+msgid "You do not have access to this file."
+msgstr "Vous n'avez pas accès à ce fichier."
+
+#: includes/functions/function-site-integrity.php:204
+#| msgid "File Size: "
+msgid "File Diff"
+msgstr "Différences de fichiers"
+
+#: includes/functions/function-site-integrity.php:209
+msgid "Original"
+msgstr "Original"
+
+#: includes/functions/function-site-integrity.php:217
+msgid "Close"
+msgstr "Fermer"
 
 #: includes/functions/functions.php:327 includes/functions/functions.php:427
 #: includes/functions/functions.php:467 includes/functions/functions.php:510
@@ -2076,60 +2458,62 @@ msgstr ""
 "Exécuter l'analyse\n"
 "Maintenant"
 
-#: settings/options/plugin_options_tabbed.php:12
+#: settings/options/plugin_options_tabbed.php:14
 msgid "Just check yes or not. After that, click SAVE changes. "
 msgstr ""
 "Cochez simplement oui ou non. Après cela, cliquez sur ENREGISTRER les "
 "modifications."
 
-#: settings/options/plugin_options_tabbed.php:14
+#: settings/options/plugin_options_tabbed.php:16
 msgid "We suggest click Yes for all. "
 msgstr "Nous vous suggérons de cliquer sur Oui pour tout."
 
-#: settings/options/plugin_options_tabbed.php:17
+#: settings/options/plugin_options_tabbed.php:19
 msgid ""
 "Please, visit our Faq page for more details (button at Startup Guide Tab)."
 msgstr ""
 "Veuillez visiter notre page FAQ pour plus de détails (bouton dans l'onglet "
 "Guide de démarrage)."
 
-#: settings/options/plugin_options_tabbed.php:23
+#: settings/options/plugin_options_tabbed.php:25
 msgid "Disable xml-rpc API. Look our FAQ page (at our site) for more details."
 msgstr ""
 "Désactiver l'API xml-rpc. Consultez notre page FAQ (sur notre site) pour "
 "plus de détails."
 
-#: settings/options/plugin_options_tabbed.php:25
+#: settings/options/plugin_options_tabbed.php:27
 msgid "Yes, disable All"
 msgstr "Oui, désactiver tout"
 
-#: settings/options/plugin_options_tabbed.php:26
+#: settings/options/plugin_options_tabbed.php:28
 msgid "Yes, disable only Ping Back"
 msgstr "Oui, désactiver uniquement le Ping Back"
 
-#: settings/options/plugin_options_tabbed.php:28
-#: settings/options/plugin_options_tabbed.php:37
-#: settings/options/plugin_options_tabbed.php:66
-#: settings/options/plugin_options_tabbed.php:75
-#: settings/options/plugin_options_tabbed.php:84
-#: settings/options/plugin_options_tabbed.php:93
-#: settings/options/plugin_options_tabbed.php:102
-#: settings/options/plugin_options_tabbed.php:111
-#: settings/options/plugin_options_tabbed.php:120
-#: settings/options/plugin_options_tabbed.php:129
-#: settings/options/plugin_options_tabbed.php:143
-#: settings/options/plugin_options_tabbed.php:155
-#: settings/options/plugin_options_tabbed.php:166
-#: settings/options/plugin_options_tabbed.php:177
-#: settings/options/plugin_options_tabbed.php:188
-#: settings/options/plugin_options_tabbed.php:233
-#: settings/options/plugin_options_tabbed.php:471
-#: settings/options/plugin_options_tabbed.php:491
-#: settings/options/plugin_options_tabbed.php:500
+#: settings/options/plugin_options_tabbed.php:30
+#: settings/options/plugin_options_tabbed.php:39
+#: settings/options/plugin_options_tabbed.php:68
+#: settings/options/plugin_options_tabbed.php:77
+#: settings/options/plugin_options_tabbed.php:86
+#: settings/options/plugin_options_tabbed.php:95
+#: settings/options/plugin_options_tabbed.php:104
+#: settings/options/plugin_options_tabbed.php:113
+#: settings/options/plugin_options_tabbed.php:122
+#: settings/options/plugin_options_tabbed.php:131
+#: settings/options/plugin_options_tabbed.php:145
+#: settings/options/plugin_options_tabbed.php:157
+#: settings/options/plugin_options_tabbed.php:168
+#: settings/options/plugin_options_tabbed.php:179
+#: settings/options/plugin_options_tabbed.php:190
+#: settings/options/plugin_options_tabbed.php:235
+#: settings/options/plugin_options_tabbed.php:298
+#: settings/options/plugin_options_tabbed.php:308
+#: settings/options/plugin_options_tabbed.php:546
+#: settings/options/plugin_options_tabbed.php:566
+#: settings/options/plugin_options_tabbed.php:575
 msgid "No"
 msgstr "Non"
 
-#: settings/options/plugin_options_tabbed.php:34
+#: settings/options/plugin_options_tabbed.php:36
 msgid ""
 "Disable Json WordPress Rest API (also new WordPress 4.7 Rest API). Take a "
 "look our faq page (at our site) for details. Don't disable if you want to "
@@ -2140,12 +2524,13 @@ msgstr ""
 "détails. Ne désactivez pas cette option si vous souhaitez utiliser le plugin "
 "de formulaire Contact 7."
 
-#: settings/options/plugin_options_tabbed.php:36
-#: settings/options/plugin_options_tabbed.php:232
+#: settings/options/plugin_options_tabbed.php:38
+#: settings/options/plugin_options_tabbed.php:234
+#: settings/options/plugin_options_tabbed.php:297
 msgid "Yes, disable"
 msgstr "Oui, désactiver"
 
-#: settings/options/plugin_options_tabbed.php:63
+#: settings/options/plugin_options_tabbed.php:65
 msgid ""
 "Sets WordPress to replace the login error message to Wrong Username or "
 "Password"
@@ -2153,34 +2538,34 @@ msgstr ""
 "Configure WordPress pour remplacer le message d'erreur de connexion par un "
 "nom d'utilisateur ou un mot de passe incorrect"
 
-#: settings/options/plugin_options_tabbed.php:65
-#: settings/options/plugin_options_tabbed.php:74
-#: settings/options/plugin_options_tabbed.php:83
-#: settings/options/plugin_options_tabbed.php:92
-#: settings/options/plugin_options_tabbed.php:101
-#: settings/options/plugin_options_tabbed.php:110
-#: settings/options/plugin_options_tabbed.php:119
-#: settings/options/plugin_options_tabbed.php:128
-#: settings/options/plugin_options_tabbed.php:142
-#: settings/options/plugin_options_tabbed.php:154
-#: settings/options/plugin_options_tabbed.php:165
-#: settings/options/plugin_options_tabbed.php:176
-#: settings/options/plugin_options_tabbed.php:187
-#: settings/options/plugin_options_tabbed.php:490
-#: settings/options/plugin_options_tabbed.php:499
+#: settings/options/plugin_options_tabbed.php:67
+#: settings/options/plugin_options_tabbed.php:76
+#: settings/options/plugin_options_tabbed.php:85
+#: settings/options/plugin_options_tabbed.php:94
+#: settings/options/plugin_options_tabbed.php:103
+#: settings/options/plugin_options_tabbed.php:112
+#: settings/options/plugin_options_tabbed.php:121
+#: settings/options/plugin_options_tabbed.php:130
+#: settings/options/plugin_options_tabbed.php:144
+#: settings/options/plugin_options_tabbed.php:156
+#: settings/options/plugin_options_tabbed.php:167
+#: settings/options/plugin_options_tabbed.php:178
+#: settings/options/plugin_options_tabbed.php:189
+#: settings/options/plugin_options_tabbed.php:565
+#: settings/options/plugin_options_tabbed.php:574
 msgid "Yes"
 msgstr "Oui"
 
-#: settings/options/plugin_options_tabbed.php:72
+#: settings/options/plugin_options_tabbed.php:74
 msgid "Disable file editing within the WordPress dashboard"
 msgstr "Désactiver l'édition de fichiers dans le tableau de bord WordPress"
 
-#: settings/options/plugin_options_tabbed.php:81
+#: settings/options/plugin_options_tabbed.php:83
 msgid "Enable dashboard warning message when Debug is true"
 msgstr ""
 "Activer le message d'avertissement du tableau de bord lorsque Debug est vrai"
 
-#: settings/options/plugin_options_tabbed.php:90
+#: settings/options/plugin_options_tabbed.php:92
 msgid ""
 "Enable Firewall? (Block Malicious Requests, Queries, User Agents and URLS. "
 "100% Plug-n-play, no configuration required.)"
@@ -2188,23 +2573,23 @@ msgstr ""
 "Activer le pare-feu ? (Bloquer les requêtes, les agents utilisateurs et les "
 "URL malveillants. 100 % Plug-n-play, aucune configuration requise.)"
 
-#: settings/options/plugin_options_tabbed.php:99
+#: settings/options/plugin_options_tabbed.php:101
 msgid "Hide WordPress Version to improve security?"
 msgstr "Masquer la version WordPress pour améliorer la sécurité ?"
 
-#: settings/options/plugin_options_tabbed.php:108
+#: settings/options/plugin_options_tabbed.php:110
 msgid "Block User enumeration to improve security?"
 msgstr "Bloquer l'énumération des utilisateurs pour améliorer la sécurité ?"
 
-#: settings/options/plugin_options_tabbed.php:117
+#: settings/options/plugin_options_tabbed.php:119
 msgid "Block All Feeds to avoid bots exploit."
 msgstr "Bloquez tous les flux pour éviter l'exploitation des robots."
 
-#: settings/options/plugin_options_tabbed.php:126
+#: settings/options/plugin_options_tabbed.php:128
 msgid "Block Comments in Media Pages."
 msgstr "Bloquer les commentaires dans les pages multimédias."
 
-#: settings/options/plugin_options_tabbed.php:140
+#: settings/options/plugin_options_tabbed.php:142
 msgid ""
 "Create All New Users always as Subscriber. Protect you from flaws in plugins "
 "and themes and don't allow hackers include new Administrator."
@@ -2213,54 +2598,54 @@ msgstr ""
 "vous des failles des plugins et des thèmes et ne permettez pas aux pirates "
 "d'inclure de nouveaux administrateurs."
 
-#: settings/options/plugin_options_tabbed.php:152
+#: settings/options/plugin_options_tabbed.php:154
 msgid "Block False Googlebot, Msnbot & Bingbot? (Premium Version Only)"
 msgstr ""
 "Bloquer les faux Googlebot, Msnbot et Bingbot ? (Version Premium uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:163
+#: settings/options/plugin_options_tabbed.php:165
 msgid "Block Search For Plugin Vulnerabilities? (Premium Version Only)"
 msgstr ""
 "Bloquer la recherche des vulnérabilités des plugins ? (Version Premium "
 "uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:174
+#: settings/options/plugin_options_tabbed.php:176
 msgid "Block Search For Theme Vulnerabilities? (Premium Version Only)"
 msgstr ""
 "Bloquer la recherche des vulnérabilités du thème ? (Version Premium "
 "uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:185
+#: settings/options/plugin_options_tabbed.php:187
 msgid ""
 "Block all traffic from Tor? - The Onion Router -  (Premium Version Only)"
 msgstr ""
 "Bloquer tout le trafic de Tor ? - The Onion Router - (Version Premium "
 "uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:196
+#: settings/options/plugin_options_tabbed.php:198
 msgid "Block all with Blank User Agent? -  (Premium Version Only)"
 msgstr ""
 "Bloquer tout avec un agent utilisateur vide ? - (version Premium uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:198
-#: settings/options/plugin_options_tabbed.php:212
-#: settings/options/plugin_options_tabbed.php:222
-#: settings/options/plugin_options_tabbed.php:267
-#: settings/options/plugin_options_tabbed.php:378
-#: settings/options/plugin_options_tabbed.php:388
+#: settings/options/plugin_options_tabbed.php:200
+#: settings/options/plugin_options_tabbed.php:214
+#: settings/options/plugin_options_tabbed.php:224
+#: settings/options/plugin_options_tabbed.php:342
+#: settings/options/plugin_options_tabbed.php:453
+#: settings/options/plugin_options_tabbed.php:463
 msgid "yes"
 msgstr "Oui"
 
-#: settings/options/plugin_options_tabbed.php:199
-#: settings/options/plugin_options_tabbed.php:213
-#: settings/options/plugin_options_tabbed.php:223
-#: settings/options/plugin_options_tabbed.php:268
-#: settings/options/plugin_options_tabbed.php:379
-#: settings/options/plugin_options_tabbed.php:389
+#: settings/options/plugin_options_tabbed.php:201
+#: settings/options/plugin_options_tabbed.php:215
+#: settings/options/plugin_options_tabbed.php:225
+#: settings/options/plugin_options_tabbed.php:343
+#: settings/options/plugin_options_tabbed.php:454
+#: settings/options/plugin_options_tabbed.php:464
 msgid "no"
 msgstr "Non"
 
-#: settings/options/plugin_options_tabbed.php:210
+#: settings/options/plugin_options_tabbed.php:212
 msgid ""
 "Disable Application Passwords (WordPress version 5.6 allows external "
 "applications to request permission to connect to a site and generate a "
@@ -2270,198 +2655,246 @@ msgstr ""
 "permet aux applications externes de demander l'autorisation de se connecter "
 "à un site et de générer un mot de passe)"
 
-#: settings/options/plugin_options_tabbed.php:220
+#: settings/options/plugin_options_tabbed.php:222
 msgid "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
 msgstr ""
 "Afficher le widget Anti Hacker sur la page principale du tableau de bord "
 "(uniquement pour les utilisateurs administrateurs)."
 
-#: settings/options/plugin_options_tabbed.php:230
-msgid "Disable WordPress Native Sitemap XML for User's Creation."
+#: settings/options/plugin_options_tabbed.php:232
+#: settings/options/plugin_options_tabbed.php:295
+msgid ""
+"Disable WordPress Native XML Sitemap for USER Listings.(This is not about "
+"the site's main XML sitemap)"
 msgstr ""
-"Désactiver le plan de site XML natif de WordPress pour la création de "
-"l'utilisateur."
+"Désactiver le plan du site XML natif de WordPress pour les listes "
+"d'utilisateurs. (Ceci ne concerne pas le plan du site XML principal du site)"
 
 #: settings/options/plugin_options_tabbed.php:243
-#: settings/options/plugin_options_tabbed.php:357
+msgid ""
+"How long keep the visitors log file? If you have a very heavy traffic, "
+"select 1 day. Your choices can impact the Blocked Visits Log."
+msgstr ""
+"Combien de temps conserver le fichier journal des visiteurs ? Si vous avez "
+"un trafic très élevé, sélectionnez 1 jour. Vos choix peuvent avoir un impact "
+"sur le journal des visites bloquées."
+
+#: settings/options/plugin_options_tabbed.php:249
+msgid "Select"
+msgstr "Sélectionner"
+
+#: settings/options/plugin_options_tabbed.php:253
+#| msgid "day(s)"
+msgid "day"
+msgstr "jour"
+
+#: settings/options/plugin_options_tabbed.php:257
+#: settings/options/plugin_options_tabbed.php:261
+#: settings/options/plugin_options_tabbed.php:265
+#: settings/options/plugin_options_tabbed.php:269
+#: settings/options/plugin_options_tabbed.php:273
+#: settings/options/plugin_options_tabbed.php:277
+#: settings/options/plugin_options_tabbed.php:281
+#: settings/options/plugin_options_tabbed.php:285
+msgid "days"
+msgstr "jours"
+
+#: settings/options/plugin_options_tabbed.php:305
+msgid ""
+"Allow the administrator to reinstall plugins without modifying the database. "
+"Check AntiHacker > Dashboard > Plugin Integrity Checker first and reinstall "
+"only if necessary.(Only Premium)"
+msgstr ""
+"Autoriser l'administrateur à réinstaller des plugins sans modifier la base "
+"de données. Vérifiez d'abord AntiHacker > Tableau de bord > Vérificateur "
+"d'intégrité des plugins et réinstallez uniquement si nécessaire.(Uniquement "
+"Premium)"
+
+#: settings/options/plugin_options_tabbed.php:307
+#| msgid "Yes, disable All"
+msgid "Yes, enable reinstall"
+msgstr "Oui, activer la réinstallation"
+
+#: settings/options/plugin_options_tabbed.php:318
+#: settings/options/plugin_options_tabbed.php:432
 msgid "This page works only in Premium Version."
 msgstr "Cette page fonctionne uniquement en version Premium."
 
-#: settings/options/plugin_options_tabbed.php:245
+#: settings/options/plugin_options_tabbed.php:320
 msgid "Bots and Hackers can make a lot of visits in a short time period."
 msgstr ""
 "Les robots et les pirates peuvent effectuer de nombreuses visites en peu de "
 "temps."
 
-#: settings/options/plugin_options_tabbed.php:248
+#: settings/options/plugin_options_tabbed.php:323
 msgid "We can limit a number of visits, just choose the options below."
 msgstr ""
 "Nous pouvons limiter le nombre de visites, choisissez simplement les options "
 "ci-dessous."
 
-#: settings/options/plugin_options_tabbed.php:250
+#: settings/options/plugin_options_tabbed.php:325
 msgid "You can also whitelist Ips, look the Whitelist tab."
 msgstr ""
 "Vous pouvez également ajouter des adresses IP à la liste blanche, consultez "
 "l'onglet Liste blanche."
 
-#: settings/options/plugin_options_tabbed.php:252
+#: settings/options/plugin_options_tabbed.php:327
 msgid "Search engine crawlers has unlimited access."
 msgstr ""
 "Les robots d'exploration des moteurs de recherche ont un accès illimité."
 
-#: settings/options/plugin_options_tabbed.php:254
+#: settings/options/plugin_options_tabbed.php:329
 msgid "IP will be blocked by one hour."
 msgstr "L'IP sera bloquée pendant une heure."
 
-#: settings/options/plugin_options_tabbed.php:257
+#: settings/options/plugin_options_tabbed.php:332
 msgid "Instructions"
 msgstr "Instructions"
 
-#: settings/options/plugin_options_tabbed.php:265
+#: settings/options/plugin_options_tabbed.php:340
 msgid "Enable the Rate Limiting?"
 msgstr "Activer la limitation de débit ?"
 
-#: settings/options/plugin_options_tabbed.php:278
+#: settings/options/plugin_options_tabbed.php:353
 msgid "If requests exceed"
 msgstr "Si les demandes dépassent"
 
-#: settings/options/plugin_options_tabbed.php:282
-#: settings/options/plugin_options_tabbed.php:303
-#: settings/options/plugin_options_tabbed.php:342
+#: settings/options/plugin_options_tabbed.php:357
+#: settings/options/plugin_options_tabbed.php:378
+#: settings/options/plugin_options_tabbed.php:417
 msgid "Unlimited"
 msgstr "Illimité"
 
-#: settings/options/plugin_options_tabbed.php:283
+#: settings/options/plugin_options_tabbed.php:358
 msgid "5 per minute"
 msgstr "5 par minute"
 
-#: settings/options/plugin_options_tabbed.php:284
+#: settings/options/plugin_options_tabbed.php:359
 msgid "6 per minute"
 msgstr "6 par minute"
 
-#: settings/options/plugin_options_tabbed.php:285
+#: settings/options/plugin_options_tabbed.php:360
 msgid "7 per minute"
 msgstr "7 par minute"
 
-#: settings/options/plugin_options_tabbed.php:286
+#: settings/options/plugin_options_tabbed.php:361
 msgid "8 per minute"
 msgstr "8 par minute"
 
-#: settings/options/plugin_options_tabbed.php:287
+#: settings/options/plugin_options_tabbed.php:362
 msgid "9 per minute"
 msgstr "9 par minute"
 
-#: settings/options/plugin_options_tabbed.php:288
+#: settings/options/plugin_options_tabbed.php:363
 msgid "10 per minute"
 msgstr "10 par minute"
 
-#: settings/options/plugin_options_tabbed.php:289
+#: settings/options/plugin_options_tabbed.php:364
 msgid "15 per minute"
 msgstr "15 par minute"
 
-#: settings/options/plugin_options_tabbed.php:290
+#: settings/options/plugin_options_tabbed.php:365
 msgid "30 per minute"
 msgstr "30 par minute"
 
-#: settings/options/plugin_options_tabbed.php:291
+#: settings/options/plugin_options_tabbed.php:366
 msgid "40 per minute"
 msgstr "40 par minute"
 
-#: settings/options/plugin_options_tabbed.php:292
+#: settings/options/plugin_options_tabbed.php:367
 msgid "50 per minute"
 msgstr "50 par minute"
 
-#: settings/options/plugin_options_tabbed.php:299
+#: settings/options/plugin_options_tabbed.php:374
 msgid "if requests exceed"
 msgstr "si les demandes dépassent"
 
-#: settings/options/plugin_options_tabbed.php:304
+#: settings/options/plugin_options_tabbed.php:379
 msgid "5 per hour"
 msgstr "5 par heure"
 
-#: settings/options/plugin_options_tabbed.php:305
+#: settings/options/plugin_options_tabbed.php:380
 msgid "10 per hour"
 msgstr "10 par heure"
 
-#: settings/options/plugin_options_tabbed.php:306
+#: settings/options/plugin_options_tabbed.php:381
 msgid "20 per hour"
 msgstr "20 par heure"
 
-#: settings/options/plugin_options_tabbed.php:307
+#: settings/options/plugin_options_tabbed.php:382
 msgid "50 per hour"
 msgstr "50 par heure"
 
-#: settings/options/plugin_options_tabbed.php:308
+#: settings/options/plugin_options_tabbed.php:383
 msgid "100 per hour"
 msgstr "100 par heure"
 
-#: settings/options/plugin_options_tabbed.php:309
+#: settings/options/plugin_options_tabbed.php:384
 msgid "200 per hour"
 msgstr "200 par heure"
 
-#: settings/options/plugin_options_tabbed.php:310
+#: settings/options/plugin_options_tabbed.php:385
 msgid "500 per hour"
 msgstr "500 par heure"
 
-#: settings/options/plugin_options_tabbed.php:338
+#: settings/options/plugin_options_tabbed.php:413
 msgid "If made only 404 requests exceed"
 msgstr "Si seulement 404 requêtes sont effectuées, dépassez"
 
-#: settings/options/plugin_options_tabbed.php:343
+#: settings/options/plugin_options_tabbed.php:418
 msgid "five 404 pages"
 msgstr "cinq pages 404"
 
-#: settings/options/plugin_options_tabbed.php:344
+#: settings/options/plugin_options_tabbed.php:419
 msgid "ten 404 pages"
 msgstr "dix pages 404"
 
-#: settings/options/plugin_options_tabbed.php:345
+#: settings/options/plugin_options_tabbed.php:420
 msgid "fifteen 404 pages"
 msgstr "quinze 404 pages"
 
-#: settings/options/plugin_options_tabbed.php:346
+#: settings/options/plugin_options_tabbed.php:421
 msgid "twenty 404 pages"
 msgstr "vingt pages 404"
 
-#: settings/options/plugin_options_tabbed.php:347
+#: settings/options/plugin_options_tabbed.php:422
 msgid "fifty 404 pages"
 msgstr "cinquante 404 pages"
 
-#: settings/options/plugin_options_tabbed.php:359
+#: settings/options/plugin_options_tabbed.php:434
 msgid "HTTP Tools are tools to do HTTP request, used for not humans."
 msgstr ""
 "Les outils HTTP sont des outils permettant d'effectuer des requêtes HTTP, "
 "utilisés par des non-humains."
 
-#: settings/options/plugin_options_tabbed.php:362
+#: settings/options/plugin_options_tabbed.php:437
 msgid "To Block HTTP Tools, just add one for each line."
 msgstr ""
 "Pour bloquer les outils HTTP, ajoutez-en simplement un pour chaque ligne."
 
-#: settings/options/plugin_options_tabbed.php:364
+#: settings/options/plugin_options_tabbed.php:439
 msgid ""
 "To Manage, you can also remove one or more lines. Then, click Save Changes."
 msgstr ""
 "Pour gérer, vous pouvez également supprimer une ou plusieurs lignes. Cliquez "
 "ensuite sur Enregistrer les modifications."
 
-#: settings/options/plugin_options_tabbed.php:366
+#: settings/options/plugin_options_tabbed.php:441
 msgid ""
 "Activate eMail notification for some days and manage the Whitelist tables."
 msgstr ""
 "Activez la notification par e-mail pendant quelques jours et gérez les "
 "tables de la liste blanche."
 
-#: settings/options/plugin_options_tabbed.php:369
+#: settings/options/plugin_options_tabbed.php:444
 msgid "Instructions about to block HTTP tools (Only Premium)"
 msgstr "Instructions sur le blocage des outils HTTP (Premium uniquement)"
 
-#: settings/options/plugin_options_tabbed.php:376
+#: settings/options/plugin_options_tabbed.php:451
 msgid "Block HTTP tools?"
 msgstr "Bloquer les outils HTTP ?"
 
-#: settings/options/plugin_options_tabbed.php:386
+#: settings/options/plugin_options_tabbed.php:461
 msgid ""
 "Update HTTP tools from Anti Hacker Plugin Server each new plugin version or "
 "plugin is activated? Maybe you will need remove that tools you don't want to "
@@ -2471,87 +2904,87 @@ msgstr ""
 "nouvelle version de plugin ou chaque plugin activé ? Peut-être devrez-vous "
 "supprimer les outils que vous ne souhaitez plus bloquer."
 
-#: settings/options/plugin_options_tabbed.php:409
+#: settings/options/plugin_options_tabbed.php:484
 msgid "Add IPs or strings to your whitelist, then click SAVE CHANGES."
 msgstr ""
 "Ajoutez des adresses IP ou des chaînes à votre liste blanche, puis cliquez "
 "sur ENREGISTRER LES MODIFICATIONS."
 
-#: settings/options/plugin_options_tabbed.php:411
+#: settings/options/plugin_options_tabbed.php:486
 msgid "If necessary add more than one, use only one ip by line."
 msgstr ""
 "Si nécessaire, ajoutez-en plusieurs, utilisez une seule adresse IP par ligne."
 
-#: settings/options/plugin_options_tabbed.php:413
+#: settings/options/plugin_options_tabbed.php:488
 msgid "You can also add IPs from the Blocked Visitors Log Table page."
 msgstr ""
 "Vous pouvez également ajouter des adresses IP à partir de la page Tableau du "
 "journal des visiteurs bloqués."
 
-#: settings/options/plugin_options_tabbed.php:416
+#: settings/options/plugin_options_tabbed.php:491
 msgid "Your current ip is: "
 msgstr "Votre adresse IP actuelle est :"
 
-#: settings/options/plugin_options_tabbed.php:426
+#: settings/options/plugin_options_tabbed.php:501
 msgid "IP whitelist"
 msgstr "Liste blanche IP"
 
-#: settings/options/plugin_options_tabbed.php:432
+#: settings/options/plugin_options_tabbed.php:507
 msgid "String whitelist (no case sensitive)"
 msgstr ""
 "Liste blanche de chaînes (pas de distinction entre les majuscules et les "
 "minuscules)"
 
-#: settings/options/plugin_options_tabbed.php:437
+#: settings/options/plugin_options_tabbed.php:512
 msgid "Fill out the email address to send messages."
 msgstr "Remplissez l'adresse e-mail pour envoyer des messages."
 
-#: settings/options/plugin_options_tabbed.php:439
+#: settings/options/plugin_options_tabbed.php:514
 msgid "Left Blank to use your default Wordpress email."
 msgstr "Laissez vide pour utiliser votre e-mail Wordpress par défaut."
 
-#: settings/options/plugin_options_tabbed.php:441
+#: settings/options/plugin_options_tabbed.php:516
 msgid "Then, click save changes."
 msgstr "Ensuite, cliquez sur Enregistrer les modifications."
 
-#: settings/options/plugin_options_tabbed.php:453
+#: settings/options/plugin_options_tabbed.php:528
 msgid "Do you want receive email alerts? "
 msgstr "Voulez-vous recevoir des alertes par email ?"
 
-#: settings/options/plugin_options_tabbed.php:468
+#: settings/options/plugin_options_tabbed.php:543
 msgid "Alert me all Failed Login Attempts"
 msgstr "M'alerter de toutes les tentatives de connexion échouées"
 
-#: settings/options/plugin_options_tabbed.php:470
-#: settings/options/plugin_options_tabbed.php:481
+#: settings/options/plugin_options_tabbed.php:545
+#: settings/options/plugin_options_tabbed.php:556
 msgid "Yes, All"
 msgstr "Oui, tous"
 
-#: settings/options/plugin_options_tabbed.php:479
+#: settings/options/plugin_options_tabbed.php:554
 msgid "Alert me All Logins"
 msgstr "Alertez-moi Toutes les connexions"
 
-#: settings/options/plugin_options_tabbed.php:482
+#: settings/options/plugin_options_tabbed.php:557
 msgid "No, Alert me Only Not White listed"
 msgstr "Non, m'alerter uniquement Pas sur la liste blanche"
 
-#: settings/options/plugin_options_tabbed.php:488
+#: settings/options/plugin_options_tabbed.php:563
 msgid "Alert me All Times Firewall Block Something."
 msgstr "Alertez-moi à tout moment. Le pare-feu bloque quelque chose."
 
-#: settings/options/plugin_options_tabbed.php:497
+#: settings/options/plugin_options_tabbed.php:572
 msgid "Alert me All Times Plugin Blocks Something Else?"
 msgstr "Alertez-moi à tout moment Le plugin bloque autre chose ?"
 
-#: settings/options/plugin_options_tabbed.php:541
+#: settings/options/plugin_options_tabbed.php:615
 msgid "Visit our Premium Page for more details."
 msgstr "Visitez notre page Premium pour plus de détails."
 
-#: settings/options/plugin_options_tabbed.php:543
+#: settings/options/plugin_options_tabbed.php:617
 msgid "Premium Page"
 msgstr "Page Premium"
 
-#: settings/options/plugin_options_tabbed.php:546
+#: settings/options/plugin_options_tabbed.php:620
 msgid ""
 "Paste below the Item Purchase Code received by email from us when you bought "
 "the premium version."
@@ -2559,15 +2992,15 @@ msgstr ""
 "Collez ci-dessous le code d'achat de l'article reçu par e-mail de notre part "
 "lors de l'achat de la version premium."
 
-#: settings/options/plugin_options_tabbed.php:548
+#: settings/options/plugin_options_tabbed.php:622
 msgid "You don't need reinstall the plugin."
 msgstr "Vous n'avez pas besoin de réinstaller le plugin."
 
-#: settings/options/plugin_options_tabbed.php:549
+#: settings/options/plugin_options_tabbed.php:623
 msgid "After that, click SAVE CHANGES Button."
 msgstr "Après cela, cliquez sur le bouton ENREGISTRER LES MODIFICATIONS."
 
-#: settings/options/plugin_options_tabbed.php:556
+#: settings/options/plugin_options_tabbed.php:630
 msgid "Purchase Code:"
 msgstr "Code d'achat :"
 

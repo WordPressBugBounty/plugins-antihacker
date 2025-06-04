@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
-"POT-Creation-Date: 2025-03-03 13:01+0000\n"
+"POT-Creation-Date: 2025-06-04 08:42+0100\n"
 "PO-Revision-Date: 2018-08-28 16:58-0000\n"
 "Last-Translator: Bill <sergiominozzi@gmail.com>\n"
 "Language-Team: Bill Minozzi <sergiominozzi@gmail.com>\n"
@@ -11,74 +11,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: antihacker.php:97
+#: antihacker.php:98
 msgid ""
 "Anti Hacker Plugin: Could not load the localization file (Language file)"
 msgstr ""
 
-#: antihacker.php:99
+#: antihacker.php:100
 msgid ""
 "Please, take a look in our site, FAQ page, item => How can i translate this "
 "plugin?"
 msgstr ""
 
-#: antihacker.php:459
+#: antihacker.php:461
 msgid "Wrong Username, Password or eMail"
 msgstr ""
 
-#: antihacker.php:499
+#: antihacker.php:501
 msgid "Empty email"
 msgstr ""
 
-#: antihacker.php:530
+#: antihacker.php:532
 msgid "Wrong Username or Password"
 msgstr ""
 
-#: antihacker.php:1136 includes/functions/functions.php:324
+#: antihacker.php:1138 includes/functions/functions.php:324
 #: includes/functions/functions.php:432 includes/functions/functions.php:471
 #: includes/functions/functions.php:514 includes/functions/functions.php:551
 #: includes/functions/functions.php:3506
 msgid "This email was sent from your website"
 msgstr ""
 
-#: antihacker.php:1136 includes/functions/functions.php:325
+#: antihacker.php:1138 includes/functions/functions.php:325
 #: includes/functions/functions.php:553
 msgid "by the AntiHacker plugin."
 msgstr ""
 
-#: antihacker.php:1138
+#: antihacker.php:1140
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
 "suspect to be abandoned, and we suggest replacing them."
 msgstr ""
 
-#: antihacker.php:1139
+#: antihacker.php:1141
 msgid "Some plugins on the site require attention."
 msgstr ""
 
-#: antihacker.php:1141
+#: antihacker.php:1143
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
 msgstr ""
 
-#: antihacker.php:1142
+#: antihacker.php:1144
 msgid "You can stop emails at the Notifications Tab."
 msgstr ""
 
-#: antihacker.php:1143
+#: antihacker.php:1145
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr ""
 
-#: antihacker.php:1279
+#: antihacker.php:1281
 msgid "Once Per Week"
+msgstr ""
+
+#: antihacker.php:1838
+msgid "Reinstall Files"
+msgstr ""
+
+#: antihacker.php:1885
+msgid "Failed to reinstall the plugin: "
+msgstr ""
+
+#: antihacker.php:1910
+#, php-format
+msgid "The plugin %s files have been reinstalled successfully."
 msgstr ""
 
 #: dashboard/_tools.php:30 dashboard/tools.php:15
@@ -103,7 +116,7 @@ msgid "Humans"
 msgstr ""
 
 #: dashboard/checa-plugins-novo.php:18 dashboard/checa-plugins-novo.php:94
-#: dashboard/check_plugins.php:66
+#: dashboard/check_plugins.php:66 dashboard/must_use_plugins.php:145
 msgid "Last check for updates made (Y-M-D):"
 msgstr ""
 
@@ -116,14 +129,17 @@ msgid "Some plugins may need attention. Please check the list below:"
 msgstr ""
 
 #: dashboard/checa-plugins-novo.php:78 dashboard/check_plugins.php:50
+#: dashboard/must_use_plugins.php:129
 msgid "Check Plugins"
 msgstr ""
 
 #: dashboard/checa-plugins-novo.php:82 dashboard/check_plugins.php:54
+#: dashboard/must_use_plugins.php:133
 msgid "Check Plugins for updates."
 msgstr ""
 
 #: dashboard/checa-plugins-novo.php:85 dashboard/check_plugins.php:57
+#: dashboard/must_use_plugins.php:136
 msgid ""
 "This test will check all your plugins against WordPress repository to see \n"
 "    if they are updated last one year. Plugins not updated last one year\n"
@@ -131,7 +147,50 @@ msgid ""
 msgstr ""
 
 #: dashboard/checa-plugins-novo.php:100 dashboard/check_plugins.php:72
+#: dashboard/must_use_plugins.php:151
 msgid "Check Plugins Now"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:16
+msgid "File Integrity Checker"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:46
+msgid ""
+"Click the button below to verify the integrity of your WordPress core files."
+msgstr ""
+
+#: dashboard/check_file_integrity.php:50
+msgid "Run Integrity Check"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:58
+msgid "All core files passed the integrity check. Everything seems to be OK!"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:60
+msgid "Some core files may have been modified or are missing:"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:61
+#: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:157
+msgid "File"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:61
+#: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:160
+msgid "Reason"
+msgstr ""
+
+#: dashboard/check_file_integrity.php:71
+#: dashboard/plugin_check_file_integrity.php:300
+msgid "Additional issues not shown (limit reached)."
+msgstr ""
+
+#: dashboard/check_file_integrity.php:84
+msgid "Failed to retrieve file integrity data. Please try again later."
 msgstr ""
 
 #: dashboard/dashboard.php:12
@@ -379,6 +438,57 @@ msgstr ""
 msgid "Here is the link:"
 msgstr ""
 
+#: dashboard/must_use_plugins.php:18
+msgid "Must Use Plugins"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:34
+msgid "Must-Use Plugins"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:36
+msgid ""
+"Must-Use plugins, located in the `mu-plugins` directory, are automatically "
+"activated WordPress plugins that cannot be disabled via the admin panel, "
+"often used for critical security or functionality. Regular inspection "
+"ensures they are updated and were intentionally installed and not introduced "
+"by malware or hackers. Verify their source and integrity to maintain a "
+"secure environment."
+msgstr ""
+
+#: dashboard/must_use_plugins.php:42
+msgid "Plugin"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:43
+msgid "Description"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:44
+msgid "Version"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:45
+#: includes/functions/function-site-integrity.php:154
+msgid "Status"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:52
+msgid "No Must-Use plugins found."
+msgstr ""
+
+#: dashboard/must_use_plugins.php:57
+msgid "No description"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:58
+msgid "Not specified"
+msgstr ""
+
+#: dashboard/must_use_plugins.php:59
+msgid "Active"
+msgstr ""
+
 #: dashboard/mybanners.php:24
 msgid "Get Extra Protection and Maximize Your Site's Defense"
 msgstr ""
@@ -529,6 +639,182 @@ msgstr ""
 
 #: dashboard/notifications.php:172
 msgid "No notifications at this time!"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:20
+msgid "Plugin Integrity Checker"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:26
+msgid "Critical Error:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:26
+msgid ""
+"The PHP ZipArchive extension is required for this feature to function, but "
+"it is not installed or enabled on your server. Please contact your server "
+"administrator."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:29
+msgid ""
+"Select a plugin and click the button below to verify its file integrity "
+"against the WordPress repository."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:32
+msgid "Select a plugin:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:34
+msgid "-- Select --"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:42
+msgid "No plugins found"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:46
+msgid "Check Integrity"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:60
+msgid "Please select a plugin to check."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:83
+msgid "Error:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:83
+msgid "The PHP ZipArchive extension is required and not available."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:106
+msgid "Checking Plugin:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:106
+msgid "API Slug:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:106
+msgid "Local Version:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:120
+msgid "Error querying the WordPress API for slug"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:125
+msgid "Plugin with slug"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:125
+msgid "not found in the official repository or download link unavailable."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:154
+#, php-format
+msgid ""
+"The local plugin version (%s) differs from the repository version used for "
+"comparison (%s). The comparison will use version %s from the repository. "
+"This may result in many differences if you are not using that version."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:161
+msgid "Comparing with repository version:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:167
+msgid "Error downloading the plugin ZIP file:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:169
+#, php-format
+msgid ""
+"This may be due to permission issues in the server’s temporary directory "
+"(%s), firewall settings, or the download link may be incorrect/unavailable "
+"for this version."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:209
+msgid "Warning: Could not read file"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:209
+msgid "from ZIP."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:215
+#, php-format
+msgid ""
+"Error opening the downloaded ZIP file (%s). The file may be corrupted, an "
+"error HTML (e.g., 404), or inaccessible."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:239
+msgid "No files found locally or in the ZIP for comparison."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:271
+#: includes/functions/function-site-integrity.php:212
+msgid "Modified"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:276
+msgid "Extra local file (does not exist in repository)"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:280
+msgid "Missing locally (exists in repository)"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:289
+#, php-format
+msgid ""
+"No differences found. Local plugin files match the repository (version %s)."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:293
+msgid "Some plugin files may have been modified, are extra, or are missing:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:310
+msgid "Verification Summary:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:312
+msgid "Identical files:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:314
+msgid "Modified files:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:317
+msgid "Extra local files:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:320
+msgid "Missing local files:"
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:331
+#, php-format
+msgid "Local plugin directory (%s) does not exist."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:360
+#, php-format
+msgid ""
+"Error reading local plugin directory (%s): %s. Check server permissions or "
+"restrictions (e.g., open_basedir)."
+msgstr ""
+
+#: dashboard/plugin_check_file_integrity.php:367
+#, php-format
+msgid "Unexpected error reading local plugin directory (%s): %s."
 msgstr ""
 
 #: dashboard/root_folder.php:65
@@ -1095,6 +1381,51 @@ msgstr ""
 
 #: includes/feedback-last/feedback-last.php:346
 msgid "Just Deactivate"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:85
+msgid "Content changed"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:87
+msgid "(View Diff)"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:90
+msgid "File not found"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:109
+#: includes/functions/function-site-integrity.php:120
+msgid "This is an unknown file"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:140
+msgid "All files passed the check. Everything seems to be OK!"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:146
+msgid "It appears some files may have been modified."
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:167
+msgid "Error"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:197
+msgid "You do not have access to this file."
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:204
+msgid "File Diff"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:209
+msgid "Original"
+msgstr ""
+
+#: includes/functions/function-site-integrity.php:217
+msgid "Close"
 msgstr ""
 
 #: includes/functions/functions.php:327 includes/functions/functions.php:427
@@ -1769,439 +2100,481 @@ msgid ""
 "    Now"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:12
+#: settings/options/plugin_options_tabbed.php:14
 msgid "Just check yes or not. After that, click SAVE changes. "
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:14
+#: settings/options/plugin_options_tabbed.php:16
 msgid "We suggest click Yes for all. "
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:17
+#: settings/options/plugin_options_tabbed.php:19
 msgid ""
 "Please, visit our Faq page for more details (button at Startup Guide Tab)."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:23
+#: settings/options/plugin_options_tabbed.php:25
 msgid "Disable xml-rpc API. Look our FAQ page (at our site) for more details."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:25
+#: settings/options/plugin_options_tabbed.php:27
 msgid "Yes, disable All"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:26
+#: settings/options/plugin_options_tabbed.php:28
 msgid "Yes, disable only Ping Back"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:28
-#: settings/options/plugin_options_tabbed.php:37
-#: settings/options/plugin_options_tabbed.php:66
-#: settings/options/plugin_options_tabbed.php:75
-#: settings/options/plugin_options_tabbed.php:84
-#: settings/options/plugin_options_tabbed.php:93
-#: settings/options/plugin_options_tabbed.php:102
-#: settings/options/plugin_options_tabbed.php:111
-#: settings/options/plugin_options_tabbed.php:120
-#: settings/options/plugin_options_tabbed.php:129
-#: settings/options/plugin_options_tabbed.php:143
-#: settings/options/plugin_options_tabbed.php:155
-#: settings/options/plugin_options_tabbed.php:166
-#: settings/options/plugin_options_tabbed.php:177
-#: settings/options/plugin_options_tabbed.php:188
-#: settings/options/plugin_options_tabbed.php:233
-#: settings/options/plugin_options_tabbed.php:471
-#: settings/options/plugin_options_tabbed.php:491
-#: settings/options/plugin_options_tabbed.php:500
+#: settings/options/plugin_options_tabbed.php:30
+#: settings/options/plugin_options_tabbed.php:39
+#: settings/options/plugin_options_tabbed.php:68
+#: settings/options/plugin_options_tabbed.php:77
+#: settings/options/plugin_options_tabbed.php:86
+#: settings/options/plugin_options_tabbed.php:95
+#: settings/options/plugin_options_tabbed.php:104
+#: settings/options/plugin_options_tabbed.php:113
+#: settings/options/plugin_options_tabbed.php:122
+#: settings/options/plugin_options_tabbed.php:131
+#: settings/options/plugin_options_tabbed.php:145
+#: settings/options/plugin_options_tabbed.php:157
+#: settings/options/plugin_options_tabbed.php:168
+#: settings/options/plugin_options_tabbed.php:179
+#: settings/options/plugin_options_tabbed.php:190
+#: settings/options/plugin_options_tabbed.php:235
+#: settings/options/plugin_options_tabbed.php:298
+#: settings/options/plugin_options_tabbed.php:308
+#: settings/options/plugin_options_tabbed.php:546
+#: settings/options/plugin_options_tabbed.php:566
+#: settings/options/plugin_options_tabbed.php:575
 msgid "No"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:34
+#: settings/options/plugin_options_tabbed.php:36
 msgid ""
 "Disable Json WordPress Rest API (also new WordPress 4.7 Rest API). Take a "
 "look our faq page (at our site) for details. Don't disable if you want to "
 "use Contact 7 Form Plugin."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:36
-#: settings/options/plugin_options_tabbed.php:232
+#: settings/options/plugin_options_tabbed.php:38
+#: settings/options/plugin_options_tabbed.php:234
+#: settings/options/plugin_options_tabbed.php:297
 msgid "Yes, disable"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:63
+#: settings/options/plugin_options_tabbed.php:65
 msgid ""
 "Sets WordPress to replace the login error message to Wrong Username or "
 "Password"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:65
-#: settings/options/plugin_options_tabbed.php:74
-#: settings/options/plugin_options_tabbed.php:83
-#: settings/options/plugin_options_tabbed.php:92
-#: settings/options/plugin_options_tabbed.php:101
-#: settings/options/plugin_options_tabbed.php:110
-#: settings/options/plugin_options_tabbed.php:119
-#: settings/options/plugin_options_tabbed.php:128
-#: settings/options/plugin_options_tabbed.php:142
-#: settings/options/plugin_options_tabbed.php:154
-#: settings/options/plugin_options_tabbed.php:165
-#: settings/options/plugin_options_tabbed.php:176
-#: settings/options/plugin_options_tabbed.php:187
-#: settings/options/plugin_options_tabbed.php:490
-#: settings/options/plugin_options_tabbed.php:499
+#: settings/options/plugin_options_tabbed.php:67
+#: settings/options/plugin_options_tabbed.php:76
+#: settings/options/plugin_options_tabbed.php:85
+#: settings/options/plugin_options_tabbed.php:94
+#: settings/options/plugin_options_tabbed.php:103
+#: settings/options/plugin_options_tabbed.php:112
+#: settings/options/plugin_options_tabbed.php:121
+#: settings/options/plugin_options_tabbed.php:130
+#: settings/options/plugin_options_tabbed.php:144
+#: settings/options/plugin_options_tabbed.php:156
+#: settings/options/plugin_options_tabbed.php:167
+#: settings/options/plugin_options_tabbed.php:178
+#: settings/options/plugin_options_tabbed.php:189
+#: settings/options/plugin_options_tabbed.php:565
+#: settings/options/plugin_options_tabbed.php:574
 msgid "Yes"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:72
+#: settings/options/plugin_options_tabbed.php:74
 msgid "Disable file editing within the WordPress dashboard"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:81
+#: settings/options/plugin_options_tabbed.php:83
 msgid "Enable dashboard warning message when Debug is true"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:90
+#: settings/options/plugin_options_tabbed.php:92
 msgid ""
 "Enable Firewall? (Block Malicious Requests, Queries, User Agents and URLS. "
 "100% Plug-n-play, no configuration required.)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:99
+#: settings/options/plugin_options_tabbed.php:101
 msgid "Hide WordPress Version to improve security?"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:108
+#: settings/options/plugin_options_tabbed.php:110
 msgid "Block User enumeration to improve security?"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:117
+#: settings/options/plugin_options_tabbed.php:119
 msgid "Block All Feeds to avoid bots exploit."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:126
+#: settings/options/plugin_options_tabbed.php:128
 msgid "Block Comments in Media Pages."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:140
+#: settings/options/plugin_options_tabbed.php:142
 msgid ""
 "Create All New Users always as Subscriber. Protect you from flaws in plugins "
 "and themes and don't allow hackers include new Administrator."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:152
+#: settings/options/plugin_options_tabbed.php:154
 msgid "Block False Googlebot, Msnbot & Bingbot? (Premium Version Only)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:163
+#: settings/options/plugin_options_tabbed.php:165
 msgid "Block Search For Plugin Vulnerabilities? (Premium Version Only)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:174
+#: settings/options/plugin_options_tabbed.php:176
 msgid "Block Search For Theme Vulnerabilities? (Premium Version Only)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:185
+#: settings/options/plugin_options_tabbed.php:187
 msgid ""
 "Block all traffic from Tor? - The Onion Router -  (Premium Version Only)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:196
+#: settings/options/plugin_options_tabbed.php:198
 msgid "Block all with Blank User Agent? -  (Premium Version Only)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:198
-#: settings/options/plugin_options_tabbed.php:212
-#: settings/options/plugin_options_tabbed.php:222
-#: settings/options/plugin_options_tabbed.php:267
-#: settings/options/plugin_options_tabbed.php:378
-#: settings/options/plugin_options_tabbed.php:388
+#: settings/options/plugin_options_tabbed.php:200
+#: settings/options/plugin_options_tabbed.php:214
+#: settings/options/plugin_options_tabbed.php:224
+#: settings/options/plugin_options_tabbed.php:342
+#: settings/options/plugin_options_tabbed.php:453
+#: settings/options/plugin_options_tabbed.php:463
 msgid "yes"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:199
-#: settings/options/plugin_options_tabbed.php:213
-#: settings/options/plugin_options_tabbed.php:223
-#: settings/options/plugin_options_tabbed.php:268
-#: settings/options/plugin_options_tabbed.php:379
-#: settings/options/plugin_options_tabbed.php:389
+#: settings/options/plugin_options_tabbed.php:201
+#: settings/options/plugin_options_tabbed.php:215
+#: settings/options/plugin_options_tabbed.php:225
+#: settings/options/plugin_options_tabbed.php:343
+#: settings/options/plugin_options_tabbed.php:454
+#: settings/options/plugin_options_tabbed.php:464
 msgid "no"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:210
+#: settings/options/plugin_options_tabbed.php:212
 msgid ""
 "Disable Application Passwords (WordPress version 5.6 allows external "
 "applications to request permission to connect to a site and generate a "
 "password)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:220
+#: settings/options/plugin_options_tabbed.php:222
 msgid "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:230
-msgid "Disable WordPress Native Sitemap XML for User's Creation."
+#: settings/options/plugin_options_tabbed.php:232
+#: settings/options/plugin_options_tabbed.php:295
+msgid ""
+"Disable WordPress Native XML Sitemap for USER Listings.(This is not about "
+"the site's main XML sitemap)"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:243
-#: settings/options/plugin_options_tabbed.php:357
-msgid "This page works only in Premium Version."
+msgid ""
+"How long keep the visitors log file? If you have a very heavy traffic, "
+"select 1 day. Your choices can impact the Blocked Visits Log."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:245
-msgid "Bots and Hackers can make a lot of visits in a short time period."
+#: settings/options/plugin_options_tabbed.php:249
+msgid "Select"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:248
-msgid "We can limit a number of visits, just choose the options below."
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:250
-msgid "You can also whitelist Ips, look the Whitelist tab."
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:252
-msgid "Search engine crawlers has unlimited access."
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:254
-msgid "IP will be blocked by one hour."
+#: settings/options/plugin_options_tabbed.php:253
+msgid "day"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:257
-msgid "Instructions"
-msgstr ""
-
+#: settings/options/plugin_options_tabbed.php:261
 #: settings/options/plugin_options_tabbed.php:265
-msgid "Enable the Rate Limiting?"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:278
-msgid "If requests exceed"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:282
-#: settings/options/plugin_options_tabbed.php:303
-#: settings/options/plugin_options_tabbed.php:342
-msgid "Unlimited"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:283
-msgid "5 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:284
-msgid "6 per minute"
-msgstr ""
-
+#: settings/options/plugin_options_tabbed.php:269
+#: settings/options/plugin_options_tabbed.php:273
+#: settings/options/plugin_options_tabbed.php:277
+#: settings/options/plugin_options_tabbed.php:281
 #: settings/options/plugin_options_tabbed.php:285
-msgid "7 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:286
-msgid "8 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:287
-msgid "9 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:288
-msgid "10 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:289
-msgid "15 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:290
-msgid "30 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:291
-msgid "40 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:292
-msgid "50 per minute"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:299
-msgid "if requests exceed"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:304
-msgid "5 per hour"
+msgid "days"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:305
-msgid "10 per hour"
-msgstr ""
-
-#: settings/options/plugin_options_tabbed.php:306
-msgid "20 per hour"
+msgid ""
+"Allow the administrator to reinstall plugins without modifying the database. "
+"Check AntiHacker > Dashboard > Plugin Integrity Checker first and reinstall "
+"only if necessary.(Only Premium)"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:307
-msgid "50 per hour"
+msgid "Yes, enable reinstall"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:308
-msgid "100 per hour"
+#: settings/options/plugin_options_tabbed.php:318
+#: settings/options/plugin_options_tabbed.php:432
+msgid "This page works only in Premium Version."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:309
-msgid "200 per hour"
+#: settings/options/plugin_options_tabbed.php:320
+msgid "Bots and Hackers can make a lot of visits in a short time period."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:310
-msgid "500 per hour"
+#: settings/options/plugin_options_tabbed.php:323
+msgid "We can limit a number of visits, just choose the options below."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:338
-msgid "If made only 404 requests exceed"
+#: settings/options/plugin_options_tabbed.php:325
+msgid "You can also whitelist Ips, look the Whitelist tab."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:343
-msgid "five 404 pages"
+#: settings/options/plugin_options_tabbed.php:327
+msgid "Search engine crawlers has unlimited access."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:344
-msgid "ten 404 pages"
+#: settings/options/plugin_options_tabbed.php:329
+msgid "IP will be blocked by one hour."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:345
-msgid "fifteen 404 pages"
+#: settings/options/plugin_options_tabbed.php:332
+msgid "Instructions"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:346
-msgid "twenty 404 pages"
+#: settings/options/plugin_options_tabbed.php:340
+msgid "Enable the Rate Limiting?"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:347
-msgid "fifty 404 pages"
+#: settings/options/plugin_options_tabbed.php:353
+msgid "If requests exceed"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:357
+#: settings/options/plugin_options_tabbed.php:378
+#: settings/options/plugin_options_tabbed.php:417
+msgid "Unlimited"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:358
+msgid "5 per minute"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:359
-msgid "HTTP Tools are tools to do HTTP request, used for not humans."
+msgid "6 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:360
+msgid "7 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:361
+msgid "8 per minute"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:362
-msgid "To Block HTTP Tools, just add one for each line."
+msgid "9 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:363
+msgid "10 per minute"
 msgstr ""
 
 #: settings/options/plugin_options_tabbed.php:364
+msgid "15 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:365
+msgid "30 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:366
+msgid "40 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:367
+msgid "50 per minute"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:374
+msgid "if requests exceed"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:379
+msgid "5 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:380
+msgid "10 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:381
+msgid "20 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:382
+msgid "50 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:383
+msgid "100 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:384
+msgid "200 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:385
+msgid "500 per hour"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:413
+msgid "If made only 404 requests exceed"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:418
+msgid "five 404 pages"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:419
+msgid "ten 404 pages"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:420
+msgid "fifteen 404 pages"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:421
+msgid "twenty 404 pages"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:422
+msgid "fifty 404 pages"
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:434
+msgid "HTTP Tools are tools to do HTTP request, used for not humans."
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:437
+msgid "To Block HTTP Tools, just add one for each line."
+msgstr ""
+
+#: settings/options/plugin_options_tabbed.php:439
 msgid ""
 "To Manage, you can also remove one or more lines. Then, click Save Changes."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:366
+#: settings/options/plugin_options_tabbed.php:441
 msgid ""
 "Activate eMail notification for some days and manage the Whitelist tables."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:369
+#: settings/options/plugin_options_tabbed.php:444
 msgid "Instructions about to block HTTP tools (Only Premium)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:376
+#: settings/options/plugin_options_tabbed.php:451
 msgid "Block HTTP tools?"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:386
+#: settings/options/plugin_options_tabbed.php:461
 msgid ""
 "Update HTTP tools from Anti Hacker Plugin Server each new plugin version or "
 "plugin is activated? Maybe you will need remove that tools you don't want to "
 "block again."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:409
+#: settings/options/plugin_options_tabbed.php:484
 msgid "Add IPs or strings to your whitelist, then click SAVE CHANGES."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:411
+#: settings/options/plugin_options_tabbed.php:486
 msgid "If necessary add more than one, use only one ip by line."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:413
+#: settings/options/plugin_options_tabbed.php:488
 msgid "You can also add IPs from the Blocked Visitors Log Table page."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:416
+#: settings/options/plugin_options_tabbed.php:491
 msgid "Your current ip is: "
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:426
+#: settings/options/plugin_options_tabbed.php:501
 msgid "IP whitelist"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:432
+#: settings/options/plugin_options_tabbed.php:507
 msgid "String whitelist (no case sensitive)"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:437
+#: settings/options/plugin_options_tabbed.php:512
 msgid "Fill out the email address to send messages."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:439
+#: settings/options/plugin_options_tabbed.php:514
 msgid "Left Blank to use your default Wordpress email."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:441
+#: settings/options/plugin_options_tabbed.php:516
 msgid "Then, click save changes."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:453
+#: settings/options/plugin_options_tabbed.php:528
 msgid "Do you want receive email alerts? "
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:468
+#: settings/options/plugin_options_tabbed.php:543
 msgid "Alert me all Failed Login Attempts"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:470
-#: settings/options/plugin_options_tabbed.php:481
+#: settings/options/plugin_options_tabbed.php:545
+#: settings/options/plugin_options_tabbed.php:556
 msgid "Yes, All"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:479
+#: settings/options/plugin_options_tabbed.php:554
 msgid "Alert me All Logins"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:482
+#: settings/options/plugin_options_tabbed.php:557
 msgid "No, Alert me Only Not White listed"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:488
+#: settings/options/plugin_options_tabbed.php:563
 msgid "Alert me All Times Firewall Block Something."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:497
+#: settings/options/plugin_options_tabbed.php:572
 msgid "Alert me All Times Plugin Blocks Something Else?"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:541
+#: settings/options/plugin_options_tabbed.php:615
 msgid "Visit our Premium Page for more details."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:543
+#: settings/options/plugin_options_tabbed.php:617
 msgid "Premium Page"
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:546
+#: settings/options/plugin_options_tabbed.php:620
 msgid ""
 "Paste below the Item Purchase Code received by email from us when you bought "
 "the premium version."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:548
+#: settings/options/plugin_options_tabbed.php:622
 msgid "You don't need reinstall the plugin."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:549
+#: settings/options/plugin_options_tabbed.php:623
 msgid "After that, click SAVE CHANGES Button."
 msgstr ""
 
-#: settings/options/plugin_options_tabbed.php:556
+#: settings/options/plugin_options_tabbed.php:630
 msgid "Purchase Code:"
 msgstr ""
 

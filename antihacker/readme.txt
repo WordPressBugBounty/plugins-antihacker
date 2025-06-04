@@ -4,7 +4,7 @@ Donate link:http://antihackerplugin.com/?p=25
 Tags: Block Tor, Disable, wordpress security tools, malware scanner, antimalware
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.58
+Stable tag: 5.59
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,8 @@ Translation ready. Files included: Dutch, English, French, Italian, Portuguese, 
 * Check Google Safe Browsing Blacklist
 * Check and alert for deactivated Plugins and themes
 * Check and alert for extra files and dangerous files on root folder.
+* Check plugins integrity against the WordPress repository.
+* Allows you to reinstall plugins without modifying the database or needing to delete them first.(Premium Version)
 * Multilingual ready.
 * Disable Wordpress native sitemap (for user's) creation.
 * Disable xmlrpc
