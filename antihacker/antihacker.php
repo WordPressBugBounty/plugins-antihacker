@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.59
+version: 5.60
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -339,10 +339,11 @@ $antihacker_disable_sitemap = sanitize_text_field(get_option('antihacker_disable
 
 $antihacker_plugin_abandoned_email = sanitize_text_field(get_option('antihacker_plugin_abandoned_email', 'yes'));
 $antihacker_auto_updates = "no";
+$antihacker_enable_reinstall = "no";
 
 
 if (!empty($antihacker_checkversion)) {
-  $antihacker_disable_reinstall = sanitize_text_field(get_option('antihacker_disable_reinstall', ''));
+  $antihacker_enable_reinstall = sanitize_text_field(get_option('antihacker_enable_reinstall', ''));
 
   // $antihacker_block_tor = trim(sanitize_text_field(get_site_option('antihacker_block_tor', 'no')));
   // $antihacker_block_falsegoogle = trim(sanitize_text_field(get_site_option('antihacker_block_falsegoogle', 'no')));
@@ -1799,7 +1800,7 @@ function capture_unexpected_output()
   // Verifica se há saída inesperada
   // if (!empty($output)) {
   // Grava a saída no log de erros do PHP
-  debug4("[Plugin Activation Output] " . $output);
+  //debug4("[Plugin Activation Output] " . $output);
   // die(var_dump($output));
   // }
 }
@@ -1825,7 +1826,7 @@ function antihacker_upgrader_package_options($options)
   return $options;
 }
 
-if ($antihacker_disable_reinstall == 'yes') {
+if ($antihacker_enable_reinstall == 'yes') {
   // Add "Reinstall Files" link to plugin actions
   function antihacker_add_reinstall_link($actions, $plugin_file, $plugin_data, $context)
   {

@@ -301,7 +301,7 @@ $fields[] = array(
 
 $fields[] = array(
 	'type' 	=> 'radio',
-	'name' 	=> 'antihacker_disable_reinstall',
+	'name' 	=> 'antihacker_enable_reinstall',
 	'label' => esc_attr__("Allow the administrator to reinstall plugins without modifying the database. Check AntiHacker > Dashboard > Plugin Integrity Checker first and reinstall only if necessary.(Only Premium)", "antihacker"),
 	'radio_options' => array(
 		array('value' => 'yes', 'label' => esc_attr__('Yes, enable reinstall', "antihacker")),

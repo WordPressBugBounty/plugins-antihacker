@@ -102,8 +102,8 @@ function antihacker_options_page()
 
         //die(var_dump($active_tab));
 
-        error_log(var_export($active_tab, true));
-        debug4(var_export($active_tab, true));
+       // error_log(var_export($active_tab, true));
+       // debug4(var_export($active_tab, true));
 
 
         if ($active_tab == 'memory') {
@@ -139,7 +139,7 @@ function antihacker_options_page()
 
         } elseif ($active_tab == 'plugin_check_file_integrity') {
 
-            debug4();
+           // debug4();
 
             echo '<div id="antihacker-dashboard-wrap">';
             echo '<div id="antihacker-dashboard-left">';
