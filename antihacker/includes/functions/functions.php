@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author William Sergio Minozzi
  * @copyright 2016
@@ -45,7 +46,7 @@ if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or 
     antihacker_create_db_fingerprint();
     antihacker_create_db_scan_files();
     antihacker_create_db_scan();
-    antihacker_create_db_rules();  
+    antihacker_create_db_rules();
     antihacker_remove_index();
     // antihacker_add_index();
     antihacker_upgrade_db();
@@ -104,7 +105,7 @@ for ($i = 0; $i < count($antihacker_mysearch); $i++) {
 
 //debug($qrow);
 
-if( $antihacker_is_human !== 0) {
+if ($antihacker_is_human !== 0) {
     ////////-----------------E' bot ou nao----------------------
     // $qrow = 0;
     if ($qrow < 1) {
@@ -128,10 +129,10 @@ if( $antihacker_is_human !== 0) {
 
     add_filter('plugin_row_meta', 'antihacker_custom_plugin_row_meta', 10, 2);
 
-     add_action('wp_ajax_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
-     add_action('wp_ajax_nopriv_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
+    add_action('wp_ajax_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
+    add_action('wp_ajax_nopriv_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
 
-     add_action('wp_ajax_antihacker_get_ajax_data', 'antihacker_get_ajax_data');
+    add_action('wp_ajax_antihacker_get_ajax_data', 'antihacker_get_ajax_data');
 
 
 
@@ -144,7 +145,6 @@ if( $antihacker_is_human !== 0) {
 
     add_action('wp_ajax_antihacker_add_string_whitelist', 'antihacker_add_string_whitelist');
     add_action('wp_ajax_nopriv_antihacker_add_string_whitelist', 'antihacker_add_string_whitelist');
-
 } // if( $antihacker_is_human != 0)
 
 
@@ -247,13 +247,13 @@ if ($qpluginsnow < $qplugins) {
 }
 
 $antihacker_rest_api = trim(get_site_option('antihacker_rest_api', 'No'));
-if ($antihacker_rest_api <> 'No' ){
-    if(!antihacker_isourserver()    ) {
-     add_action('plugins_loaded', 'antihacker_after_inic');
+if ($antihacker_rest_api <> 'No') {
+    if (!antihacker_isourserver()) {
+        add_action('plugins_loaded', 'antihacker_after_inic');
     }
 }
 
-if(!antihacker_isourserver()    ) {
+if (!antihacker_isourserver()) {
     if (get_site_option('my_radio_xml_rpc', 'No') == 'Yes') {
         if (!empty($antihacker_request_url)) {
             $pos = strpos($antihacker_request_url, 'xmlrpc.php');
@@ -269,10 +269,9 @@ if(!antihacker_isourserver()    ) {
     }
 
 
-    if (get_site_option('my_radio_xml_rpc', 'No') == 'Pingback'){
+    if (get_site_option('my_radio_xml_rpc', 'No') == 'Pingback') {
 
         add_filter('xmlrpc_methods', 'antihacker_premove_xmlrpc_pingback_ping');
-
     }
 }
 add_filter('custom_menu_order', 'antihacker_change_note_submenu_order');
@@ -368,47 +367,47 @@ function antihacker_adm_enqueue_scripts2()
     $antihacker_current_screen = $myscreen->id;
     $dismissed_string = get_user_meta(get_current_user_id(), 'dismissed_wp_pointers', true);
     // $dismissed = explode(',', (string) get_user_meta(get_current_user_id(), 'dismissed_wp_pointers', true));
-   // if (in_array('plugins', $dismissed)) {  
-    if ( !empty($dismissed_string))  {
+    // if (in_array('plugins', $dismissed)) {  
+    if (!empty($dismissed_string)) {
         $r = update_option('antihacker_was_activated', '0');
         if (!$r) {
             add_option('antihacker_was_activated', '0');
         }
         return;
     }
-    if (get_option('antihacker_was_activated', '0') == '1') 
-      add_action('admin_print_footer_scripts', 'antihacker_admin_print_footer_scripts');
+    if (get_option('antihacker_was_activated', '0') == '1')
+        add_action('admin_print_footer_scripts', 'antihacker_admin_print_footer_scripts');
 }
 
 function antihacker_admin_print_footer_scripts()
 {
     global $antihacker_current_screen;
     $pointer_content = 'Open Anti Hacker Plugin Here!';
-    $pointer_content2= 'Just Click Over Anti Hacker, then Go To Settings=>StartUp Guide.';
-    ?>
-        <script type="text/javascript">
+    $pointer_content2 = 'Just Click Over Anti Hacker, then Go To Settings=>StartUp Guide.';
+?>
+    <script type="text/javascript">
         //<![CDATA[
-            // setTimeout( function() { this_pointer.pointer( 'close' ); }, 400 );
-        jQuery(document).ready( function($) {
+        // setTimeout( function() { this_pointer.pointer( 'close' ); }, 400 );
+        jQuery(document).ready(function($) {
             $('#toplevel_page_anti_hacker_plugin').pointer({
-                content: '<?php echo '<h3>'.esc_attr($pointer_content).'</h3><p>'.esc_attr($pointer_content2);?>',
+                content: '<?php echo '<h3>' . esc_attr($pointer_content) . '</h3><p>' . esc_attr($pointer_content2); ?>',
                 position: {
-                        edge: 'left',
-                        align: 'right'
-                    },
+                    edge: 'left',
+                    align: 'right'
+                },
                 close: function() {
                     // Once the close button is hit
-                    $.post( ajaxurl, {
-                            pointer: '<?php echo esc_attr($antihacker_current_screen); ?>',
-                            action: 'dismiss-wp-pointer'
-                        });
+                    $.post(ajaxurl, {
+                        pointer: '<?php echo esc_attr($antihacker_current_screen); ?>',
+                        action: 'dismiss-wp-pointer'
+                    });
                 }
             }).pointer('open');
             /* $('.wp-pointer-undefined .wp-pointer-arrow').css("right", "50px"); */
         });
         //]]>
-        </script>
-        <?php
+    </script>
+<?php
 }
 
 
@@ -588,9 +587,9 @@ function antihacker_premove_xmlrpc_pingback_ping($methods)
 // Take a look our faq page (at our site) for details.'
 function antihacker_after_inic()
 {
-    
-    if(antihacker_isourserver()  )
-     return true;
+
+    if (antihacker_isourserver())
+        return true;
 
 
 
@@ -601,9 +600,9 @@ function antihacker_after_inic()
     }
     function antihacker_Disable_Via_Filters()
     {
-        if(antihacker_isourserver()  )
-          return true;
-        
+        if (antihacker_isourserver())
+            return true;
+
         // Filters for WP-API version 1.x
         add_filter('json_enabled', '__return_false');
         add_filter('json_jsonp_enabled', '__return_false');
@@ -1004,7 +1003,7 @@ function antihacker_alertme13()
 
 
     if ($antihacker_Blocked_else_email != 'yes')
-      return;
+        return;
 
 
 
@@ -1127,17 +1126,17 @@ function antihacker_populate_stats()
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     $table_name = $wpdb->prefix . "ah_stats";
 
-    
+
     $query = "SELECT * FROM $table_name";
     $wpdb->query($query);
-    
+
     // error
     /*
     $wpdb->query($wpdb->prepare("
     SELECT  * FROM `$table_name`"));
     */
 
-    
+
     if ($wpdb->num_rows > 359)
         return;
     for ($i = 01; $i < 13; $i++) {
@@ -1160,7 +1159,7 @@ function antihacker_populate_stats()
             */
 
             $wpdb->query($wpdb->prepare("
-            SELECT  * FROM `$table_name` WHERE date = %s LIMIT 1",$data));
+            SELECT  * FROM `$table_name` WHERE date = %s LIMIT 1", $data));
 
             if ($wpdb->num_rows > 0)
                 continue;
@@ -1175,104 +1174,104 @@ function antihacker_populate_stats()
             $r = $wpdb->get_results($wpdb->prepare(
                 "INSERT INTO `$table_name`
                 (`date`) 
-                VALUES (%s)", $data));
-
+                VALUES (%s)",
+                $data
+            ));
         }
     }
 }
 
 function antihacker_populate_rules()
 {
-  global $wpdb;
-  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    global $wpdb;
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 
-  $file = ANTIHACKERPATH . 'assets/rules.txt';
-  $file2 = ANTIHACKERPATH . 'assets/rules2.txt';
-  
+    $file = ANTIHACKERPATH . 'assets/rules.txt';
+    $file2 = ANTIHACKERPATH . 'assets/rules2.txt';
 
 
-  $table_name = $wpdb->prefix . "ah_rules";
 
-  $query = "select COUNT(*) from " . $table_name;
+    $table_name = $wpdb->prefix . "ah_rules";
 
-  $file = ANTIHACKERPATH . 'assets/rules.txt';
-  if ($wpdb->get_var($query) > 700) {
-      //  796)
+    $query = "select COUNT(*) from " . $table_name;
+
+    $file = ANTIHACKERPATH . 'assets/rules.txt';
+    if ($wpdb->get_var($query) > 700) {
+        //  796)
         try {
-            if (!file_exists($file) or !file_exists($file2) ) {
-               return;
+            if (!file_exists($file) or !file_exists($file2)) {
+                return;
             }
         } catch (Exception $e) {
             // echo 'Error: ' . $e->getMessage();
         }
-      $query = "TRUNCATE TABLE $table_name";
-      $wpdb->query($query);
-  }
-
-  try {
-    if (!file_exists($file) or !file_exists($file2) ) {
-       // return;
-       error_log('Fail to Open File Rules.txt path: '.$file);
+        $query = "TRUNCATE TABLE $table_name";
+        $wpdb->query($query);
     }
-  } catch (Exception $e) {
-     // echo 'Error: ' . $e->getMessage();
-  }
+
+    try {
+        if (!file_exists($file) or !file_exists($file2)) {
+            // return;
+            error_log('Fail to Open File Rules.txt path: ' . $file);
+        }
+    } catch (Exception $e) {
+        // echo 'Error: ' . $e->getMessage();
+    }
 
 
-  try {
-    $fhandle = @fopen($file, "r");
-    // $file2 = ANTIHACKERPATH . 'assets/rules2.txt';
-    $fhandle2 = @fopen($file2, "r");
-  } catch (Exception $e) {
-     // echo 'Error: ' . $e->getMessage();
-  }  
-  if (!$fhandle)
-    die('Fail to Open File Rules.txt path: '. esc_attr($file));
+    try {
+        $fhandle = @fopen($file, "r");
+        // $file2 = ANTIHACKERPATH . 'assets/rules2.txt';
+        $fhandle2 = @fopen($file2, "r");
+    } catch (Exception $e) {
+        // echo 'Error: ' . $e->getMessage();
+    }
+    if (!$fhandle)
+        die('Fail to Open File Rules.txt path: ' . esc_attr($file));
 
-  if (!$fhandle2 )
-    die('Fail to Open File Rules.txt path: '.esc_attr($file2));
+    if (!$fhandle2)
+        die('Fail to Open File Rules.txt path: ' . esc_attr($file2));
 
-  // while (!feof($fhandle)) {
-  while (($line1 = fgets($fhandle)) !== false && ($line2 = fgets($fhandle2)) !== false) {
-    
-    $line1 = rtrim($line1);
-    $line2 = rtrim($line2);
+    // while (!feof($fhandle)) {
+    while (($line1 = fgets($fhandle)) !== false && ($line2 = fgets($fhandle2)) !== false) {
 
-    $segments1 = str_split($line1, 4);
-    $segments2 = str_split($line2, 4);
+        $line1 = rtrim($line1);
+        $line2 = rtrim($line2);
 
-    $tempString = '';
+        $segments1 = str_split($line1, 4);
+        $segments2 = str_split($line2, 4);
 
-    for ($i = 0; $i < max(count($segments1), count($segments2)); $i++) {
+        $tempString = '';
+
+        for ($i = 0; $i < max(count($segments1), count($segments2)); $i++) {
             $tempString .= isset($segments1[$i]) ? $segments1[$i] : '';
             $tempString .= isset($segments2[$i]) ? $segments2[$i] : '';
+        }
+
+        $query = $tempString;
+        //  $query = fgets($fhandle);
+
+        // INSERT INTO `wp_ah_rules` (`id`, `name`, `strings`, `cond`, `descri`, `autor`, `url`, `obs`, `flag`) VALUES(1, 'ajaxcommand', 'JGEgPSAiQWpheCBDb21tYW5kIFNoZWxsIGJ5Ig==\nJGIgPSAiYSBocmVmPWh0dHA6Ly93d3cuaXJvbndhcmV6LmluZm8i\nJGMgPSAiJ0NsZWFyIEhpc3RvcnknID0+ICdDbGVhckhpc3RvcnkoKSci\nJGQgPSAiZm9yIHNvbWUgZWhoLi4uaGVscCI=\n', 'any of them', ' Ajax Command shell', '', ' https://github.com/tennc/webshell/blob/master/xakep-shells/PHP/Ajax_PHP%20Command%20Shell.php.txt', '', '');
+        // $table_name 
+        $query = str_replace("wp_ah_rules", $table_name, $query);
+
+        $r = $wpdb->get_results($query);
+
+        if ($wpdb->last_error != '') {
+            echo '<hr>';
+            var_dump($query);
+            echo '<hr>';
+            $wpdb->print_error();
+            die('Anti Hacker Plugin: Error to write Rules to Database');
+        }
     }
 
-    $query = $tempString;
-    //  $query = fgets($fhandle);
-
-      // INSERT INTO `wp_ah_rules` (`id`, `name`, `strings`, `cond`, `descri`, `autor`, `url`, `obs`, `flag`) VALUES(1, 'ajaxcommand', 'JGEgPSAiQWpheCBDb21tYW5kIFNoZWxsIGJ5Ig==\nJGIgPSAiYSBocmVmPWh0dHA6Ly93d3cuaXJvbndhcmV6LmluZm8i\nJGMgPSAiJ0NsZWFyIEhpc3RvcnknID0+ICdDbGVhckhpc3RvcnkoKSci\nJGQgPSAiZm9yIHNvbWUgZWhoLi4uaGVscCI=\n', 'any of them', ' Ajax Command shell', '', ' https://github.com/tennc/webshell/blob/master/xakep-shells/PHP/Ajax_PHP%20Command%20Shell.php.txt', '', '');
-      // $table_name 
-      $query = str_replace("wp_ah_rules", $table_name, $query);
-
-      $r = $wpdb->get_results($query);
-
-      if($wpdb->last_error != ''){
-        echo '<hr>';
-        var_dump($query);
-        echo '<hr>';
-        $wpdb->print_error();
-        die('Anti Hacker Plugin: Error to write Rules to Database');
-      }
-      
-  }
-
-  fclose($fhandle);
-  fclose($fhandle2);
-  // debug 
-   unlink($file);
-   unlink($file2);
+    fclose($fhandle);
+    fclose($fhandle2);
+    // debug 
+    unlink($file);
+    unlink($file2);
 }
 
 
@@ -1281,7 +1280,7 @@ function antihacker_stats_moreone($qtype)
     global $wpdb;
     $qtoday = date("m") + date("d");
 
-// Parse error: syntax error, unexpected 'm' (T_STRING), expecting ')' in /home/minozzi/public_html/wp-content/plugins/antihacker/includes/functions/functions.php on line 1287
+    // Parse error: syntax error, unexpected 'm' (T_STRING), expecting ')' in /home/minozzi/public_html/wp-content/plugins/antihacker/includes/functions/functions.php on line 1287
 
 
     $mdata = date("m");
@@ -1297,7 +1296,7 @@ function antihacker_stats_moreone($qtype)
 
 
     $table_name = $wpdb->prefix . "ah_stats";
-/*
+    /*
     `id` mediumint(9) NOT NULL,
     `date` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
  
@@ -1318,22 +1317,24 @@ function antihacker_stats_moreone($qtype)
    - `xmlrpc` text COLLATE utf8mb4_unicode_ci NOT NULL
 */
 
-    if ($qtype != 'qfire'
-		and $qtype != 'qenum'
-		and $qtype != 'qlogin'
-		and $qtype != 'qtor'
-		and $qtype != 'qplugin'
-		and $qtype != 'qfalseg'
-		and $qtype != 'qtema'
-		and $qtype != 'qtotal'
-		and $qtype != 'qtools'
-		and $qtype != 'qrate'
-		and $qtype != 'qnoref'
-		and $qtype != 'qblank'
-		and $qtype != 'xmlrpc'
-		and $qtype != 'qblack') {
-		return;
-	}
+    if (
+        $qtype != 'qfire'
+        and $qtype != 'qenum'
+        and $qtype != 'qlogin'
+        and $qtype != 'qtor'
+        and $qtype != 'qplugin'
+        and $qtype != 'qfalseg'
+        and $qtype != 'qtema'
+        and $qtype != 'qtotal'
+        and $qtype != 'qtools'
+        and $qtype != 'qrate'
+        and $qtype != 'qnoref'
+        and $qtype != 'qblank'
+        and $qtype != 'xmlrpc'
+        and $qtype != 'qblack'
+    ) {
+        return;
+    }
 
     antihacker_populate_stats();
 
@@ -1341,15 +1342,16 @@ function antihacker_stats_moreone($qtype)
         "UPDATE  `$table_name`
          SET $qtype = $qtype + 1, 
          qtotal = qtotal+1 
-         WHERE date = $qtoday");
+         WHERE date = $qtoday"
+    );
 
-  //  $str = var_export(debug_backtrace(),true);
-  //  error_log($str);
+    //  $str = var_export(debug_backtrace(),true);
+    //  error_log($str);
 
-// mail('sergiominozzi@gmail.com', "linha 1334",$str);
+    // mail('sergiominozzi@gmail.com', "linha 1334",$str);
 
 
-/*
+    /*
     // Does't work
     $r = $wpdb->get_results($wpdb->prepare(
         "UPDATE  `$table_name`
@@ -1442,7 +1444,7 @@ function antihacker_create_db_visitors()
     UNIQUE (`id`)
     ) $charset_collate;";
     dbDelta($sql);
-  
+
     // $alter = "CREATE INDEX ip2 ON " . $table . " (`ip`(50))";
     ob_start();
     $wpdb->query("CREATE INDEX ip2 ON  `$table` (`ip`(50))");
@@ -1574,10 +1576,10 @@ function antihacker_activated()
     antihacker_populate_stats();
     global $antihacker_is_admin;
 
-    if (empty($antihacker_http_tools) or $antihacker_update_http_tools == 'yes'){
+    if (empty($antihacker_http_tools) or $antihacker_update_http_tools == 'yes') {
         antihacker_create_httptools();
     }
-        
+
 
     $antihacker_ip = antihacker_findip();
     if ($antihacker_is_admin) {
@@ -1597,21 +1599,38 @@ function antihacker_activated()
         update_option('antihacker_installed', time());
     }
 
-        // Pointer
 
-        $r = update_option('antihacker_was_activated', '1');
-        if (!$r) {
-            add_option('antihacker_was_activated', '1');
-        }
-        $pointers = get_user_meta(get_current_user_id(), 'dismissed_wp_pointers', true);
-     
-     //var_dump($pointers);
-     //die();
-     
-        $pointers = ''; // str_replace( 'plugins', '', $pointers );
-        update_user_meta(get_current_user_id(), 'dismissed_wp_pointers', $pointers);
+    // =========================================================================
+    // INÍCIO DA INCLUSÃO - LÓGICA DO NOVO INSTALADOR
+    // =========================================================================
 
-        
+    // 1. Verifica se a flag 'antihacker_setup_complete' NÃO existe.
+    //    Isso significa que o novo instalador nunca foi concluído.
+    if (!get_option('antihacker_setup_complete', false)) {
+
+        // 2. Se não foi concluído, cria o 'transient' que dispara o redirecionamento.
+        //    Esta é a linha que estava faltando.
+        set_transient('antihacker_redirect_to_installer', true, 30);
+    }
+
+    // =========================================================================
+    // FIM DA INCLUSÃO
+    // =========================================================================
+    // Pointer
+
+    $r = update_option('antihacker_was_activated', '1');
+    if (!$r) {
+        add_option('antihacker_was_activated', '1');
+    }
+    $pointers = get_user_meta(get_current_user_id(), 'dismissed_wp_pointers', true);
+
+    //var_dump($pointers);
+    //die();
+
+    $pointers = ''; // str_replace( 'plugins', '', $pointers );
+    update_user_meta(get_current_user_id(), 'dismissed_wp_pointers', $pointers);
+
+
 
     ob_end_clean();
 }
@@ -1627,17 +1646,17 @@ function antihacker_tablexist($table)
 
 
 
-function antihacker_check_memory() {
+function antihacker_check_memory()
+{
     // global $memory;
     $memory["color"] = "font-weight:normal;";
     try {
 
         // PHP $memory["limit"]
-        if(!function_exists('ini_get')){
+        if (!function_exists('ini_get')) {
             $memory["msg_type"] = "notok";
             return $memory;
-        }
-        else{
+        } else {
             $memory["limit"] = (int) ini_get("memory_limit");
         }
 
@@ -1653,11 +1672,10 @@ function antihacker_check_memory() {
 
 
         // usage
-        if(!function_exists('memory_get_usage')){
+        if (!function_exists('memory_get_usage')) {
             $memory["msg_type"] = "notok";
             return $memory;
-        }
-        else{
+        } else {
             // $bill_install_memory["usage"] = round(memory_get_usage() / 1024 / 1024, 0);
             $memory["usage"] = (int) memory_get_usage();
         }
@@ -1666,10 +1684,8 @@ function antihacker_check_memory() {
         if ($memory["usage"] < 1) {
             $memory["msg_type"] = "notok";
             return $memory;
-        }
-        else{
+        } else {
             $memory["usage"] = round($memory["usage"] / 1024 / 1024, 0);
-
         }
 
         if (!is_numeric($memory["usage"])) {
@@ -1683,8 +1699,7 @@ function antihacker_check_memory() {
             $memory['wp_limit'] = 40;
         } else {
             $memory['wp_limit'] = (int) WP_MEMORY_LIMIT;
-
-        }		
+        }
 
         $memory["percent"] =
             $memory["usage"] / $memory["wp_limit"];
@@ -1774,12 +1789,12 @@ function antihacker_find_perc()
 
     // 7 days
     //antihacker_notif_scan
-    if(time() > ( $antihacker_notif_scan + 60*60*24*7 ))
-      $perc = $perc - 2;
+    if (time() > ($antihacker_notif_scan + 60 * 60 * 24 * 7))
+        $perc = $perc - 2;
 
     if ($perc < 0)
         $perc = 0;
-    
+
 
     return $perc;
 }
@@ -1832,14 +1847,14 @@ function antihacker_remove_index()
     $table_name = $wpdb->prefix . "ah_visitorslog";
     if (!$wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name)
         return;
-    $query = 'show index from '.$table_name;
+    $query = 'show index from ' . $table_name;
     $result = $wpdb->get_results($query);
     $result = json_decode(json_encode($result), true);
     $query = "SELECT COUNT(1) indexExists FROM INFORMATION_SCHEMA.STATISTICS
     WHERE table_schema=DATABASE() AND table_name='" . $table_name . "' AND index_name='ip'";
     $result = $wpdb->get_var($query);
     if ($result > 0) {
-        $query = "ALTER TABLE ".$table_name. " DROP INDEX ip";
+        $query = "ALTER TABLE " . $table_name . " DROP INDEX ip";
         ob_start();
         $wpdb->query($query);
         ob_end_clean();
@@ -1848,7 +1863,7 @@ function antihacker_remove_index()
     WHERE table_schema=DATABASE() AND table_name='" . $table_name . "' AND index_name='date'";
     $result = $wpdb->get_var($query);
     if ($result > 0) {
-        $query = "ALTER TABLE ". $table_name. " DROP INDEX date";
+        $query = "ALTER TABLE " . $table_name . " DROP INDEX date";
         ob_start();
         $wpdb->query($query);
         ob_end_clean();
@@ -1885,12 +1900,12 @@ function antihacker_add_index()
             return;
         }
     }
-   // $sql = "CREATE INDEX ip2 ON " . $table_name . " (ip)";
+    // $sql = "CREATE INDEX ip2 ON " . $table_name . " (ip)";
     $alter = "CREATE INDEX ip2 ON " . $table . " (`ip`(50))";
     ob_start();
     $wpdb->query($alter);
     ob_end_clean();
-  //  dbDelta($sql);
+    //  dbDelta($sql);
 }
 
 function antihacker_upgrade_db()
@@ -2163,7 +2178,7 @@ function antihacker_is_tor()
 
     $r = $wpdb->get_var($wpdb->prepare("
     SELECT  count(*) FROM `$table` 
-     WHERE ip = %s",$antihacker_ip));
+     WHERE ip = %s", $antihacker_ip));
 
     if (!empty($wpdb->last_error))
         antihacker_upd_tor_db();
@@ -2198,8 +2213,9 @@ function antihacker_upd_tor_db()
         $r = $wpdb->get_results($wpdb->prepare(
             "INSERT INTO `$table` 
             (ip) 
-            VALUES (%s)", $arr[$i]));
-
+            VALUES (%s)",
+            $arr[$i]
+        ));
     }
     return true;
 }
@@ -2221,13 +2237,6 @@ function antihacker_arr_tor()
         }
     }
     return $arrtor;
-
-
-
-
-
-
-    
 }
 function antihacker_get_tor()
 {
@@ -2249,19 +2258,17 @@ function antihacker_get_tor()
     */
 
     $response = wp_remote_get('https://check.torproject.org/exit-addresses');
-    $body     = wp_remote_retrieve_body( $response );
+    $body     = wp_remote_retrieve_body($response);
 
 
-    if ( ! $body ) {
+    if (!$body) {
         // Something went wrong.
         return false;
     }
 
-   // var_dump(json_decode( $body, true ));
+    // var_dump(json_decode( $body, true ));
 
     return $body;
-
-
 }
 function antihacker_update_httptools($antihacker_http_tools)
 {   // Load into table
@@ -2290,6 +2297,7 @@ function antihacker_update_httptools($antihacker_http_tools)
     }
     */
 }
+
 function antihacker_block_httptools()
 {
     global $antihacker_ua;
@@ -2300,6 +2308,13 @@ function antihacker_block_httptools()
 
     if (antihacker_isourserver())
         return '';
+
+    // Assert that $antihacker_http_tools is an array
+    /** @var string[] $antihacker_http_tools */
+    if (!is_array($antihacker_http_tools) || empty($antihacker_http_tools))
+        return '';
+
+
     if (count($antihacker_http_tools) < 1)
         return '';
     for ($i = 0; $i < count($antihacker_http_tools); $i++) {
@@ -2407,8 +2422,6 @@ function antihacker_howmany_bots_visit()
                  WHERE ip = %s
                   AND `bot` = '1'
                   AND `date` >=  CURDATE() - interval 1 minute ORDER BY `date` DESC", $antihacker_ip));
-
-                  
 }
 function antihacker_howmany_visit_200()
 {
@@ -2421,7 +2434,6 @@ function antihacker_howmany_visit_200()
                 SELECT  count(*) FROM `$table_name` 
                  WHERE ip = %s
                  AND `response` LIKE '200' ", $antihacker_ip));
-
 }
 function antihacker_howmany_visit_404()
 {
@@ -2434,8 +2446,6 @@ function antihacker_howmany_visit_404()
     SELECT  count(*) FROM `$table_name` 
      WHERE ip = %s
      AND `response` LIKE '404' ", $antihacker_ip));
-
-
 }
 
 
@@ -2454,7 +2464,6 @@ function antihacker_howmany_bots_visit2()
     WHERE ip =  %s
       AND `bot` = '1'
       AND `date` >=  CURDATE() - interval 1 hour ORDER BY `date` DESC", $antihacker_ip));
-
 }
 function antihacker_check_httptools()
 {
@@ -2492,8 +2501,8 @@ function antihacker_check_useragent()
 
 
 
-   if(antihacker_isourserver())
-     return;
+    if (antihacker_isourserver())
+        return;
 
     if (!$antihacker_is_admin  and !antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist)) {
         if (empty($antihacker_ua) and $antihacker_blank_ua != 'no') {
@@ -2601,7 +2610,9 @@ function antihacker_grava_fingerprint()
 
         $wpdb->get_results($wpdb->prepare(
             "SELECT * from `$mytable_name` 
-            WHERE ip = %s and fingerprint != '' limit 1", $antihacker_ip));
+            WHERE ip = %s and fingerprint != '' limit 1",
+            $antihacker_ip
+        ));
 
 
 
@@ -2621,11 +2632,10 @@ function antihacker_grava_fingerprint()
         $r = $wpdb->get_results($wpdb->prepare(
             "INSERT INTO `$mytable_name`
             (ip, fingerprint)
-            VALUES (%s, %s)", $antihacker_ip, $fingerprint));
-
-
-
-
+            VALUES (%s, %s)",
+            $antihacker_ip,
+            $fingerprint
+        ));
     }
     die();
 }
@@ -2639,8 +2649,7 @@ function antihacker_first_time2()
     return $wpdb->get_var($wpdb->prepare("
     SELECT  count(*) FROM `$table_name`
       WHERE ip = %s
-        AND `date` >=  CURDATE()- interval 7 day ORDER BY `date` DESC", $antihacker_ip ));
-
+        AND `date` >=  CURDATE()- interval 7 day ORDER BY `date` DESC", $antihacker_ip));
 }
 /*
 function antihacker_cron_function_clean_db_old()
@@ -2703,13 +2712,13 @@ function antihacker_isourserver()
         return true;
 
 
-        
-    
-        if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
-            return true;
-    
-        if (antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist))
-            return true;
+
+
+    if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
+        return true;
+
+    if (antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist))
+        return true;
 
     return false;
 }
@@ -2744,18 +2753,20 @@ function antihacker_add_blocklist($ip)
 
     $result = $wpdb->get_var($wpdb->prepare(
         "SELECT * from `$table_name` 
-        WHERE ip = %s ", $antihacker_ip));
+        WHERE ip = %s ",
+        $antihacker_ip
+    ));
 
 
     if ($result > 0)
         return true;
 
-   $r = $wpdb->get_results($wpdb->prepare(
-            "INSERT INTO `$table_name` 
+    $r = $wpdb->get_results($wpdb->prepare(
+        "INSERT INTO `$table_name` 
             (ip)
-            VALUES (%s)", $antihacker_ip));
-
-
+            VALUES (%s)",
+        $antihacker_ip
+    ));
 }
 
 function antihacker_add_whitelist()
@@ -2765,12 +2776,12 @@ function antihacker_add_whitelist()
     global $antihacker_amy_whitelist;
     global $antihacker_my_whitelist;
 
-    if ( ! isset( $_POST['antihacker_nonce_table'] ) || ! wp_verify_nonce(sanitize_text_field($_POST['antihacker_nonce_table']), 'antihacker_view_blocked_visits' ) ) {
+    if (!isset($_POST['antihacker_nonce_table']) || !wp_verify_nonce(sanitize_text_field($_POST['antihacker_nonce_table']), 'antihacker_view_blocked_visits')) {
         wp_die('Nonce Fail');
     }
-    
-    if (!current_user_can('administrator')) 
-         wp_die('Fail by Administration Permissions');
+
+    if (!current_user_can('administrator'))
+        wp_die('Fail by Administration Permissions');
 
 
     if (!isset($_REQUEST['ip']))
@@ -2799,7 +2810,7 @@ function antihacker_check_blocklist($ip)
     global $wpdb;
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     $table_name = $wpdb->prefix . "ah_blockeds";
-           
+
 
     /*
     $query = "select * from " . $table_name .
@@ -2807,17 +2818,16 @@ function antihacker_check_blocklist($ip)
     " AND `date` >= (CURDATE() - interval 15 minute) " .
     " LIMIT 1";
     */
-    
+
     $r = $wpdb->get_var($wpdb->prepare("
     SELECT  * FROM `$table_name` 
      WHERE ip = %s
-      AND `date` >=  (CURDATE() - interval 15 minute) LIMIT 1",$ip));
+      AND `date` >=  (CURDATE() - interval 15 minute) LIMIT 1", $ip));
 
     if ($r > 0)
         return true;
     else
         return false;
-
 }
 function antihacker_bill_ask_for_upgrade2()
 {
@@ -3261,7 +3271,7 @@ function antihacker_maybe_search_engine()
         'seznam',
         'slurp',
     );
-    
+
     // Check if the user agent matches any of the known bots
     foreach ($mysearch as $bot) {
         if (stripos($ua, $bot) !== false) {
@@ -3291,8 +3301,8 @@ function antihacker_final_step()
     //debug();
 
     if (!$antihacker_debug) {
-       // if ($antihacker_is_admin or is_super_admin() or empty($antihacker_checkversion))
-       //     return;
+        // if ($antihacker_is_admin or is_super_admin() or empty($antihacker_checkversion))
+        //     return;
     }
     if (is_404()) {
         $antihacker_response = '404';
@@ -3690,7 +3700,7 @@ function antihacker_gravalog($antihacker_why_block)
         $antihacker_access,
         $antihacker_ua
     );
-    
+
     $r = $wpdb->query($query);
     // die(var_export($r));
 
@@ -3714,11 +3724,11 @@ function antihacker_gravalog($antihacker_why_block)
     die(var_export($r));
     */
 
-    
+
 
     //debug($query);
     //debug($r);
-    
+
 
     /*
     $r = $wpdb->get_results($wpdb->prepare("INSERT INTO `$table_name`
@@ -3747,13 +3757,13 @@ function antihacker_gravalog($antihacker_why_block)
         die('403 Forbidden');
     }
     return;
-} 
+}
 // 2023 //
 function antihacker_sizeFilter($bytes)
 {
-	$label = array('Bytes', 'KB', 'MB', 'GB', 'TB', 'PB');
-	for ($i = 0; $bytes >= 1024 && $i < (count($label) - 1); $bytes /= 1024, $i++);
-	return (round($bytes, 2) . " " . $label[$i]);
+    $label = array('Bytes', 'KB', 'MB', 'GB', 'TB', 'PB');
+    for ($i = 0; $bytes >= 1024 && $i < (count($label) - 1); $bytes /= 1024, $i++);
+    return (round($bytes, 2) . " " . $label[$i]);
 }
 
 

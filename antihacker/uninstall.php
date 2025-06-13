@@ -57,6 +57,8 @@ $antihacker_option_name[] = 'antihacker_last_theme_update';
 $antihacker_option_name[] = 'antihacker_disable_sitemap';
 $antihacker_option_name[] = 'antihacker_disable_reinstall';
 $antihacker_option_name[] = 'antihacker_keep_log';
+$antihacker_option_name[] = 'antihacker_setup_complete';
+
 
 $wnum = count($antihacker_option_name);
 for ($i = 0; $i < $wnum; $i++) {
