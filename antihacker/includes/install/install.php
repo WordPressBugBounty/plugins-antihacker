@@ -76,7 +76,7 @@ function antihacker_inst_add_admin_page()
         return;
     }
     add_submenu_page(
-        null, // This makes the menu item hidden.
+        'antihacker-installer',
         __('AntiHacker Installer', 'antihacker'),
         __('AntiHacker Installer', 'antihacker'),
         'manage_options',
