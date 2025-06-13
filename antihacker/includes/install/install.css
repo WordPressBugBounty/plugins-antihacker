@@ -1,0 +1,216 @@
+/*
+ * AntiHacker Installation Wizard Styles
+ * Versão revisada para funcionar dentro do painel do WordPress.
+ */
+
+/* Força a remoção de margens padrão do WordPress que podem empurrar nosso contêiner para baixo. */
+.wrap {
+    margin-top: 0;
+}
+
+/* O contêiner principal do nosso instalador */
+.antihacker-inst-wrap {
+    max-width: 800px;
+    margin: 20px auto;
+    /* Mantém centralizado */
+    background: #fff;
+    /* Fundo branco para se destacar do cinza do painel */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra um pouco mais pronunciada */
+    box-sizing: border-box;
+    /* Garante que padding não afete a largura total */
+}
+
+/* Cabeçalho com logo e indicador de passo */
+.antihacker-inst-header {
+    display: flex;
+    flex-direction: column;
+    /* Itens um abaixo do outro */
+    align-items: center;
+    /* Centralizados horizontalmente */
+    gap: 20px;
+    /* Espaço entre os itens */
+    margin-bottom: 20px;
+    /* Espaço abaixo do cabeçalho */
+    padding-bottom: 20px;
+    /* Espaço extra interno */
+    border-bottom: 1px solid #ddd;
+    /* Linha separadora */
+}
+
+#antihacker-inst-logo {
+    max-width: 250px;
+    height: auto;
+}
+
+#antihacker-inst-step-indicator {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Área de conteúdo principal */
+.antihacker-inst-content {
+    padding: 0 20px 20px;
+    /* Remove padding superior, pois o header já tem */
+}
+
+.antihacker-inst-content h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2c3338;
+}
+
+.antihacker-inst-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Estilo para cada campo do formulário */
+.antihacker-inst-field {
+    margin-bottom: 25px;
+    /* Aumenta o espaçamento entre os campos */
+}
+
+.antihacker-inst-field h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.antihacker-inst-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Estilo para inputs de rádio e suas labels */
+.antihacker-inst-field label input[type="radio"] {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.antihacker-inst-field label[for] {
+    /* Apenas para labels associadas a inputs */
+    font-weight: bold;
+}
+
+.antihacker-inst-field label:not([for]) {
+    /* Labels de rádio/checkbox não precisam de negrito */
+    font-weight: normal;
+}
+
+
+.antihacker-inst-field input[type="text"],
+.antihacker-inst-field input[type="email"],
+.antihacker-inst-field textarea,
+.antihacker-inst-field select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Descrição abaixo das opções de rádio */
+.antihacker-inst-description {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 15px 28px;
+    /* Alinha com o texto do rádio */
+    padding-left: 0;
+    font-style: italic;
+}
+
+/* Contêiner dos botões */
+.antihacker-inst-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Alinha os botões verticalmente */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    /* Linha separadora acima dos botões */
+}
+
+/* Classe unificada para TODOS os botões (<a> e <button>) */
+.antihacker-inst-button {
+    display: inline-block;
+    /* Essencial para que <a> se comporte como <button> */
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    /* Remove sublinhado do link */
+    text-align: center;
+    line-height: 1;
+    /* Garante altura consistente */
+    transition: background-color 0.2s ease-in-out;
+    /* Efeito suave na transição */
+}
+
+/* Botão "Voltar" */
+.antihacker-inst-back {
+    background-color: #f0f0f1;
+    color: #50575e;
+    border: 1px solid #dcdcde;
+}
+
+.antihacker-inst-back:hover,
+.antihacker-inst-back:focus {
+    background-color: #e0e0e1;
+    color: #3c434a;
+    border-color: #b7b7b9;
+}
+
+/* Botão "Próximo" */
+.antihacker-inst-next {
+    background-color: #007cba;
+    /* Azul padrão do WordPress */
+    color: #fff;
+    border: 1px solid #007cba;
+}
+
+.antihacker-inst-next:hover,
+.antihacker-inst-next:focus {
+    background-color: #006ba1;
+    /* Azul um pouco mais escuro */
+    color: #fff;
+    border-color: #006ba1;
+}
+
+
+
+
+/* Styling for the "Learn More" links in the installer */
+.antihacker-inst-learn-more {
+    font-size: 13px;
+    font-weight: normal;
+    text-decoration: none;
+    margin-left: 8px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* NEW: Style for the image icon inside the link */
+.antihacker-inst-info-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    /* Very important for alignment */
+    margin-right: 3px;
+    /* A little space between icon and text */
+}
+
+/* Change color on hover for better user feedback */
+.antihacker-inst-field h3 a:hover {
+    color: #2271b1;
+    /* Standard WordPress link hover color */
+}

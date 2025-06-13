@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.60
+version: 5.62
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -288,10 +288,22 @@ if ($antihacker_is_admin) {
     // ui 
     $wpmemory_jqueryurl = ANTIHACKERURL . 'assets/css/jquery-ui.css';
     wp_register_style('bill-jquery-ui', $wpmemory_jqueryurl, array(), '1.12.1', 'all');
+
     wp_enqueue_style('bill-jquery-ui');
+    /*
+    wp_enqueue_style(
+      'antihacker-inst-styles',
+      ANTIHACKERURL . 'includes/install/install.css',
+      array(),
+      ANTIHACKERVERSION
+    );
+    */
   }
   add_action('admin_enqueue_scripts', 'antihacker_add_admstylesheet', 1000);
 }
+
+
+
 
 
 
@@ -558,7 +570,7 @@ function antihackerplugin_load_activate()
     // require_once(ANTIHACKERPATH . 'includes/feedback/activated-manager.php');
   }
 }
-add_action('in_admin_footer', 'antihackerplugin_load_activate');
+// add_action('in_admin_footer', 'antihackerplugin_load_activate');
 
 
 if ($antihacker_is_admin) {
@@ -1748,11 +1760,14 @@ function antihacker_bill_install()
     $logo = ANTIHACKERIMAGES . '/logo.png';
     //$plugin_adm_url = admin_url('tools.php?page=antihacker_new_more_plugins');
     $plugin_adm_url = admin_url();
-    require_once dirname(__FILE__) . "/includes/install-checkup/class_bill_install.php";
+    //require_once dirname(__FILE__) . "/includes/install-checkup/class_bill_install.php";
+
+
+
     // ob_end_clean();
   }
 }
-add_action('wp_loaded', 'antihacker_bill_install', 15);
+//add_action('wp_loaded', 'antihacker_bill_install', 15);
 
 
 function antihacker_get_request_method()
@@ -1908,8 +1923,10 @@ if ($antihacker_enable_reinstall == 'yes') {
   {
     if (!empty($_GET['reinstalled_name']) && current_user_can('install_plugins')) {
       $plugin_name = sanitize_text_field(wp_unslash($_GET['reinstalled_name']));
-      echo '<div class="updated"><p>' . esc_html(sprintf(__('The plugin %s files have been reinstalled successfully.', 'antihacker'), '<strong>' . $plugin_name . '</strong>')) . '</p></div>';
+      echo '<div class="updated"><p>' . esc_html(sprintf(__('The plugin %s files have been reinstalled successfully.', 'antihacker'), $plugin_name)) . '</p></div>';
     }
   }
   add_action('admin_notices', 'antihacker_show_reinstall_message');
 }
+
+require_once ANTIHACKERPATH . 'includes/install/install.php';

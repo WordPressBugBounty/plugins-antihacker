@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.62 25-06-13 NewInstall.
+
 5.59/60 25-06-04 Included 2 new features.
 
 5.58 25-06-01 Included table of Must Use Plugins.

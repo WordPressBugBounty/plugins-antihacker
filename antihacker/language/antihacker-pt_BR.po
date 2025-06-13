@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 08:43+0100\n"
-"PO-Revision-Date: 2025-06-04 08:22+0000\n"
+"POT-Creation-Date: 2025-06-13 09:01+0100\n"
+"PO-Revision-Date: 2025-06-13 08:06+0000\n"
 "Last-Translator: \n"
-"Language-Team: Português do Brasil\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,31 +32,31 @@ msgstr ""
 "Por favor, dê uma olhada em nosso site, página FAQ, item => Como posso "
 "traduzir este plugin?"
 
-#: antihacker.php:461
+#: antihacker.php:474
 msgid "Wrong Username, Password or eMail"
 msgstr "Nome de usuário, senha ou eMail errado"
 
-#: antihacker.php:501
+#: antihacker.php:514
 msgid "Empty email"
 msgstr "E-mail vazio"
 
-#: antihacker.php:532
+#: antihacker.php:545
 msgid "Wrong Username or Password"
 msgstr "Nome de usuário ou senha errados"
 
-#: antihacker.php:1138 includes/functions/functions.php:324
+#: antihacker.php:1151 includes/functions/functions.php:324
 #: includes/functions/functions.php:432 includes/functions/functions.php:471
 #: includes/functions/functions.php:514 includes/functions/functions.php:551
 #: includes/functions/functions.php:3506
 msgid "This email was sent from your website"
 msgstr "Este e-mail foi enviado de seu website"
 
-#: antihacker.php:1138 includes/functions/functions.php:325
+#: antihacker.php:1151 includes/functions/functions.php:325
 #: includes/functions/functions.php:553
 msgid "by the AntiHacker plugin."
 msgstr "pelo plugin AntiHacker."
 
-#: antihacker.php:1140
+#: antihacker.php:1153
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
@@ -68,11 +68,11 @@ msgstr ""
 "último ano\n"
 "    são suspeitos de terem sido abandonados e sugerimos a sua substituição."
 
-#: antihacker.php:1141
+#: antihacker.php:1154
 msgid "Some plugins on the site require attention."
 msgstr "Alguns plugins no site requerem atenção."
 
-#: antihacker.php:1143
+#: antihacker.php:1156
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
@@ -80,32 +80,22 @@ msgstr ""
 "Visite o painel do plug-in Anti Hacker para obter dicas adicionais sobre "
 "como melhorar a segurança do site."
 
-#: antihacker.php:1144
+#: antihacker.php:1157
 msgid "You can stop emails at the Notifications Tab."
 msgstr "Você pode parar os e-mails na tab Configurações de notificações."
 
-#: antihacker.php:1145
+#: antihacker.php:1158
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr "Painel de controle => Anti Hacker => Configurações de notificações."
 
-#: antihacker.php:1281
+#: antihacker.php:1294
 msgid "Once Per Week"
 msgstr "Uma vez por semana"
 
-#: antihacker.php:1910
+#: antihacker.php:1926
 #, php-format
 msgid "The plugin %s files have been reinstalled successfully."
 msgstr "Os arquivos do Plugin%s foram reinstalados com sucesso."
-
-#: dashboard/_tools.php:30 dashboard/tools.php:15
-msgid "If you need support, please, copy and paste the info below in our"
-msgstr ""
-"Se você precisar de suporte, por favor, copie e cole as informações abaixo "
-"em nosso"
-
-#: dashboard/_tools.php:31 dashboard/tools.php:17
-msgid "Support Site"
-msgstr "Página de Suporte"
 
 #: dashboard/attacksgraph_pie.php:23 dashboard/calcula_stats_pie2.php:21
 msgid ""
@@ -122,18 +112,19 @@ msgstr "Bots (robôs)"
 msgid "Humans"
 msgstr "Humanos"
 
-#: dashboard/checa-plugins-novo.php:78 dashboard/check_plugins.php:50
-#: dashboard/must_use_plugins.php:129
+#: dashboard/check_file_integrity.php:16
+msgid "File Integrity Checker"
+msgstr "Verificação de integridade de arquivo"
+
+#: dashboard/check_plugins.php:50 dashboard/must_use_plugins.php:129
 msgid "Check Plugins"
 msgstr "Verificar Plugins"
 
-#: dashboard/checa-plugins-novo.php:82 dashboard/check_plugins.php:54
-#: dashboard/must_use_plugins.php:133
+#: dashboard/check_plugins.php:54 dashboard/must_use_plugins.php:133
 msgid "Check Plugins for updates."
 msgstr "Verifique as atualizações dos Plugins."
 
-#: dashboard/checa-plugins-novo.php:85 dashboard/check_plugins.php:57
-#: dashboard/must_use_plugins.php:136
+#: dashboard/check_plugins.php:57 dashboard/must_use_plugins.php:136
 msgid ""
 "This test will check all your plugins against WordPress repository to see \n"
 "    if they are updated last one year. Plugins not updated last one year\n"
@@ -145,19 +136,13 @@ msgstr ""
 "último ano\n"
 "    são suspeitos de terem sido abandonados e sugerimos a sua substituição."
 
-#: dashboard/checa-plugins-novo.php:94 dashboard/check_plugins.php:66
-#: dashboard/must_use_plugins.php:145
+#: dashboard/check_plugins.php:66 dashboard/must_use_plugins.php:145
 msgid "Last check for updates made (Y-M-D):"
 msgstr "Última verificação de atualizações feitas (Y-M-D):"
 
-#: dashboard/checa-plugins-novo.php:100 dashboard/check_plugins.php:72
-#: dashboard/must_use_plugins.php:151
+#: dashboard/check_plugins.php:72 dashboard/must_use_plugins.php:151
 msgid "Check Plugins Now"
 msgstr "Verificar Plugins Agora"
-
-#: dashboard/check_file_integrity.php:16
-msgid "File Integrity Checker"
-msgstr "Verificação de integridade de arquivo"
 
 #: dashboard/dashboard.php:12
 msgid "Anti Hacker Plugin Activated"
@@ -443,7 +428,6 @@ msgid "Here is the link:"
 msgstr "Aqui está o link:"
 
 #: dashboard/must_use_plugins.php:18
-#| msgid "Check Plugins"
 msgid "Must Use Plugins"
 msgstr "É preciso usar plugins"
 
@@ -642,6 +626,16 @@ msgstr "Temas"
 #: dashboard/themes_and_plugins.php:96
 msgid "No inactive Themes! All right."
 msgstr "Sem temas inativos! Muito bem."
+
+#: dashboard/tools.php:15
+msgid "If you need support, please, copy and paste the info below in our"
+msgstr ""
+"Se você precisar de suporte, por favor, copie e cole as informações abaixo "
+"em nosso"
+
+#: dashboard/tools.php:17
+msgid "Support Site"
+msgstr "Página de Suporte"
 
 #: guide/guide.php:13
 msgid "General Settings Tab:"
@@ -1597,6 +1591,429 @@ msgstr ""
 msgid "WordPress Help Page"
 msgstr "Página de Ajuda WordPress"
 
+#: includes/install/___install.php:108 includes/install/___install.php:109
+#: includes/install/__install.php:338 includes/install/__install.php:339
+#: includes/install/_install.php:281 includes/install/_install.php:282
+#: includes/install/install.php:78 includes/install/install.php:79
+#| msgid "Anti Hacker Plugin Activated"
+msgid "AntiHacker Installer"
+msgstr "Instalador AntiHacker"
+
+#: includes/install/___install.php:279 includes/install/__install.php:161
+#: includes/install/_install.php:124 includes/install/install.php:238
+#| msgid "by Anti Hacker plugin."
+msgid "AntiHacker Logo"
+msgstr "Logotipo do AntiHacker"
+
+#: includes/install/___install.php:280 includes/install/__install.php:162
+#: includes/install/_install.php:125 includes/install/install.php:239
+msgid "Step Indicator"
+msgstr "Indicador de Passo"
+
+#: includes/install/___install.php:292
+msgid "1 Welcome"
+msgstr "1 Bem-vindo"
+
+#: includes/install/___install.php:293
+msgid ""
+"Thank you for choosing AntiHacker plugin, your all-in-one security solution "
+"to harden and protect your WordPress site. It provides multi-layered defense "
+"against a wide range of attacks, featuring a robust firewall, malware "
+"scanner, and advanced login security. We also block common vulnerabilities "
+"by disabling user enumeration, TOR access, XML-RPC, REST API, and much more. "
+"Click Next."
+msgstr ""
+"Obrigado por escolher o plugin AntiHacker, sua solução de segurança completa "
+"para fortalecer e proteger seu site WordPress. Ele oferece defesa em várias "
+"camadas contra uma ampla gama de ataques, com firewall robusto, scanner de "
+"malware e segurança avançada de login. Também bloqueamos vulnerabilidades "
+"comuns desabilitando a enumeração de usuários, o acesso TOR, o XML-RPC, a "
+"API REST e muito mais. Clique em Avançar."
+
+#: includes/install/___install.php:298 includes/install/___install.php:336
+#: includes/install/___install.php:427 includes/install/__install.php:183
+#: includes/install/__install.php:212 includes/install/__install.php:293
+#: includes/install/_install.php:158
+msgid "Next"
+msgstr "Próximo"
+
+#: includes/install/___install.php:307
+msgid "2 Your Experience Level"
+msgstr "2 Seu nível de experiência"
+
+#: includes/install/___install.php:308 includes/install/__install.php:197
+#: includes/install/_install.php:143
+msgid ""
+"What is your level of experience with WordPress? This will help us tailor "
+"the setup process for you."
+msgstr ""
+"Qual é o seu nível de experiência com o WordPress? Isso nos ajudará a "
+"personalizar o processo de configuração para você."
+
+#: includes/install/___install.php:320 includes/install/__install.php:202
+#: includes/install/_install.php:148
+msgid "One-Click Setup (I'm a beginner, set it up for me!)"
+msgstr "Configuração com um clique (sou iniciante, configure para mim!)"
+
+#: includes/install/___install.php:322 includes/install/__install.php:204
+#: includes/install/_install.php:150
+msgid ""
+"We'll automatically apply the best-practice settings for you. It's the "
+"fastest way to get started."
+msgstr ""
+"Aplicaremos automaticamente as melhores práticas para você. É a maneira mais "
+"rápida de começar."
+
+#: includes/install/___install.php:325 includes/install/__install.php:207
+#: includes/install/_install.php:153
+msgid "Manual Setup (I'm an experienced user, I want to configure it myself.)"
+msgstr ""
+"Configuração manual (sou um usuário experiente e quero configurar sozinho)."
+
+#: includes/install/___install.php:327 includes/install/__install.php:209
+#: includes/install/_install.php:155
+msgid ""
+"You will be able to configure all the basic and advanced settings manually "
+"from the plugin's dashboard."
+msgstr ""
+"Você poderá configurar todas as configurações básicas e avançadas "
+"manualmente no painel do plugin."
+
+#: includes/install/___install.php:330
+msgid "Choose an option and click Next."
+msgstr "Escolha uma opção e clique em Avançar."
+
+#: includes/install/___install.php:335 includes/install/___install.php:426
+#: includes/install/___install.php:443 includes/install/___install.php:453
+#: includes/install/__install.php:211 includes/install/__install.php:291
+#: includes/install/__install.php:308 includes/install/__install.php:320
+#: includes/install/_install.php:157 includes/install/_install.php:252
+#: includes/install/_install.php:264
+msgid "Back"
+msgstr "Voltar"
+
+#: includes/install/___install.php:355
+msgid "3 Basic Information"
+msgstr "3 Informações básicas"
+
+#: includes/install/___install.php:360
+msgid "Complete all fields and click Next."
+msgstr "Preencha todos os campos e clique em Avançar."
+
+#: includes/install/___install.php:365
+#| msgid "Left Blank to use your default Wordpress email."
+msgid ""
+"Email to send notifications. Or leave blank to use your default WordPress "
+"email."
+msgstr ""
+"E-mail para enviar notificações. Ou deixe em branco para usar seu e-mail "
+"padrão do WordPress."
+
+#: includes/install/___install.php:370 includes/install/__install.php:237
+#: includes/install/_install.php:183
+msgid "Disable XML-RPC"
+msgstr "Desabilitar XML-RPC"
+
+#: includes/install/___install.php:371 includes/install/__install.php:238
+#: includes/install/_install.php:184
+msgid ""
+"Disabling XML-RPC in WordPress boosts security. It primarily stops brute-"
+"force login attacks and prevents DDoS attacks via pingbacks. Since the REST "
+"API is now the standard, XML-RPC is largely outdated. Disable it unless an "
+"old app specifically needs it."
+msgstr ""
+"Desativar o XML-RPC no WordPress aumenta a segurança. Ele impede "
+"principalmente ataques de login por força bruta e previne ataques DDoS via "
+"pingbacks. Como a API REST agora é o padrão, o XML-RPC está bastante "
+"desatualizado. Desative-o, a menos que um aplicativo antigo precise "
+"especificamente dele."
+
+#: includes/install/___install.php:372 includes/install/___install.php:379
+#: includes/install/___install.php:385 includes/install/___install.php:394
+#: includes/install/__install.php:239 includes/install/__install.php:246
+#: includes/install/__install.php:252 includes/install/__install.php:259
+#: includes/install/_install.php:185 includes/install/_install.php:192
+#: includes/install/_install.php:198 includes/install/_install.php:204
+#: settings/options/plugin_options_tabbed.php:67
+#: settings/options/plugin_options_tabbed.php:76
+#: settings/options/plugin_options_tabbed.php:85
+#: settings/options/plugin_options_tabbed.php:94
+#: settings/options/plugin_options_tabbed.php:103
+#: settings/options/plugin_options_tabbed.php:112
+#: settings/options/plugin_options_tabbed.php:121
+#: settings/options/plugin_options_tabbed.php:130
+#: settings/options/plugin_options_tabbed.php:144
+#: settings/options/plugin_options_tabbed.php:156
+#: settings/options/plugin_options_tabbed.php:167
+#: settings/options/plugin_options_tabbed.php:178
+#: settings/options/plugin_options_tabbed.php:189
+#: settings/options/plugin_options_tabbed.php:565
+#: settings/options/plugin_options_tabbed.php:574
+msgid "Yes"
+msgstr "Sim"
+
+#: includes/install/___install.php:373 includes/install/___install.php:380
+#: includes/install/___install.php:386 includes/install/___install.php:395
+#: includes/install/__install.php:240 includes/install/__install.php:247
+#: includes/install/__install.php:253 includes/install/__install.php:260
+#: includes/install/_install.php:186 includes/install/_install.php:193
+#: includes/install/_install.php:199 includes/install/_install.php:205
+#: settings/options/plugin_options_tabbed.php:30
+#: settings/options/plugin_options_tabbed.php:39
+#: settings/options/plugin_options_tabbed.php:68
+#: settings/options/plugin_options_tabbed.php:77
+#: settings/options/plugin_options_tabbed.php:86
+#: settings/options/plugin_options_tabbed.php:95
+#: settings/options/plugin_options_tabbed.php:104
+#: settings/options/plugin_options_tabbed.php:113
+#: settings/options/plugin_options_tabbed.php:122
+#: settings/options/plugin_options_tabbed.php:131
+#: settings/options/plugin_options_tabbed.php:145
+#: settings/options/plugin_options_tabbed.php:157
+#: settings/options/plugin_options_tabbed.php:168
+#: settings/options/plugin_options_tabbed.php:179
+#: settings/options/plugin_options_tabbed.php:190
+#: settings/options/plugin_options_tabbed.php:235
+#: settings/options/plugin_options_tabbed.php:298
+#: settings/options/plugin_options_tabbed.php:308
+#: settings/options/plugin_options_tabbed.php:546
+#: settings/options/plugin_options_tabbed.php:566
+#: settings/options/plugin_options_tabbed.php:575
+msgid "No"
+msgstr "Não"
+
+#: includes/install/___install.php:377 includes/install/__install.php:244
+#: includes/install/_install.php:190
+msgid "Disable JSON WordPress REST API"
+msgstr "Desabilitar JSON WordPress REST API"
+
+#: includes/install/___install.php:378 includes/install/__install.php:245
+#: includes/install/_install.php:191
+msgid ""
+"Disabling the WordPress REST API is a drastic security step, often not "
+"recommended, as it breaks many core functions (like the Gutenberg editor). "
+"Only disable it if you understand the implications and your site doesn't "
+"rely on API-dependent features."
+msgstr ""
+"Desativar a API REST do WordPress é uma medida de segurança drástica, muitas "
+"vezes não recomendada, pois interrompe muitas funções essenciais (como o "
+"editor Gutenberg). Desative-a somente se você entender as implicações e se "
+"seu site não depender de recursos dependentes da API."
+
+#: includes/install/___install.php:384 includes/install/__install.php:251
+#: includes/install/_install.php:197
+#| msgid "Block All Feeds to avoid bots exploit."
+msgid "Block all Feeds to avoid bot exploitation"
+msgstr "Bloqueie todos os feeds para evitar exploração de bots"
+
+#: includes/install/___install.php:393 includes/install/__install.php:258
+#: includes/install/_install.php:203
+#| msgid ""
+#| "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
+msgid "Show AntiHacker Widget on the main Dashboard (Admin users only)"
+msgstr ""
+"Mostrar o widget AntiHacker no painel principal (somente usuários "
+"administradores)"
+
+#: includes/install/___install.php:399
+msgid ""
+"Whitelist: Add IPs that can access the admin area without email "
+"authentication (one per line)."
+msgstr ""
+"Lista de permissões: adicione IPs que podem acessar a área administrativa "
+"sem autenticação de e-mail (um por linha)."
+
+#: includes/install/___install.php:404 includes/install/__install.php:269
+#: includes/install/_install.php:214
+msgid "How long to keep visitor logs?"
+msgstr "Por quanto tempo manter os registros de visitantes?"
+
+#: includes/install/___install.php:405 includes/install/__install.php:270
+#: includes/install/_install.php:215
+#| msgid ""
+#| "How long keep the visitors log file? If you have a very heavy traffic, "
+#| "select 1 day. Your choices can impact the Blocked Visits Log."
+msgid ""
+"If you have heavy traffic, select 1 day. Your choices may affect the blocked "
+"visits log."
+msgstr ""
+"Se o tráfego for intenso, selecione 1 dia. Suas escolhas podem afetar o "
+"registro de visitas bloqueadas."
+
+#: includes/install/___install.php:407 includes/install/__install.php:272
+#: includes/install/_install.php:217
+#: settings/options/plugin_options_tabbed.php:253
+msgid "day"
+msgstr "Dia do"
+
+#: includes/install/___install.php:408 includes/install/___install.php:409
+#: includes/install/___install.php:410 includes/install/___install.php:411
+#: includes/install/___install.php:412 includes/install/___install.php:413
+#: includes/install/___install.php:414 includes/install/___install.php:415
+#: includes/install/__install.php:273 includes/install/__install.php:274
+#: includes/install/__install.php:275 includes/install/__install.php:276
+#: includes/install/__install.php:277 includes/install/__install.php:278
+#: includes/install/__install.php:279 includes/install/__install.php:280
+#: includes/install/_install.php:218 includes/install/_install.php:219
+#: includes/install/_install.php:220 includes/install/_install.php:221
+#: includes/install/_install.php:222 includes/install/_install.php:223
+#: includes/install/_install.php:224 includes/install/_install.php:225
+#: settings/options/plugin_options_tabbed.php:257
+#: settings/options/plugin_options_tabbed.php:261
+#: settings/options/plugin_options_tabbed.php:265
+#: settings/options/plugin_options_tabbed.php:269
+#: settings/options/plugin_options_tabbed.php:273
+#: settings/options/plugin_options_tabbed.php:277
+#: settings/options/plugin_options_tabbed.php:281
+#: settings/options/plugin_options_tabbed.php:285
+msgid "days"
+msgstr "Dias"
+
+#: includes/install/___install.php:420 includes/install/__install.php:285
+#: includes/install/_install.php:230
+#| msgid "Purchase Code:"
+msgid "Purchase Code"
+msgstr "Código de compra"
+
+#: includes/install/___install.php:421
+#| msgid ""
+#| "Paste below the Item Purchase Code received by email from us when you "
+#| "bought the premium version."
+msgid ""
+"Paste the Item Purchase Code received via email when you purchased the "
+"premium version to activate it."
+msgstr ""
+"Cole o código de compra do item recebido por e-mail quando você comprou a "
+"versão premium para ativá-lo."
+
+#: includes/install/___install.php:438
+msgid "4 All Done!"
+msgstr "4 Tudo pronto!"
+
+#: includes/install/___install.php:439 includes/install/__install.php:304
+msgid ""
+"AntiHacker plugin has been successfully configured with our recommended "
+"settings! You're all set. You can visit your dashboard or fine-tune the "
+"options anytime from the plugin's settings menu."
+msgstr ""
+"O plugin AntiHacker foi configurado com sucesso com nossas configurações "
+"recomendadas! Pronto! Você pode acessar seu painel ou ajustar as opções a "
+"qualquer momento no menu de configurações do plugin."
+
+#: includes/install/___install.php:444 includes/install/__install.php:309
+#: includes/install/_install.php:253
+#| msgid "Scan Dashboard"
+msgid "Go to Dashboard"
+msgstr "Ir para o painel"
+
+#: includes/install/___install.php:448
+msgid "4 Ready for Configuration"
+msgstr "4 Pronto para configuração"
+
+#: includes/install/___install.php:449 includes/install/__install.php:316
+#: includes/install/_install.php:260
+msgid ""
+"Great! Your initial information has been saved. You are now ready to "
+"complete the setup. Please visit the settings dashboard to configure all the "
+"available options manually."
+msgstr ""
+"Ótimo! Suas informações iniciais foram salvas. Agora você está pronto para "
+"concluir a configuração. Acesse o painel de configurações para configurar "
+"manualmente todas as opções disponíveis."
+
+#: includes/install/___install.php:454 includes/install/__install.php:321
+#: includes/install/_install.php:265
+msgid "Go to the Settings Dashboard"
+msgstr "Vá para o Painel de Configurações"
+
+#: includes/install/__install.php:173 includes/install/_install.php:134
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: includes/install/__install.php:174 includes/install/_install.php:135
+msgid ""
+"Thank you for choosing AntiHacker plugin, your all-in-one security solution "
+"to harden and protect your WordPress site. It provides multi-layered defense "
+"against a wide range of attacks, featuring a robust firewall, malware "
+"scanner, and advanced login security. We also block common vulnerabilities "
+"by disabling user enumeration, TOR access, XML-RPC, REST API, and much more."
+msgstr ""
+"Obrigado por escolher o plugin AntiHacker, sua solução de segurança completa "
+"para fortalecer e proteger seu site WordPress. Ele oferece defesa em várias "
+"camadas contra uma ampla gama de ataques, com firewall robusto, scanner de "
+"malware e segurança avançada de login. Também bloqueamos vulnerabilidades "
+"comuns desabilitando a enumeração de usuários, acesso TOR, XML-RPC, API REST "
+"e muito mais."
+
+#: includes/install/__install.php:196 includes/install/_install.php:142
+msgid "Your Experience Level"
+msgstr "Seu nível de experiência"
+
+#: includes/install/__install.php:228 includes/install/_install.php:174
+msgid "Basic Information"
+msgstr "Informações básicas"
+
+#: includes/install/__install.php:232 includes/install/_install.php:178
+#| msgid "Left Blank to use your default Wordpress email."
+msgid ""
+"Email to send notifications. Leave blank to use your default WordPress email."
+msgstr ""
+"E-mail para enviar notificações. Deixe em branco para usar seu e-mail padrão "
+"do WordPress."
+
+#: includes/install/__install.php:264 includes/install/_install.php:209
+msgid ""
+"Add IPs that can access the admin area without email authentication (one per "
+"line)."
+msgstr ""
+"Adicione IPs que podem acessar a área de administração sem autenticação de e-"
+"mail (um por linha)."
+
+#: includes/install/__install.php:286 includes/install/_install.php:231
+#| msgid ""
+#| "Paste below the Item Purchase Code received by email from us when you "
+#| "bought the premium version."
+msgid ""
+"Paste the Item Purchase Code received via email when you purchased the "
+"premium version."
+msgstr ""
+"Cole o código de compra do item recebido por e-mail quando você comprou a "
+"versão premium."
+
+#: includes/install/__install.php:303
+msgid "All Done!"
+msgstr "Tudo pronto!"
+
+#: includes/install/__install.php:315 includes/install/_install.php:259
+msgid "Ready for Configuration"
+msgstr "Pronto para configuração"
+
+#: includes/install/install.php:254
+#, php-format
+msgid ""
+"By using our plugins and themes, you agree to the <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">terms of use</a>."
+msgstr ""
+"Ao usar nossos plugins e temas, você concorda com os <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">termos de uso</a> ."
+
+#: includes/install/install.php:331
+msgid "Learn more about disabling XML-RPC"
+msgstr "Saiba mais sobre como desabilitar XML-RPC"
+
+#: includes/install/install.php:332 includes/install/install.php:345
+#: includes/install/install.php:358
+msgid "Information icon"
+msgstr "Ícone de informação"
+
+#: includes/install/install.php:344
+msgid "Learn more about disabling the REST API"
+msgstr "Saiba mais sobre como desabilitar a API REST"
+
+#: includes/install/install.php:357
+msgid "Learn more about blocking feeds"
+msgstr "Saiba mais sobre o bloqueio de feeds"
+
 #: includes/vendor/vendor.php:49
 msgid "Please, wait...  Dismissing..."
 msgstr "Por favor, espere...  Dismissing..."
@@ -1956,30 +2373,6 @@ msgstr "Sim, desabilitar todos"
 msgid "Yes, disable only Ping Back"
 msgstr "Sim, desabilitar somente o Ping Back"
 
-#: settings/options/plugin_options_tabbed.php:30
-#: settings/options/plugin_options_tabbed.php:39
-#: settings/options/plugin_options_tabbed.php:68
-#: settings/options/plugin_options_tabbed.php:77
-#: settings/options/plugin_options_tabbed.php:86
-#: settings/options/plugin_options_tabbed.php:95
-#: settings/options/plugin_options_tabbed.php:104
-#: settings/options/plugin_options_tabbed.php:113
-#: settings/options/plugin_options_tabbed.php:122
-#: settings/options/plugin_options_tabbed.php:131
-#: settings/options/plugin_options_tabbed.php:145
-#: settings/options/plugin_options_tabbed.php:157
-#: settings/options/plugin_options_tabbed.php:168
-#: settings/options/plugin_options_tabbed.php:179
-#: settings/options/plugin_options_tabbed.php:190
-#: settings/options/plugin_options_tabbed.php:235
-#: settings/options/plugin_options_tabbed.php:298
-#: settings/options/plugin_options_tabbed.php:308
-#: settings/options/plugin_options_tabbed.php:546
-#: settings/options/plugin_options_tabbed.php:566
-#: settings/options/plugin_options_tabbed.php:575
-msgid "No"
-msgstr "Não"
-
 #: settings/options/plugin_options_tabbed.php:36
 msgid ""
 "Disable Json WordPress Rest API (also new WordPress 4.7 Rest API). Take a "
@@ -2003,24 +2396,6 @@ msgid ""
 msgstr ""
 "Define o WordPress para substituir a mensagem de erro de login pelo nome de "
 "usuário ou senha incorretos"
-
-#: settings/options/plugin_options_tabbed.php:67
-#: settings/options/plugin_options_tabbed.php:76
-#: settings/options/plugin_options_tabbed.php:85
-#: settings/options/plugin_options_tabbed.php:94
-#: settings/options/plugin_options_tabbed.php:103
-#: settings/options/plugin_options_tabbed.php:112
-#: settings/options/plugin_options_tabbed.php:121
-#: settings/options/plugin_options_tabbed.php:130
-#: settings/options/plugin_options_tabbed.php:144
-#: settings/options/plugin_options_tabbed.php:156
-#: settings/options/plugin_options_tabbed.php:167
-#: settings/options/plugin_options_tabbed.php:178
-#: settings/options/plugin_options_tabbed.php:189
-#: settings/options/plugin_options_tabbed.php:565
-#: settings/options/plugin_options_tabbed.php:574
-msgid "Yes"
-msgstr "Sim"
 
 #: settings/options/plugin_options_tabbed.php:74
 msgid "Disable file editing within the WordPress dashboard"
@@ -2143,22 +2518,6 @@ msgstr ""
 msgid "Select"
 msgstr "Escolhendo"
 
-#: settings/options/plugin_options_tabbed.php:253
-#| msgid "day(s)"
-msgid "day"
-msgstr "Dia do"
-
-#: settings/options/plugin_options_tabbed.php:257
-#: settings/options/plugin_options_tabbed.php:261
-#: settings/options/plugin_options_tabbed.php:265
-#: settings/options/plugin_options_tabbed.php:269
-#: settings/options/plugin_options_tabbed.php:273
-#: settings/options/plugin_options_tabbed.php:277
-#: settings/options/plugin_options_tabbed.php:281
-#: settings/options/plugin_options_tabbed.php:285
-msgid "days"
-msgstr "Dias"
-
 #: settings/options/plugin_options_tabbed.php:305
 msgid ""
 "Allow the administrator to reinstall plugins without modifying the database. "
@@ -2170,7 +2529,6 @@ msgstr ""
 "reinstale apenas se necessário.(Só com prémios)"
 
 #: settings/options/plugin_options_tabbed.php:307
-#| msgid "Yes, disable All"
 msgid "Yes, enable reinstall"
 msgstr "Sim, permite reinstalação"
 
