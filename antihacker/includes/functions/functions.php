@@ -25,6 +25,13 @@ $antihacker_table = $wpdb->prefix . "ah_fingerprint";
 $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
 $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
 
+// Evita o instalador durante atualizações, exceto quando o instalador está ativo
+if (!empty(trim(ANTIHACKERVERSIONANT)) && (!isset($_GET['page']) || $_GET['page'] !== 'antihacker-installer')) {
+    update_option('antihacker_setup_complete', true);
+    delete_transient('antihacker_redirect_to_installer');
+}
+
+
 if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or empty($antihacker_http_tools)) {
 
     $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
