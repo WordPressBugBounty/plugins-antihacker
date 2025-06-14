@@ -4,7 +4,7 @@ Donate link:http://antihackerplugin.com/?p=25
 Tags: Block Tor, Disable, wordpress security tools, malware scanner, antimalware
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.64
+Stable tag: 5.65
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ Firewall, Scanner, block user enumeration & TOR, disable Json API, xmlrpc & Ping
 
 Our free plugin Improve system security, protect login (Login Security), firewall, scan for malware, block user enumeration and TOR, disable Json WordPress Rest API, xmlrpc (xml-rpc) & Pingback and more a lot of security tools. 
 Translation ready. Files included: Dutch, English, French, Italian, Portuguese, Spanish, and German.
-.
+**So easy, even beginners can secure their site in under a minute with our guided setup wizard.**
 >Italian: Migliora la sicurezza del sistema, proteggi l'accesso (sicurezza dell'accesso), firewall, cerca malware, blocca l'enumerazione degli utenti e TOR, disabilita l'API Rest di Json WordPress, xmlrpc (xml-rpc) e Pingback e molti altri strumenti di sicurezza. Multilingua pronto. Inclusi anche file in lingua italiana e portoghese.
 .
 >Português: Melhora a segurança do sistema, proteje o login (Segurança de login), firewall, verifica se há malware, bloqueia a enumeração do usuário e TOR, desativa Json WordPress Rest API, xmlrpc (xml-rpc) e Pingback e mais muitas ferramentas de segurança. Pronto para vários idiomas. Incluídos também arquivos em italiano e português.

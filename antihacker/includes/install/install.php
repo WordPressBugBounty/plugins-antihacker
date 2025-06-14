@@ -23,6 +23,41 @@ if (isset($_GET['debug_reset_installer']) && $_GET['debug_reset_installer'] === 
 // ======================= DEBUGGING CODE - END =========================
 
 
+if (function_exists('ini_set')) {
+    @ini_set('memory_limit', '256M'); // ou '512M', '1G', etc.
+    @ini_set('display_errors', '0');
+    @ini_set('display_startup_errors', '0');
+    @ini_set('max_execution_time', 300); // 300 segundos = 5 minutos
+}
+
+error_reporting(0);
+
+if (defined('WP_DEBUG') && WP_DEBUG) {
+        if (!defined('WP_DEBUG_DISPLAY')) {
+            define('WP_DEBUG_DISPLAY', false);
+        }
+    }
+
+
+// Suprimir todas as mensagens administrativas e notificações
+remove_all_actions('admin_notices');
+remove_all_actions('all_admin_notices');
+remove_all_actions('network_admin_notices');
+add_filter('wp_get_admin_notice_messages', '__return_empty_array', PHP_INT_MAX);
+
+/*
+// Bloquear notificações de atualização do WordPress, plugins e temas
+add_filter('pre_site_transient_update_core', '__return_null', PHP_INT_MAX);
+add_filter('site_transient_update_core', '__return_null', PHP_INT_MAX);
+add_filter('pre_site_transient_update_plugins', '__return_null', PHP_INT_MAX);
+add_filter('site_transient_update_plugins', '__return_null', PHP_INT_MAX);
+add_filter('pre_site_transient_update_themes', '__return_null', PHP_INT_MAX);
+add_filter('site_transient_update_themes', '__return_null', PHP_INT_MAX);
+*/
+
+
+
+
 /**
  * =================================================================
  * INSTALLER ARCHITECTURE (HOOKS & REDIRECTION)
