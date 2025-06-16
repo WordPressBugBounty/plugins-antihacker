@@ -102,47 +102,30 @@ function antihacker_js_redirect_fallback()
     }
 }
 add_action('admin_head', 'antihacker_js_redirect_fallback');
+
+
+
 /**
- * =================================================================
- * FORM PROCESSING FUNCTION (The Correct Approach)
- * This function runs early on 'admin_init' to handle all data saving
- * and redirection logic. This is the ideal place for wp_safe_redirect.
- * =================================================================
+ * Lida com toda a lógica do instalador:
+ * - Processa os envios de formulário (POST) para os passos 1, 2, 3.
+ * - Processa a ação de finalização (GET) do passo 4.
  */
-function antihacker_process_installer_form()
+function antihacker_installer_handler()
 {
-    // Basic checks to ensure we are on the correct page and context.
-    if (!isset($_GET['page']) || $_GET['page'] !== 'antihacker-installer' || $_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['antihacker_inst_nonce'])) {
+    // Só execute esta lógica na página do nosso instalador.
+    if (!isset($_GET['page']) || $_GET['page'] !== 'antihacker-installer') {
         return;
     }
-    if (!current_user_can('manage_options')) {
-        // [MODIFIED] Added translation and sanitization. (Requirements 2 & 3)
-        wp_die(esc_html__('You do not have sufficient permissions to perform this action.', 'antihacker'));
-    }
-    $step = isset($_GET['step']) ? intval($_GET['step']) : 1;
-    if ($step < 1 || $step > 4) $step = 1;
-    // [MODIFIED] Added translation and sanitization. (Requirements 2 & 3)
-    if (!wp_verify_nonce($_POST['antihacker_inst_nonce'], 'antihacker_inst_form_step_' . $step)) {
-        wp_die(esc_html__('Security check failed. Please go back and try again.', 'antihacker'));
-    }
-    // Save data based on the current step.
-    if ($step === 2) {
-        $experience_level = isset($_POST['antihacker_inst_experience_level']) ? sanitize_key($_POST['antihacker_inst_experience_level']) : 'one-click';
-        update_option('antihacker_inst_experience_level', $experience_level);
-    } elseif ($step === 3) {
-        // All options are sanitized upon saving.
-        update_option('antihacker_my_email_to', isset($_POST['antihacker_my_email_to']) ? sanitize_email($_POST['antihacker_my_email_to']) : '');
-        update_option('my_radio_xml_rpc', isset($_POST['my_radio_xml_rpc']) ? sanitize_key($_POST['my_radio_xml_rpc']) : 'yes');
-        update_option('antihacker_rest_api', isset($_POST['antihacker_rest_api']) ? sanitize_key($_POST['antihacker_rest_api']) : 'no');
-        update_option('antihacker_block_all_feeds', isset($_POST['antihacker_block_all_feeds']) ? sanitize_key($_POST['antihacker_block_all_feeds']) : 'no');
-        update_option('antihacker_show_widget', isset($_POST['antihacker_show_widget']) ? sanitize_key($_POST['antihacker_show_widget']) : 'yes');
-        update_option('antihacker_my_whitelist', isset($_POST['antihacker_my_whitelist']) ? sanitize_textarea_field($_POST['antihacker_my_whitelist']) : '');
-        update_option('antihacker_keep_log', isset($_POST['antihacker_keep_log']) ? sanitize_key($_POST['antihacker_keep_log']) : '7');
-        update_option('antihacker_checkversion', isset($_POST['antihacker_checkversion']) ? sanitize_text_field($_POST['antihacker_checkversion']) : '');
-    }
-    // Redirect to the next page or finish.
-    if ($step === 4) {
-        // Set default options on the final step.
+
+    // Ação GET: O usuário clicou no link final do passo 4.
+    if (isset($_GET['antihacker_action']) && $_GET['antihacker_action'] === 'finish_install') {
+
+        // Verificação de segurança (sem nonce, pois é uma ação GET sem dados do usuário).
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have sufficient permissions for this action.');
+        }
+
+        // --- Início da lógica que estava no passo 4 ---
         $default_options = [
             'antihacker_replace_login_error_msg' => 'yes', 'antihacker_disallow_file_edit' => 'yes', 'antihacker_debug_is_true' => 'no',
             'antihacker_firewall' => 'yes', 'antihacker_hide_wp' => 'yes', 'antihacker_block_enumeration' => 'yes', 'antihacker_new_user_subscriber' => 'yes',
@@ -160,27 +143,68 @@ function antihacker_process_installer_form()
         foreach ($default_options as $key => $value) {
             update_option($key, $value);
         }
+
         update_option('antihacker_setup_complete', true);
-        // end of party
         delete_transient('antihacker_redirect_to_installer');
+        delete_transient('antihacker_redirect_fallback');
+        // --- Fim da lógica que estava no passo 4 ---
+
+        // Redireciona para o painel correto.
         $experience_level = get_option('antihacker_inst_experience_level', 'one-click');
         $redirect_url = ($experience_level === 'one-click')
             ? admin_url('admin.php?page=anti_hacker_plugin')
             : admin_url('admin.php?page=anti-hacker');
-        // [MODIFIED] Set transient before redirect. (Requirement 5)
-        set_transient('antihacker_redirect_fallback', $redirect_url, 60);
+
         wp_safe_redirect($redirect_url);
         exit;
-    } else {
+    }
+
+    // Ação POST: O usuário enviou um formulário dos passos 1, 2 ou 3.
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        if (!isset($_POST['antihacker_inst_nonce'])) return;
+
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You do not have sufficient permissions to perform this action.', 'antihacker'));
+        }
+
+        $step = isset($_GET['step']) ? intval($_GET['step']) : 1;
+        if ($step < 1 || $step > 3) { // Agora só processamos até o passo 3
+            return;
+        }
+
+        if (!wp_verify_nonce($_POST['antihacker_inst_nonce'], 'antihacker-installer-wizard')) {
+            wp_die(esc_html__('Security check failed. Please go back and try again.', 'antihacker'));
+        }
+
+        // Lógica de salvar para os passos 2 e 3 (passo 1 não salva nada)
+        if ($step === 2) {
+            $experience_level = isset($_POST['antihacker_inst_experience_level']) ? sanitize_key($_POST['antihacker_inst_experience_level']) : 'one-click';
+            update_option('antihacker_inst_experience_level', $experience_level);
+        } elseif ($step === 3) {
+            update_option('antihacker_my_email_to', isset($_POST['antihacker_my_email_to']) ? sanitize_email($_POST['antihacker_my_email_to']) : '');
+            update_option('my_radio_xml_rpc', isset($_POST['my_radio_xml_rpc']) ? sanitize_key($_POST['my_radio_xml_rpc']) : 'yes');
+            update_option('antihacker_rest_api', isset($_POST['antihacker_rest_api']) ? sanitize_key($_POST['antihacker_rest_api']) : 'no');
+            update_option('antihacker_block_all_feeds', isset($_POST['antihacker_block_all_feeds']) ? sanitize_key($_POST['antihacker_block_all_feeds']) : 'no');
+            update_option('antihacker_show_widget', isset($_POST['antihacker_show_widget']) ? sanitize_key($_POST['antihacker_show_widget']) : 'yes');
+            update_option('antihacker_my_whitelist', isset($_POST['antihacker_my_whitelist']) ? sanitize_textarea_field($_POST['antihacker_my_whitelist']) : '');
+            update_option('antihacker_keep_log', isset($_POST['antihacker_keep_log']) ? sanitize_key($_POST['antihacker_keep_log']) : '7');
+            update_option('antihacker_checkversion', isset($_POST['antihacker_checkversion']) ? sanitize_text_field($_POST['antihacker_checkversion']) : '');
+        }
+
+        // Redireciona para o próximo passo
         $next_step = $step + 1;
         $redirect_url = admin_url('admin.php?page=antihacker-installer&step=' . $next_step);
-        // [MODIFIED] Set transient before redirect. (Requirement 5)
+
         set_transient('antihacker_redirect_fallback', $redirect_url, 60);
         wp_safe_redirect($redirect_url);
         exit;
     }
 }
-add_action('admin_init', 'antihacker_process_installer_form');
+add_action('admin_init', 'antihacker_installer_handler');
+
+
+
 /**
  * =================================================================
  * HTML RENDERING FUNCTION
@@ -220,7 +244,7 @@ function antihacker_inst_render_installer()
                         );
                         ?>
                     </p>
-                    <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_1', 'antihacker_inst_nonce'); ?>
+                    <form method="post" action=""> <?php wp_nonce_field('antihacker-installer-wizard', 'antihacker_inst_nonce'); ?>
                         <div class="antihacker-inst-buttons">
                             <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Next', 'antihacker'); ?></button>
                         </div>
@@ -233,7 +257,7 @@ function antihacker_inst_render_installer()
                     <h1>2.&nbsp;<?php esc_html_e('Your Experience Level', 'antihacker'); ?></h1>
                     <p><?php esc_html_e('What is your level of experience with WordPress? This will help us tailor the setup process for you. You can always change this in the future.', 'antihacker'); ?></p>
                     <form method="post" action="">
-                        <?php wp_nonce_field('antihacker_inst_form_step_2', 'antihacker_inst_nonce'); ?>
+                        <?php wp_nonce_field('antihacker-installer-wizard', 'antihacker_inst_nonce'); ?>
                         <label>
                             <input type="radio" name="antihacker_inst_experience_level" value="one-click" <?php checked($experience_level, 'one-click'); ?> />
                             <?php esc_html_e('One-Click Setup (I\'m a beginner, set it up for me!)', 'antihacker'); ?>
@@ -252,8 +276,9 @@ function antihacker_inst_render_installer()
                 <?php
                     break;
                 case 3:
-                    //global $antihacker_ip;
-                    $antihacker_ip = trim(antihacker_findip());
+
+                    $antihacker_ip = antihacker_get_installer_ip();
+
                     // [MODIFIED] Requirement 1: Add current user's IP to the whitelist if it's not there.
                     // This happens BEFORE we get the value to display in the form.
                     $whitelist_string   = get_option('antihacker_my_whitelist', '');
@@ -275,7 +300,7 @@ function antihacker_inst_render_installer()
                 ?>
                     <h1>3.&nbsp;<?php esc_html_e('Basic Information', 'antihacker'); ?></h1>
                     <p><?php esc_html_e('Please fill in and answer all fields.', 'antihacker'); ?></p>
-                    <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_3', 'antihacker_inst_nonce'); ?>
+                    <form method="post" action=""> <?php wp_nonce_field('antihacker-installer-wizard', 'antihacker_inst_nonce'); ?>
                         <div class="antihacker-inst-field">
                             <label for="antihacker_my_email_to"><?php esc_html_e('Email to send notifications. Leave blank to use your default WordPress email.', 'antihacker'); ?></label>
                             <input type="email" id="antihacker_my_email_to" name="antihacker_my_email_to" value="<?php echo esc_attr($my_email_to); ?>" />
@@ -363,33 +388,55 @@ function antihacker_inst_render_installer()
                     <?php
                     break;
                 case 4:
+
+
+                    // Criação do link final com um parâmetro de ação especial
+                    $finish_url = add_query_arg([
+                        'antihacker_action' => 'finish_install'
+                    ], admin_url('admin.php?page=antihacker-installer'));
+
                     $experience_level = get_option('antihacker_inst_experience_level', 'one-click');
+
                     if ($experience_level === 'one-click') :
                     ?>
                         <h1><?php esc_html_e('4. All Done!', 'antihacker'); ?></h1>
                         <p><?php esc_html_e('AntiHacker plugin has been successfully configured with our recommended settings! You\'re all set. You can visit your dashboard or fine-tune the options anytime from the plugin\'s settings menu.', 'antihacker'); ?></p>
-                        <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
-                            <div class="antihacker-inst-buttons">
-                                <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
-                                <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to Dashboard', 'antihacker'); ?></button>
-                            </div>
-                        </form>
-                    <?php else :
-                    ?>
-                        <h1>4.&nbsp;<?php esc_html_e('Ready for Configuration', 'antihacker'); ?></h1>
+                        <div class="antihacker-inst-buttons">
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
+                            <a href="<?php echo esc_url($finish_url); ?>" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to Dashboard', 'antihacker'); ?></a>
+                        </div>
+                    <?php else : ?>
+                        <h1>4. <?php esc_html_e('Ready for Configuration', 'antihacker'); ?></h1>
                         <p><?php esc_html_e("Great! Your initial information has been saved. The basics are now configured and ready to go. If you'd like to fine-tune settings or explore additional features, please visit the settings dashboard to configure all available options manually.", 'antihacker'); ?></p>
-                        <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
-                            <div class="antihacker-inst-buttons">
-                                <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
-                                <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to the Settings Dashboard', 'antihacker'); ?></button>
-                            </div>
-                        </form>
+                        <div class="antihacker-inst-buttons">
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
+                            <a href="<?php echo esc_url($finish_url); ?>" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to the Settings Dashboard', 'antihacker'); ?></a>
+                        </div>
             <?php
                     endif;
-                    break;
+                    break; // Fim do case 4
             endswitch;
             ?>
         </main>
     </div>
 <?php
+}
+/**
+ * Obtém e sanitiza de forma segura o endereço de IP do usuário atual.
+ *
+ * @return string O endereço de IP sanitizado, ou uma string vazia se inválido.
+ */
+function antihacker_get_installer_ip()
+{
+    $raw_ip = '';
+
+    if (function_exists('antihacker_findip')) {
+        $raw_ip = antihacker_findip();
+    } elseif (isset($_SERVER['REMOTE_ADDR'])) {
+        $raw_ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+    $sanitized_ip = filter_var(trim($raw_ip), FILTER_VALIDATE_IP);
+
+    return ($sanitized_ip) ? $sanitized_ip : '';
 }

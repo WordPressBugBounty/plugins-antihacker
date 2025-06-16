@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.72
+version: 5.73
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -551,12 +551,12 @@ add_action('wp_login_failed', 'antihacker_failed_login');
 
 
 
-/*
-if (isset($_GET['debug_reset_installer']) && $_GET['debug_reset_installer'] === 'true' && current_user_can('manage_options')) {
-  delete_option('antihacker_setup_complete');
-  set_transient('antihacker_redirect_to_installer', true, 5 * 30);
-}
-*/
+
+//if (isset($_GET['debug_reset_installer']) && $_GET['debug_reset_installer'] === 'true' && current_user_can('manage_options')) {
+// delete_option('antihacker_setup_complete');
+//  set_transient('antihacker_redirect_to_installer', true, 5 * 30);
+//}
+
 
 
 
