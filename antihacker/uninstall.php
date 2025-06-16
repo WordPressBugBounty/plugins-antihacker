@@ -58,6 +58,8 @@ $antihacker_option_name[] = 'antihacker_disable_sitemap';
 $antihacker_option_name[] = 'antihacker_disable_reinstall';
 $antihacker_option_name[] = 'antihacker_keep_log';
 $antihacker_option_name[] = 'antihacker_setup_complete';
+$antihacker_option_name[] = 'antihacker_inst_experience_level';
+
 
 
 $wnum = count($antihacker_option_name);

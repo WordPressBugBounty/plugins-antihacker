@@ -189,7 +189,6 @@ add_action('admin_init', 'antihacker_process_installer_form');
  */
 function antihacker_inst_render_installer()
 {
-    global $antihacker_ip;
     if (!current_user_can('manage_options')) {
         wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'antihacker'));
     }
@@ -221,8 +220,7 @@ function antihacker_inst_render_installer()
                         );
                         ?>
                     </p>
-                    <form method="post" action="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=1')); ?>">
-                        <?php wp_nonce_field('antihacker_inst_form_step_1', 'antihacker_inst_nonce'); ?>
+                    <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_1', 'antihacker_inst_nonce'); ?>
                         <div class="antihacker-inst-buttons">
                             <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Next', 'antihacker'); ?></button>
                         </div>
@@ -234,7 +232,7 @@ function antihacker_inst_render_installer()
                 ?>
                     <h1>2.&nbsp;<?php esc_html_e('Your Experience Level', 'antihacker'); ?></h1>
                     <p><?php esc_html_e('What is your level of experience with WordPress? This will help us tailor the setup process for you. You can always change this in the future.', 'antihacker'); ?></p>
-                    <form method="post" action="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=2')); ?>">
+                    <form method="post" action="">
                         <?php wp_nonce_field('antihacker_inst_form_step_2', 'antihacker_inst_nonce'); ?>
                         <label>
                             <input type="radio" name="antihacker_inst_experience_level" value="one-click" <?php checked($experience_level, 'one-click'); ?> />
@@ -254,6 +252,8 @@ function antihacker_inst_render_installer()
                 <?php
                     break;
                 case 3:
+                    //global $antihacker_ip;
+                    $antihacker_ip = trim(antihacker_findip());
                     // [MODIFIED] Requirement 1: Add current user's IP to the whitelist if it's not there.
                     // This happens BEFORE we get the value to display in the form.
                     $whitelist_string   = get_option('antihacker_my_whitelist', '');
@@ -275,8 +275,7 @@ function antihacker_inst_render_installer()
                 ?>
                     <h1>3.&nbsp;<?php esc_html_e('Basic Information', 'antihacker'); ?></h1>
                     <p><?php esc_html_e('Please fill in and answer all fields.', 'antihacker'); ?></p>
-                    <form method="post" action="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>">
-                        <?php wp_nonce_field('antihacker_inst_form_step_3', 'antihacker_inst_nonce'); ?>
+                    <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_3', 'antihacker_inst_nonce'); ?>
                         <div class="antihacker-inst-field">
                             <label for="antihacker_my_email_to"><?php esc_html_e('Email to send notifications. Leave blank to use your default WordPress email.', 'antihacker'); ?></label>
                             <input type="email" id="antihacker_my_email_to" name="antihacker_my_email_to" value="<?php echo esc_attr($my_email_to); ?>" />
@@ -369,8 +368,7 @@ function antihacker_inst_render_installer()
                     ?>
                         <h1><?php esc_html_e('4. All Done!', 'antihacker'); ?></h1>
                         <p><?php esc_html_e('AntiHacker plugin has been successfully configured with our recommended settings! You\'re all set. You can visit your dashboard or fine-tune the options anytime from the plugin\'s settings menu.', 'antihacker'); ?></p>
-                        <form method="post" action="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=4')); ?>">
-                            <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
+                        <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
                             <div class="antihacker-inst-buttons">
                                 <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
                                 <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to Dashboard', 'antihacker'); ?></button>
@@ -380,8 +378,7 @@ function antihacker_inst_render_installer()
                     ?>
                         <h1>4.&nbsp;<?php esc_html_e('Ready for Configuration', 'antihacker'); ?></h1>
                         <p><?php esc_html_e("Great! Your initial information has been saved. The basics are now configured and ready to go. If you'd like to fine-tune settings or explore additional features, please visit the settings dashboard to configure all available options manually.", 'antihacker'); ?></p>
-                        <form method="post" action="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=4')); ?>">
-                            <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
+                        <form method="post" action=""> <?php wp_nonce_field('antihacker_inst_form_step_4', 'antihacker_inst_nonce'); ?>
                             <div class="antihacker-inst-buttons">
                                 <a href="<?php echo esc_url(admin_url('admin.php?page=antihacker-installer&step=3')); ?>" class="antihacker-inst-button antihacker-inst-back"><?php esc_html_e('Back', 'antihacker'); ?></a>
                                 <button type="submit" class="antihacker-inst-button antihacker-inst-next"><?php esc_html_e('Go to the Settings Dashboard', 'antihacker'); ?></button>
