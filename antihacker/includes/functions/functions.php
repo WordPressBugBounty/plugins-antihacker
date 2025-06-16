@@ -5,7 +5,6 @@
  * @copyright 2016
  */
 
-// Function 404 called. Backtrace: Array ( [0] => Array ( [file] => /home/realesta/public_html/wp-content/plugins/antihacker/includes/functions/functions.php [line] => 3708 [function] => is_404 [args] => Array ( ) ) [1] => Array ( [file] => /home/realesta/public_html/wp-content/plugins/antihacker/includes/functions/functions.php [line] => 3671 [function] => antihacker_gravalog [args] => Array ( [0] => Firewall ) ) [2] => Array ( [file] => /home/realesta/public_html/wp-content/plugins/antihacker/antihacker.php [line] => 362 [function] => antihacker_response [args] => Array ( [0] => Firewall ) ) [3] => Array ( [file] => /home/realesta/public_html/wp-settings.php [line] => 453 [args] => Array ( [0] => /home/realesta/public_html/wp-content/plugins/antihacker/antihacker.php ) [function] => include_once ) [4] => Array ( [file] => /home/realesta/public_html/wp-config.php [line] => 79 [args] => Array ( [0] => /home/realesta/public_html/wp-settings.php ) [function] => require_once ) [5] => Array ( [file] => /home/realesta/public_html/wp-load.php [line] => 50 [args] => Array ( [0] => /home/realesta/public_html/wp-config.php ) [function] => require_once ) [6] => Array ( [file] => /home/realesta/public_html/wp-blog-header.php [line] => 13 [args] => Array ( [0] => /home/realesta/public_html/wp-load.php ) [function] => require_once ) [7] => Array ( [file] => /home/realesta/public_html/index.php [line] => 17 [args] => Array ( [0] => /home/realesta/public_html/wp-blog-header.php ) [function] => require ) ) 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 //$antihacker_debug = true;
@@ -13,40 +12,23 @@ $antihacker_debug = false;
 
 global $wpdb;
 global $wp_query;
-// $antihacker_ip = trim(antihacker_findip());
 
-// $antihacker_ip = '41.78.139.17';
-
-
-//debug($antihacker_ip);
-//debug();
 $antihacker_ua = trim(antihacker_get_ua());
 $antihacker_table = $wpdb->prefix . "ah_fingerprint";
 $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
 $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
 
-// Evita o instalador durante atualizações, exceto quando o instalador está ativo
-if (!empty(trim(ANTIHACKERVERSIONANT)) && (!isset($_GET['page']) || $_GET['page'] !== 'antihacker-installer')) {
-    update_option('antihacker_setup_complete', true);
-    delete_transient('antihacker_redirect_to_installer');
-}
-
-
 if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or empty($antihacker_http_tools)) {
-
+    if (empty(trim(ANTIHACKERVERSIONANT))) {
+        // NEW INSTALL
+        set_transient('antihacker_redirect_to_installer', true, 30 * MINUTE_IN_SECONDS);
+    }
     $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
     $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
-
-
     if (empty($antihacker_string_whitelist))
         antihacker_create_whitelist();
-
-
     if (empty($antihacker_http_tools) or $antihacker_update_http_tools == 'yes')
         antihacker_create_httptools();
-
-
-
     antihacker_create_db_stats();
     antihacker_create_db_blocked();
     antihacker_create_db_visitors();
@@ -63,11 +45,11 @@ if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or 
     antihacker_upd_tor_db();
     antihacker_populate_stats();
     antihacker_populate_rules();
-
     if (!add_option('antihacker_version', ANTIHACKERVERSION)) {
         update_option('antihacker_version', ANTIHACKERVERSION);
     }
 }
+
 
 
 $antihacker_table = $wpdb->prefix . "ah_fingerprint";
@@ -78,8 +60,6 @@ WHERE ip = %s
 AND fingerprint != '' limit 1", $antihacker_ip));
 
 $qrow = $wpdb->num_rows;
-
-
 add_action('wp_head', 'antihacker_ajaxurl');
 
 
@@ -110,7 +90,6 @@ for ($i = 0; $i < count($antihacker_mysearch); $i++) {
     }
 }
 
-//debug($qrow);
 
 if ($antihacker_is_human !== 0) {
     ////////-----------------E' bot ou nao----------------------
@@ -130,9 +109,6 @@ if ($antihacker_is_human !== 0) {
             $antihacker_is_human = 1;
     }
 
-    // debug($antihacker_is_human);
-
-    //add_action('template_redirect', 'antihacker_final_step');
 
     add_filter('plugin_row_meta', 'antihacker_custom_plugin_row_meta', 10, 2);
 
@@ -145,9 +121,6 @@ if ($antihacker_is_human !== 0) {
 
     add_action('wp_ajax_antihacker_add_whitelist', 'antihacker_add_whitelist');
     add_action('wp_ajax_nopriv_antihacker_add_whitelist', 'antihacker_add_whitelist');
-
-    // $antihacker_string_whitelist
-
 
 
     add_action('wp_ajax_antihacker_add_string_whitelist', 'antihacker_add_string_whitelist');

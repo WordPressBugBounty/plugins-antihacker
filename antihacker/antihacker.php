@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.66
+version: 5.69
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -548,7 +548,41 @@ if (!antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist)) {
 
 add_action('wp_login', 'antihacker_successful_login');
 add_action('wp_login_failed', 'antihacker_failed_login');
-require_once ANTIHACKERPATH . 'includes/install/install.php';
+
+
+
+/*
+if (isset($_GET['debug_reset_installer']) && $_GET['debug_reset_installer'] === 'true' && current_user_can('manage_options')) {
+  delete_option('antihacker_setup_complete');
+  set_transient('antihacker_redirect_to_installer', true, 5 * 30);
+}
+*/
+
+
+// install
+if (get_transient('antihacker_redirect_to_installer')) {
+  if (get_option('antihacker_setup_complete', false)) {
+    return;
+  }
+  if (!function_exists('antihacker_enforce_installer_redirect')) {
+    function antihacker_enforce_installer_redirect()
+    {
+      if (isset($_GET['page']) && $_GET['page'] === 'antihacker-installer') {
+        return;
+      }
+      if (wp_doing_ajax()) {
+        return;
+      }
+      wp_safe_redirect(admin_url('admin.php?page=antihacker-installer'));
+      exit;
+    }
+  } // end function
+  require_once ANTIHACKERPATH . 'includes/install/install.php';
+  add_action('admin_init', 'antihacker_enforce_installer_redirect');
+}
+
+
+
 register_deactivation_hook(__FILE__, 'antihacker_my_deactivation');
 register_activation_hook(__FILE__, 'antihacker_activated');
 

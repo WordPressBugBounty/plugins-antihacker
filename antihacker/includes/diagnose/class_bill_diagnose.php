@@ -361,8 +361,8 @@ class ErrorChecker
 
         //die();
 
-
-        return $bill_folders;
+        return array_unique($bill_folders);
+        // return $bill_folders;
     }
 
 
