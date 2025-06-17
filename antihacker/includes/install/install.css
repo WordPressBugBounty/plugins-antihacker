@@ -1,8 +1,6 @@
 /*
  * AntiHacker Installation Wizard Styles
- * Versão revisada para funcionar dentro do painel do WordPress.
  */
-
 /* Força a remoção de margens padrão do WordPress que podem empurrar nosso contêiner para baixo. */
 .wrap {
     margin-top: 0;
@@ -102,7 +100,6 @@
     font-weight: normal;
 }
 
-
 .antihacker-inst-field input[type="text"],
 .antihacker-inst-field input[type="email"],
 .antihacker-inst-field textarea,
@@ -185,9 +182,6 @@
     color: #fff;
     border-color: #006ba1;
 }
-
-
-
 
 /* Styling for the "Learn More" links in the installer */
 .antihacker-inst-learn-more {

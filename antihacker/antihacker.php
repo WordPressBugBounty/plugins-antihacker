@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.74
+version: 5.75
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -550,40 +550,96 @@ add_action('wp_login', 'antihacker_successful_login');
 add_action('wp_login_failed', 'antihacker_failed_login');
 
 
+// ---------------------  INSTALLER 
 
 
-//if (isset($_GET['debug_reset_installer']) && $_GET['debug_reset_installer'] === 'true' && current_user_can('manage_options')) {
-// delete_option('antihacker_setup_complete');
-//  set_transient('antihacker_redirect_to_installer', true, 5 * 30);
-//}
+/**
+ * =================================================================
+ * INSTALLER LOGIC
+ * =================================================================
+ * This logic ensures the correct files are loaded and that the user
+ * is forced to the setup wizard if the installation is not complete.
+ */
 
 
-
-
-// install
-/*
-if (get_transient('antihacker_redirect_to_installer')) {
-  //return;
-  if (get_option('antihacker_setup_complete', false)) {
-    return;
-  }
-  if (!function_exists('antihacker_enforce_installer_redirect')) {
-    function antihacker_enforce_installer_redirect()
-    {
-      if (isset($_GET['page']) && $_GET['page'] === 'antihacker-installer') {
+/**
+ * Handles the installer reset for debugging purposes.
+ * Access via >>>>>>>>>>>>>>>>>>>>> ?debug_reset_installer=true <<<<<<<<<<<<<<<
+ *
+ * Runs on 'plugins_loaded' to act before other logic.
+ */
+function antihacker_handle_debug_reset() {
+    // Guard Clause: Exit immediately if conditions are not met.
+    if ( ! isset( $_GET['debug_reset_installer'] ) || ! current_user_can( 'manage_options' ) ) {
         return;
-      }
-      if (wp_doing_ajax()) {
-        return;
-      }
-      wp_safe_redirect(admin_url('admin.php?page=antihacker-installer'));
-      exit;
     }
-  } // end function
-  require_once ANTIHACKERPATH . 'includes/install/install.php';
-  add_action('admin_init', 'antihacker_enforce_installer_redirect');
+
+    // Clear the installer options
+    delete_option( 'antihacker_setup_complete' );
+    delete_option( 'antihacker_inst_experience_level' );
+    delete_transient('antihacker_redirect_to_installer');
+
+
+    // Redirect to a clean installer URL and terminate the script.
+    wp_safe_redirect( admin_url( 'tools.php?page=antihacker-installer' ) );
+    exit;
 }
-*/
+add_action( 'plugins_loaded', 'antihacker_handle_debug_reset' );
+
+
+/**
+ * STEP 1: Conditionally load the necessary plugin files.
+ *
+ * This must run early (on 'plugins_loaded') so that WordPress knows
+ * about the installer admin page before it tries to render it.
+ */
+function antihacker_load_files() {
+
+  global $antihacker_is_admin;
+  
+    // We only care about this logic in the admin area.
+    if ( ! $antihacker_is_admin ) {
+        return;
+    }
+
+    // If setup is not complete, load the installer file.
+    if ( ! get_option( 'antihacker_setup_complete', false ) ) {
+        require_once ANTIHACKERPATH . 'includes/install/install.php';
+    } 
+}
+add_action( 'plugins_loaded', 'antihacker_load_files' );
+
+
+/**
+ * STEP 2: Enforce the redirect to the installer page.
+ *
+ * This runs on 'admin_init', which is the correct hook for redirects.
+ * It assumes the correct files have already been loaded by antihacker_load_files().
+ */
+function antihacker_enforce_installer_redirect() {
+    // Don't do anything if setup is already complete.
+    if ( get_option( 'antihacker_setup_complete', false ) ) {
+        return;
+    }
+    
+    // Don't redirect during AJAX calls to avoid breaking functionality.
+    if ( wp_doing_ajax() ) {
+        return;
+    }
+
+    // Don't redirect if we are already on the installer page, to prevent a loop.
+    if ( isset( $_GET['page'] ) && $_GET['page'] === 'antihacker-installer' ) {
+        return;
+    }
+
+    // If we got here, a redirect is required.
+    wp_safe_redirect( admin_url( 'tools.php?page=antihacker-installer' ) );
+    exit;
+}
+add_action( 'admin_init', 'antihacker_enforce_installer_redirect' );
+// ---------------------  END INSTALLER 
+
+
 
 
 
