@@ -1,4 +1,51 @@
 <?php
+/*
+Tabela Definitiva de Opções (Baseada no antihacker-dashboard.php)
+Nome da Opção (option_name)	Tipo de Campo	Valores Possíveis (Extraídos do value)
+--- General Settings ---		
+my_radio_xml_rpc	radio	Yes, Pingback, No
+antihacker_rest_api	radio	Yes, No
+antihacker_replace_login_error_msg	radio	yes, no
+antihacker_disallow_file_edit	radio	yes, no
+antihacker_debug_is_true	radio	yes, no
+antihacker_firewall	radio	yes, no
+antihacker_hide_wp	radio	yes, no
+antihacker_block_enumeration	radio	yes, no
+antihacker_block_all_feeds	radio	yes, no
+antihacker_block_media_comments	radio	yes, no
+antihacker_new_user_subscriber	radio	yes, no
+antihacker_block_falsegoogle	radio	yes, no
+antihacker_block_search_plugins	radio	yes, no
+antihacker_block_search_themes	radio	yes, no
+antihacker_block_tor	radio	yes, no
+antihacker_blank_ua	radio	yes, no
+antihacker_application_password	radio	yes, no
+antihacker_show_widget	radio	yes, no
+antihacker_disable_sitemap	radio	yes, no
+antihacker_keep_log	select	30, 1, 3, 7, 14, 21, 90, 180, 360
+antihacker_enable_reinstall	radio	yes, no
+--- Limit Visits ---		
+antihacker_radio_limit_visits	radio	yes, no
+antihacker_rate_limiting	select	unlimited, 5, 6, 7, 8, 9, 10, 15, 20, 30, 50
+antihacker_rate_limiting_day	select	unlimited, 1, 2, 3, 4, 5, 6, 7
+antihacker_rate404_limiting	select	unlimited, 5, 10, 15, 20, 50
+--- Block HTTP Tools ---		
+antihacker_block_http_tools	radio	yes, no
+antihacker_update_http_tools	radio	yes, no
+antihacker_http_tools	textarea	(Lista de HTTP tools)
+--- Whitelist ---		
+antihacker_my_whitelist	textarea	(Lista de IPs)
+antihacker_string_whitelist	textarea	(Lista de strings)
+--- Email Settings ---		
+antihacker_my_email_to	text	(Endereço de e-mail)
+--- Notifications Settings ---		
+antihacker_checkbox_all_failed	radio	1, 0
+antihacker_my_radio_report_all_logins	radio	Yes, No
+antihacker_Blocked_Firewall	radio	yes, no
+antihacker_Blocked_Else_email	radio	yes, no
+--- Go Pro ---		
+antihacker_checkversion	text	(Código de compra)
+*/
 
 namespace Antihacker\WP\Settings;
 
@@ -226,6 +273,7 @@ $fields[] = array(
 	)
 );
 
+/*
 $fields[] = array(
 	'type' 	=> 'radio',
 	'name' 	=> 'antihacker_disable_sitemap',
@@ -235,6 +283,7 @@ $fields[] = array(
 		array('value' => 'no', 'label' => esc_attr__('No', "antihacker")),
 	)
 );
+*/
 
 
 $fields[] = array(

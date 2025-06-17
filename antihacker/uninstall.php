@@ -59,6 +59,11 @@ $antihacker_option_name[] = 'antihacker_disable_reinstall';
 $antihacker_option_name[] = 'antihacker_keep_log';
 $antihacker_option_name[] = 'antihacker_setup_complete';
 $antihacker_option_name[] = 'antihacker_inst_experience_level';
+$antihacker_option_name[] = 'antihacker_block_media_comments'; // <-- ADICIONADO
+$antihacker_option_name[] = 'antihacker_string_whitelist'; // <-- ADICIONADO
+$antihacker_option_name[] = 'antihacker_enable_reinstall'; // <-- CORRIGIDO (de 'disable_reinstall')
+$antihacker_option_name[] = 'antihacker_checkbox_all_failed'; // <-- CORRIGIDO (de 'checkbox_all_fail')
+$antihacker_option_name[] = 'antihacker_Blocked_Else_email'; // <-- NOME CORRIGIDO (estava Blocked_else_email)
 
 
 

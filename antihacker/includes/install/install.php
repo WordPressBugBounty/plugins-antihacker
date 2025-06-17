@@ -105,14 +105,93 @@ function antihacker_ajax_installer_handler()
                     update_option('antihacker_inst_experience_level', $experience_level);
                 }
                 if ($step_to_process === 3) {
-                    update_option('antihacker_my_email_to', isset($_POST['antihacker_my_email_to']) ? sanitize_email($_POST['antihacker_my_email_to']) : '');
-                    update_option('my_radio_xml_rpc', isset($_POST['my_radio_xml_rpc']) ? sanitize_key($_POST['my_radio_xml_rpc']) : 'yes');
-                    update_option('antihacker_rest_api', isset($_POST['antihacker_rest_api']) ? sanitize_key($_POST['antihacker_rest_api']) : 'no');
-                    update_option('antihacker_block_all_feeds', isset($_POST['antihacker_block_all_feeds']) ? sanitize_key($_POST['antihacker_block_all_feeds']) : 'no');
-                    update_option('antihacker_show_widget', isset($_POST['antihacker_show_widget']) ? sanitize_key($_POST['antihacker_show_widget']) : 'yes');
-                    update_option('antihacker_my_whitelist', isset($_POST['antihacker_my_whitelist']) ? sanitize_textarea_field($_POST['antihacker_my_whitelist']) : '');
-                    update_option('antihacker_keep_log', isset($_POST['antihacker_keep_log']) ? sanitize_key($_POST['antihacker_keep_log']) : '7');
-                    update_option('antihacker_checkversion', isset($_POST['antihacker_checkversion']) ? sanitize_text_field($_POST['antihacker_checkversion']) : '');
+                    if ($step_to_process === 3) {
+
+                        // ===================================================================
+                        // PARTE 1: Processa os dados do formulário do instalador
+                        // ===================================================================
+
+                        // --- Campo de Email ---
+                        $email = isset($_POST['antihacker_my_email_to']) ? sanitize_email($_POST['antihacker_my_email_to']) : '';
+                        update_option('antihacker_my_email_to', $email);
+
+                        // --- Campo Radio: XML-RPC ---
+                        // Tabela: 'Yes', 'Pingback', 'No' (CORRETO)
+                        $xmlrpc_allowed = ['Yes', 'Pingback', 'No'];
+                        $xmlrpc_default = 'Yes';
+                        $xmlrpc_submitted = isset($_POST['my_radio_xml_rpc']) ? $_POST['my_radio_xml_rpc'] : $xmlrpc_default;
+                        $xmlrpc_safe = in_array($xmlrpc_submitted, $xmlrpc_allowed, true) ? $xmlrpc_submitted : $xmlrpc_default;
+                        update_option('my_radio_xml_rpc', $xmlrpc_safe);
+
+                        // --- Campo: REST API ---
+                        // Tabela: 'Yes', 'No' (CORRETO)
+                        $rest_api_allowed = ['Yes', 'No'];
+                        $rest_api_default = 'No';
+                        $rest_api_submitted = isset($_POST['antihacker_rest_api']) ? $_POST['antihacker_rest_api'] : $rest_api_default;
+                        $rest_api_safe = in_array($rest_api_submitted, $rest_api_allowed, true) ? $rest_api_submitted : $rest_api_default;
+                        update_option('antihacker_rest_api', $rest_api_safe);
+
+                        // --- Campo: Block All Feeds ---
+                        // CORREÇÃO: Tabela mostra 'yes'/'no' em minúsculo para esta opção.
+                        $feeds_allowed = ['yes', 'no'];
+                        $feeds_default = 'no';
+                        $feeds_submitted = isset($_POST['antihacker_block_all_feeds']) ? $_POST['antihacker_block_all_feeds'] : $feeds_default;
+                        $feeds_safe = in_array($feeds_submitted, $feeds_allowed, true) ? $feeds_submitted : $feeds_default;
+                        update_option('antihacker_block_all_feeds', $feeds_safe);
+
+                        // --- Campo: Show Widget ---
+                        // CORREÇÃO: Tabela mostra 'yes'/'no' em minúsculo para esta opção.
+                        $widget_allowed = ['yes', 'no'];
+                        $widget_default = 'yes';
+                        $widget_submitted = isset($_POST['antihacker_show_widget']) ? $_POST['antihacker_show_widget'] : $widget_default;
+                        $widget_safe = in_array($widget_submitted, $widget_allowed, true) ? $widget_submitted : $widget_default;
+                        update_option('antihacker_show_widget', $widget_safe);
+
+                        // --- Campo de Whitelist (Textarea) ---
+                        $whitelist = isset($_POST['antihacker_my_whitelist']) ? sanitize_textarea_field($_POST['antihacker_my_whitelist']) : '';
+                        update_option('antihacker_my_whitelist', $whitelist);
+
+                        // --- Campo: Keep Log ---
+                        $keep_log_allowed = ['30', '1', '3', '7', '14', '21', '90', '180', '360'];
+                        $keep_log_default = '7';
+                        $keep_log_submitted = isset($_POST['antihacker_keep_log']) ? $_POST['antihacker_keep_log'] : $keep_log_default;
+                        $keep_log_safe = in_array($keep_log_submitted, $keep_log_allowed, true) ? $keep_log_submitted : $keep_log_default;
+                        update_option('antihacker_keep_log', $keep_log_safe);
+
+                        // --- Campo: Check Version (Texto) ---
+                        $checkversion = isset($_POST['antihacker_checkversion']) ? sanitize_text_field($_POST['antihacker_checkversion']) : '';
+                        update_option('antihacker_checkversion', $checkversion);
+
+
+                        // ===================================================================
+                        // PARTE 2: Define as configurações padrão (One-Click Setup)
+                        // ===================================================================
+
+                        // CORREÇÃO GERAL: Ajustando todos os valores para corresponderem à tabela ('yes'/'no' minúsculo para a maioria).
+                        update_option('antihacker_replace_login_error_msg', 'yes');
+                        update_option('antihacker_disallow_file_edit', 'yes');
+                        update_option('antihacker_debug_is_true', 'no');
+                        update_option('antihacker_firewall', 'yes');
+                        update_option('antihacker_hide_wp', 'yes');
+                        update_option('antihacker_block_enumeration', 'yes');
+                        update_option('antihacker_new_user_subscriber', 'yes');
+                        update_option('antihacker_block_falsegoogle', 'yes');
+                        update_option('antihacker_block_search_plugins', 'yes');
+                        update_option('antihacker_block_search_themes', 'yes');
+                        update_option('antihacker_block_tor', 'yes');
+                        update_option('antihacker_application_password', 'yes');
+                        update_option('antihacker_disable_sitemap', 'yes');
+                        update_option('antihacker_block_media_comments', 'yes');
+
+                        // Opção com capitalização correta conforme a tabela.
+                        update_option('antihacker_my_radio_report_all_logins', 'No');
+
+                        // CORREÇÃO: Essas opções são RADIO com valores 'yes'/'no', e não checkboxes com '1'/'0'.
+                        update_option('antihacker_checkbox_all_fail', '0'); // Esta é a única que usa '1'/'0'
+                        update_option('antihacker_Blocked_Firewall', 'no'); // Tabela mostra 'yes'/'no'
+                        update_option('antihacker_Blocked_else_email', 'no'); // Tabela mostra 'yes'/'no'
+                        update_option('antihacker_update_http_tools', 'no'); // Tabela mostra 'yes'/'no'
+                    }
                 }
                 break; // Break after processing steps 1-3
             case 4:
@@ -215,9 +294,9 @@ function antihacker_inst_render_step_html($step = 1)
         <?php
             break;
         case 3:
+
             $antihacker_ip = antihacker_get_installer_ip();
-            // [MODIFIED] Requirement 1: Add current user's IP to the whitelist if it's not there.
-            // This happens BEFORE we get the value to display in the form.
+
             $whitelist_string   = get_option('antihacker_my_whitelist', '');
             $whitelist_array    = array_filter(array_map('trim', explode("\n", $whitelist_string)));
             if (!in_array($antihacker_ip, $whitelist_array)) {
@@ -225,23 +304,32 @@ function antihacker_inst_render_step_html($step = 1)
                 $new_whitelist_string = implode("\n", $whitelist_array);
                 update_option('antihacker_my_whitelist', $new_whitelist_string);
             }
-            // Now, get the final, potentially updated, values to display in the form.
-            $my_email_to = get_option('antihacker_my_email_to', get_option('admin_email'));
-            $xml_rpc = get_option('my_radio_xml_rpc', 'yes');
-            $rest_api = get_option('antihacker_rest_api', 'no');
-            $block_all_feeds = get_option('antihacker_block_all_feeds', 'no');
-            $show_widget = get_option('antihacker_show_widget', 'yes');
-            $whitelist_for_display = get_option('antihacker_my_whitelist', ''); // Get the fresh value.
-            $keep_log = get_option('antihacker_keep_log', '7');
-            $checkversion = get_option('antihacker_checkversion', '');
+
+            // ===================================================================
+            // CORREÇÃO: Definindo os padrões de get_option() para corresponderem
+            // exatamente à tabela definitiva (maiúsculas vs. minúsculas).
+            // ===================================================================
+            $my_email_to           = get_option('antihacker_my_email_to', get_option('admin_email'));
+            $xml_rpc               = get_option('my_radio_xml_rpc', 'Yes'); // Tabela: Yes/No
+            $rest_api              = get_option('antihacker_rest_api', 'No'); // Tabela: Yes/No
+            $block_all_feeds       = get_option('antihacker_block_all_feeds', 'no'); // Tabela: yes/no
+            $show_widget           = get_option('antihacker_show_widget', 'yes'); // Tabela: yes/no
+            $whitelist_for_display = get_option('antihacker_my_whitelist', '');
+            $keep_log              = get_option('antihacker_keep_log', '7');
+            $checkversion          = get_option('antihacker_checkversion', '');
         ?>
-            <h1>3.&nbsp;<?php esc_html_e('Basic Information', 'antihacker'); ?></h1>
+            <h1>3. <?php esc_html_e('Basic Information', 'antihacker'); ?></h1>
             <p><?php esc_html_e('Please fill in and answer all fields.', 'antihacker'); ?></p>
             <form id="antihacker-installer-form" data-step="3">
                 <div class="antihacker-inst-field">
                     <label for="antihacker_my_email_to"><?php esc_html_e('Email to send notifications. Leave blank to use your default WordPress email.', 'antihacker'); ?></label>
                     <input type="email" id="antihacker_my_email_to" name="antihacker_my_email_to" value="<?php echo esc_attr($my_email_to); ?>" />
                 </div>
+
+                <!-- =================================================================== -->
+                <!-- CORREÇÃO: Harmonizando o 'value' e o 'checked()' com a tabela. -->
+                <!-- =================================================================== -->
+
                 <div class="antihacker-inst-field">
                     <h3>
                         <?php esc_html_e('Disable XML-RPC', 'antihacker'); ?>
@@ -251,9 +339,11 @@ function antihacker_inst_render_step_html($step = 1)
                         </a>
                     </h3>
                     <p><?php esc_html_e('Disabling XML-RPC in WordPress boosts security. It primarily stops brute-force login attacks and prevents DDoS attacks via pingbacks. Since the REST API is now the standard, XML-RPC is largely outdated. Disable it unless an old app specifically needs it.', 'antihacker'); ?></p>
-                    <label><input type="radio" name="my_radio_xml_rpc" value="yes" <?php checked($xml_rpc, 'yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
-                    <label><input type="radio" name="my_radio_xml_rpc" value="no" <?php checked($xml_rpc, 'no'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
+                    <!-- Tabela: Yes/No (Maiúsculas) -->
+                    <label><input type="radio" name="my_radio_xml_rpc" value="Yes" <?php checked($xml_rpc, 'Yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
+                    <label><input type="radio" name="my_radio_xml_rpc" value="No" <?php checked($xml_rpc, 'No'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
                 </div>
+
                 <div class="antihacker-inst-field">
                     <h3>
                         <?php esc_html_e('Disable JSON WordPress REST API', 'antihacker'); ?>
@@ -263,9 +353,11 @@ function antihacker_inst_render_step_html($step = 1)
                         </a>
                     </h3>
                     <p><?php esc_html_e('Disabling the WordPress REST API is a drastic security step, often not recommended, as it breaks many core functions (like the Gutenberg editor). Only disable it if you understand the implications and your site doesn\'t rely on API-dependent features.', 'antihacker'); ?></p>
-                    <label><input type="radio" name="antihacker_rest_api" value="yes" <?php checked($rest_api, 'yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
-                    <label><input type="radio" name="antihacker_rest_api" value="no" <?php checked($rest_api, 'no'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
+                    <!-- Tabela: Yes/No (Maiúsculas) -->
+                    <label><input type="radio" name="antihacker_rest_api" value="Yes" <?php checked($rest_api, 'Yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
+                    <label><input type="radio" name="antihacker_rest_api" value="No" <?php checked($rest_api, 'No'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
                 </div>
+
                 <div class="antihacker-inst-field">
                     <h3>
                         <?php esc_html_e('Block all Feeds to avoid bot exploitation', 'antihacker'); ?>
@@ -275,20 +367,23 @@ function antihacker_inst_render_step_html($step = 1)
                         </a>
                     </h3>
                     <p><?php esc_html_e('Blocking RSS/Atom feeds can prevent bots from scraping content and discovering usernames, slightly improving security if you don\'t use feeds for syndication.', 'antihacker'); ?></p>
+                    <!-- Tabela: yes/no (Minúsculas) -->
                     <label><input type="radio" name="antihacker_block_all_feeds" value="yes" <?php checked($block_all_feeds, 'yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
                     <label><input type="radio" name="antihacker_block_all_feeds" value="no" <?php checked($block_all_feeds, 'no'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
                 </div>
+
                 <div class="antihacker-inst-field">
                     <h3><?php esc_html_e('Show AntiHacker Widget on the main Dashboard (Admin users only)', 'antihacker'); ?></h3>
+                    <!-- Tabela: yes/no (Minúsculas) -->
                     <label><input type="radio" name="antihacker_show_widget" value="yes" <?php checked($show_widget, 'yes'); ?> /> <?php esc_html_e('Yes', 'antihacker'); ?></label>
                     <label><input type="radio" name="antihacker_show_widget" value="no" <?php checked($show_widget, 'no'); ?> /> <?php esc_html_e('No', 'antihacker'); ?></label>
                 </div>
+
                 <div class="antihacker-inst-field">
                     <label for="antihacker_my_whitelist"><?php esc_html_e('Add IPs that can access the admin area without email authentication (one per line).', 'antihacker'); ?></label>
                     <textarea id="antihacker_my_whitelist" name="antihacker_my_whitelist" rows="5"><?php echo esc_textarea($whitelist_for_display); ?></textarea>
                     <p class="description">
                         <?php
-                        // [MODIFIED] Added an informative and translatable message.
                         printf(
                             /* translators: %s: Current user IP address. */
                             esc_html__('Your current IP address is %s. It has been automatically added to the whitelist for your convenience.', 'antihacker'),
@@ -324,6 +419,7 @@ function antihacker_inst_render_step_html($step = 1)
             </form>
         <?php
             break;
+
         case 4:
             $experience_level = get_option('antihacker_inst_experience_level', 'one-click');
         ?>
