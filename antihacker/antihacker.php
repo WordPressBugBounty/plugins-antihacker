@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.77
+version: 5.78
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -609,6 +609,18 @@ function antihacker_load_files()
   // We only care about this logic in the admin area.
   if (!$antihacker_is_admin) {
     return;
+  }
+
+  // Se o cookie de instalação abortada existir...
+  if (isset($_COOKIE['antihacker_setup_aborted']) && $_COOKIE['antihacker_setup_aborted'] === 'true') {
+        
+      // 1. Atualiza a opção para marcar a instalação como concluída.
+      update_option('antihacker_setup_complete', true);
+
+      // 2. Limpa o cookie para não executar esta lógica novamente.
+      unset($_COOKIE['antihacker_setup_aborted']);
+      setcookie('antihacker_setup_aborted', '', time() - 3600, '/');
+
   }
 
   // If setup is not complete, load the installer file.

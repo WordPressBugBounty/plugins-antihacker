@@ -7,6 +7,7 @@
 jQuery(document).ready(function ($) {
     // console.log('DEBUG: Installer script loaded.');
     // The main container for the installer content
+    let hasFailed = false
     const contentContainer = $('#antihacker-inst-content-container');
     const stepIndicator = $('#antihacker-inst-step-indicator');
     const logoImg = $('#antihacker-inst-logo');
@@ -53,53 +54,70 @@ jQuery(document).ready(function ($) {
      * @param {string} direction 'next' or 'back'.
      */
     function loadStep(step, direction = 'next') {
-        // console.log(`%cDEBUG: loadStep() called. Requested step: ${step}, Direction: ${direction}`, 'color: blue; font-weight: bold;');
-        // --- A CORREÇÃO CRÍTICA ESTÁ AQUI ---
-        // Encontramos o formulário DENTRO do nosso container.
-        // Isso garante que estamos pegando o formulário que foi carregado dinamicamente.
         const form = $('#antihacker-installer-form', contentContainer);
-        // --- E AQUI ---
-        // Usamos a variável 'form' que acabamos de criar.
         const formData = (direction === 'next' && form.length > 0) ? form.serializeArray() : [];
+
         showLoading();
         updateStepIndicator(step);
+
         let ajaxData = {
             action: 'antihacker_installer_step',
             nonce: antihacker_installer_ajax.nonce,
             step_to_load: step,
             direction: direction,
         };
+
         if (formData.length > 0) {
-            // console.log('DEBUG: Serialized form data:', formData);
             $.each(formData, function (i, field) {
                 ajaxData[field.name] = field.value;
             });
         }
-        // console.log('DEBUG: Sending final AJAX data object:', ajaxData);
+
+        // Inicia a chamada AJAX
         $.ajax({
             url: antihacker_installer_ajax.ajax_url,
             type: 'POST',
             data: ajaxData,
-            success: function (response) {
-                // console.log('DEBUG: AJAX success response received:', response);
+            timeout: 20000,
+        })
+            // AGORA, ENCADEAMOS OS MANIPULADORES FORA DO OBJETO
+            .done(function (response) { // .done() substitui 'success'
                 if (response.success) {
-                    // Atualizamos o conteúdo do nosso container.
                     contentContainer.html(response.data.html);
                     contentContainer.removeClass('is-loading');
                 } else {
                     const errorMessage = response.data.message || 'An unknown error occurred. Please try again.';
                     contentContainer.html('<div class="notice notice-error"><p>' + errorMessage + '</p></div>');
                 }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error('DEBUG: AJAX error occurred.', {
-                    status: textStatus,
-                    error: errorThrown,
-                    response: jqXHR.responseText
-                });
-                contentContainer.html('<div class="notice notice-error"><p>A server error occurred. Please check the browser console and refresh the page.</p></div>');
-            }
-        });
+            })
+            .fail(function () { // .fail() substitui 'error'
+                // Uma flag para garantir que esta lógica não rode múltiplas vezes
+                // (Declare 'let hasFailed = false;' no topo do seu script)
+                if (hasFailed) return;
+                hasFailed = true;
+
+
+                // 1. Mostra o alert. O script pausa aqui até o usuário clicar "OK".
+                alert('The installer could not be completed because your site has issues. Please install and run our free site-checkup plugin.');
+                // max-age=3000 -> Define o tempo de vida do cookie para 300 segundos (50 minutos). Isso é uma medida de segurança para que ele expire caso algo dê errado e o PHP não o apague.
+                document.cookie = "antihacker_setup_aborted=true; path=/; max-age=3000";
+                // 2. Após o alert, faz a chamada AJAX para finalizar a instalação.
+                /*
+                $.ajax({
+                    url: antihacker_installer_ajax.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'antihacker_force_complete', // A nova action que você criará no PHP
+                        nonce: antihacker_installer_ajax.nonce
+                    }
+                })
+                    // 3. Este bloco .always() executa DEPOIS que a chamada acima terminar.
+                    .always(function () {
+                        // Redireciona o usuário para o dashboard do WordPress.
+                        window.location.href = antihacker_installer_ajax.dashboard_url;
+                    });
+                    */
+            }); // O ponto e vírgula final fecha toda a instrução $.ajax()...
     }
     /**
      * Handles the final step submission which results in a redirect.

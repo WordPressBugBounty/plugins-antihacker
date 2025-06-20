@@ -75,8 +75,10 @@ function antihacker_inst_enqueue_scripts($hook)
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('antihacker-installer-ajax-nonce'),
             'initial_step' => isset($_GET['step']) ? intval($_GET['step']) : 1,
+            'dashboard_url' => admin_url('index.php'), 
         ]
     );
+
 }
 add_action('admin_enqueue_scripts', 'antihacker_inst_enqueue_scripts');
 /**
@@ -461,3 +463,33 @@ function antihacker_get_installer_ip()
     $sanitized_ip = filter_var(trim($raw_ip), FILTER_VALIDATE_IP);
     return ($sanitized_ip) ? $sanitized_ip : '';
 }
+/**
+ * AJAX endpoint minimalista para forçar a conclusão do instalador.
+ *
+ * Esta função é chamada pelo JavaScript quando a chamada principal do instalador
+ * falha (ex: erro 500). Sua única responsabilidade é marcar a instalação
+ * como concluída para que o usuário não fique preso no wizard.
+ */
+/*
+function antihacker_ajax_force_complete_installer() {
+    // 1. Verificação de Segurança: Garante que a requisição é legítima.
+    //    Usamos o mesmo nonce da ação principal para simplificar.
+    //    O 'false' no final previne que a função morra (die) e permite que nós controlemos a resposta.
+    if (
+        !check_ajax_referer('antihacker-installer-ajax-nonce', 'nonce', false) ||
+        !current_user_can('manage_options')
+    ) {
+        // Se a segurança falhar, enviamos uma resposta de erro.
+        // O JavaScript vai redirecionar de qualquer maneira, mas é uma boa prática.
+        wp_send_json_error(['message' => 'Security check failed.']);
+        return;
+    }
+
+    // 2. Ação Principal: Atualiza a opção no banco de dados.
+    update_option('antihacker_setup_complete', true);
+
+    // 3. Resposta de Sucesso: Informa ao JavaScript que a operação foi bem-sucedida.
+    wp_send_json_success(['message' => 'Installer marked as complete.']);
+}
+add_action('wp_ajax_antihacker_force_complete', 'antihacker_ajax_force_complete_installer');
+*/

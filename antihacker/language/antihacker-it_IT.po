@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AntiHacker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-13 09:02+0100\n"
-"PO-Revision-Date: 2025-06-13 08:09+0000\n"
+"POT-Creation-Date: 2025-06-19 16:31+0100\n"
+"PO-Revision-Date: 2025-06-19 16:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -11,20 +11,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;_nx\n"
 "X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: antihacker.php:98
+#: _antihacker.php:98 antihacker.php:98 dashboard/antihacker.php:98
 msgid ""
 "Anti Hacker Plugin: Could not load the localization file (Language file)"
 msgstr ""
 "Plugin Anti Hacker: Impossibile caricare il file di localizzazione (file di "
 "lingua)"
 
-#: antihacker.php:100
+#: _antihacker.php:100 antihacker.php:100 dashboard/antihacker.php:100
 msgid ""
 "Please, take a look in our site, FAQ page, item => How can i translate this "
 "plugin?"
@@ -32,31 +32,31 @@ msgstr ""
 "Per favore, dai un'occhiata al nostro sito, pagina delle FAQ, voce => Come "
 "posso tradurre questo plugin?"
 
-#: antihacker.php:474
+#: _antihacker.php:474 antihacker.php:481 dashboard/antihacker.php:474
 msgid "Wrong Username, Password or eMail"
 msgstr "Nome utente, password o e-mail sbagliati"
 
-#: antihacker.php:514
+#: _antihacker.php:514 antihacker.php:521 dashboard/antihacker.php:514
 msgid "Empty email"
 msgstr "Email vuota"
 
-#: antihacker.php:545
+#: _antihacker.php:545 antihacker.php:552 dashboard/antihacker.php:545
 msgid "Wrong Username or Password"
 msgstr "Nome Utente o password errate"
 
-#: antihacker.php:1151 includes/functions/functions.php:324
-#: includes/functions/functions.php:432 includes/functions/functions.php:471
-#: includes/functions/functions.php:514 includes/functions/functions.php:551
-#: includes/functions/functions.php:3506
+#: _antihacker.php:1232 antihacker.php:1257 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:303 includes/functions/functions.php:411
+#: includes/functions/functions.php:450 includes/functions/functions.php:493
+#: includes/functions/functions.php:530 includes/functions/functions.php:3496
 msgid "This email was sent from your website"
 msgstr "Questa e-mail è stata inviata dal vostro sito web"
 
-#: antihacker.php:1151 includes/functions/functions.php:325
-#: includes/functions/functions.php:553
+#: _antihacker.php:1232 antihacker.php:1257 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:304 includes/functions/functions.php:532
 msgid "by the AntiHacker plugin."
 msgstr "dal plugin AntiHacker."
 
-#: antihacker.php:1153
+#: _antihacker.php:1234 antihacker.php:1259 dashboard/antihacker.php:1153
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
@@ -68,11 +68,11 @@ msgstr ""
 "anno\n"
 "    sono sospettati di essere abbandonati e suggeriamo di sostituirli."
 
-#: antihacker.php:1154
+#: _antihacker.php:1235 antihacker.php:1260 dashboard/antihacker.php:1154
 msgid "Some plugins on the site require attention."
 msgstr "Alcuni plugin del sito richiedono attenzione."
 
-#: antihacker.php:1156
+#: _antihacker.php:1237 antihacker.php:1262 dashboard/antihacker.php:1156
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
@@ -80,21 +80,21 @@ msgstr ""
 "Visita la dashboard del plug-in Anti Hacker per ulteriori suggerimenti su "
 "come migliorare la sicurezza del sito."
 
-#: antihacker.php:1157
+#: _antihacker.php:1238 antihacker.php:1263 dashboard/antihacker.php:1157
 msgid "You can stop emails at the Notifications Tab."
 msgstr ""
 "Puoi bloccare l’invio di email in cliccando nella scheda “Impostazioni” e "
 "poi “Notifiche”."
 
-#: antihacker.php:1158
+#: _antihacker.php:1239 antihacker.php:1264 dashboard/antihacker.php:1158
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr "Dashboard => Anti Hacker => Impostazioni notifiche."
 
-#: antihacker.php:1294
+#: _antihacker.php:1375 antihacker.php:1400 dashboard/antihacker.php:1294
 msgid "Once Per Week"
 msgstr "Una volta alla settimana"
 
-#: antihacker.php:1926
+#: _antihacker.php:2007 antihacker.php:2032 dashboard/antihacker.php:1926
 #, php-format
 msgid "The plugin %s files have been reinstalled successfully."
 msgstr "I file del plugin %s sono stati reinstallati con successo."
@@ -191,7 +191,7 @@ msgstr "Protezione Premium abilitata"
 #: includes/diagnose/_class_bill_diagnose.php:985
 #: includes/diagnose/class_bill_diagnose.php:999
 #: includes/diagnose/class_bill_diagnose.php:1438
-#: includes/functions/functions.php:3031
+#: includes/functions/functions.php:3021
 #: includes/install-checkup/_class_bill_install.php:315
 #: includes/install-checkup/_class_bill_install.php:384
 #: includes/install-checkup/class_bill_install.php:333
@@ -521,7 +521,7 @@ msgstr ""
 
 #: dashboard/notifications.php:116 dashboard/notifications.php:129
 #: dashboard/notifications.php:139 dashboard/notifications.php:156
-#: dashboard/notifications.php:168 includes/functions/functions.php:3041
+#: dashboard/notifications.php:168 includes/functions/functions.php:3031
 #: includes/vendor/vendor.php:57
 msgid "Dismiss"
 msgstr "Ignora"
@@ -1125,8 +1125,8 @@ msgid ""
 "down and hurting your SEO."
 msgstr ""
 "I bot non sono umani: sono script automatizzati che visitano il tuo sito. "
-"Rubano i tuoi contenuti, rendendoli meno unici. Sovraccaricano il tuo server,"
-" rallentandolo e danneggiando la tua SEO."
+"Rubano i tuoi contenuti, rendendoli meno unici. Sovraccaricano il tuo "
+"server, rallentandolo e danneggiando la tua SEO."
 
 #: includes/diagnose/class_bill_diagnose.php:1357
 msgid ""
@@ -1152,8 +1152,8 @@ msgid ""
 "Our free <a href=\"%1$s\">antihacker</a> and <a href=\"%2$s\">AntiHacker</a> "
 "plugins help safeguard your site."
 msgstr ""
-"I nostri plugin gratuiti <a href=\"%1$s\">anti-hacker</a> e <a href=\"%2$s\">"
-"Anti-Hacker</a> ti aiutano a proteggere il tuo sito."
+"I nostri plugin gratuiti <a href=\"%1$s\">anti-hacker</a> e <a "
+"href=\"%2$s\">Anti-Hacker</a> ti aiutano a proteggere il tuo sito."
 
 #: includes/feedback-last/feedback-last.php:310
 msgid "What can we do to resolve the problem you're facing?"
@@ -1179,37 +1179,37 @@ msgstr "Annulla"
 msgid "Just Deactivate"
 msgstr "Disattiva solo"
 
-#: includes/functions/functions.php:327 includes/functions/functions.php:427
-#: includes/functions/functions.php:467 includes/functions/functions.php:510
-#: includes/functions/functions.php:555 includes/functions/functions.php:672
-#: includes/functions/functions.php:706 includes/functions/functions.php:740
-#: includes/functions/functions.php:775 includes/functions/functions.php:807
-#: includes/functions/functions.php:841 includes/functions/functions.php:876
-#: includes/functions/functions.php:903 includes/functions/functions.php:939
-#: includes/functions/functions.php:976 includes/functions/functions.php:1022
-#: includes/functions/functions.php:1059 includes/functions/functions.php:1095
-#: includes/functions/functions.php:3497
+#: includes/functions/functions.php:306 includes/functions/functions.php:406
+#: includes/functions/functions.php:446 includes/functions/functions.php:489
+#: includes/functions/functions.php:534 includes/functions/functions.php:651
+#: includes/functions/functions.php:685 includes/functions/functions.php:719
+#: includes/functions/functions.php:754 includes/functions/functions.php:786
+#: includes/functions/functions.php:820 includes/functions/functions.php:855
+#: includes/functions/functions.php:882 includes/functions/functions.php:918
+#: includes/functions/functions.php:955 includes/functions/functions.php:1001
+#: includes/functions/functions.php:1038 includes/functions/functions.php:1074
+#: includes/functions/functions.php:3487
 msgid "Date"
 msgstr "Data"
 
-#: includes/functions/functions.php:328 includes/functions/functions.php:428
-#: includes/functions/functions.php:468 includes/functions/functions.php:511
-#: includes/functions/functions.php:557
+#: includes/functions/functions.php:307 includes/functions/functions.php:407
+#: includes/functions/functions.php:447 includes/functions/functions.php:490
+#: includes/functions/functions.php:536
 msgid "Ip"
 msgstr "IP"
 
-#: includes/functions/functions.php:329 includes/functions/functions.php:429
-#: includes/functions/functions.php:469 includes/functions/functions.php:512
-#: includes/functions/functions.php:558 includes/functions/functions.php:3501
+#: includes/functions/functions.php:308 includes/functions/functions.php:408
+#: includes/functions/functions.php:448 includes/functions/functions.php:491
+#: includes/functions/functions.php:537 includes/functions/functions.php:3491
 msgid "Domain"
 msgstr "Dominio"
 
-#: includes/functions/functions.php:330 includes/functions/functions.php:430
-#: includes/functions/functions.php:559
+#: includes/functions/functions.php:309 includes/functions/functions.php:409
+#: includes/functions/functions.php:538
 msgid "User"
 msgstr "Utente"
 
-#: includes/functions/functions.php:332
+#: includes/functions/functions.php:311
 msgid ""
 "Add this IP to your whitelist to stop this email and change your "
 "Notification Settings."
@@ -1217,88 +1217,88 @@ msgstr ""
 "Aggiungi questo IP alla tua whitelist per fermare questa e-mail e cambia le "
 "tue impostazioni di notifica."
 
-#: includes/functions/functions.php:339
+#: includes/functions/functions.php:318
 msgid "Login Successful at"
 msgstr "Accesso riuscito a"
 
-#: includes/functions/functions.php:425
+#: includes/functions/functions.php:404
 msgid "Alert: the Anti Hacker plugin was been deactivated from plugins page."
 msgstr ""
 "Attenzione: il plugin Anti Hacker è stato disattivato dalla pagina dei "
 "plugin."
 
-#: includes/functions/functions.php:433 includes/functions/functions.php:472
-#: includes/functions/functions.php:515 includes/functions/functions.php:3509
+#: includes/functions/functions.php:412 includes/functions/functions.php:451
+#: includes/functions/functions.php:494 includes/functions/functions.php:3499
 msgid "by Anti Hacker plugin."
 msgstr "dal plugin Anti Hacker."
 
-#: includes/functions/functions.php:440
+#: includes/functions/functions.php:419
 msgid "Plugin Deactivated at"
 msgstr "Plugin disattivato a"
 
-#: includes/functions/functions.php:465
+#: includes/functions/functions.php:444
 msgid "Alert: User Enumeration attempt was blocked."
 msgstr "Allarme: il tentativo di enumerazione degli utenti è stato bloccato."
 
-#: includes/functions/functions.php:474 includes/functions/functions.php:517
+#: includes/functions/functions.php:453 includes/functions/functions.php:496
 msgid ""
 "You can disable it in Dashboard => Anti Hacker => Settings => Notifications"
 msgstr ""
 "Puoi disabilitarlo in Dashboard => Anti Hacker => Impostazioni => Notifiche"
 
-#: includes/functions/functions.php:482
+#: includes/functions/functions.php:461
 msgid "User Enumeration attempt was blocked"
 msgstr "Il tentativo di enumerazione degli utenti è stato bloccato"
 
-#: includes/functions/functions.php:507
+#: includes/functions/functions.php:486
 msgid "Alert: Attack was blocked:"
 msgstr "Allarme: l'attacco è stato bloccato:"
 
-#: includes/functions/functions.php:525
+#: includes/functions/functions.php:504
 msgid "Attack was blocked"
 msgstr "L'attacco è stato bloccato"
 
-#: includes/functions/functions.php:532
+#: includes/functions/functions.php:511
 msgid "My Wordpress user email:"
 msgstr "La mia email utente di Wordpress:"
 
-#: includes/functions/functions.php:561
+#: includes/functions/functions.php:540
 msgid "Failed login"
 msgstr "Accesso non riuscito"
 
-#: includes/functions/functions.php:564 includes/functions/functions.php:678
-#: includes/functions/functions.php:712 includes/functions/functions.php:747
-#: includes/functions/functions.php:782 includes/functions/functions.php:814
-#: includes/functions/functions.php:850 includes/functions/functions.php:885
-#: includes/functions/functions.php:912 includes/functions/functions.php:948
-#: includes/functions/functions.php:983 includes/functions/functions.php:1031
-#: includes/functions/functions.php:1068 includes/functions/functions.php:1104
+#: includes/functions/functions.php:543 includes/functions/functions.php:657
+#: includes/functions/functions.php:691 includes/functions/functions.php:726
+#: includes/functions/functions.php:761 includes/functions/functions.php:793
+#: includes/functions/functions.php:829 includes/functions/functions.php:864
+#: includes/functions/functions.php:891 includes/functions/functions.php:927
+#: includes/functions/functions.php:962 includes/functions/functions.php:1010
+#: includes/functions/functions.php:1047 includes/functions/functions.php:1083
 msgid "You can stop emails at the Notifications Settings Tab."
 msgstr ""
 "Puoi bloccare l’invio di email in cliccando nella scheda “Impostazioni” e "
 "poi “Notifiche”."
 
-#: includes/functions/functions.php:566
+#: includes/functions/functions.php:545
 msgid "Dashboard => Anti Hacker => Notifications Settings."
 msgstr "Dashboard => Anti Hacker => Impostazioni notifiche."
 
-#: includes/functions/functions.php:573
+#: includes/functions/functions.php:552
 msgid "Failed Login at:"
 msgstr "Accesso non riuscito a:"
 
-#: includes/functions/functions.php:631
+#: includes/functions/functions.php:610
 msgid "Only authenticated users can access API."
 msgstr "Solo gli utenti autenticati possono accedere all'API."
 
-#: includes/functions/functions.php:645 includes/functions/functions.php:2132
+#: includes/functions/functions.php:624 includes/functions/functions.php:2127
 msgid "Message from Anti Hacker Plugin"
 msgstr "Messaggio dal plugin Anti Hacker"
 
-#: includes/functions/functions.php:647
+#: includes/functions/functions.php:626
 msgid "Looks like Debug mode is enabled. (WP_DEBUG is true)"
 msgstr "Sembra che la modalità Debug sia abilitata. (WP_DEBUG è true)"
 
-#: includes/functions/functions.php:649
+#: includes/functions/functions.php:628
 msgid ""
 "if enabled on a production website, it might cause information disclosure, "
 "allowing malicious users to view errors and additional logging information"
@@ -1307,7 +1307,7 @@ msgstr ""
 "di informazioni, permettendo agli utenti malintenzionati di visualizzare gli "
 "errori e le informazioni di registrazione aggiuntive"
 
-#: includes/functions/functions.php:651
+#: includes/functions/functions.php:630
 msgid ""
 "Please, take a look in our site, FAQ page, item => Wordpress Debug Mode or "
 "disable this message at General Settings Tab. "
@@ -1316,79 +1316,79 @@ msgstr ""
 "Wordpress Debug Mode o disabilita questo messaggio nella scheda delle "
 "impostazioni generali. "
 
-#: includes/functions/functions.php:669 includes/functions/functions.php:703
-#: includes/functions/functions.php:737 includes/functions/functions.php:772
-#: includes/functions/functions.php:804 includes/functions/functions.php:838
-#: includes/functions/functions.php:900 includes/functions/functions.php:936
-#: includes/functions/functions.php:973 includes/functions/functions.php:1056
-#: includes/functions/functions.php:1092
+#: includes/functions/functions.php:648 includes/functions/functions.php:682
+#: includes/functions/functions.php:716 includes/functions/functions.php:751
+#: includes/functions/functions.php:783 includes/functions/functions.php:817
+#: includes/functions/functions.php:879 includes/functions/functions.php:915
+#: includes/functions/functions.php:952 includes/functions/functions.php:1035
+#: includes/functions/functions.php:1071
 msgid "Detected on "
 msgstr "Trovato su "
 
-#: includes/functions/functions.php:670 includes/functions/functions.php:704
+#: includes/functions/functions.php:649 includes/functions/functions.php:683
 msgid "Malicious attack was detected and blocked by firewall."
 msgstr "L'attacco maligno è stato rilevato e bloccato dal firewall."
 
-#: includes/functions/functions.php:673 includes/functions/functions.php:707
-#: includes/functions/functions.php:741 includes/functions/functions.php:776
-#: includes/functions/functions.php:808 includes/functions/functions.php:842
-#: includes/functions/functions.php:904 includes/functions/functions.php:940
-#: includes/functions/functions.php:977 includes/functions/functions.php:1023
-#: includes/functions/functions.php:1060 includes/functions/functions.php:1096
+#: includes/functions/functions.php:652 includes/functions/functions.php:686
+#: includes/functions/functions.php:720 includes/functions/functions.php:755
+#: includes/functions/functions.php:787 includes/functions/functions.php:821
+#: includes/functions/functions.php:883 includes/functions/functions.php:919
+#: includes/functions/functions.php:956 includes/functions/functions.php:1002
+#: includes/functions/functions.php:1039 includes/functions/functions.php:1075
 msgid "Robot IP Address"
 msgstr "Indirizzo IP del robot"
 
-#: includes/functions/functions.php:674
+#: includes/functions/functions.php:653
 msgid "Malicious String Found:"
 msgstr "Trovata una stringa dannosa:"
 
-#: includes/functions/functions.php:676 includes/functions/functions.php:710
-#: includes/functions/functions.php:745 includes/functions/functions.php:780
-#: includes/functions/functions.php:812 includes/functions/functions.php:848
-#: includes/functions/functions.php:883 includes/functions/functions.php:910
-#: includes/functions/functions.php:946 includes/functions/functions.php:981
-#: includes/functions/functions.php:1029 includes/functions/functions.php:1066
-#: includes/functions/functions.php:1102
+#: includes/functions/functions.php:655 includes/functions/functions.php:689
+#: includes/functions/functions.php:724 includes/functions/functions.php:759
+#: includes/functions/functions.php:791 includes/functions/functions.php:827
+#: includes/functions/functions.php:862 includes/functions/functions.php:889
+#: includes/functions/functions.php:925 includes/functions/functions.php:960
+#: includes/functions/functions.php:1008 includes/functions/functions.php:1045
+#: includes/functions/functions.php:1081
 msgid "eMail sent by Anti Hacker Plugin."
 msgstr "eMail inviata da Anti Hacker Plugin."
 
-#: includes/functions/functions.php:681 includes/functions/functions.php:715
-#: includes/functions/functions.php:750 includes/functions/functions.php:785
-#: includes/functions/functions.php:817 includes/functions/functions.php:853
-#: includes/functions/functions.php:888 includes/functions/functions.php:915
-#: includes/functions/functions.php:951 includes/functions/functions.php:986
-#: includes/functions/functions.php:1034 includes/functions/functions.php:1071
-#: includes/functions/functions.php:1107
+#: includes/functions/functions.php:660 includes/functions/functions.php:694
+#: includes/functions/functions.php:729 includes/functions/functions.php:764
+#: includes/functions/functions.php:796 includes/functions/functions.php:832
+#: includes/functions/functions.php:867 includes/functions/functions.php:894
+#: includes/functions/functions.php:930 includes/functions/functions.php:965
+#: includes/functions/functions.php:1013 includes/functions/functions.php:1050
+#: includes/functions/functions.php:1086
 msgid "Dashboard => Anti Hacker => Settings."
 msgstr "Dashboard => Anti Hacker => Impostazioni."
 
-#: includes/functions/functions.php:708
+#: includes/functions/functions.php:687
 msgid "Malicious User Agent Found:"
 msgstr "Trovato un agente utente maligno:"
 
-#: includes/functions/functions.php:738
+#: includes/functions/functions.php:717
 msgid ""
 "Malicious attack was detected and blocked Looking for Plugin Vulnerabilities."
 msgstr ""
 "L'attacco maligno (alla ricerca di vulnerabilità dei plugin) è stato "
 "rilevato e bloccato ."
 
-#: includes/functions/functions.php:743 includes/functions/functions.php:778
-#: includes/functions/functions.php:844 includes/functions/functions.php:879
-#: includes/functions/functions.php:906 includes/functions/functions.php:942
-#: includes/functions/functions.php:979 includes/functions/functions.php:1025
-#: includes/functions/functions.php:1062 includes/functions/functions.php:1098
+#: includes/functions/functions.php:722 includes/functions/functions.php:757
+#: includes/functions/functions.php:823 includes/functions/functions.php:858
+#: includes/functions/functions.php:885 includes/functions/functions.php:921
+#: includes/functions/functions.php:958 includes/functions/functions.php:1004
+#: includes/functions/functions.php:1041 includes/functions/functions.php:1077
 msgid "URL requested:"
 msgstr "URL richiesto:"
 
-#: includes/functions/functions.php:773
+#: includes/functions/functions.php:752
 msgid ""
 "Malicious attack was detected and blocked Looking for Theme Vulnerabilities."
 msgstr ""
 "L'attacco maligno (alla ricerca di vulnerabilità del tema) è stato rilevato "
 "e bloccato."
 
-#: includes/functions/functions.php:805
+#: includes/functions/functions.php:784
 msgid ""
 "Malicious attack was detected and blocked because is false Search Engine "
 "Google/Bing-Microsoft/Slurp."
@@ -1396,14 +1396,14 @@ msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché è da falso motore di "
 "ricerca Google/Bing-Microsoft/Slurp."
 
-#: includes/functions/functions.php:810 includes/functions/functions.php:846
-#: includes/functions/functions.php:881 includes/functions/functions.php:908
-#: includes/functions/functions.php:944 includes/functions/functions.php:1027
-#: includes/functions/functions.php:1064 includes/functions/functions.php:1100
+#: includes/functions/functions.php:789 includes/functions/functions.php:825
+#: includes/functions/functions.php:860 includes/functions/functions.php:887
+#: includes/functions/functions.php:923 includes/functions/functions.php:1006
+#: includes/functions/functions.php:1043 includes/functions/functions.php:1079
 msgid "User Agent:"
 msgstr "User Agent:"
 
-#: includes/functions/functions.php:839
+#: includes/functions/functions.php:818
 msgid ""
 "Malicious attack was detected and blocked because previously it is looking "
 "for vulnerabilities in this site."
@@ -1411,46 +1411,46 @@ msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché in precedenza è alla "
 "ricerca di vulnerabilità in questo sito."
 
-#: includes/functions/functions.php:873
+#: includes/functions/functions.php:852
 msgid "Detected Tor on "
 msgstr "Rilevato Tor su "
 
-#: includes/functions/functions.php:874
+#: includes/functions/functions.php:853
 msgid "Traffic from Tor detected and blocked."
 msgstr "Traffico da Tor rilevato e bloccato."
 
-#: includes/functions/functions.php:877
+#: includes/functions/functions.php:856
 msgid "Tor IP Address"
 msgstr "Indirizzo IP Tor"
 
-#: includes/functions/functions.php:901
+#: includes/functions/functions.php:880
 msgid "Malicious attack was detected and blocked because using HTTP Tools."
 msgstr ""
 "L'attacco dannoso è stato rilevato e bloccato perché usando HTTP Tools."
 
-#: includes/functions/functions.php:937
+#: includes/functions/functions.php:916
 msgid "Malicious attack was detected and blocked because attempt to Login."
 msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché ha provato di fare il "
 "Login."
 
-#: includes/functions/functions.php:974
+#: includes/functions/functions.php:953
 msgid "Malicious attack was detected and blocked because Blank User Agent."
 msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché Bianco User Agent."
 
-#: includes/functions/functions.php:1019
+#: includes/functions/functions.php:998
 msgid "Detected  on "
 msgstr "Trovato su "
 
-#: includes/functions/functions.php:1020
+#: includes/functions/functions.php:999
 msgid ""
 "Malicious attack was detected and blocked because attempt to Login with Bot."
 msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché è un tentativo di login "
 "con Bot."
 
-#: includes/functions/functions.php:1057
+#: includes/functions/functions.php:1036
 msgid ""
 "Malicious attack was detected and blocked because excedeed number page open "
 "limit"
@@ -1458,7 +1458,7 @@ msgstr ""
 "L'attacco maligno è stato rilevato e bloccato perché è stato superato il "
 "limite di pagine aperte"
 
-#: includes/functions/functions.php:1093
+#: includes/functions/functions.php:1072
 msgid ""
 "Attack was detected and blocked because accessing xmlrpc.php file and it was "
 "blocked on settings page."
@@ -1466,15 +1466,15 @@ msgstr ""
 "L'attacco è stato rilevato e bloccato perché l'accesso al file xmlrpc.php è "
 "stato bloccato nella pagina delle impostazioni."
 
-#: includes/functions/functions.php:2134
+#: includes/functions/functions.php:2129
 msgid "Looks like you have this file in your server"
 msgstr "Sembra che tu abbia questo file nel tuo server"
 
-#: includes/functions/functions.php:2136
+#: includes/functions/functions.php:2131
 msgid "We suggest you to remove it ASAP."
 msgstr "Vi suggeriamo di rimuoverlo al più presto."
 
-#: includes/functions/functions.php:2857
+#: includes/functions/functions.php:2847
 msgid ""
 "Hackers can do all sorts of nasty stuff and destroy your site and online "
 "reputation."
@@ -1482,84 +1482,84 @@ msgstr ""
 "Gli hacker possono fare ogni sorta di cose brutte e distruggere il tuo sito "
 "e la tua reputazione online."
 
-#: includes/functions/functions.php:2861
+#: includes/functions/functions.php:2851
 msgid "Hackers don’t play by the rules."
 msgstr "Gli hacker non giocano secondo le regole."
 
-#: includes/functions/functions.php:2865
+#: includes/functions/functions.php:2855
 msgid "Hackers stresses your Web servers."
 msgstr "Gli hacker stressano i vostri server web."
 
-#: includes/functions/functions.php:2869
+#: includes/functions/functions.php:2859
 msgid "Show support with a 5-star rating."
 msgstr "Mostra il tuo sostegno con una valutazione a 5 stelle."
 
-#: includes/functions/functions.php:2873
+#: includes/functions/functions.php:2863
 msgid ""
 "BLACK FRIDAY 30% OFF! Use the coupon code: special-black_2019. Limited time!"
 msgstr ""
 "VENERDÌ NERO 30% DI SCONTO! Usa il codice coupon: special-black_2019. Tempo "
 "limitato!"
 
-#: includes/functions/functions.php:2877
+#: includes/functions/functions.php:2867
 msgid "Become Pro: Increase your protection."
 msgstr "Diventa Pro: Aumenta la tua protezione."
 
-#: includes/functions/functions.php:2879
+#: includes/functions/functions.php:2869
 msgid "Anti Hackers Plugin. Its time to Get Pro Protection!"
 msgstr "Plugin Anti Hackers. È il momento di ottenere una protezione Pro!"
 
-#: includes/functions/functions.php:3024
+#: includes/functions/functions.php:3014
 msgid "Help keep Anti Hacker Plugin going strong!"
 msgstr "Aiuta a mantenere forte Anti Hacker Plugin!"
 
-#: includes/functions/functions.php:3035
+#: includes/functions/functions.php:3025
 msgid "Go to WordPress"
 msgstr "Vai a WordPress"
 
-#: includes/functions/functions.php:3492
+#: includes/functions/functions.php:3482
 msgid "Alert: New Plugin was installed."
 msgstr "Allarme: è stato installato un nuovo plugin."
 
-#: includes/functions/functions.php:3494
+#: includes/functions/functions.php:3484
 msgid "New Plugin Name: "
 msgstr "Nome del nuovo plugin: "
 
-#: includes/functions/functions.php:3517
+#: includes/functions/functions.php:3507
 msgid "Alert: New Plugin was installed at: "
 msgstr "Allarme: un nuovo plugin è stato installato a: "
 
-#: includes/functions/functions.php:3525
+#: includes/functions/functions.php:3515
 msgid ""
 "Improve system security and help prevent unauthorized access to your account."
 msgstr ""
 "Migliora la sicurezza del sistema e aiuta a prevenire l'accesso non "
 "autorizzato al tuo account."
 
-#: includes/functions/functions.php:3527
+#: includes/functions/functions.php:3517
 msgid "Read the StartUp guide at Anti Hacker Settings page."
 msgstr "Leggere la guida all'avvio alla pagina delle impostazioni Anti Hacker."
 
-#: includes/functions/functions.php:3529
+#: includes/functions/functions.php:3519
 msgid "Visit the"
 msgstr "Visita il"
 
-#: includes/functions/functions.php:3531 scan/_functions_scan.php:18
+#: includes/functions/functions.php:3521 scan/_functions_scan.php:18
 #: scan/_functions_scan.php:50 scan/functions_scan.php:19
 #: scan/functions_scan.php:51
 msgid "plugin site"
 msgstr "sito del plugin"
 
-#: includes/functions/functions.php:3533
+#: includes/functions/functions.php:3523
 msgid "for more details."
 msgstr "per maggiori dettagli."
 
-#: includes/functions/functions.php:3562 scan/_functions_scan.php:63
+#: includes/functions/functions.php:3552 scan/_functions_scan.php:63
 #: scan/functions_scan.php:64
 msgid "Overview"
 msgstr "Panoramica"
 
-#: includes/functions/functions.php:3567 table/visitors_render.php:33
+#: includes/functions/functions.php:3557 table/visitors_render.php:33
 msgid "Blocked Visits Log"
 msgstr "Registro delle visite bloccate"
 
@@ -1600,406 +1600,7 @@ msgstr ""
 msgid "WordPress Help Page"
 msgstr "Pagina di aiuto di WordPress"
 
-#: includes/install/___install.php:108 includes/install/___install.php:109
-#: includes/install/__install.php:338 includes/install/__install.php:339
-#: includes/install/_install.php:281 includes/install/_install.php:282
-#: includes/install/install.php:78 includes/install/install.php:79
-#| msgid "Anti Hacker Plugin Activated"
-msgid "AntiHacker Installer"
-msgstr "AntiHacker Installer"
-
-#: includes/install/___install.php:279 includes/install/__install.php:161
-#: includes/install/_install.php:124 includes/install/install.php:238
-#| msgid "by Anti Hacker plugin."
-msgid "AntiHacker Logo"
-msgstr "Logo AntiHacker"
-
-#: includes/install/___install.php:280 includes/install/__install.php:162
-#: includes/install/_install.php:125 includes/install/install.php:239
-msgid "Step Indicator"
-msgstr "Indicatore di passo"
-
-#: includes/install/___install.php:292
-msgid "1 Welcome"
-msgstr "1 Benvenuto"
-
-#: includes/install/___install.php:293
-msgid ""
-"Thank you for choosing AntiHacker plugin, your all-in-one security solution "
-"to harden and protect your WordPress site. It provides multi-layered defense "
-"against a wide range of attacks, featuring a robust firewall, malware "
-"scanner, and advanced login security. We also block common vulnerabilities "
-"by disabling user enumeration, TOR access, XML-RPC, REST API, and much more. "
-"Click Next."
-msgstr ""
-"Grazie per aver scelto il plugin AntiHacker, la tua soluzione di sicurezza "
-"completa per rafforzare e proteggere il tuo sito WordPress. Offre una difesa "
-"multilivello contro un'ampia gamma di attacchi, con un robusto firewall, uno "
-"scanner anti-malware e una sicurezza di accesso avanzata. Blocchiamo anche "
-"le vulnerabilità più comuni disabilitando l'enumerazione degli utenti, "
-"l'accesso TOR, XML-RPC, le API REST e molto altro. Fai clic su Avanti."
-
-#: includes/install/___install.php:298 includes/install/___install.php:336
-#: includes/install/___install.php:427 includes/install/__install.php:183
-#: includes/install/__install.php:212 includes/install/__install.php:293
-#: includes/install/_install.php:158
-msgid "Next"
-msgstr "Prossimo"
-
-#: includes/install/___install.php:307
-msgid "2 Your Experience Level"
-msgstr "2 Il tuo livello di esperienza"
-
-#: includes/install/___install.php:308 includes/install/__install.php:197
-#: includes/install/_install.php:143
-msgid ""
-"What is your level of experience with WordPress? This will help us tailor "
-"the setup process for you."
-msgstr ""
-"Qual è il tuo livello di esperienza con WordPress? Questo ci aiuterà a "
-"personalizzare la procedura di configurazione per te."
-
-#: includes/install/___install.php:320 includes/install/__install.php:202
-#: includes/install/_install.php:148
-msgid "One-Click Setup (I'm a beginner, set it up for me!)"
-msgstr ""
-"Configurazione in un clic (sono un principiante, configuralo tu per me!)"
-
-#: includes/install/___install.php:322 includes/install/__install.php:204
-#: includes/install/_install.php:150
-msgid ""
-"We'll automatically apply the best-practice settings for you. It's the "
-"fastest way to get started."
-msgstr ""
-"Applicheremo automaticamente le impostazioni più adatte alle tue esigenze. È "
-"il modo più rapido per iniziare."
-
-#: includes/install/___install.php:325 includes/install/__install.php:207
-#: includes/install/_install.php:153
-msgid "Manual Setup (I'm an experienced user, I want to configure it myself.)"
-msgstr ""
-"Configurazione manuale (sono un utente esperto e voglio configurarlo da solo)"
-"."
-
-#: includes/install/___install.php:327 includes/install/__install.php:209
-#: includes/install/_install.php:155
-msgid ""
-"You will be able to configure all the basic and advanced settings manually "
-"from the plugin's dashboard."
-msgstr ""
-"Potrai configurare manualmente tutte le impostazioni di base e avanzate "
-"dalla dashboard del plugin."
-
-#: includes/install/___install.php:330
-msgid "Choose an option and click Next."
-msgstr "Scegli un'opzione e fai clic su Avanti."
-
-#: includes/install/___install.php:335 includes/install/___install.php:426
-#: includes/install/___install.php:443 includes/install/___install.php:453
-#: includes/install/__install.php:211 includes/install/__install.php:291
-#: includes/install/__install.php:308 includes/install/__install.php:320
-#: includes/install/_install.php:157 includes/install/_install.php:252
-#: includes/install/_install.php:264
-msgid "Back"
-msgstr "Indietro"
-
-#: includes/install/___install.php:355
-msgid "3 Basic Information"
-msgstr "3 Informazioni di base"
-
-#: includes/install/___install.php:360
-msgid "Complete all fields and click Next."
-msgstr "Compila tutti i campi e fai clic su Avanti."
-
-#: includes/install/___install.php:365
-#| msgid "Left Blank to use your default Wordpress email."
-msgid ""
-"Email to send notifications. Or leave blank to use your default WordPress "
-"email."
-msgstr ""
-"Email per inviare notifiche. Oppure lascia vuoto per usare l'email "
-"predefinita di WordPress."
-
-#: includes/install/___install.php:370 includes/install/__install.php:237
-#: includes/install/_install.php:183
-msgid "Disable XML-RPC"
-msgstr "Disabilita XML-RPC"
-
-#: includes/install/___install.php:371 includes/install/__install.php:238
-#: includes/install/_install.php:184
-msgid ""
-"Disabling XML-RPC in WordPress boosts security. It primarily stops brute-"
-"force login attacks and prevents DDoS attacks via pingbacks. Since the REST "
-"API is now the standard, XML-RPC is largely outdated. Disable it unless an "
-"old app specifically needs it."
-msgstr ""
-"Disabilitare XML-RPC in WordPress aumenta la sicurezza. Blocca "
-"principalmente gli attacchi di accesso brute-force e previene gli attacchi "
-"DDoS tramite pingback. Poiché l'API REST è ormai lo standard, XML-RPC è "
-"ampiamente obsoleto. È consigliabile disabilitarlo, a meno che non sia "
-"specificamente necessario per una vecchia app."
-
-#: includes/install/___install.php:372 includes/install/___install.php:379
-#: includes/install/___install.php:385 includes/install/___install.php:394
-#: includes/install/__install.php:239 includes/install/__install.php:246
-#: includes/install/__install.php:252 includes/install/__install.php:259
-#: includes/install/_install.php:185 includes/install/_install.php:192
-#: includes/install/_install.php:198 includes/install/_install.php:204
-#: settings/options/plugin_options_tabbed.php:67
-#: settings/options/plugin_options_tabbed.php:76
-#: settings/options/plugin_options_tabbed.php:85
-#: settings/options/plugin_options_tabbed.php:94
-#: settings/options/plugin_options_tabbed.php:103
-#: settings/options/plugin_options_tabbed.php:112
-#: settings/options/plugin_options_tabbed.php:121
-#: settings/options/plugin_options_tabbed.php:130
-#: settings/options/plugin_options_tabbed.php:144
-#: settings/options/plugin_options_tabbed.php:156
-#: settings/options/plugin_options_tabbed.php:167
-#: settings/options/plugin_options_tabbed.php:178
-#: settings/options/plugin_options_tabbed.php:189
-#: settings/options/plugin_options_tabbed.php:565
-#: settings/options/plugin_options_tabbed.php:574
-msgid "Yes"
-msgstr "Sì"
-
-#: includes/install/___install.php:373 includes/install/___install.php:380
-#: includes/install/___install.php:386 includes/install/___install.php:395
-#: includes/install/__install.php:240 includes/install/__install.php:247
-#: includes/install/__install.php:253 includes/install/__install.php:260
-#: includes/install/_install.php:186 includes/install/_install.php:193
-#: includes/install/_install.php:199 includes/install/_install.php:205
-#: settings/options/plugin_options_tabbed.php:30
-#: settings/options/plugin_options_tabbed.php:39
-#: settings/options/plugin_options_tabbed.php:68
-#: settings/options/plugin_options_tabbed.php:77
-#: settings/options/plugin_options_tabbed.php:86
-#: settings/options/plugin_options_tabbed.php:95
-#: settings/options/plugin_options_tabbed.php:104
-#: settings/options/plugin_options_tabbed.php:113
-#: settings/options/plugin_options_tabbed.php:122
-#: settings/options/plugin_options_tabbed.php:131
-#: settings/options/plugin_options_tabbed.php:145
-#: settings/options/plugin_options_tabbed.php:157
-#: settings/options/plugin_options_tabbed.php:168
-#: settings/options/plugin_options_tabbed.php:179
-#: settings/options/plugin_options_tabbed.php:190
-#: settings/options/plugin_options_tabbed.php:235
-#: settings/options/plugin_options_tabbed.php:298
-#: settings/options/plugin_options_tabbed.php:308
-#: settings/options/plugin_options_tabbed.php:546
-#: settings/options/plugin_options_tabbed.php:566
-#: settings/options/plugin_options_tabbed.php:575
-msgid "No"
-msgstr "No"
-
-#: includes/install/___install.php:377 includes/install/__install.php:244
-#: includes/install/_install.php:190
-msgid "Disable JSON WordPress REST API"
-msgstr "Disabilitare l'API REST JSON di WordPress"
-
-#: includes/install/___install.php:378 includes/install/__install.php:245
-#: includes/install/_install.php:191
-msgid ""
-"Disabling the WordPress REST API is a drastic security step, often not "
-"recommended, as it breaks many core functions (like the Gutenberg editor). "
-"Only disable it if you understand the implications and your site doesn't "
-"rely on API-dependent features."
-msgstr ""
-"Disabilitare la REST API di WordPress è una misura di sicurezza drastica, "
-"spesso sconsigliata, poiché compromette molte funzioni principali (come "
-"l'editor Gutenberg). Disattivala solo se ne comprendi le implicazioni e se "
-"il tuo sito non si basa su funzionalità dipendenti dall'API."
-
-#: includes/install/___install.php:384 includes/install/__install.php:251
-#: includes/install/_install.php:197
-#| msgid "Block All Feeds to avoid bots exploit."
-msgid "Block all Feeds to avoid bot exploitation"
-msgstr "Blocca tutti i feed per evitare lo sfruttamento dei bot"
-
-#: includes/install/___install.php:393 includes/install/__install.php:258
-#: includes/install/_install.php:203
-#| msgid ""
-#| "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
-msgid "Show AntiHacker Widget on the main Dashboard (Admin users only)"
-msgstr ""
-"Mostra il widget AntiHacker sulla dashboard principale (solo utenti "
-"amministratori)"
-
-#: includes/install/___install.php:399
-msgid ""
-"Whitelist: Add IPs that can access the admin area without email "
-"authentication (one per line)."
-msgstr ""
-"Whitelist: aggiungi gli IP che possono accedere all'area di amministrazione "
-"senza autenticazione tramite e-mail (uno per riga)."
-
-#: includes/install/___install.php:404 includes/install/__install.php:269
-#: includes/install/_install.php:214
-msgid "How long to keep visitor logs?"
-msgstr "Per quanto tempo conservare i registri dei visitatori?"
-
-#: includes/install/___install.php:405 includes/install/__install.php:270
-#: includes/install/_install.php:215
-#| msgid ""
-#| "How long keep the visitors log file? If you have a very heavy traffic, "
-#| "select 1 day. Your choices can impact the Blocked Visits Log."
-msgid ""
-"If you have heavy traffic, select 1 day. Your choices may affect the blocked "
-"visits log."
-msgstr ""
-"In caso di traffico intenso, seleziona 1 giorno. Le tue scelte potrebbero "
-"influire sul registro delle visite bloccate."
-
-#: includes/install/___install.php:407 includes/install/__install.php:272
-#: includes/install/_install.php:217
-#: settings/options/plugin_options_tabbed.php:253
-msgid "day"
-msgstr "giorno"
-
-#: includes/install/___install.php:408 includes/install/___install.php:409
-#: includes/install/___install.php:410 includes/install/___install.php:411
-#: includes/install/___install.php:412 includes/install/___install.php:413
-#: includes/install/___install.php:414 includes/install/___install.php:415
-#: includes/install/__install.php:273 includes/install/__install.php:274
-#: includes/install/__install.php:275 includes/install/__install.php:276
-#: includes/install/__install.php:277 includes/install/__install.php:278
-#: includes/install/__install.php:279 includes/install/__install.php:280
-#: includes/install/_install.php:218 includes/install/_install.php:219
-#: includes/install/_install.php:220 includes/install/_install.php:221
-#: includes/install/_install.php:222 includes/install/_install.php:223
-#: includes/install/_install.php:224 includes/install/_install.php:225
-#: settings/options/plugin_options_tabbed.php:257
-#: settings/options/plugin_options_tabbed.php:261
-#: settings/options/plugin_options_tabbed.php:265
-#: settings/options/plugin_options_tabbed.php:269
-#: settings/options/plugin_options_tabbed.php:273
-#: settings/options/plugin_options_tabbed.php:277
-#: settings/options/plugin_options_tabbed.php:281
-#: settings/options/plugin_options_tabbed.php:285
-msgid "days"
-msgstr "giorni"
-
-#: includes/install/___install.php:420 includes/install/__install.php:285
-#: includes/install/_install.php:230
-#| msgid "Purchase Code:"
-msgid "Purchase Code"
-msgstr "Codice di acquisto"
-
-#: includes/install/___install.php:421
-#| msgid ""
-#| "Paste below the Item Purchase Code received by email from us when you "
-#| "bought the premium version."
-msgid ""
-"Paste the Item Purchase Code received via email when you purchased the "
-"premium version to activate it."
-msgstr ""
-"Incolla il codice di acquisto dell'articolo ricevuto via email quando hai "
-"acquistato la versione premium per attivarlo."
-
-#: includes/install/___install.php:438
-msgid "4 All Done!"
-msgstr "4 Tutto fatto!"
-
-#: includes/install/___install.php:439 includes/install/__install.php:304
-msgid ""
-"AntiHacker plugin has been successfully configured with our recommended "
-"settings! You're all set. You can visit your dashboard or fine-tune the "
-"options anytime from the plugin's settings menu."
-msgstr ""
-"Il plugin AntiHacker è stato configurato correttamente con le impostazioni "
-"consigliate! Fatto! Puoi visitare la dashboard o perfezionare le opzioni in "
-"qualsiasi momento dal menu delle impostazioni del plugin."
-
-#: includes/install/___install.php:444 includes/install/__install.php:309
-#: includes/install/_install.php:253
-#| msgid "Scan Dashboard"
-msgid "Go to Dashboard"
-msgstr "Vai alla Dashboard"
-
-#: includes/install/___install.php:448
-msgid "4 Ready for Configuration"
-msgstr "4 Pronto per la configurazione"
-
-#: includes/install/___install.php:449 includes/install/__install.php:316
-#: includes/install/_install.php:260
-msgid ""
-"Great! Your initial information has been saved. You are now ready to "
-"complete the setup. Please visit the settings dashboard to configure all the "
-"available options manually."
-msgstr ""
-"Ottimo! Le tue informazioni iniziali sono state salvate. Ora sei pronto per "
-"completare la configurazione. Visita la dashboard delle impostazioni per "
-"configurare manualmente tutte le opzioni disponibili."
-
-#: includes/install/___install.php:454 includes/install/__install.php:321
-#: includes/install/_install.php:265
-msgid "Go to the Settings Dashboard"
-msgstr "Vai alla dashboard delle impostazioni"
-
-#: includes/install/__install.php:173 includes/install/_install.php:134
-msgid "Welcome"
-msgstr "Benvenuto"
-
-#: includes/install/__install.php:174 includes/install/_install.php:135
-msgid ""
-"Thank you for choosing AntiHacker plugin, your all-in-one security solution "
-"to harden and protect your WordPress site. It provides multi-layered defense "
-"against a wide range of attacks, featuring a robust firewall, malware "
-"scanner, and advanced login security. We also block common vulnerabilities "
-"by disabling user enumeration, TOR access, XML-RPC, REST API, and much more."
-msgstr ""
-"Grazie per aver scelto il plugin AntiHacker, la tua soluzione di sicurezza "
-"completa per rafforzare e proteggere il tuo sito WordPress. Offre una difesa "
-"multilivello contro un'ampia gamma di attacchi, con un robusto firewall, uno "
-"scanner anti-malware e una sicurezza di accesso avanzata. Blocchiamo anche "
-"le vulnerabilità più comuni disabilitando l'enumerazione degli utenti, "
-"l'accesso TOR, XML-RPC, le API REST e molto altro."
-
-#: includes/install/__install.php:196 includes/install/_install.php:142
-msgid "Your Experience Level"
-msgstr "Il tuo livello di esperienza"
-
-#: includes/install/__install.php:228 includes/install/_install.php:174
-msgid "Basic Information"
-msgstr "Informazioni di base"
-
-#: includes/install/__install.php:232 includes/install/_install.php:178
-#| msgid "Left Blank to use your default Wordpress email."
-msgid ""
-"Email to send notifications. Leave blank to use your default WordPress email."
-msgstr ""
-"Email per inviare notifiche. Lascia vuoto per utilizzare l'email predefinita "
-"di WordPress."
-
-#: includes/install/__install.php:264 includes/install/_install.php:209
-msgid ""
-"Add IPs that can access the admin area without email authentication (one per "
-"line)."
-msgstr ""
-"Aggiungere gli IP che possono accedere all'area di amministrazione senza "
-"autenticazione e-mail (uno per riga)."
-
-#: includes/install/__install.php:286 includes/install/_install.php:231
-#| msgid ""
-#| "Paste below the Item Purchase Code received by email from us when you "
-#| "bought the premium version."
-msgid ""
-"Paste the Item Purchase Code received via email when you purchased the "
-"premium version."
-msgstr ""
-"Incolla il codice di acquisto dell'articolo ricevuto via email quando hai "
-"acquistato la versione premium."
-
-#: includes/install/__install.php:303
-msgid "All Done!"
-msgstr "Tutto fatto!"
-
-#: includes/install/__install.php:315 includes/install/_install.php:259
-msgid "Ready for Configuration"
-msgstr "Pronto per la configurazione"
-
-#: includes/install/install.php:254
+#: includes/install/install.php:260
 #, php-format
 msgid ""
 "By using our plugins and themes, you agree to the <a href=\"%s\" "
@@ -2008,20 +1609,20 @@ msgstr ""
 "Utilizzando i nostri plugin e temi, accetti i <a href=\"%s\" "
 "target=\"_blank\" rel=\"noopener noreferrer\">termini di utilizzo</a> ."
 
-#: includes/install/install.php:331
+#: includes/install/install.php:336
 msgid "Learn more about disabling XML-RPC"
 msgstr "Scopri di più sulla disabilitazione di XML-RPC"
 
-#: includes/install/install.php:332 includes/install/install.php:345
-#: includes/install/install.php:358
+#: includes/install/install.php:337 includes/install/install.php:351
+#: includes/install/install.php:365
 msgid "Information icon"
 msgstr "Icona informativa"
 
-#: includes/install/install.php:344
+#: includes/install/install.php:350
 msgid "Learn more about disabling the REST API"
 msgstr "Scopri di più sulla disabilitazione dell'API REST"
 
-#: includes/install/install.php:357
+#: includes/install/install.php:364
 msgid "Learn more about blocking feeds"
 msgstr "Scopri di più sul blocco dei feed"
 
@@ -2361,36 +1962,59 @@ msgstr ""
 "Esegui la scansione\n"
 "    Ora"
 
-#: settings/options/plugin_options_tabbed.php:14
+#: settings/options/plugin_options_tabbed.php:61
 msgid "Just check yes or not. After that, click SAVE changes. "
 msgstr "Basta marcare sì o no. Dopo di che, clicca su SALVA le modifiche. "
 
-#: settings/options/plugin_options_tabbed.php:16
+#: settings/options/plugin_options_tabbed.php:63
 msgid "We suggest click Yes for all. "
 msgstr "Suggeriamo di cliccare su Sì per tutti. "
 
-#: settings/options/plugin_options_tabbed.php:19
+#: settings/options/plugin_options_tabbed.php:66
 msgid ""
 "Please, visit our Faq page for more details (button at Startup Guide Tab)."
 msgstr ""
 "Per favore, visita la nostra pagina Faq per maggiori dettagli (pulsante "
 "nella scheda Guida all'avvio)."
 
-#: settings/options/plugin_options_tabbed.php:25
+#: settings/options/plugin_options_tabbed.php:72
 msgid "Disable xml-rpc API. Look our FAQ page (at our site) for more details."
 msgstr ""
 "Disattivare xml-rpc API. Guarda la nostra pagina delle FAQ (sul nostro sito) "
 "per maggiori dettagli."
 
-#: settings/options/plugin_options_tabbed.php:27
+#: settings/options/plugin_options_tabbed.php:74
 msgid "Yes, disable All"
 msgstr "Sì, disabilitare Tutti"
 
-#: settings/options/plugin_options_tabbed.php:28
+#: settings/options/plugin_options_tabbed.php:75
 msgid "Yes, disable only Ping Back"
 msgstr "Sì, disabilita solo il Ping Back"
 
-#: settings/options/plugin_options_tabbed.php:36
+#: settings/options/plugin_options_tabbed.php:77
+#: settings/options/plugin_options_tabbed.php:86
+#: settings/options/plugin_options_tabbed.php:115
+#: settings/options/plugin_options_tabbed.php:124
+#: settings/options/plugin_options_tabbed.php:133
+#: settings/options/plugin_options_tabbed.php:142
+#: settings/options/plugin_options_tabbed.php:151
+#: settings/options/plugin_options_tabbed.php:160
+#: settings/options/plugin_options_tabbed.php:169
+#: settings/options/plugin_options_tabbed.php:178
+#: settings/options/plugin_options_tabbed.php:192
+#: settings/options/plugin_options_tabbed.php:204
+#: settings/options/plugin_options_tabbed.php:215
+#: settings/options/plugin_options_tabbed.php:226
+#: settings/options/plugin_options_tabbed.php:237
+#: settings/options/plugin_options_tabbed.php:347
+#: settings/options/plugin_options_tabbed.php:357
+#: settings/options/plugin_options_tabbed.php:595
+#: settings/options/plugin_options_tabbed.php:615
+#: settings/options/plugin_options_tabbed.php:624
+msgid "No"
+msgstr "No"
+
+#: settings/options/plugin_options_tabbed.php:83
 msgid ""
 "Disable Json WordPress Rest API (also new WordPress 4.7 Rest API). Take a "
 "look our faq page (at our site) for details. Don't disable if you want to "
@@ -2400,13 +2024,12 @@ msgstr ""
 "Date un'occhiata alla nostra pagina di faq (sul nostro sito) per i dettagli. "
 "Non disabilitare se vuoi usare Contact 7 Form Plugin."
 
-#: settings/options/plugin_options_tabbed.php:38
-#: settings/options/plugin_options_tabbed.php:234
-#: settings/options/plugin_options_tabbed.php:297
+#: settings/options/plugin_options_tabbed.php:85
+#: settings/options/plugin_options_tabbed.php:346
 msgid "Yes, disable"
 msgstr "Sì, disabilitare"
 
-#: settings/options/plugin_options_tabbed.php:65
+#: settings/options/plugin_options_tabbed.php:112
 msgid ""
 "Sets WordPress to replace the login error message to Wrong Username or "
 "Password"
@@ -2414,16 +2037,34 @@ msgstr ""
 "Imposta WordPress per sostituire il messaggio di errore di login a Nome "
 "utente o password errati"
 
-#: settings/options/plugin_options_tabbed.php:74
+#: settings/options/plugin_options_tabbed.php:114
+#: settings/options/plugin_options_tabbed.php:123
+#: settings/options/plugin_options_tabbed.php:132
+#: settings/options/plugin_options_tabbed.php:141
+#: settings/options/plugin_options_tabbed.php:150
+#: settings/options/plugin_options_tabbed.php:159
+#: settings/options/plugin_options_tabbed.php:168
+#: settings/options/plugin_options_tabbed.php:177
+#: settings/options/plugin_options_tabbed.php:191
+#: settings/options/plugin_options_tabbed.php:203
+#: settings/options/plugin_options_tabbed.php:214
+#: settings/options/plugin_options_tabbed.php:225
+#: settings/options/plugin_options_tabbed.php:236
+#: settings/options/plugin_options_tabbed.php:614
+#: settings/options/plugin_options_tabbed.php:623
+msgid "Yes"
+msgstr "Sì"
+
+#: settings/options/plugin_options_tabbed.php:121
 msgid "Disable file editing within the WordPress dashboard"
 msgstr ""
 "Disattivare la modifica dei file all'interno della dashboard di WordPress"
 
-#: settings/options/plugin_options_tabbed.php:83
+#: settings/options/plugin_options_tabbed.php:130
 msgid "Enable dashboard warning message when Debug is true"
 msgstr "Abilita il messaggio di avvertimento quando Debug è true"
 
-#: settings/options/plugin_options_tabbed.php:92
+#: settings/options/plugin_options_tabbed.php:139
 msgid ""
 "Enable Firewall? (Block Malicious Requests, Queries, User Agents and URLS. "
 "100% Plug-n-play, no configuration required.)"
@@ -2431,23 +2072,23 @@ msgstr ""
 "Abilita il Firewall (blocca le richieste dannose, le query, gli agenti "
 "utente e gli URL. 100% Plug-n-play, nessuna configurazione richiesta)"
 
-#: settings/options/plugin_options_tabbed.php:101
+#: settings/options/plugin_options_tabbed.php:148
 msgid "Hide WordPress Version to improve security?"
 msgstr "Nascondere la versione di WordPress per migliorare la sicurezza?"
 
-#: settings/options/plugin_options_tabbed.php:110
+#: settings/options/plugin_options_tabbed.php:157
 msgid "Block User enumeration to improve security?"
 msgstr "Bloccare l'enumerazione degli utenti per migliorare la sicurezza?"
 
-#: settings/options/plugin_options_tabbed.php:119
+#: settings/options/plugin_options_tabbed.php:166
 msgid "Block All Feeds to avoid bots exploit."
 msgstr "Blocca tutti i feed per evitare lo sfruttamento dei bot."
 
-#: settings/options/plugin_options_tabbed.php:128
+#: settings/options/plugin_options_tabbed.php:175
 msgid "Block Comments in Media Pages."
 msgstr "Bloccare i commenti nelle pagine multimediali."
 
-#: settings/options/plugin_options_tabbed.php:142
+#: settings/options/plugin_options_tabbed.php:189
 msgid ""
 "Create All New Users always as Subscriber. Protect you from flaws in plugins "
 "and themes and don't allow hackers include new Administrator."
@@ -2456,49 +2097,49 @@ msgstr ""
 "plugin e nei temi e non permette agli hacker di includere nuovi "
 "amministratori."
 
-#: settings/options/plugin_options_tabbed.php:154
+#: settings/options/plugin_options_tabbed.php:201
 msgid "Block False Googlebot, Msnbot & Bingbot? (Premium Version Only)"
 msgstr "Bloccare i falsi Googlebot, Msnbot e Bingbot? (Solo versione Premium)"
 
-#: settings/options/plugin_options_tabbed.php:165
+#: settings/options/plugin_options_tabbed.php:212
 msgid "Block Search For Plugin Vulnerabilities? (Premium Version Only)"
 msgstr ""
 "Bloccare la ricerca delle vulnerabilità dei plugin? (Solo versione Premium)"
 
-#: settings/options/plugin_options_tabbed.php:176
+#: settings/options/plugin_options_tabbed.php:223
 msgid "Block Search For Theme Vulnerabilities? (Premium Version Only)"
 msgstr "Bloccare la ricerca di vulnerabilità del tema? (Solo versione Premium)"
 
-#: settings/options/plugin_options_tabbed.php:187
+#: settings/options/plugin_options_tabbed.php:234
 msgid ""
 "Block all traffic from Tor? - The Onion Router -  (Premium Version Only)"
 msgstr ""
 "Bloccare tutto il traffico da Tor? - The Onion Router - (solo versione "
 "Premium)"
 
-#: settings/options/plugin_options_tabbed.php:198
+#: settings/options/plugin_options_tabbed.php:245
 msgid "Block all with Blank User Agent? -  (Premium Version Only)"
 msgstr "Bloccare tutti con l'agente utente vuoto? -  (Solo versione Premium)"
 
-#: settings/options/plugin_options_tabbed.php:200
-#: settings/options/plugin_options_tabbed.php:214
-#: settings/options/plugin_options_tabbed.php:224
-#: settings/options/plugin_options_tabbed.php:342
-#: settings/options/plugin_options_tabbed.php:453
-#: settings/options/plugin_options_tabbed.php:463
+#: settings/options/plugin_options_tabbed.php:247
+#: settings/options/plugin_options_tabbed.php:261
+#: settings/options/plugin_options_tabbed.php:271
+#: settings/options/plugin_options_tabbed.php:391
+#: settings/options/plugin_options_tabbed.php:502
+#: settings/options/plugin_options_tabbed.php:512
 msgid "yes"
 msgstr "sì"
 
-#: settings/options/plugin_options_tabbed.php:201
-#: settings/options/plugin_options_tabbed.php:215
-#: settings/options/plugin_options_tabbed.php:225
-#: settings/options/plugin_options_tabbed.php:343
-#: settings/options/plugin_options_tabbed.php:454
-#: settings/options/plugin_options_tabbed.php:464
+#: settings/options/plugin_options_tabbed.php:248
+#: settings/options/plugin_options_tabbed.php:262
+#: settings/options/plugin_options_tabbed.php:272
+#: settings/options/plugin_options_tabbed.php:392
+#: settings/options/plugin_options_tabbed.php:503
+#: settings/options/plugin_options_tabbed.php:513
 msgid "no"
 msgstr "no"
 
-#: settings/options/plugin_options_tabbed.php:212
+#: settings/options/plugin_options_tabbed.php:259
 msgid ""
 "Disable Application Passwords (WordPress version 5.6 allows external "
 "applications to request permission to connect to a site and generate a "
@@ -2508,22 +2149,13 @@ msgstr ""
 "permette alle applicazioni esterne di richiedere il permesso di connettersi "
 "a un sito e generare una password)"
 
-#: settings/options/plugin_options_tabbed.php:222
+#: settings/options/plugin_options_tabbed.php:269
 msgid "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
 msgstr ""
 "Mostra il Widget Anti Hacker nella pagina principale del Dashboard (solo per "
 "gli utenti Admin)."
 
-#: settings/options/plugin_options_tabbed.php:232
-#: settings/options/plugin_options_tabbed.php:295
-msgid ""
-"Disable WordPress Native XML Sitemap for USER Listings.(This is not about "
-"the site's main XML sitemap)"
-msgstr ""
-"Disabilita il Sitemap XML nativo di WordPress per gli elenchi degli utenti. "
-"(Questo non riguarda il sitemap XML principale del sito)"
-
-#: settings/options/plugin_options_tabbed.php:243
+#: settings/options/plugin_options_tabbed.php:292
 msgid ""
 "How long keep the visitors log file? If you have a very heavy traffic, "
 "select 1 day. Your choices can impact the Blocked Visits Log."
@@ -2532,11 +2164,34 @@ msgstr ""
 "traffico molto pesante, seleziona 1 giorno. Le tue scelte possono "
 "influenzare il Registro dei visiti bloccati."
 
-#: settings/options/plugin_options_tabbed.php:249
+#: settings/options/plugin_options_tabbed.php:298
 msgid "Select"
 msgstr "Seleziona"
 
-#: settings/options/plugin_options_tabbed.php:305
+#: settings/options/plugin_options_tabbed.php:302
+msgid "day"
+msgstr "giorno"
+
+#: settings/options/plugin_options_tabbed.php:306
+#: settings/options/plugin_options_tabbed.php:310
+#: settings/options/plugin_options_tabbed.php:314
+#: settings/options/plugin_options_tabbed.php:318
+#: settings/options/plugin_options_tabbed.php:322
+#: settings/options/plugin_options_tabbed.php:326
+#: settings/options/plugin_options_tabbed.php:330
+#: settings/options/plugin_options_tabbed.php:334
+msgid "days"
+msgstr "giorni"
+
+#: settings/options/plugin_options_tabbed.php:344
+msgid ""
+"Disable WordPress Native XML Sitemap for USER Listings.(This is not about "
+"the site's main XML sitemap)"
+msgstr ""
+"Disabilita il Sitemap XML nativo di WordPress per gli elenchi degli utenti. "
+"(Questo non riguarda il sitemap XML principale del sito)"
+
+#: settings/options/plugin_options_tabbed.php:354
 msgid ""
 "Allow the administrator to reinstall plugins without modifying the database. "
 "Check AntiHacker > Dashboard > Plugin Integrity Checker first and reinstall "
@@ -2546,184 +2201,184 @@ msgstr ""
 "database. Controlla AntiHacker > Dashboard > Plugin Integrity Checker prima "
 "e reinstalla solo se necessario.(Solo Premium)"
 
-#: settings/options/plugin_options_tabbed.php:307
+#: settings/options/plugin_options_tabbed.php:356
 msgid "Yes, enable reinstall"
 msgstr "Sì, abilita la reinstallazione"
 
-#: settings/options/plugin_options_tabbed.php:318
-#: settings/options/plugin_options_tabbed.php:432
+#: settings/options/plugin_options_tabbed.php:367
+#: settings/options/plugin_options_tabbed.php:481
 msgid "This page works only in Premium Version."
 msgstr "Questa pagina funziona solo nella versione Premium."
 
-#: settings/options/plugin_options_tabbed.php:320
+#: settings/options/plugin_options_tabbed.php:369
 msgid "Bots and Hackers can make a lot of visits in a short time period."
 msgstr ""
 "I bot e gli hacker possono fare molte visite in un breve periodo di tempo."
 
-#: settings/options/plugin_options_tabbed.php:323
+#: settings/options/plugin_options_tabbed.php:372
 msgid "We can limit a number of visits, just choose the options below."
 msgstr ""
 "Possiamo limitare un numero di visite, basta scegliere le opzioni qui sotto."
 
-#: settings/options/plugin_options_tabbed.php:325
+#: settings/options/plugin_options_tabbed.php:374
 msgid "You can also whitelist Ips, look the Whitelist tab."
 msgstr "Puoi anche mettere in whitelist gli Ips, guarda la scheda Whitelist."
 
-#: settings/options/plugin_options_tabbed.php:327
+#: settings/options/plugin_options_tabbed.php:376
 msgid "Search engine crawlers has unlimited access."
 msgstr "I crawler dei motori di ricerca hanno un accesso illimitato."
 
-#: settings/options/plugin_options_tabbed.php:329
+#: settings/options/plugin_options_tabbed.php:378
 msgid "IP will be blocked by one hour."
 msgstr "L'IP sarà bloccato per un'ora."
 
-#: settings/options/plugin_options_tabbed.php:332
+#: settings/options/plugin_options_tabbed.php:381
 msgid "Instructions"
 msgstr "Istruzioni"
 
-#: settings/options/plugin_options_tabbed.php:340
+#: settings/options/plugin_options_tabbed.php:389
 msgid "Enable the Rate Limiting?"
 msgstr "Abilitare il Rate Limiting?"
 
-#: settings/options/plugin_options_tabbed.php:353
+#: settings/options/plugin_options_tabbed.php:402
 msgid "If requests exceed"
 msgstr "Se le richieste superano"
 
-#: settings/options/plugin_options_tabbed.php:357
-#: settings/options/plugin_options_tabbed.php:378
-#: settings/options/plugin_options_tabbed.php:417
+#: settings/options/plugin_options_tabbed.php:406
+#: settings/options/plugin_options_tabbed.php:427
+#: settings/options/plugin_options_tabbed.php:466
 msgid "Unlimited"
 msgstr "Illimitato"
 
-#: settings/options/plugin_options_tabbed.php:358
+#: settings/options/plugin_options_tabbed.php:407
 msgid "5 per minute"
 msgstr "5 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:359
+#: settings/options/plugin_options_tabbed.php:408
 msgid "6 per minute"
 msgstr "6 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:360
+#: settings/options/plugin_options_tabbed.php:409
 msgid "7 per minute"
 msgstr "7 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:361
+#: settings/options/plugin_options_tabbed.php:410
 msgid "8 per minute"
 msgstr "8 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:362
+#: settings/options/plugin_options_tabbed.php:411
 msgid "9 per minute"
 msgstr "9 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:363
+#: settings/options/plugin_options_tabbed.php:412
 msgid "10 per minute"
 msgstr "10 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:364
+#: settings/options/plugin_options_tabbed.php:413
 msgid "15 per minute"
 msgstr "15 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:365
+#: settings/options/plugin_options_tabbed.php:414
 msgid "30 per minute"
 msgstr "30 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:366
+#: settings/options/plugin_options_tabbed.php:415
 msgid "40 per minute"
 msgstr "40 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:367
+#: settings/options/plugin_options_tabbed.php:416
 msgid "50 per minute"
 msgstr "50 al minuto"
 
-#: settings/options/plugin_options_tabbed.php:374
+#: settings/options/plugin_options_tabbed.php:423
 msgid "if requests exceed"
 msgstr "Se le richieste superano"
 
-#: settings/options/plugin_options_tabbed.php:379
+#: settings/options/plugin_options_tabbed.php:428
 msgid "5 per hour"
 msgstr "5 per ora"
 
-#: settings/options/plugin_options_tabbed.php:380
+#: settings/options/plugin_options_tabbed.php:429
 msgid "10 per hour"
 msgstr "10 per ora"
 
-#: settings/options/plugin_options_tabbed.php:381
+#: settings/options/plugin_options_tabbed.php:430
 msgid "20 per hour"
 msgstr "20 all'ora"
 
-#: settings/options/plugin_options_tabbed.php:382
+#: settings/options/plugin_options_tabbed.php:431
 msgid "50 per hour"
 msgstr "50 all'ora"
 
-#: settings/options/plugin_options_tabbed.php:383
+#: settings/options/plugin_options_tabbed.php:432
 msgid "100 per hour"
 msgstr "100 per ora"
 
-#: settings/options/plugin_options_tabbed.php:384
+#: settings/options/plugin_options_tabbed.php:433
 msgid "200 per hour"
 msgstr "200 per ora"
 
-#: settings/options/plugin_options_tabbed.php:385
+#: settings/options/plugin_options_tabbed.php:434
 msgid "500 per hour"
 msgstr "500 per ora"
 
-#: settings/options/plugin_options_tabbed.php:413
+#: settings/options/plugin_options_tabbed.php:462
 msgid "If made only 404 requests exceed"
 msgstr "Se l'IP ha fatto solo richieste tipo 404 e supera"
 
-#: settings/options/plugin_options_tabbed.php:418
+#: settings/options/plugin_options_tabbed.php:467
 msgid "five 404 pages"
 msgstr "cinque pagine 404"
 
-#: settings/options/plugin_options_tabbed.php:419
+#: settings/options/plugin_options_tabbed.php:468
 msgid "ten 404 pages"
 msgstr "dieci pagine 404"
 
-#: settings/options/plugin_options_tabbed.php:420
+#: settings/options/plugin_options_tabbed.php:469
 msgid "fifteen 404 pages"
 msgstr "quindici pagine 404"
 
-#: settings/options/plugin_options_tabbed.php:421
+#: settings/options/plugin_options_tabbed.php:470
 msgid "twenty 404 pages"
 msgstr "venti pagine 404"
 
-#: settings/options/plugin_options_tabbed.php:422
+#: settings/options/plugin_options_tabbed.php:471
 msgid "fifty 404 pages"
 msgstr "cinquanta pagine 404"
 
-#: settings/options/plugin_options_tabbed.php:434
+#: settings/options/plugin_options_tabbed.php:483
 msgid "HTTP Tools are tools to do HTTP request, used for not humans."
 msgstr ""
 "Gli strumenti HTTP sono strumenti per fare richieste HTTP, utilizzati per "
 "non umani."
 
-#: settings/options/plugin_options_tabbed.php:437
+#: settings/options/plugin_options_tabbed.php:486
 msgid "To Block HTTP Tools, just add one for each line."
 msgstr "Per bloccare gli strumenti HTTP, basta aggiungerne uno per ogni riga."
 
-#: settings/options/plugin_options_tabbed.php:439
+#: settings/options/plugin_options_tabbed.php:488
 msgid ""
 "To Manage, you can also remove one or more lines. Then, click Save Changes."
 msgstr ""
 "In Gestione, puoi anche rimuovere una o più righe. Poi, clicca su Salva "
 "modifiche."
 
-#: settings/options/plugin_options_tabbed.php:441
+#: settings/options/plugin_options_tabbed.php:490
 msgid ""
 "Activate eMail notification for some days and manage the Whitelist tables."
 msgstr ""
 "Attivare la notifica eMail per alcuni giorni e gestire le tabelle della "
 "Whitelist."
 
-#: settings/options/plugin_options_tabbed.php:444
+#: settings/options/plugin_options_tabbed.php:493
 msgid "Instructions about to block HTTP tools (Only Premium)"
 msgstr "Istruzioni sul blocco degli strumenti HTTP (solo Premium)"
 
-#: settings/options/plugin_options_tabbed.php:451
+#: settings/options/plugin_options_tabbed.php:500
 msgid "Block HTTP tools?"
 msgstr "Bloccare gli strumenti HTTP?"
 
-#: settings/options/plugin_options_tabbed.php:461
+#: settings/options/plugin_options_tabbed.php:510
 msgid ""
 "Update HTTP tools from Anti Hacker Plugin Server each new plugin version or "
 "plugin is activated? Maybe you will need remove that tools you don't want to "
@@ -2733,82 +2388,82 @@ msgstr ""
 "versione del plugin o il plugin viene attivato? Forse avrete bisogno di "
 "rimuovere gli strumenti che non volete bloccare di nuovo."
 
-#: settings/options/plugin_options_tabbed.php:484
+#: settings/options/plugin_options_tabbed.php:533
 msgid "Add IPs or strings to your whitelist, then click SAVE CHANGES."
 msgstr "Aggiungi IP o stringhe alla tua whitelist, poi clicca su SAVE CHANGES."
 
-#: settings/options/plugin_options_tabbed.php:486
+#: settings/options/plugin_options_tabbed.php:535
 msgid "If necessary add more than one, use only one ip by line."
 msgstr "Se necessario aggiungetene più di uno, usate solo un ip per linea."
 
-#: settings/options/plugin_options_tabbed.php:488
+#: settings/options/plugin_options_tabbed.php:537
 msgid "You can also add IPs from the Blocked Visitors Log Table page."
 msgstr ""
 "Puoi anche aggiungere gli IP dalla pagina della tabella del registro dei "
 "visitatori bloccati."
 
-#: settings/options/plugin_options_tabbed.php:491
+#: settings/options/plugin_options_tabbed.php:540
 msgid "Your current ip is: "
 msgstr "Il suo attuale ip è: "
 
-#: settings/options/plugin_options_tabbed.php:501
+#: settings/options/plugin_options_tabbed.php:550
 msgid "IP whitelist"
 msgstr "IP whitelist"
 
-#: settings/options/plugin_options_tabbed.php:507
+#: settings/options/plugin_options_tabbed.php:556
 msgid "String whitelist (no case sensitive)"
 msgstr "Whitelist di stringhe (no case sensitive)"
 
-#: settings/options/plugin_options_tabbed.php:512
+#: settings/options/plugin_options_tabbed.php:561
 msgid "Fill out the email address to send messages."
 msgstr "Riempi il campo “indirizzo email” per poter inviare messaggi."
 
-#: settings/options/plugin_options_tabbed.php:514
+#: settings/options/plugin_options_tabbed.php:563
 msgid "Left Blank to use your default Wordpress email."
 msgstr "Lascia vuoto per usare la tua mail di WordPress."
 
-#: settings/options/plugin_options_tabbed.php:516
+#: settings/options/plugin_options_tabbed.php:565
 msgid "Then, click save changes."
 msgstr "Fare clic su SALVA MODIFICHE."
 
-#: settings/options/plugin_options_tabbed.php:528
+#: settings/options/plugin_options_tabbed.php:577
 msgid "Do you want receive email alerts? "
 msgstr "Vuoi ricevere avvisi via email? "
 
-#: settings/options/plugin_options_tabbed.php:543
+#: settings/options/plugin_options_tabbed.php:592
 msgid "Alert me all Failed Login Attempts"
 msgstr "Avvisami di tutti i tentativi di accesso falliti"
 
-#: settings/options/plugin_options_tabbed.php:545
-#: settings/options/plugin_options_tabbed.php:556
+#: settings/options/plugin_options_tabbed.php:594
+#: settings/options/plugin_options_tabbed.php:605
 msgid "Yes, All"
 msgstr "Sì, tutti"
 
-#: settings/options/plugin_options_tabbed.php:554
+#: settings/options/plugin_options_tabbed.php:603
 msgid "Alert me All Logins"
 msgstr "Avvisami tutti i login"
 
-#: settings/options/plugin_options_tabbed.php:557
+#: settings/options/plugin_options_tabbed.php:606
 msgid "No, Alert me Only Not White listed"
 msgstr "No, avvertimi Solo non White listed"
 
-#: settings/options/plugin_options_tabbed.php:563
+#: settings/options/plugin_options_tabbed.php:612
 msgid "Alert me All Times Firewall Block Something."
 msgstr "Avvertimi tutte le volte che il firewall blocca qualcosa."
 
-#: settings/options/plugin_options_tabbed.php:572
+#: settings/options/plugin_options_tabbed.php:621
 msgid "Alert me All Times Plugin Blocks Something Else?"
 msgstr "Avvertimi  tutta la volta che il plugin blocca qualcos'altro?"
 
-#: settings/options/plugin_options_tabbed.php:615
+#: settings/options/plugin_options_tabbed.php:664
 msgid "Visit our Premium Page for more details."
 msgstr "Visita la nostra pagina Premium per maggiori dettagli."
 
-#: settings/options/plugin_options_tabbed.php:617
+#: settings/options/plugin_options_tabbed.php:666
 msgid "Premium Page"
 msgstr "Pagina Premium"
 
-#: settings/options/plugin_options_tabbed.php:620
+#: settings/options/plugin_options_tabbed.php:669
 msgid ""
 "Paste below the Item Purchase Code received by email from us when you bought "
 "the premium version."
@@ -2816,18 +2471,267 @@ msgstr ""
 "Incolla qui sotto il codice d'acquisto ricevuto via e-mail da noi quando hai "
 "comprato la versione premium."
 
-#: settings/options/plugin_options_tabbed.php:622
+#: settings/options/plugin_options_tabbed.php:671
 msgid "You don't need reinstall the plugin."
 msgstr "Non devi reinstallare il plugin."
 
-#: settings/options/plugin_options_tabbed.php:623
+#: settings/options/plugin_options_tabbed.php:672
 msgid "After that, click SAVE CHANGES Button."
 msgstr "Dopodiché, clicca su SAVE CHANGES Button."
 
-#: settings/options/plugin_options_tabbed.php:630
+#: settings/options/plugin_options_tabbed.php:679
 msgid "Purchase Code:"
 msgstr "Codice di Acquisto:"
 
 #: table/visitors_render.php:18
 msgid "Empty Table. Please, try again later."
 msgstr "Tabella vuota. Per favore, riprova più tardi."
+
+#~| msgid "Anti Hacker Plugin Activated"
+#~ msgid "AntiHacker Installer"
+#~ msgstr "AntiHacker Installer"
+
+#~| msgid "by Anti Hacker plugin."
+#~ msgid "AntiHacker Logo"
+#~ msgstr "Logo AntiHacker"
+
+#~ msgid "Step Indicator"
+#~ msgstr "Indicatore di passo"
+
+#~ msgid "1 Welcome"
+#~ msgstr "1 Benvenuto"
+
+#~ msgid ""
+#~ "Thank you for choosing AntiHacker plugin, your all-in-one security "
+#~ "solution to harden and protect your WordPress site. It provides multi-"
+#~ "layered defense against a wide range of attacks, featuring a robust "
+#~ "firewall, malware scanner, and advanced login security. We also block "
+#~ "common vulnerabilities by disabling user enumeration, TOR access, XML-"
+#~ "RPC, REST API, and much more. Click Next."
+#~ msgstr ""
+#~ "Grazie per aver scelto il plugin AntiHacker, la tua soluzione di "
+#~ "sicurezza completa per rafforzare e proteggere il tuo sito WordPress. "
+#~ "Offre una difesa multilivello contro un'ampia gamma di attacchi, con un "
+#~ "robusto firewall, uno scanner anti-malware e una sicurezza di accesso "
+#~ "avanzata. Blocchiamo anche le vulnerabilità più comuni disabilitando "
+#~ "l'enumerazione degli utenti, l'accesso TOR, XML-RPC, le API REST e molto "
+#~ "altro. Fai clic su Avanti."
+
+#~ msgid "Next"
+#~ msgstr "Prossimo"
+
+#~ msgid "2 Your Experience Level"
+#~ msgstr "2 Il tuo livello di esperienza"
+
+#~ msgid ""
+#~ "What is your level of experience with WordPress? This will help us tailor "
+#~ "the setup process for you."
+#~ msgstr ""
+#~ "Qual è il tuo livello di esperienza con WordPress? Questo ci aiuterà a "
+#~ "personalizzare la procedura di configurazione per te."
+
+#~ msgid "One-Click Setup (I'm a beginner, set it up for me!)"
+#~ msgstr ""
+#~ "Configurazione in un clic (sono un principiante, configuralo tu per me!)"
+
+#~ msgid ""
+#~ "We'll automatically apply the best-practice settings for you. It's the "
+#~ "fastest way to get started."
+#~ msgstr ""
+#~ "Applicheremo automaticamente le impostazioni più adatte alle tue "
+#~ "esigenze. È il modo più rapido per iniziare."
+
+#~ msgid ""
+#~ "Manual Setup (I'm an experienced user, I want to configure it myself.)"
+#~ msgstr ""
+#~ "Configurazione manuale (sono un utente esperto e voglio configurarlo da "
+#~ "solo)."
+
+#~ msgid ""
+#~ "You will be able to configure all the basic and advanced settings "
+#~ "manually from the plugin's dashboard."
+#~ msgstr ""
+#~ "Potrai configurare manualmente tutte le impostazioni di base e avanzate "
+#~ "dalla dashboard del plugin."
+
+#~ msgid "Choose an option and click Next."
+#~ msgstr "Scegli un'opzione e fai clic su Avanti."
+
+#~ msgid "Back"
+#~ msgstr "Indietro"
+
+#~ msgid "3 Basic Information"
+#~ msgstr "3 Informazioni di base"
+
+#~ msgid "Complete all fields and click Next."
+#~ msgstr "Compila tutti i campi e fai clic su Avanti."
+
+#~| msgid "Left Blank to use your default Wordpress email."
+#~ msgid ""
+#~ "Email to send notifications. Or leave blank to use your default WordPress "
+#~ "email."
+#~ msgstr ""
+#~ "Email per inviare notifiche. Oppure lascia vuoto per usare l'email "
+#~ "predefinita di WordPress."
+
+#~ msgid "Disable XML-RPC"
+#~ msgstr "Disabilita XML-RPC"
+
+#~ msgid ""
+#~ "Disabling XML-RPC in WordPress boosts security. It primarily stops brute-"
+#~ "force login attacks and prevents DDoS attacks via pingbacks. Since the "
+#~ "REST API is now the standard, XML-RPC is largely outdated. Disable it "
+#~ "unless an old app specifically needs it."
+#~ msgstr ""
+#~ "Disabilitare XML-RPC in WordPress aumenta la sicurezza. Blocca "
+#~ "principalmente gli attacchi di accesso brute-force e previene gli "
+#~ "attacchi DDoS tramite pingback. Poiché l'API REST è ormai lo standard, "
+#~ "XML-RPC è ampiamente obsoleto. È consigliabile disabilitarlo, a meno che "
+#~ "non sia specificamente necessario per una vecchia app."
+
+#~ msgid "Disable JSON WordPress REST API"
+#~ msgstr "Disabilitare l'API REST JSON di WordPress"
+
+#~ msgid ""
+#~ "Disabling the WordPress REST API is a drastic security step, often not "
+#~ "recommended, as it breaks many core functions (like the Gutenberg "
+#~ "editor). Only disable it if you understand the implications and your site "
+#~ "doesn't rely on API-dependent features."
+#~ msgstr ""
+#~ "Disabilitare la REST API di WordPress è una misura di sicurezza drastica, "
+#~ "spesso sconsigliata, poiché compromette molte funzioni principali (come "
+#~ "l'editor Gutenberg). Disattivala solo se ne comprendi le implicazioni e "
+#~ "se il tuo sito non si basa su funzionalità dipendenti dall'API."
+
+#~| msgid "Block All Feeds to avoid bots exploit."
+#~ msgid "Block all Feeds to avoid bot exploitation"
+#~ msgstr "Blocca tutti i feed per evitare lo sfruttamento dei bot"
+
+#~| msgid ""
+#~| "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
+#~ msgid "Show AntiHacker Widget on the main Dashboard (Admin users only)"
+#~ msgstr ""
+#~ "Mostra il widget AntiHacker sulla dashboard principale (solo utenti "
+#~ "amministratori)"
+
+#~ msgid ""
+#~ "Whitelist: Add IPs that can access the admin area without email "
+#~ "authentication (one per line)."
+#~ msgstr ""
+#~ "Whitelist: aggiungi gli IP che possono accedere all'area di "
+#~ "amministrazione senza autenticazione tramite e-mail (uno per riga)."
+
+#~ msgid "How long to keep visitor logs?"
+#~ msgstr "Per quanto tempo conservare i registri dei visitatori?"
+
+#~| msgid ""
+#~| "How long keep the visitors log file? If you have a very heavy traffic, "
+#~| "select 1 day. Your choices can impact the Blocked Visits Log."
+#~ msgid ""
+#~ "If you have heavy traffic, select 1 day. Your choices may affect the "
+#~ "blocked visits log."
+#~ msgstr ""
+#~ "In caso di traffico intenso, seleziona 1 giorno. Le tue scelte potrebbero "
+#~ "influire sul registro delle visite bloccate."
+
+#~| msgid "Purchase Code:"
+#~ msgid "Purchase Code"
+#~ msgstr "Codice di acquisto"
+
+#~| msgid ""
+#~| "Paste below the Item Purchase Code received by email from us when you "
+#~| "bought the premium version."
+#~ msgid ""
+#~ "Paste the Item Purchase Code received via email when you purchased the "
+#~ "premium version to activate it."
+#~ msgstr ""
+#~ "Incolla il codice di acquisto dell'articolo ricevuto via email quando hai "
+#~ "acquistato la versione premium per attivarlo."
+
+#~ msgid "4 All Done!"
+#~ msgstr "4 Tutto fatto!"
+
+#~ msgid ""
+#~ "AntiHacker plugin has been successfully configured with our recommended "
+#~ "settings! You're all set. You can visit your dashboard or fine-tune the "
+#~ "options anytime from the plugin's settings menu."
+#~ msgstr ""
+#~ "Il plugin AntiHacker è stato configurato correttamente con le "
+#~ "impostazioni consigliate! Fatto! Puoi visitare la dashboard o "
+#~ "perfezionare le opzioni in qualsiasi momento dal menu delle impostazioni "
+#~ "del plugin."
+
+#~| msgid "Scan Dashboard"
+#~ msgid "Go to Dashboard"
+#~ msgstr "Vai alla Dashboard"
+
+#~ msgid "4 Ready for Configuration"
+#~ msgstr "4 Pronto per la configurazione"
+
+#~ msgid ""
+#~ "Great! Your initial information has been saved. You are now ready to "
+#~ "complete the setup. Please visit the settings dashboard to configure all "
+#~ "the available options manually."
+#~ msgstr ""
+#~ "Ottimo! Le tue informazioni iniziali sono state salvate. Ora sei pronto "
+#~ "per completare la configurazione. Visita la dashboard delle impostazioni "
+#~ "per configurare manualmente tutte le opzioni disponibili."
+
+#~ msgid "Go to the Settings Dashboard"
+#~ msgstr "Vai alla dashboard delle impostazioni"
+
+#~ msgid "Welcome"
+#~ msgstr "Benvenuto"
+
+#~ msgid ""
+#~ "Thank you for choosing AntiHacker plugin, your all-in-one security "
+#~ "solution to harden and protect your WordPress site. It provides multi-"
+#~ "layered defense against a wide range of attacks, featuring a robust "
+#~ "firewall, malware scanner, and advanced login security. We also block "
+#~ "common vulnerabilities by disabling user enumeration, TOR access, XML-"
+#~ "RPC, REST API, and much more."
+#~ msgstr ""
+#~ "Grazie per aver scelto il plugin AntiHacker, la tua soluzione di "
+#~ "sicurezza completa per rafforzare e proteggere il tuo sito WordPress. "
+#~ "Offre una difesa multilivello contro un'ampia gamma di attacchi, con un "
+#~ "robusto firewall, uno scanner anti-malware e una sicurezza di accesso "
+#~ "avanzata. Blocchiamo anche le vulnerabilità più comuni disabilitando "
+#~ "l'enumerazione degli utenti, l'accesso TOR, XML-RPC, le API REST e molto "
+#~ "altro."
+
+#~ msgid "Your Experience Level"
+#~ msgstr "Il tuo livello di esperienza"
+
+#~ msgid "Basic Information"
+#~ msgstr "Informazioni di base"
+
+#~| msgid "Left Blank to use your default Wordpress email."
+#~ msgid ""
+#~ "Email to send notifications. Leave blank to use your default WordPress "
+#~ "email."
+#~ msgstr ""
+#~ "Email per inviare notifiche. Lascia vuoto per utilizzare l'email "
+#~ "predefinita di WordPress."
+
+#~ msgid ""
+#~ "Add IPs that can access the admin area without email authentication (one "
+#~ "per line)."
+#~ msgstr ""
+#~ "Aggiungere gli IP che possono accedere all'area di amministrazione senza "
+#~ "autenticazione e-mail (uno per riga)."
+
+#~| msgid ""
+#~| "Paste below the Item Purchase Code received by email from us when you "
+#~| "bought the premium version."
+#~ msgid ""
+#~ "Paste the Item Purchase Code received via email when you purchased the "
+#~ "premium version."
+#~ msgstr ""
+#~ "Incolla il codice di acquisto dell'articolo ricevuto via email quando hai "
+#~ "acquistato la versione premium."
+
+#~ msgid "All Done!"
+#~ msgstr "Tutto fatto!"
+
+#~ msgid "Ready for Configuration"
+#~ msgstr "Pronto per la configurazione"
