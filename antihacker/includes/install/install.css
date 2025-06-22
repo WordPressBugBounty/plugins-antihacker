@@ -1,5 +1,5 @@
 /*
- * AntiHacker Installation Wizard Styles
+ * stopbadbots Installation Wizard Styles
  */
 /* Força a remoção de margens padrão do WordPress que podem empurrar nosso contêiner para baixo. */
 .wrap {
@@ -7,7 +7,7 @@
 }
 
 /* O contêiner principal do nosso instalador */
-.antihacker-inst-wrap {
+.stopbadbots-inst-wrap {
     max-width: 800px;
     margin: 20px auto;
     /* Mantém centralizado */
@@ -22,7 +22,7 @@
 }
 
 /* Cabeçalho com logo e indicador de passo */
-.antihacker-inst-header {
+.stopbadbots-inst-header {
     display: flex;
     flex-direction: column;
     /* Itens um abaixo do outro */
@@ -38,46 +38,46 @@
     /* Linha separadora */
 }
 
-#antihacker-inst-logo {
+#stopbadbots-inst-logo {
     max-width: 250px;
     height: auto;
 }
 
-#antihacker-inst-step-indicator {
+#stopbadbots-inst-step-indicator {
     max-width: 100%;
     height: auto;
 }
 
 /* Área de conteúdo principal */
-.antihacker-inst-content {
+.stopbadbots-inst-content {
     padding: 0 20px 20px;
     /* Remove padding superior, pois o header já tem */
 }
 
-.antihacker-inst-content h1 {
+.stopbadbots-inst-content h1 {
     font-size: 24px;
     margin-bottom: 15px;
     color: #2c3338;
 }
 
-.antihacker-inst-content p {
+.stopbadbots-inst-content p {
     font-size: 16px;
     color: #555;
     line-height: 1.6;
 }
 
 /* Estilo para cada campo do formulário */
-.antihacker-inst-field {
+.stopbadbots-inst-field {
     margin-bottom: 25px;
     /* Aumenta o espaçamento entre os campos */
 }
 
-.antihacker-inst-field h3 {
+.stopbadbots-inst-field h3 {
     margin-top: 0;
     margin-bottom: 5px;
 }
 
-.antihacker-inst-field label {
+.stopbadbots-inst-field label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
@@ -85,25 +85,25 @@
 }
 
 /* Estilo para inputs de rádio e suas labels */
-.antihacker-inst-field label input[type="radio"] {
+.stopbadbots-inst-field label input[type="radio"] {
     margin-right: 8px;
     vertical-align: middle;
 }
 
-.antihacker-inst-field label[for] {
+.stopbadbots-inst-field label[for] {
     /* Apenas para labels associadas a inputs */
     font-weight: bold;
 }
 
-.antihacker-inst-field label:not([for]) {
+.stopbadbots-inst-field label:not([for]) {
     /* Labels de rádio/checkbox não precisam de negrito */
     font-weight: normal;
 }
 
-.antihacker-inst-field input[type="text"],
-.antihacker-inst-field input[type="email"],
-.antihacker-inst-field textarea,
-.antihacker-inst-field select {
+.stopbadbots-inst-field input[type="text"],
+.stopbadbots-inst-field input[type="email"],
+.stopbadbots-inst-field textarea,
+.stopbadbots-inst-field select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -113,7 +113,7 @@
 }
 
 /* Descrição abaixo das opções de rádio */
-.antihacker-inst-description {
+.stopbadbots-inst-description {
     font-size: 14px;
     color: #666;
     margin: 5px 0 15px 28px;
@@ -123,7 +123,7 @@
 }
 
 /* Contêiner dos botões */
-.antihacker-inst-buttons {
+.stopbadbots-inst-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,7 +135,7 @@
 }
 
 /* Classe unificada para TODOS os botões (<a> e <button>) */
-.antihacker-inst-button {
+.stopbadbots-inst-button {
     display: inline-block;
     /* Essencial para que <a> se comporte como <button> */
     padding: 12px 24px;
@@ -154,29 +154,29 @@
 }
 
 /* Botão "Voltar" */
-.antihacker-inst-back {
+.stopbadbots-inst-back {
     background-color: #f0f0f1;
     color: #50575e;
     border: 1px solid #dcdcde;
 }
 
-.antihacker-inst-back:hover,
-.antihacker-inst-back:focus {
+.stopbadbots-inst-back:hover,
+.stopbadbots-inst-back:focus {
     background-color: #e0e0e1;
     color: #3c434a;
     border-color: #b7b7b9;
 }
 
 /* Botão "Próximo" */
-.antihacker-inst-next {
+.stopbadbots-inst-next {
     background-color: #007cba;
     /* Azul padrão do WordPress */
     color: #fff;
     border: 1px solid #007cba;
 }
 
-.antihacker-inst-next:hover,
-.antihacker-inst-next:focus {
+.stopbadbots-inst-next:hover,
+.stopbadbots-inst-next:focus {
     background-color: #006ba1;
     /* Azul um pouco mais escuro */
     color: #fff;
@@ -184,7 +184,7 @@
 }
 
 /* Styling for the "Learn More" links in the installer */
-.antihacker-inst-learn-more {
+.stopbadbots-inst-learn-more {
     font-size: 13px;
     font-weight: normal;
     text-decoration: none;
@@ -194,7 +194,7 @@
 }
 
 /* NEW: Style for the image icon inside the link */
-.antihacker-inst-info-icon {
+.stopbadbots-inst-info-icon {
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
@@ -204,7 +204,7 @@
 }
 
 /* Change color on hover for better user feedback */
-.antihacker-inst-field h3 a:hover {
+.stopbadbots-inst-field h3 a:hover {
     color: #2271b1;
     /* Standard WordPress link hover color */
 }

@@ -18,10 +18,13 @@ $antihacker_table = $wpdb->prefix . "ah_fingerprint";
 $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
 $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
 
+/*
 if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or empty($antihacker_http_tools)) {
-    if (empty(trim(ANTIHACKERVERSIONANT))) {
+    if (!empty(trim(ANTIHACKERVERSIONANT))) {
         // NEW INSTALL
-        set_transient('antihacker_redirect_to_installer', true, 30 * MINUTE_IN_SECONDS);
+        //set_transient('antihacker_redirect_to_installer', true, 30 * MINUTE_IN_SECONDS);
+        update_option('antihacker_setup_complete', true);
+
     }
     $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
     $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
@@ -49,6 +52,7 @@ if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or 
         update_option('antihacker_version', ANTIHACKERVERSION);
     }
 }
+*/
 
 
 
@@ -1545,19 +1549,46 @@ function antihacker_activated()
     global $antihacker_update_http_tools;
     global $antihacker_http_tools;
 
-    antihacker_create_db_stats();
-    antihacker_create_db_blocked();
-    antihacker_create_db_visitors();
-    antihacker_create_db_fingerprint();
-    antihacker_upgrade_db();
-    antihacker_upgrade_db_visitors();
-    antihacker_upgrade_db_blocked();
-    antihacker_upgrade_db_tor();
-    antihacker_populate_stats();
-    global $antihacker_is_admin;
+    global $wpdb;
 
-    if (empty($antihacker_http_tools) or $antihacker_update_http_tools == 'yes') {
-        antihacker_create_httptools();
+
+	// testar aqui se table exist...
+	$antihacker_main_table_name = $wpdb->prefix . 'ah_stats';
+    if ( $wpdb->get_var("SHOW TABLES LIKE '$antihacker_main_table_name'") === $antihacker_main_table_name ) {
+       update_option('antihacker_setup_complete', true);
+	  // error_log(__LINE__);
+	}
+
+
+
+
+
+    if (version_compare(trim(ANTIHACKERVERSION), trim(ANTIHACKERVERSIONANT)) > 0 or empty($antihacker_http_tools)) {
+        $antihacker_http_tools = trim(get_site_option('antihacker_http_tools', ''));
+        $antihacker_http_tools = explode(PHP_EOL, $antihacker_http_tools);
+        if (empty($antihacker_string_whitelist))
+            antihacker_create_whitelist();
+        if (empty($antihacker_http_tools) or $antihacker_update_http_tools == 'yes')
+            antihacker_create_httptools();
+        antihacker_create_db_stats();
+        antihacker_create_db_blocked();
+        antihacker_create_db_visitors();
+        antihacker_create_db_fingerprint();
+        antihacker_create_db_scan_files();
+        antihacker_create_db_scan();
+        antihacker_create_db_rules();
+        antihacker_remove_index();
+        // antihacker_add_index();
+        antihacker_upgrade_db();
+        antihacker_upgrade_db_visitors();
+        antihacker_upgrade_db_blocked();
+        antihacker_upgrade_db_tor();
+        antihacker_upd_tor_db();
+        antihacker_populate_stats();
+        antihacker_populate_rules();
+        if (!add_option('antihacker_version', ANTIHACKERVERSION)) {
+            update_option('antihacker_version', ANTIHACKERVERSION);
+        }
     }
 
 
@@ -1580,22 +1611,7 @@ function antihacker_activated()
     }
 
 
-    // =========================================================================
-    // INÍCIO DA INCLUSÃO - LÓGICA DO NOVO INSTALADOR
-    // =========================================================================
 
-    // 1. Verifica se a flag 'antihacker_setup_complete' NÃO existe.
-    //    Isso significa que o novo instalador nunca foi concluído.
-    if (!get_option('antihacker_setup_complete', false)) {
-
-        // 2. Se não foi concluído, cria o 'transient' que dispara o redirecionamento.
-        //    Esta é a linha que estava faltando.
-        set_transient('antihacker_redirect_to_installer', true, 30);
-    }
-
-    // =========================================================================
-    // FIM DA INCLUSÃO
-    // =========================================================================
     // Pointer
 
     $r = update_option('antihacker_was_activated', '1');
