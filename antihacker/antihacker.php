@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.82
+version: 5.83
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -33,6 +33,7 @@ $antihacker_plugin_version = $antihacker_plugin_data['Version'];
 define('ANTIHACKERVERSION', $antihacker_plugin_version);
 define('ANTIHACKERPATH', plugin_dir_path(__file__));
 define('ANTIHACKERURL', plugin_dir_url(__file__));
+define('ANTIHACKER_PLUGIN_FILE', __FILE__);
 
 
 
@@ -561,6 +562,33 @@ add_action('wp_login_failed', 'antihacker_failed_login');
 
 
 /**
+ * Impede que o assistente de instalação seja executado após uma atualização do plugin.
+ *
+ * Esta função é acionada após qualquer processo de atualização do WordPress.
+ * Ela verifica se a atualização foi especificamente para este plugin e, em caso afirmativo,
+ * garante que a opção 'antihacker_setup_complete' esteja definida como 'true' para
+ * evitar o redirecionamento para a página de instalação.
+ *
+ * @param WP_Upgrader $upgrader_object O objeto do Upgrader.
+ * @param array       $options         Um array de dados sobre a atualização.
+ */
+function antihacker_prevent_installer_on_update($upgrader_object, $options) {
+  // 1. Verifica se a ação é uma 'atualização' e do tipo 'plugin'.
+  if ($options['action'] == 'update' && $options['type'] == 'plugin') {
+      
+      // 2. Verifica se o nosso plugin (antihacker) está na lista de plugins que foram atualizados.
+      // É importante definir a constante ANTIHACKER_PLUGIN_FILE no seu arquivo principal.
+      // Ex: define('ANTIHACKER_PLUGIN_FILE', __FILE__);
+      if (isset($options['plugins']) && in_array(plugin_basename(ANTIHACKER_PLUGIN_FILE), $options['plugins'])) {
+          
+          // 3. Se tudo for verdade, marca o setup como completo para pular o instalador.
+          update_option('antihacker_setup_complete', true);
+      }
+  }
+}
+add_action('upgrader_process_complete', 'antihacker_prevent_installer_on_update', 10, 2);
+
+/**
  * =================================================================
  * INSTALLER LOGIC
  * =================================================================
@@ -611,6 +639,9 @@ function antihacker_load_files()
     return;
   }
 
+  if ( function_exists('is_multisite') && is_multisite() ) {
+		return;
+	}
 
   /*
   if (!empty(trim(ANTIHACKERVERSIONANT))) {

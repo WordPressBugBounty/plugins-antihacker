@@ -1548,7 +1548,7 @@ function antihacker_activated()
     global $antihacker_admin_email;
     global $antihacker_update_http_tools;
     global $antihacker_http_tools;
-
+    global $antihacker_is_admin;
     global $wpdb;
 
 
