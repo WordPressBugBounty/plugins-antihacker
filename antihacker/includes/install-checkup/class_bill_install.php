@@ -546,7 +546,7 @@ if(!function_exists('bill_dismiss_pre_checkup_handler')){
         //From alert
         if (!isset($_POST['nonce']))
         wp_die('Invalid nonce (1).');
-        if (!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'bill_install') && !wp_verify_nonce($_POST['nonce'], 'bill_install_2')) {
+        if (!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'bill_install') && !wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'bill_install_2')) {
             // Se o nonce não for válido, encerre a execução e retorne uma mensagem de erro
             //('Invalid nonce.');
             wp_die('Invalid nonce (2).');

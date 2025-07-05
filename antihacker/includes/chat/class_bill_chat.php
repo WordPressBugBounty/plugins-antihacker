@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace antihacker_BillChat;
 // 2024-12=18 // 2025-01-04
 if (!defined('ABSPATH')) {
@@ -41,6 +41,7 @@ class ChatPlugin
         );
         wp_localize_script('chat-script', 'bill_data', array(
             'ajax_url'                 => admin_url('admin-ajax.php'),
+            'reset_nonce'              => wp_create_nonce('bill_chat_reset_messages_nonce'), // Linha adicionada
             'reset_success'            => esc_attr__('Chat messages reset successfully.', 'antihacker'),
             'reset_error'              => esc_attr__('Error resetting chat messages.', 'antihacker'),
             'invalid_message'          => esc_attr__('Invalid message received:', 'antihacker'),
@@ -425,9 +426,24 @@ class ChatPlugin
     /**
      * Função para resetar as mensagens.
      */
+
     public function bill_chat_reset_messages()
     {
+        // 1. Verificar o Nonce para proteção contra CSRF
+        check_ajax_referer('bill_chat_reset_messages_nonce', 'security');
+
+        // 2. Verificar se o utilizador tem permissão para esta ação (apenas administradores)
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('You do not have permission to perform this action.');
+            wp_die();
+        }
+
+        // Se as verificações passarem, apagar as mensagens
         update_option('chat_messages', []);
+        
+        // Enviar uma resposta de sucesso
+        wp_send_json_success('Chat messages have been reset.');
+
         wp_die();
     }
 }
