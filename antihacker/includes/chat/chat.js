@@ -95,9 +95,32 @@ jQuery(document).ready(function ($) {
                                     if (message.sender === 'user') {
                                         billChatMessages.append('<div class="user-message">' + billChatEscapeHtml(message.text) + '</div>');
                                     } else if (message.sender === 'chatgpt') {
-                                        let processedText = billChatEscapeHtml(message.text);
+
+
+
+                                        //let processedText = billChatEscapeHtml(message.text);
+                                        //processedText = processedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                        //billChatMessages.append('<div class="chatgpt-message">' + processedText + '</div>');
+
+                                        // ---- BLOCO CORRIGIDO ----
+
+                                        // 1. Usa a mensagem diretamente, sem a escapar.
+                                        let processedText = message.text;
+
+                                        // 2. Converte a sintaxe de Markdown (**bold**) para HTML (<strong>)
                                         processedText = processedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                                        billChatMessages.append('<div class="chatgpt-message">' + processedText + '</div>');
+
+                                        // 3. Adiciona o HTML processado à página.
+                                        //    Usamos .html() aqui para que a tag <strong> seja renderizada corretamente.
+                                        const messageDiv = $('<div class="chatgpt-message"></div>');
+                                        messageDiv.html(processedText);
+                                        billChatMessages.append(messageDiv);
+
+
+
+
+
+
                                     }
                                 }
                             });

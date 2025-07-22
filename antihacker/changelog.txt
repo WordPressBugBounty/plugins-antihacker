@@ -2,6 +2,8 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
+5.85 25-07-22 Dashboard Improved.
+
 5.84 25-07-05 Chat security improved.
 
 5.78/83 25-06-26 New Install.
