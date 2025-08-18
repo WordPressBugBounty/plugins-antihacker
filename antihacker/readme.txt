@@ -4,7 +4,7 @@ Donate link:http://antihackerplugin.com/?p=25
 Tags: Block Tor, Disable, wordpress security tools, malware scanner, antimalware
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.85
+Stable tag: 5.86
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,11 +31,10 @@ Translation ready. Files included: Dutch, English, French, Italian, Portuguese, 
 
 [youtube https://youtu.be/FTm2Ck_OhLk]
 
->Italian: Migliora la sicurezza del sistema, proteggi l'accesso (sicurezza dell'accesso), firewall, cerca malware, blocca l'enumerazione degli utenti e TOR, disabilita l'API Rest di Json WordPress, xmlrpc (xml-rpc) e Pingback e molti altri strumenti di sicurezza. Multilingua pronto. Inclusi anche file in lingua italiana e portoghese.
-.
->Português: Melhora a segurança do sistema, proteje o login (Segurança de login), firewall, verifica se há malware, bloqueia a enumeração do usuário e TOR, desativa Json WordPress Rest API, xmlrpc (xml-rpc) e Pingback e mais muitas ferramentas de segurança. Pronto para vários idiomas. Incluídos também arquivos em italiano e português.
 
-* **No DNS API (entryPoint) or Cloud Traffic Redirection. No Slow Down Your Site! No Google penalties for slow sites.**
+
+== Must-Have Scanner for WordPress Health & Integrity ==
+This feature verifies in a **few seconds** the integrity of your entire WordPress installation, including core files and plugins. It meticulously compares your site's code against the official versions on the WordPress.org repository, instantly flagging any unauthorized modifications. Furthermore, it scans for and reports any unknown files that have been added, exposing potential backdoors and malware that would otherwise go unnoticed.
 
 == Features and Tools Included ==
 * Prevent unauthorized access to your account by protect your login page also against bots and brute force.
@@ -105,6 +104,13 @@ Currently, you can track key Fail2ban details like the offending IP, when the la
 <a href="https://antihackerplugin.com/blog/">Plugin Blog with a lot of tips</a>
 <a href="http://stopbadbots.com">Compatible with Stop Bad Bots Plugin</a>
 <a href="http://antihackerplugin.com/share/">Share</a> :)
+
+>Italian: Migliora la sicurezza del sistema, proteggi l'accesso (sicurezza dell'accesso), firewall, cerca malware, blocca l'enumerazione degli utenti e TOR, disabilita l'API Rest di Json WordPress, xmlrpc (xml-rpc) e Pingback e molti altri strumenti di sicurezza. Multilingua pronto. Inclusi anche file in lingua italiana e portoghese.
+.
+>Português: Melhora a segurança do sistema, proteje o login (Segurança de login), firewall, verifica se há malware, bloqueia a enumeração do usuário e TOR, desativa Json WordPress Rest API, xmlrpc (xml-rpc) e Pingback e mais muitas ferramentas de segurança. Pronto para vários idiomas. Incluídos também arquivos em italiano e português.
+
+* **No DNS API (entryPoint) or Cloud Traffic Redirection. No Slow Down Your Site! No Google penalties for slow sites.**
+
 
 ==Why disable the  WordPress xmlrpc==
 This plugin disables XMLRPC API in WordPress 3.5+ or above, which is enabled by default. 

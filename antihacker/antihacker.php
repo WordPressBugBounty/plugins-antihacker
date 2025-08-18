@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.85
+version: 5.86
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -412,9 +412,19 @@ if (!empty($antihacker_admin_email)) {
     update_option('antihacker_my_email_to', '');
   }
 }
+
+
+
+
+
+
 if (empty($antihacker_admin_email))
   $antihacker_admin_email = sanitize_email(get_option('admin_email'));
+
 // Firewall
+
+
+/*
 if (!$antihacker_is_admin) {
   if ($antihacker_firewall != 'no') {
     $antihacker_request_uri_array  = array('@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.htacc', '\.htpas', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer');
@@ -464,6 +474,82 @@ if (!$antihacker_is_admin) {
       } // Endif match...     
     } // endif if ($antihacker_query_string_string || $user_agent_string) 
   } // firewall <> no
+}
+*/
+
+
+
+if (!$antihacker_is_admin) {
+  if ($antihacker_firewall != 'no') {
+    // Array original de assinaturas, AGORA CORRIGIDO para não ter elementos vazios.
+    $antihacker_request_uri_array  = array('@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer');
+
+    // Array com as novas assinaturas, otimizado para não ter redundâncias.
+    $antihacker_new_signatures = array(
+        // Apache (versões precisas)
+        '\.htaccess', '\.htdigest', '\.htpasswd',
+        // Outros controles de versão
+        '\/\.gitignore', '\/\.hg', '\/\.hgignore',
+        // Backups de configuração do WP
+        'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
+        // Frameworks e CMS
+        '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
+        '\/app\/etc\/local\.xml', // Magento 1
+        '\/Web\.config', // ASP.NET
+        // Ferramentas de desenvolvimento e dependências
+        '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
+        '\/composer\.json', '\/composer\.lock', '\/packages\.json',
+        // Arquivos de ambiente
+        '\/\.env'
+    );
+
+    // Mescla o array de novas assinaturas com o array de URI principal
+    $antihacker_request_uri_array = array_merge($antihacker_request_uri_array, $antihacker_new_signatures);
+
+    // O resto do seu código permanece exatamente o mesmo, sem alterações.
+    $antihacker_query_string_array = array('@@', '\(0x', '0x3c62723e', '\;\!--\=', '\(\)\}', '\:\;\}\;', '\.\.\/', '127\.0\.0\.1', 'UNION(.*)SELECT', '@eval', 'eval\(', 'base64_', 'localhost', 'loopback', '\%0A', '\%0D', '\%00', '\%2e\%2e', 'allow_url_include', 'auto_prepend_file', 'disable_functions', 'input_file', 'execute', 'file_get_contents', 'mosconfig', 'open_basedir', '(benchmark|sleep)(\s|%20)*\(', 'phpinfo\(', 'shell_exec\(', '\/wwwroot', '\/makefile', 'path\=\.', 'mod\=\.', 'wp-config\.php', '\/config\.', '\$_session', '\$_request', '\$_env', '\$_server', '\$_post', '\$_get', 'indoxploi', 'xrumer');
+    $antihacker_user_agent_array   = array('drivermysqli', 'acapbot', '\/bin\/bash', 'binlar', 'casper', 'cmswor', 'diavol', 'dotbot', 'finder', 'flicky', 'md5sum', 'morfeus', 'nutch', 'planet', 'purebot', 'pycurl', 'semalt', 'shellshock', 'skygrid', 'snoopy', 'sucker', 'turnit', 'vikspi', 'zmeu');
+    
+    $antihacker_request_uri_string  = '';
+    $antihacker_query_string_string = '';
+    $antihacker_user_agent_string   = '';
+
+    if (isset($_SERVER['REQUEST_URI'])     && !empty($_SERVER['REQUEST_URI']))     $antihacker_request_uri_string  = sanitize_text_field($_SERVER['REQUEST_URI']);
+    if (isset($_SERVER['QUERY_STRING'])    && !empty($_SERVER['QUERY_STRING']))    $antihacker_query_string_string = sanitize_text_field($_SERVER['QUERY_STRING']);
+    if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) $antihacker_user_agent_string   = sanitize_text_field($_SERVER['HTTP_USER_AGENT']);
+    
+    if ($antihacker_request_uri_string || $antihacker_query_string_string || $antihacker_user_agent_string) {
+      if (
+        preg_match('/' . implode('|', $antihacker_request_uri_array)  . '/i', $antihacker_request_uri_string, $matches)  ||
+        preg_match('/' . implode('|', $antihacker_query_string_array) . '/i', $antihacker_query_string_string, $matches2) ||
+        preg_match('/' . implode('|', $antihacker_user_agent_array)   . '/i', $antihacker_user_agent_string, $matches3)
+      ) {
+        if ($antihacker_Blocked_Firewall == 'yes') {
+          if (isset($matches)) {
+            if (is_array($matches)) {
+              if (count($matches) > 0) {
+                antihacker_alertme3($matches[0]);
+              }
+            }
+          }
+          if (isset($matches2)) {
+            if (is_array($matches2)) {
+              if (count($matches2) > 0)
+                antihacker_alertme3($matches2[0]);
+            }
+          }
+          if (isset($matches3)) {
+            if (is_array($matches3)) {
+              if (count($matches3) > 0)
+                antihacker_alertme4($matches3[0]);
+            }
+          }
+        }
+        antihacker_stats_moreone('qfire');
+        antihacker_response('Firewall');
+      }
+    } 
+  }
 }
 // End Firewall
 
