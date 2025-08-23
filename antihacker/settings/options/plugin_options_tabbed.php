@@ -69,7 +69,7 @@ $settings['General Settings']['settings'] = array('info' => $msg2);
 $fields[] = array(
 	'type' 	=> 'radio',
 	'name' 	=> 'my_radio_xml_rpc',
-	'label' => esc_attr__('Disable xml-rpc API. Look our FAQ page (at our site) for more details.', "antihacker"),
+	'label' => esc_attr__("Disable xml-rpc API. Disabling XML-RPC significantly enhances your site's security Look our FAQ page (at our site) for more details.", "antihacker"),
 	'radio_options' => array(
 		array('value' => 'Yes', 'label' => esc_attr__('Yes, disable All', "antihacker")),
 		array('value' => 'Pingback', 'label' => esc_attr__('Yes, disable only Ping Back', "antihacker")),

@@ -65,14 +65,26 @@ update_option('antihacker_notif_visit', time());
 
             $initValue = $perc * 10;
             require_once "circle_status.php";
-            ?>
-            <?php
+
             if ($perc == 10)
                 echo '<center>' . esc_attr__('Protection Enabled', 'antihacker') . '</center>';
             else
                 echo '<center>' . esc_attr__('Go to Anti Hacker Settings Page (General Settings Tab) and mark all with Yes and run Scan For Malware', 'antihacker') . '</center>';
+
+            echo '<br />';
+
+            global $antihacker_my_radio_xml_rpc;
+            if ($antihacker_my_radio_xml_rpc == "Yes") {
             ?>
-            <br /> <br />
+                <span class="dashicons dashicons-warning" style="color: green; font-size: 20px; margin-right: 1px;"></span>
+            <?php echo esc_html__("XML_RPC is Disabled. This is the recommended setting.", "antihacker");
+            } else {
+            ?>
+                <span class="dashicons dashicons-warning" style="color: #FF0000; font-size: 20px; margin-right: 1px;"></span>
+            <?php echo esc_html__("XML_RPC is Enabled. It can become a vulnerability and a target for brute-force attacks.", "antihacker");
+            }
+            //echo '<br /> <br />';
+            ?>
         </div> <!-- "columns 2">  -->
         <div class="antihacker-help-column antihacker-help-column-2">
             <?php
@@ -101,8 +113,6 @@ update_option('antihacker_notif_visit', time());
             ?>
             <br />
             <?php
-
-
 
             $plugin = 'recaptcha-for-all/recaptcha.php';
 

@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.86
+version: 5.87
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -318,6 +318,8 @@ $antihacker_string_whitelist = explode(" ", $antihacker_string_whitelist);
 $antihacker_admin_email = trim(sanitize_text_field(get_option('antihacker_my_email_to')));
 $antihacker_my_radio_report_all_visits =  sanitize_text_field(get_site_option('antihacker_my_radio_report_all_visits', 'No')); // Alert me All Logins
 
+$antihacker_my_radio_xml_rpc = sanitize_text_field(get_option('my_radio_xml_rpc', 'yes'));
+
 
 $antihacker_hide_wp = sanitize_text_field(get_option('antihacker_hide_wp', 'yes'));
 $antihacker_block_enumeration = sanitize_text_field(get_option('antihacker_block_enumeration', 'no'));
@@ -486,21 +488,21 @@ if (!$antihacker_is_admin) {
 
     // Array com as novas assinaturas, otimizado para não ter redundâncias.
     $antihacker_new_signatures = array(
-        // Apache (versões precisas)
-        '\.htaccess', '\.htdigest', '\.htpasswd',
-        // Outros controles de versão
-        '\/\.gitignore', '\/\.hg', '\/\.hgignore',
-        // Backups de configuração do WP
-        'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
-        // Frameworks e CMS
-        '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
-        '\/app\/etc\/local\.xml', // Magento 1
-        '\/Web\.config', // ASP.NET
-        // Ferramentas de desenvolvimento e dependências
-        '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
-        '\/composer\.json', '\/composer\.lock', '\/packages\.json',
-        // Arquivos de ambiente
-        '\/\.env'
+      // Apache (versões precisas)
+      '\.htaccess', '\.htdigest', '\.htpasswd',
+      // Outros controles de versão
+      '\/\.gitignore', '\/\.hg', '\/\.hgignore',
+      // Backups de configuração do WP
+      'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
+      // Frameworks e CMS
+      '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
+      '\/app\/etc\/local\.xml', // Magento 1
+      '\/Web\.config', // ASP.NET
+      // Ferramentas de desenvolvimento e dependências
+      '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
+      '\/composer\.json', '\/composer\.lock', '\/packages\.json',
+      // Arquivos de ambiente
+      '\/\.env'
     );
 
     // Mescla o array de novas assinaturas com o array de URI principal
@@ -509,7 +511,7 @@ if (!$antihacker_is_admin) {
     // O resto do seu código permanece exatamente o mesmo, sem alterações.
     $antihacker_query_string_array = array('@@', '\(0x', '0x3c62723e', '\;\!--\=', '\(\)\}', '\:\;\}\;', '\.\.\/', '127\.0\.0\.1', 'UNION(.*)SELECT', '@eval', 'eval\(', 'base64_', 'localhost', 'loopback', '\%0A', '\%0D', '\%00', '\%2e\%2e', 'allow_url_include', 'auto_prepend_file', 'disable_functions', 'input_file', 'execute', 'file_get_contents', 'mosconfig', 'open_basedir', '(benchmark|sleep)(\s|%20)*\(', 'phpinfo\(', 'shell_exec\(', '\/wwwroot', '\/makefile', 'path\=\.', 'mod\=\.', 'wp-config\.php', '\/config\.', '\$_session', '\$_request', '\$_env', '\$_server', '\$_post', '\$_get', 'indoxploi', 'xrumer');
     $antihacker_user_agent_array   = array('drivermysqli', 'acapbot', '\/bin\/bash', 'binlar', 'casper', 'cmswor', 'diavol', 'dotbot', 'finder', 'flicky', 'md5sum', 'morfeus', 'nutch', 'planet', 'purebot', 'pycurl', 'semalt', 'shellshock', 'skygrid', 'snoopy', 'sucker', 'turnit', 'vikspi', 'zmeu');
-    
+
     $antihacker_request_uri_string  = '';
     $antihacker_query_string_string = '';
     $antihacker_user_agent_string   = '';
@@ -517,7 +519,7 @@ if (!$antihacker_is_admin) {
     if (isset($_SERVER['REQUEST_URI'])     && !empty($_SERVER['REQUEST_URI']))     $antihacker_request_uri_string  = sanitize_text_field($_SERVER['REQUEST_URI']);
     if (isset($_SERVER['QUERY_STRING'])    && !empty($_SERVER['QUERY_STRING']))    $antihacker_query_string_string = sanitize_text_field($_SERVER['QUERY_STRING']);
     if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) $antihacker_user_agent_string   = sanitize_text_field($_SERVER['HTTP_USER_AGENT']);
-    
+
     if ($antihacker_request_uri_string || $antihacker_query_string_string || $antihacker_user_agent_string) {
       if (
         preg_match('/' . implode('|', $antihacker_request_uri_array)  . '/i', $antihacker_request_uri_string, $matches)  ||
@@ -548,7 +550,7 @@ if (!$antihacker_is_admin) {
         antihacker_stats_moreone('qfire');
         antihacker_response('Firewall');
       }
-    } 
+    }
   }
 }
 // End Firewall
@@ -658,18 +660,19 @@ add_action('wp_login_failed', 'antihacker_failed_login');
  * @param WP_Upgrader $upgrader_object O objeto do Upgrader.
  * @param array       $options         Um array de dados sobre a atualização.
  */
-function antihacker_prevent_installer_on_update($upgrader_object, $options) {
+function antihacker_prevent_installer_on_update($upgrader_object, $options)
+{
   // 1. Verifica se a ação é uma 'atualização' e do tipo 'plugin'.
   if ($options['action'] == 'update' && $options['type'] == 'plugin') {
-      
-      // 2. Verifica se o nosso plugin (antihacker) está na lista de plugins que foram atualizados.
-      // É importante definir a constante ANTIHACKER_PLUGIN_FILE no seu arquivo principal.
-      // Ex: define('ANTIHACKER_PLUGIN_FILE', __FILE__);
-      if (isset($options['plugins']) && in_array(plugin_basename(ANTIHACKER_PLUGIN_FILE), $options['plugins'])) {
-          
-          // 3. Se tudo for verdade, marca o setup como completo para pular o instalador.
-          update_option('antihacker_setup_complete', true);
-      }
+
+    // 2. Verifica se o nosso plugin (antihacker) está na lista de plugins que foram atualizados.
+    // É importante definir a constante ANTIHACKER_PLUGIN_FILE no seu arquivo principal.
+    // Ex: define('ANTIHACKER_PLUGIN_FILE', __FILE__);
+    if (isset($options['plugins']) && in_array(plugin_basename(ANTIHACKER_PLUGIN_FILE), $options['plugins'])) {
+
+      // 3. Se tudo for verdade, marca o setup como completo para pular o instalador.
+      update_option('antihacker_setup_complete', true);
+    }
   }
 }
 add_action('upgrader_process_complete', 'antihacker_prevent_installer_on_update', 10, 2);
@@ -725,9 +728,9 @@ function antihacker_load_files()
     return;
   }
 
-  if ( function_exists('is_multisite') && is_multisite() ) {
-		return;
-	}
+  if (function_exists('is_multisite') && is_multisite()) {
+    return;
+  }
 
   /*
   if (!empty(trim(ANTIHACKERVERSIONANT))) {
@@ -739,14 +742,13 @@ function antihacker_load_files()
 
   // Se o cookie de instalação abortada existir...
   if (isset($_COOKIE['antihacker_setup_aborted']) && $_COOKIE['antihacker_setup_aborted'] === 'true') {
-        
-      // 1. Atualiza a opção para marcar a instalação como concluída.
-      update_option('antihacker_setup_complete', true);
 
-      // 2. Limpa o cookie para não executar esta lógica novamente.
-      unset($_COOKIE['antihacker_setup_aborted']);
-      setcookie('antihacker_setup_aborted', '', time() - 3600, '/');
+    // 1. Atualiza a opção para marcar a instalação como concluída.
+    update_option('antihacker_setup_complete', true);
 
+    // 2. Limpa o cookie para não executar esta lógica novamente.
+    unset($_COOKIE['antihacker_setup_aborted']);
+    setcookie('antihacker_setup_aborted', '', time() - 3600, '/');
   }
 
 
