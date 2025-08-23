@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-19 16:31+0100\n"
-"PO-Revision-Date: 2025-08-23 08:20+0000\n"
+"PO-Revision-Date: 2025-08-23 09:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: scan/functions_scan.php:21
+#: scan/_functions_scan.php:20 scan/functions_scan.php:21
 msgid " to learn more about malwares and look the malwares table."
 msgstr ""
 "Para obtener más información sobre malware, consulte la tabla de malware."
@@ -25,6 +25,10 @@ msgstr ""
 #: dashboard/memory.php:88
 msgid "(just copy and paste)"
 msgstr "(solo copia y pega)"
+
+#: includes/functions/function-site-integrity.php:87
+msgid "(View Diff)"
+msgstr "(Ver diferencia)"
 
 #: dashboard/plugin_check_file_integrity.php:34
 msgid "-- Select --"
@@ -34,7 +38,7 @@ msgstr "-- Seleccionar --"
 msgid "/* That's all, stop editing! Happy blogging. */"
 msgstr "/* Eso es todo, ¡deja de editar! ¡Feliz blogueo! */"
 
-#: includes/install/install.php:401
+#: includes/_install/install.php:401 includes/install/install.php:401
 msgid "1 day"
 msgstr "1 día"
 
@@ -50,7 +54,7 @@ msgstr "10 por minuto"
 msgid "100 per hour"
 msgstr "100 por hora"
 
-#: includes/install/install.php:404
+#: includes/_install/install.php:404 includes/install/install.php:404
 msgid "14 days"
 msgstr "14 días"
 
@@ -58,7 +62,7 @@ msgstr "14 días"
 msgid "15 per minute"
 msgstr "15 por minuto"
 
-#: includes/install/install.php:408
+#: includes/_install/install.php:408 includes/install/install.php:408
 msgid "180 days"
 msgstr "180 días"
 
@@ -70,15 +74,15 @@ msgstr "20 por hora"
 msgid "200 per hour"
 msgstr "200 por hora"
 
-#: includes/install/install.php:405
+#: includes/_install/install.php:405 includes/install/install.php:405
 msgid "21 days"
 msgstr "21 días"
 
-#: includes/install/install.php:402
+#: includes/_install/install.php:402 includes/install/install.php:402
 msgid "3 days"
 msgstr "3 días"
 
-#: includes/install/install.php:406
+#: includes/_install/install.php:406 includes/install/install.php:406
 msgid "30 days"
 msgstr "30 días"
 
@@ -86,7 +90,7 @@ msgstr "30 días"
 msgid "30 per minute"
 msgstr "30 por minuto"
 
-#: includes/install/install.php:409
+#: includes/_install/install.php:409 includes/install/install.php:409
 msgid "360 days"
 msgstr "360 días"
 
@@ -118,7 +122,7 @@ msgstr "500 por hora"
 msgid "6 per minute"
 msgstr "6 por minuto"
 
-#: includes/install/install.php:403
+#: includes/_install/install.php:403 includes/install/install.php:403
 msgid "7 days"
 msgstr "7 días"
 
@@ -134,7 +138,7 @@ msgstr "8 por minuto"
 msgid "9 per minute"
 msgstr "9 por minuto"
 
-#: includes/install/install.php:407
+#: includes/_install/install.php:407 includes/install/install.php:407
 msgid "90 days"
 msgstr "90 días"
 
@@ -155,7 +159,7 @@ msgstr ""
 "Agregue direcciones IP o cadenas a su lista blanca y luego haga clic en "
 "GUARDAR CAMBIOS."
 
-#: includes/install/install.php:385
+#: includes/_install/install.php:385 includes/install/install.php:385
 msgid ""
 "Add IPs that can access the admin area without email authentication (one per "
 "line)."
@@ -163,8 +167,16 @@ msgstr ""
 "Agregue IP que puedan acceder al área de administración sin autenticación de "
 "correo electrónico (una por línea)."
 
-#: dashboard/plugin_check_file_integrity.php:323
+#: includes/functions/functions.php:315
+msgid ""
+"Add this IP to your whitelist to stop this email and change your "
+"Notification Settings."
+msgstr ""
+"Agregue esta IP a su lista blanca para detener este correo electrónico y "
+"cambiar su configuración de notificaciones."
+
 #: dashboard/check_file_integrity.php:71
+#: dashboard/plugin_check_file_integrity.php:323
 msgid "Additional issues not shown (limit reached)."
 msgstr "Problemas adicionales no mostrados (límite alcanzado)."
 
@@ -190,7 +202,7 @@ msgstr ""
 msgid "After that, click SAVE CHANGES Button."
 msgstr "Después de eso, haga clic en el botón GUARDAR CAMBIOS."
 
-#: includes/chat/class_bill_chat.php:51
+#: includes/chat/_class_bill_chat.php:49 includes/chat/class_bill_chat.php:51
 msgid "AJAX request failed:"
 msgstr "AJAX Falhou:"
 
@@ -210,9 +222,41 @@ msgstr "Avisarme todo el tiempo Firewall Bloquea algo."
 msgid "Alert me All Times Plugin Blocks Something Else?"
 msgstr "Avisarme todo el tiempo ¿El complemento bloquea algo más?"
 
-#: includes/install/install.php:430
+#: includes/functions/functions.php:490
+msgid "Alert: Attack was blocked:"
+msgstr "Alerta: El ataque fue bloqueado:"
+
+#: includes/functions/functions.php:3523
+msgid "Alert: New Plugin was installed at: "
+msgstr "Alerta: Se instaló un nuevo complemento en:"
+
+#: includes/functions/functions.php:3498
+msgid "Alert: New Plugin was installed."
+msgstr "Alerta: se instaló un nuevo complemento."
+
+#: includes/functions/functions.php:408
+msgid "Alert: the Anti Hacker plugin was been deactivated from plugins page."
+msgstr ""
+"Alerta: el complemento Anti Hacker ha sido desactivado de la página de "
+"complementos."
+
+#: includes/functions/functions.php:448
+msgid "Alert: User Enumeration attempt was blocked."
+msgstr "Alerta: el intento de enumeración de usuario fue bloqueado."
+
+#: dashboard/check_file_integrity.php:58
+msgid "All core files passed the integrity check. Everything seems to be OK!"
+msgstr ""
+"Todos los archivos principales pasaron la comprobación de integridad. ¡Todo "
+"parece estar bien!"
+
+#: includes/_install/install.php:430 includes/install/install.php:430
 msgid "All Done!"
 msgstr "¡Todo listo!"
+
+#: includes/functions/function-site-integrity.php:140
+msgid "All files passed the check. Everything seems to be OK!"
+msgstr "Todos los archivos pasaron la verificación. ¡Todo parece estar bien!"
 
 #: settings/options/plugin_options_tabbed.php:354
 msgid ""
@@ -240,18 +284,18 @@ msgstr "Anti Hacker => Configuración => Configuración general"
 msgid "Anti Hacker Plugin Activated"
 msgstr "Plugin anti-hacker activado"
 
-#: antihacker.php:99
+#: _antihacker.php:98 antihacker.php:99 dashboard/antihacker.php:98
 msgid ""
 "Anti Hacker Plugin: Could not load the localization file (Language file)"
 msgstr ""
 "Complemento anti-hackers: No se pudo cargar el archivo de localización "
 "(archivo de idioma)"
 
-#. Name of the plugin
-msgid "AntiHacker"
-msgstr "Antihacker"
+#: includes/functions/functions.php:2885
+msgid "Anti Hackers Plugin. Its time to Get Pro Protection!"
+msgstr "Plugin antihackers. ¡Es hora de obtener protección profesional!"
 
-#: includes/install/install.php:431
+#: includes/_install/install.php:431 includes/install/install.php:431
 msgid ""
 "AntiHacker has been successfully configured with our recommended settings! "
 "You are all set. You can visit your dashboard now or fine-tune the options "
@@ -266,24 +310,44 @@ msgstr ""
 msgid "API Slug:"
 msgstr "Babosa de API:"
 
+#: includes/diagnose/__class_bill_diagnose.php:669
+#: includes/diagnose/_class_bill_diagnose.php:669
 #: includes/diagnose/class_bill_diagnose.php:903
+#: includes/feedback-last/feedback-last.php:319
 msgid "Artificial Intelligence Support Chat for Issues and Solutions"
 msgstr "Chat de soporte de inteligencia artificial para problemas y soluciones"
 
+#: includes/functions/functions.php:508
+msgid "Attack was blocked"
+msgstr "El ataque fue bloqueado"
+
+#: includes/functions/functions.php:1076
+msgid ""
+"Attack was detected and blocked because accessing xmlrpc.php file and it was "
+"blocked on settings page."
+msgstr ""
+"Se detectó y bloqueó el ataque porque se accedió al archivo xmlrpc.php y se "
+"bloqueó en la página de configuración."
+
+#: includes/diagnose/__class_bill_diagnose.php:688
+#: includes/diagnose/_class_bill_diagnose.php:688
 #: includes/diagnose/class_bill_diagnose.php:922
 msgid "Auto Checkup for Errors"
 msgstr "Comprobación automática de errores"
 
+#: includes/diagnose/__class_bill_diagnose.php:693
+#: includes/diagnose/_class_bill_diagnose.php:693
 #: includes/diagnose/class_bill_diagnose.php:927
 msgid "Auto Checkup Server "
 msgstr "Servidor de revisión automática"
 
-#: includes/install/install.php:418 includes/install/install.php:433
-#: includes/install/install.php:441
+#: includes/_install/install.php:418 includes/_install/install.php:433
+#: includes/_install/install.php:441 includes/install/install.php:418
+#: includes/install/install.php:433 includes/install/install.php:441
 msgid "Back"
 msgstr "Atrás"
 
-#: includes/install/install.php:323
+#: includes/_install/install.php:323 includes/install/install.php:323
 msgid "Basic Information"
 msgstr "Información básica"
 
@@ -308,15 +372,22 @@ msgstr ""
 "ajustar tu límite de memoria para cumplir con los estándares de una "
 "instalación moderna de WordPress."
 
+#: includes/functions/functions.php:2883
+msgid "Become Pro: Increase your protection."
+msgstr "Conviértete en profesional: aumenta tu protección."
+
 #: dashboard/memory.php:96
 msgid "before this row:"
 msgstr "Antes de esta fila:"
 
-#. Author of the plugin
-msgid "Bill Minozzi"
-msgstr "Bill Minozzi"
+#: includes/functions/functions.php:2879
+msgid ""
+"BLACK FRIDAY 30% OFF! Use the coupon code: special-black_2019. Limited time!"
+msgstr ""
+"¡30% de descuento en Black Friday! Usa el código: special-black_2019. ¡Por "
+"tiempo limitado!"
 
-#: includes/install/install.php:365
+#: includes/_install/install.php:365 includes/install/install.php:365
 msgid "Block all Feeds to avoid bot exploitation"
 msgstr "Bloquear todos los feeds para evitar la explotación de bots"
 
@@ -339,6 +410,8 @@ msgid "Block all with Blank User Agent? -  (Premium Version Only)"
 msgstr ""
 "¿Bloquear todo con un agente de usuario en blanco? (Solo versión Premium)"
 
+#: includes/diagnose/__class_bill_diagnose.php:873
+#: includes/diagnose/_class_bill_diagnose.php:873
 #: includes/diagnose/class_bill_diagnose.php:1120
 msgid ""
 "Block bots: They overload the server and steal your content. Install our "
@@ -398,11 +471,11 @@ msgstr "¿Bloquear la enumeración de usuarios para mejorar la seguridad?"
 msgid "Blocked Attacks by Type"
 msgstr "Ataques bloqueados por tipo"
 
-#: table/visitors_render.php:33
+#: includes/functions/functions.php:3573 table/visitors_render.php:33
 msgid "Blocked Visits Log"
 msgstr "Registro de visitas bloqueadas"
 
-#: includes/install/install.php:371
+#: includes/_install/install.php:371 includes/install/install.php:371
 msgid ""
 "Blocking RSS/Atom feeds can prevent bots from scraping content and "
 "discovering usernames, slightly improving security if you don't use feeds "
@@ -434,7 +507,6 @@ msgstr ""
 "Los bots y hackers pueden realizar muchas visitas en un corto período de "
 "tiempo."
 
-#. echo '</strong>';
 #: includes/diagnose/class_bill_diagnose.php:1355
 msgid ""
 "Bots aren’t human—they’re automated scripts that visit your site. They steal "
@@ -445,11 +517,17 @@ msgstr ""
 "Roban tu contenido, haciéndolo menos exclusivo. Sobrecargan tu servidor, lo "
 "ralentizan y perjudican tu SEO."
 
-#: antihacker.php:1399
+#: includes/functions/functions.php:416 includes/functions/functions.php:455
+#: includes/functions/functions.php:498 includes/functions/functions.php:3515
+msgid "by Anti Hacker plugin."
+msgstr "por el complemento Anti Hacker."
+
+#: _antihacker.php:1232 antihacker.php:1399 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:308 includes/functions/functions.php:536
 msgid "by the AntiHacker plugin."
 msgstr "por el complemento AntiHacker."
 
-#: includes/install/install.php:262
+#: includes/_install/install.php:262 includes/install/install.php:262
 #, php-format
 msgid ""
 "By using our plugins and themes, you agree to the <a href=\"%s\" "
@@ -466,6 +544,8 @@ msgstr "Cancelar"
 msgid "Cancel Scan"
 msgstr "Cancelar escaneo"
 
+#: includes/diagnose/__class_bill_diagnose.php:604
+#: includes/diagnose/_class_bill_diagnose.php:604
 #: includes/diagnose/class_bill_diagnose.php:835
 msgid ""
 "cannot function properly because your WordPress Memory Limit is too low. "
@@ -475,11 +555,11 @@ msgstr ""
 "demasiado bajo. Su sitio experimentará problemas graves, incluso si "
 "desactiva nuestro complemento."
 
-#: scan/functions_scan.php:79
+#: scan/_functions_scan.php:78 scan/functions_scan.php:79
 msgid "Changing Speed"
 msgstr "Cambio de velocidad"
 
-#: includes/chat/class_bill_chat.php:45
+#: includes/chat/_class_bill_chat.php:43 includes/chat/class_bill_chat.php:45
 msgid "Chat messages reset successfully."
 msgstr "Los mensajes de chat se restablecieron correctamente."
 
@@ -507,6 +587,8 @@ msgstr ""
 "Comprueba el estado de Navegación segura de Google, complementos y temas "
 "desactivados y archivos inesperados en tu carpeta raíz y más..."
 
+#: includes/diagnose/__class_bill_diagnose.php:876
+#: includes/diagnose/_class_bill_diagnose.php:876
 #: includes/diagnose/class_bill_diagnose.php:1123
 msgid ""
 "Check your site for errors with free plugin wpTools. Errors and warnings can "
@@ -533,6 +615,15 @@ msgid "Click Help Button to top right corner if necessary."
 msgstr ""
 "Haga clic en el botón Ayuda en la esquina superior derecha si es necesario."
 
+#: dashboard/check_file_integrity.php:46
+msgid ""
+"Click the button below to verify the integrity of your WordPress core files."
+msgstr ""
+"Haga clic en el botón a continuación para verificar la integridad de los "
+"archivos principales de WordPress."
+
+#: includes/diagnose/__class_bill_diagnose.php:662
+#: includes/diagnose/_class_bill_diagnose.php:662
 #: includes/diagnose/class_bill_diagnose.php:896
 msgid ""
 "Click the help button in the top right or go directly to the AI chat box "
@@ -541,6 +632,10 @@ msgstr ""
 "Haga clic en el botón de ayuda en la parte superior derecha o vaya "
 "directamente al cuadro de chat de IA a continuación para obtener información "
 "más específica sobre los problemas enumerados."
+
+#: includes/functions/function-site-integrity.php:217
+msgid "Close"
+msgstr "Cerca"
 
 #: scan/functions_scan.php:1378
 msgid "Code:"
@@ -553,6 +648,10 @@ msgstr "Comparando con la versión del repositorio:"
 #: scan/functions_scan.php:1377
 msgid "Condiction:"
 msgstr "Condición:"
+
+#: includes/functions/function-site-integrity.php:85
+msgid "Content changed"
+msgstr "Contenido modificado"
 
 #: settings/options/plugin_options_tabbed.php:189
 msgid ""
@@ -571,6 +670,11 @@ msgstr "Crítico"
 msgid "Critical Error:"
 msgstr "Error crítico:"
 
+#: includes/diagnose/__class_bill_diagnose.php:628
+#: includes/diagnose/__class_bill_diagnose.php:1494
+#: includes/diagnose/_class_bill_diagnose.php:628
+#: includes/diagnose/_class_bill_diagnose.php:1494
+#: includes/diagnose/class_bill_diagnose.php:859
 #: includes/diagnose/class_bill_diagnose.php:1895
 msgid "Critical Issues"
 msgstr "Problemas Críticos"
@@ -579,17 +683,44 @@ msgstr "Problemas Críticos"
 msgid "Current WordPress Memory Limit:"
 msgstr "Límite de memoria actual de WordPress:"
 
+#: includes/functions/functions.php:549
+msgid "Dashboard => Anti Hacker => Notifications Settings."
+msgstr "Panel de control => Anti-Hacker => Configuración de notificaciones."
+
 #: dashboard/dashboard.php:254
 msgid "Dashboard => Anti Hacker => Settings"
 msgstr "Panel de control => Anti-Hacker => Configuración"
 
-#: antihacker.php:1406
+#: _antihacker.php:1239 antihacker.php:1406 dashboard/antihacker.php:1158
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr ""
 "Panel de control => Anti Hacker => Configuración => Configuración de "
 "notificaciones (pestaña)"
 
-#: scan/scan_debug.php:61 scan/scan_result.php:54 scan/scan_log.php:53
+#: includes/functions/functions.php:664 includes/functions/functions.php:698
+#: includes/functions/functions.php:733 includes/functions/functions.php:768
+#: includes/functions/functions.php:800 includes/functions/functions.php:836
+#: includes/functions/functions.php:871 includes/functions/functions.php:898
+#: includes/functions/functions.php:934 includes/functions/functions.php:969
+#: includes/functions/functions.php:1017 includes/functions/functions.php:1054
+#: includes/functions/functions.php:1090
+msgid "Dashboard => Anti Hacker => Settings."
+msgstr "Panel de control => Anti Hacker => Configuración."
+
+#: includes/functions/functions.php:310 includes/functions/functions.php:410
+#: includes/functions/functions.php:450 includes/functions/functions.php:493
+#: includes/functions/functions.php:538 includes/functions/functions.php:655
+#: includes/functions/functions.php:689 includes/functions/functions.php:723
+#: includes/functions/functions.php:758 includes/functions/functions.php:790
+#: includes/functions/functions.php:824 includes/functions/functions.php:859
+#: includes/functions/functions.php:886 includes/functions/functions.php:922
+#: includes/functions/functions.php:959 includes/functions/functions.php:1005
+#: includes/functions/functions.php:1042 includes/functions/functions.php:1078
+#: includes/functions/functions.php:3503
+msgid "Date"
+msgstr "Fecha"
+
+#: scan/scan_debug.php:61 scan/scan_log.php:53 scan/scan_result.php:54
 msgid "DateScan : "
 msgstr "Fecha de escaneo:"
 
@@ -632,6 +763,23 @@ msgstr ""
 msgid "Description"
 msgstr "Descripción"
 
+#: includes/functions/functions.php:1002
+msgid "Detected  on "
+msgstr "Detectado en"
+
+#: includes/functions/functions.php:652 includes/functions/functions.php:686
+#: includes/functions/functions.php:720 includes/functions/functions.php:755
+#: includes/functions/functions.php:787 includes/functions/functions.php:821
+#: includes/functions/functions.php:883 includes/functions/functions.php:919
+#: includes/functions/functions.php:956 includes/functions/functions.php:1039
+#: includes/functions/functions.php:1075
+msgid "Detected on "
+msgstr "Detectado en"
+
+#: includes/functions/functions.php:856
+msgid "Detected Tor on "
+msgstr "Tor detectado en"
+
 #: dashboard/mybanners.php:247
 msgid "Did you like the AntiHacker Plugin?"
 msgstr "¿Te gustó el Plugin AntiHacker?"
@@ -650,7 +798,7 @@ msgstr ""
 msgid "Disable file editing within the WordPress dashboard"
 msgstr "Deshabilitar la edición de archivos dentro del panel de WordPress"
 
-#: includes/install/install.php:351
+#: includes/_install/install.php:351 includes/install/install.php:351
 msgid "Disable JSON WordPress REST API"
 msgstr "Deshabilitar la API REST de JSON de WordPress"
 
@@ -673,7 +821,7 @@ msgstr ""
 "Deshabilitar el mapa de sitio XML nativo de WordPress para listados de "
 "USUARIO. (Esto no se refiere al mapa de sitio XML principal del sitio)"
 
-#: includes/install/install.php:337
+#: includes/_install/install.php:337 includes/install/install.php:337
 msgid "Disable XML-RPC"
 msgstr "Deshabilitar XML-RPC"
 
@@ -686,6 +834,8 @@ msgstr ""
 "seguridad de su sitio. Consulte nuestra página de preguntas frecuentes (en "
 "nuestro sitio web) para obtener más información."
 
+#: includes/diagnose/__class_bill_diagnose.php:660
+#: includes/diagnose/_class_bill_diagnose.php:660
 #: includes/diagnose/class_bill_diagnose.php:894
 msgid ""
 "Disabling our plugin does not stop the errors from occurring; it simply "
@@ -696,7 +846,7 @@ msgstr ""
 "simplemente significa que ya no recibirá notificaciones aquí sobre su "
 "ocurrencia, pero aún pueden dañar su sitio."
 
-#: includes/install/install.php:357
+#: includes/_install/install.php:357 includes/install/install.php:357
 msgid ""
 "Disabling the WordPress REST API is a drastic security step, often not "
 "recommended, as it breaks many core functions (like the Gutenberg editor). "
@@ -708,7 +858,7 @@ msgstr ""
 "(como el editor Gutenberg). Solo deshabilítala si comprendes las "
 "implicaciones y tu sitio no depende de funciones que dependan de la API."
 
-#: includes/install/install.php:343
+#: includes/_install/install.php:343 includes/install/install.php:343
 msgid ""
 "Disabling XML-RPC in WordPress boosts security. It primarily stops brute-"
 "force login attacks and prevents DDoS attacks via pingbacks. Since the REST "
@@ -727,10 +877,13 @@ msgstr "Descubra nuevos complementos GRATUITOS"
 
 #: dashboard/notifications.php:116 dashboard/notifications.php:129
 #: dashboard/notifications.php:139 dashboard/notifications.php:156
-#: dashboard/notifications.php:168 includes/vendor/vendor.php:57
+#: dashboard/notifications.php:168 includes/functions/functions.php:3047
+#: includes/vendor/vendor.php:57
 msgid "Dismiss"
 msgstr "Despedir"
 
+#: includes/diagnose/__class_bill_diagnose.php:658
+#: includes/diagnose/_class_bill_diagnose.php:658
 #: includes/diagnose/class_bill_diagnose.php:892
 msgid ""
 "Displaying the latest recurring errors (Javascript Included) from your error "
@@ -745,6 +898,22 @@ msgstr ""
 msgid "Do you want receive email alerts? "
 msgstr "¿Quieres recibir alertas por email?"
 
+#: includes/functions/functions.php:312 includes/functions/functions.php:412
+#: includes/functions/functions.php:452 includes/functions/functions.php:495
+#: includes/functions/functions.php:541 includes/functions/functions.php:3507
+msgid "Domain"
+msgstr "Dominio"
+
+#: includes/functions/functions.php:659 includes/functions/functions.php:693
+#: includes/functions/functions.php:728 includes/functions/functions.php:763
+#: includes/functions/functions.php:795 includes/functions/functions.php:831
+#: includes/functions/functions.php:866 includes/functions/functions.php:893
+#: includes/functions/functions.php:929 includes/functions/functions.php:964
+#: includes/functions/functions.php:1012 includes/functions/functions.php:1049
+#: includes/functions/functions.php:1085
+msgid "eMail sent by Anti Hacker Plugin."
+msgstr "Correo electrónico enviado por el complemento Anti Hacker."
+
 #: guide/guide.php:39
 msgid ""
 "eMail Settings Tab: The email alert will be send to your wordpress user "
@@ -757,14 +926,14 @@ msgstr ""
 "configuración de correo electrónico en la página de administración de "
 "complementos."
 
-#: includes/install/install.php:327
+#: includes/_install/install.php:327 includes/install/install.php:327
 msgid ""
 "Email to send notifications. Leave blank to use your default WordPress email."
 msgstr ""
 "Correo electrónico para enviar notificaciones. Déjalo en blanco para usar tu "
 "correo electrónico predeterminado de WordPress."
 
-#: antihacker.php:610
+#: _antihacker.php:514 antihacker.php:610 dashboard/antihacker.php:514
 msgid "Empty email"
 msgstr "correos electrónicos vacíos"
 
@@ -789,6 +958,8 @@ msgstr ""
 msgid "Enable the Rate Limiting?"
 msgstr "¿Habilitar la limitación de velocidad?"
 
+#: includes/diagnose/__class_bill_diagnose.php:682
+#: includes/diagnose/_class_bill_diagnose.php:682
 #: includes/diagnose/class_bill_diagnose.php:916
 msgid ""
 "Enter a message and click 'Send', or just click 'Auto Checkup' to analyze "
@@ -798,11 +969,18 @@ msgstr ""
 "'Verificación automática' para analizar el registro de errores o la "
 "configuración de la información del servidor."
 
+#: includes/diagnose/__class_bill_diagnose.php:678
+#: includes/diagnose/_class_bill_diagnose.php:678
 #: includes/diagnose/class_bill_diagnose.php:912
+#: includes/feedback-last/feedback-last.php:329
 msgid "Enter your message..."
 msgstr "Ingrese su mensaje..."
 
-#: includes/chat/class_bill_chat.php:278
+#: includes/functions/function-site-integrity.php:167
+msgid "Error"
+msgstr "Error"
+
+#: includes/chat/_class_bill_chat.php:212 includes/chat/class_bill_chat.php:278
 msgid ""
 "Error contacting the Artificial Intelligence (API). Please try again later."
 msgstr ""
@@ -828,7 +1006,7 @@ msgstr ""
 "Error al abrir el archivo ZIP descargado (%s). El archivo podría estar "
 "dañado, tener un error HTML (p. ej., 404) o ser inaccesible."
 
-#: includes/chat/class_bill_chat.php:49
+#: includes/chat/_class_bill_chat.php:47 includes/chat/class_bill_chat.php:49
 msgid "Error processing server response:"
 msgstr "Error al procesar la respuesta del servidor:"
 
@@ -845,15 +1023,15 @@ msgstr ""
 "Error al leer el directorio local del complemento (%s): %s. Verifique los "
 "permisos o restricciones del servidor (p. ej., open_basedir)."
 
-#: includes/chat/class_bill_chat.php:46
+#: includes/chat/_class_bill_chat.php:44 includes/chat/class_bill_chat.php:46
 msgid "Error resetting chat messages."
 msgstr "Error al restablecer los mensajes de chat."
 
-#: includes/chat/class_bill_chat.php:52
+#: includes/chat/_class_bill_chat.php:50 includes/chat/class_bill_chat.php:52
 msgid "Error sending the message. Please try again later."
 msgstr "Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde."
 
-#: includes/chat/class_bill_chat.php:411
+#: includes/chat/_class_bill_chat.php:242 includes/chat/class_bill_chat.php:411
 msgid "Error to get response from AI source!"
 msgstr "¡Error al obtener respuesta de la fuente de IA!"
 
@@ -874,9 +1052,23 @@ msgid "Fail response from Google, please, try again later!"
 msgstr ""
 "Error en la respuesta de Google, por favor, ¡inténtalo de nuevo más tarde!"
 
-#: antihacker.php:2149
+#: includes/functions/functions.php:544
+msgid "Failed login"
+msgstr "Inicio de sesión fallido"
+
+#: includes/functions/functions.php:556
+msgid "Failed Login at:"
+msgstr "Error al iniciar sesión en:"
+
+#: _antihacker.php:1982 antihacker.php:2149 dashboard/antihacker.php:1901
 msgid "Failed to reinstall the plugin: "
 msgstr "No se pudo reinstalar el complemento:"
+
+#: dashboard/check_file_integrity.php:84
+msgid "Failed to retrieve file integrity data. Please try again later."
+msgstr ""
+"No se pudieron recuperar los datos de integridad del archivo. Inténtelo de "
+"nuevo más tarde."
 
 #: includes/functions/plugin-check-list.php:28
 msgid "Failed to retrieve plugins."
@@ -902,18 +1094,32 @@ msgstr "Quince páginas 404"
 msgid "fifty 404 pages"
 msgstr "cincuenta 404 páginas"
 
+#: dashboard/check_file_integrity.php:61
 #: dashboard/plugin_check_file_integrity.php:317
+#: includes/functions/function-site-integrity.php:157
 msgid "File"
 msgstr "Archivo"
+
+#: includes/functions/function-site-integrity.php:204
+msgid "File Diff"
+msgstr "Diferencia de archivo"
 
 #: dashboard/check_file_integrity.php:16
 msgid "File Integrity Checker"
 msgstr "Comprobador de Integridad de Archivos"
 
+#: includes/functions/function-site-integrity.php:90
+msgid "File not found"
+msgstr "Archivo no encontrado"
+
+#: includes/diagnose/__class_bill_diagnose.php:1082
+#: includes/diagnose/_class_bill_diagnose.php:1082
 #: includes/diagnose/class_bill_diagnose.php:1467
 msgid "File not readable."
 msgstr "Archivo no legible."
 
+#: includes/diagnose/__class_bill_diagnose.php:1125
+#: includes/diagnose/_class_bill_diagnose.php:1125
 #: includes/diagnose/class_bill_diagnose.php:1517
 msgid "File Size: "
 msgstr "Tamaño del archivo:"
@@ -922,7 +1128,7 @@ msgstr "Tamaño del archivo:"
 msgid "File(s) found on site root folder"
 msgstr "Archivo(s) encontrado(s) en la carpeta raíz del sitio"
 
-#: scan/functions_scan.php:25
+#: scan/_functions_scan.php:24 scan/functions_scan.php:25
 msgid ""
 "Files bigger than 2 Gb are suspicious and we suggest you inspect them by "
 "hand."
@@ -930,7 +1136,7 @@ msgstr ""
 "Los archivos de más de 2 Gb son sospechosos y le sugerimos que los "
 "inspeccione manualmente."
 
-#: scan/functions_scan.php:39
+#: scan/_functions_scan.php:38 scan/functions_scan.php:39
 msgid "Files with size zero are reported on Scan Debug Tab."
 msgstr ""
 "Los archivos con tamaño cero se informan en la pestaña Depuración de escaneo."
@@ -952,6 +1158,10 @@ msgid "For details, click the Memory Check Up Tab above."
 msgstr ""
 "Para obtener más detalles, haga clic en la pestaña Verificación de memoria "
 "arriba."
+
+#: includes/functions/functions.php:3539
+msgid "for more details."
+msgstr "Para más detalles."
 
 #: scan/functions_scan.php:1357 scan/functions_scan.php:1376
 msgid "Found Possible Malware:"
@@ -989,23 +1199,27 @@ msgstr ""
 "Vaya a la página de configuración anti-hackers (pestaña de configuración "
 "general) y marque todo con Sí y ejecute Escanear en busca de malware"
 
-#: includes/install/install.php:434
+#: includes/_install/install.php:434 includes/install/install.php:434
 msgid "Go to Dashboard"
 msgstr "Ir al panel de control"
 
-#: scan/scan_debug.php:38 scan/scan_result.php:32 scan/scan_log.php:32
+#: scan/scan_debug.php:38 scan/scan_log.php:32 scan/scan_result.php:32
 msgid "Go to NEW SCAN tab to make a new scan."
 msgstr "Vaya a la pestaña NUEVO ESCANEO para realizar un nuevo escaneo."
 
-#: includes/install/install.php:442
+#: includes/_install/install.php:442 includes/install/install.php:442
 msgid "Go to Settings Dashboard"
 msgstr "Ir al Panel de configuración"
+
+#: includes/functions/functions.php:3041
+msgid "Go to WordPress"
+msgstr "Ir a WordPress"
 
 #: dashboard/dashboard.php:285
 msgid "Google Safe Browsing"
 msgstr "Navegación segura de Google"
 
-#: includes/install/install.php:439
+#: includes/_install/install.php:439 includes/install/install.php:439
 msgid ""
 "Great! Your initial information has been saved. The basics are configured "
 "and ready to go. Please proceed to the settings dashboard to fine-tune "
@@ -1014,6 +1228,18 @@ msgstr ""
 "¡Genial! Tu información inicial se ha guardado. Los elementos básicos están "
 "configurados y listos para usar. Ve al panel de configuración para ajustar "
 "las opciones y explorar todas las funciones disponibles."
+
+#: includes/functions/functions.php:2863
+msgid ""
+"Hackers can do all sorts of nasty stuff and destroy your site and online "
+"reputation."
+msgstr ""
+"Los piratas informáticos pueden hacer todo tipo de cosas desagradables y "
+"destruir su sitio y su reputación en línea."
+
+#: includes/functions/functions.php:2867
+msgid "Hackers don’t play by the rules."
+msgstr "Los hackers no siguen las reglas."
 
 #: includes/diagnose/class_bill_diagnose.php:1357
 msgid ""
@@ -1025,11 +1251,22 @@ msgstr ""
 "Incluso los sitios pequeños son objetivos: utilizan su servidor para enviar "
 "spam y atacar a otros, dañando su IP y reputación de correo electrónico."
 
+#: includes/functions/functions.php:2871
+msgid "Hackers stresses your Web servers."
+msgstr "Los hackers estresan sus servidores web."
+
+#: includes/functions/functions.php:3030
+msgid "Help keep Anti Hacker Plugin going strong!"
+msgstr ""
+"¡Ayude a mantener el complemento Anti Hacker funcionando correctamente!"
+
 #: dashboard/dashboard.php:241
 msgid "Help, Demo, Support, Troubleshooting:"
 msgstr "Ayuda, demostración, soporte, solución de problemas:"
 
-#: includes/diagnose/class_bill_diagnose.php:85
+#: includes/diagnose/__class_bill_diagnose.php:81
+#: includes/diagnose/_class_bill_diagnose.php:81
+#: includes/diagnose/class_bill_diagnose.php:86
 msgid ""
 "Here are some details about error and memory monitoring for your plugin. "
 "Errors and low memory can prevent your site from functioning properly. On "
@@ -1069,7 +1306,7 @@ msgstr ""
 "tráfico muy pesado, seleccione 1 día. Sus opciones pueden afectar el "
 "Registro de visitas bloqueadas."
 
-#: includes/install/install.php:398
+#: includes/_install/install.php:398 includes/install/install.php:398
 msgid "How long to keep visitor logs?"
 msgstr "¿Durante cuánto tiempo se deben conservar los registros de visitantes?"
 
@@ -1083,14 +1320,6 @@ msgstr ""
 "Las herramientas HTTP son herramientas para realizar solicitudes HTTP, no "
 "utilizadas por humanos."
 
-#. URI of the plugin
-msgid "http://antihackerplugin.com"
-msgstr "http://antihackerplugin.com"
-
-#. Author URI of the plugin
-msgid "http://billminozzi.com"
-msgstr "http://billminozzi.com"
-
 #: dashboard/botsgraph_pie2.php:17
 msgid "Humans"
 msgstr "Humanos"
@@ -1099,7 +1328,16 @@ msgstr "Humanos"
 msgid "Identical files:"
 msgstr "Archivos idénticos:"
 
-#: scan/functions_scan.php:69
+#: includes/functions/functions.php:632
+msgid ""
+"if enabled on a production website, it might cause information disclosure, "
+"allowing malicious users to view errors and additional logging information"
+msgstr ""
+"Si se habilita en un sitio web de producción, podría provocar la divulgación "
+"de información, lo que permite que usuarios maliciosos vean errores e "
+"información de registro adicional."
+
+#: scan/_functions_scan.php:68 scan/functions_scan.php:69
 msgid "If Freeze"
 msgstr "Si se congela"
 
@@ -1129,7 +1367,7 @@ msgstr "Si las solicitudes exceden"
 msgid "if requests exceed"
 msgstr "Si las solicitudes exceden"
 
-#: scan/functions_scan.php:29
+#: scan/_functions_scan.php:28 scan/functions_scan.php:29
 msgid ""
 "if the plugin find possible malware, it will write at Scan Results (tab) the "
 "file name (and path) and the name of the malware."
@@ -1137,7 +1375,7 @@ msgstr ""
 "Si el complemento encuentra posible malware, escribirá en Resultados del "
 "escaneo (pestaña) el nombre del archivo (y la ruta) y el nombre del malware."
 
-#: scan/functions_scan.php:15
+#: scan/_functions_scan.php:14 scan/functions_scan.php:15
 msgid ""
 "If you click Cancel button in the middle of the scan, the plugin also reset "
 "all information."
@@ -1153,7 +1391,7 @@ msgstr ""
 "Si tiene dudas sobre la exactitud de la siguiente tabla, consulte con su "
 "proveedor de alojamiento o verifique las IP con el sitio https://ipinfo.io."
 
-#: includes/install/install.php:399
+#: includes/_install/install.php:399 includes/install/install.php:399
 msgid ""
 "If you have heavy traffic, select 1 day. Your choices may affect the blocked "
 "visits log."
@@ -1161,7 +1399,7 @@ msgstr ""
 "Si tiene mucho tráfico, seleccione 1 día. Sus opciones pueden afectar el "
 "registro de visitas bloqueadas."
 
-#: scan/functions_scan.php:33
+#: scan/_functions_scan.php:32 scan/functions_scan.php:33
 msgid ""
 "If you have other anti malware installed, maybe it will be reported for our "
 "plugin as possible malware."
@@ -1214,14 +1452,12 @@ msgstr ""
 "WordPress en sí, los complementos instalados, el tema que está utilizando y "
 "el contenido del sitio."
 
-#. Description of the plugin
+#: includes/functions/functions.php:3531
 msgid ""
-"Improve security, prevent unauthorized access by restrict access to login to "
-"whitelisted IP, Firewall, Scanner and more."
+"Improve system security and help prevent unauthorized access to your account."
 msgstr ""
-"Mejore la seguridad, evite el acceso no autorizado restringiendo el acceso "
-"para iniciar sesión en IP incluidas en la lista blanca, firewall, escáner y "
-"más."
+"Mejore la seguridad del sistema y ayude a prevenir el acceso no autorizado a "
+"su cuenta."
 
 #: dashboard/notifications.php:145
 msgid "Improve your protection level."
@@ -1238,26 +1474,43 @@ msgstr ""
 "\n"
 "WordPress (Aumentar la memoria asignada a PHP)."
 
-#: includes/install/install.php:339 includes/install/install.php:353
-#: includes/install/install.php:367
+#: includes/_install/install.php:339 includes/_install/install.php:353
+#: includes/_install/install.php:367 includes/install/install.php:339
+#: includes/install/install.php:353 includes/install/install.php:367
 msgid "Information icon"
 msgstr "Icono de información"
+
+#: dashboard/dashboard.php:159 dashboard/dashboard.php:215
+msgid "Install with one click!"
+msgstr "¡Instalación con un solo clic!"
+
+#: settings/options/plugin_options_tabbed.php:381
+msgid "Instructions"
+msgstr "Instrucciones"
 
 #: settings/options/plugin_options_tabbed.php:493
 msgid "Instructions about to block HTTP tools (Only Premium)"
 msgstr "Instrucciones sobre cómo bloquear herramientas HTTP (Solo Premium)"
 
-#: includes/chat/class_bill_chat.php:47
+#: includes/chat/_class_bill_chat.php:45 includes/chat/class_bill_chat.php:47
 msgid "Invalid message received:"
 msgstr "Mensaje no válido recibido:"
 
-#: includes/chat/class_bill_chat.php:48
+#: includes/chat/_class_bill_chat.php:46 includes/chat/class_bill_chat.php:48
 msgid "Invalid response format:"
 msgstr "Formato de respuesta no válido:"
 
+#: includes/diagnose/__class_bill_diagnose.php:1101
+#: includes/diagnose/_class_bill_diagnose.php:1101
 #: includes/diagnose/class_bill_diagnose.php:1486
 msgid "Invalid size."
 msgstr "Tamaño inválido."
+
+#: includes/functions/functions.php:311 includes/functions/functions.php:411
+#: includes/functions/functions.php:451 includes/functions/functions.php:494
+#: includes/functions/functions.php:540
+msgid "Ip"
+msgstr "IP"
 
 #: settings/options/plugin_options_tabbed.php:550
 msgid "IP whitelist"
@@ -1266,6 +1519,10 @@ msgstr "Lista blanca de IP"
 #: settings/options/plugin_options_tabbed.php:378
 msgid "IP will be blocked by one hour."
 msgstr "La IP quedará bloqueada por una hora."
+
+#: includes/functions/function-site-integrity.php:146
+msgid "It appears some files may have been modified."
+msgstr "Parece que es posible que se hayan modificado algunos archivos."
 
 #: settings/options/plugin_options_tabbed.php:61
 msgid "Just check yes or not. After that, click SAVE changes. "
@@ -1289,7 +1546,7 @@ msgstr "Simplemente haga clic en la pestaña del Panel de Control"
 msgid "Just Deactivate"
 msgstr "Solo desactivar"
 
-#: dashboard/calcula_stats_pie2.php:21
+#: dashboard/attacksgraph_pie.php:23 dashboard/calcula_stats_pie2.php:21
 msgid ""
 "Just give us a little time to collect data so we can display it for you here."
 msgstr ""
@@ -1313,6 +1570,8 @@ msgstr ""
 "y la velocidad del servidor.\n"
 "Esta ventana se cerrará automáticamente cuando se complete el trabajo."
 
+#: includes/diagnose/__class_bill_diagnose.php:925
+#: includes/diagnose/_class_bill_diagnose.php:925
 #: includes/diagnose/class_bill_diagnose.php:1174
 msgid ""
 "Keeping your plugins up to date is crucial for ensuring security, "
@@ -1326,33 +1585,48 @@ msgstr ""
 msgid "Last check for updates made (Y-M-D):"
 msgstr "Última comprobación de actualizaciones realizadas (A-M-D):"
 
-#: dashboard/mybanners.php:49 dashboard/dashboard.php:98
-#: dashboard/dashboard.php:110 dashboard/dashboard.php:291
-#: dashboard/dashboard.php:303 dashboard/dashboard.php:317
-#: dashboard/memory.php:77 includes/vendor/vendor.php:55
+#: dashboard/dashboard.php:98 dashboard/dashboard.php:110
+#: dashboard/dashboard.php:291 dashboard/dashboard.php:303
+#: dashboard/dashboard.php:317 dashboard/memory.php:77
+#: dashboard/mybanners.php:49 includes/diagnose/__class_bill_diagnose.php:751
+#: includes/diagnose/__class_bill_diagnose.php:985
+#: includes/diagnose/_class_bill_diagnose.php:751
+#: includes/diagnose/_class_bill_diagnose.php:985
 #: includes/diagnose/class_bill_diagnose.php:999
 #: includes/diagnose/class_bill_diagnose.php:1438
+#: includes/functions/functions.php:3037
+#: includes/install-checkup/_class_bill_install.php:315
+#: includes/install-checkup/_class_bill_install.php:384
+#: includes/install-checkup/class_bill_install.php:333
+#: includes/install-checkup/class_bill_install.php:402
+#: includes/vendor/vendor.php:55
 msgid "Learn More"
 msgstr "Más información"
 
+#: includes/_install/install.php:340 includes/_install/install.php:354
+#: includes/_install/install.php:368
+#: includes/diagnose/__class_bill_diagnose.php:610
+#: includes/diagnose/_class_bill_diagnose.php:610
 #: includes/diagnose/class_bill_diagnose.php:841
 #: includes/install/install.php:340 includes/install/install.php:354
 #: includes/install/install.php:368
 msgid "Learn more"
 msgstr "Más información"
 
-#: includes/install/install.php:366
+#: includes/_install/install.php:366 includes/install/install.php:366
 msgid "Learn more about blocking feeds"
 msgstr "Obtenga más información sobre el bloqueo de feeds"
 
-#: includes/install/install.php:352
+#: includes/_install/install.php:352 includes/install/install.php:352
 msgid "Learn more about disabling the REST API"
 msgstr "Obtenga más información sobre cómo deshabilitar la API REST"
 
-#: includes/install/install.php:338
+#: includes/_install/install.php:338 includes/install/install.php:338
 msgid "Learn more about disabling XML-RPC"
 msgstr "Obtenga más información sobre cómo deshabilitar XML-RPC"
 
+#: includes/diagnose/__class_bill_diagnose.php:881
+#: includes/diagnose/_class_bill_diagnose.php:881
 #: includes/diagnose/class_bill_diagnose.php:1128
 msgid ""
 "Learn more about Page Load Times and their negative impact on SEO and more"
@@ -1375,10 +1649,12 @@ msgid "Limit Visits: You can limit the number of visits by minute or Hour."
 msgstr ""
 "Limitar visitas: puedes limitar el número de visitas por minuto u hora."
 
-#: includes/install/install.php:237
+#: includes/_install/install.php:237 includes/install/install.php:237
 msgid "Loading"
 msgstr "Cargando"
 
+#: includes/diagnose/__class_bill_diagnose.php:862
+#: includes/diagnose/_class_bill_diagnose.php:862
 #: includes/diagnose/class_bill_diagnose.php:1109
 msgid "Loading time can significantly impact your SEO."
 msgstr "El tiempo de carga puede afectar significativamente tu SEO."
@@ -1392,6 +1668,21 @@ msgstr "El directorio de complementos local (%s) no existe."
 msgid "Local Version:"
 msgstr "Versión local:"
 
+#: includes/functions/functions.php:322
+msgid "Login Successful at"
+msgstr "Inicio de sesión exitoso en"
+
+#: includes/functions/functions.php:630
+msgid "Looks like Debug mode is enabled. (WP_DEBUG is true)"
+msgstr ""
+"Parece que el modo de depuración está habilitado. (WP_DEBUG es verdadero)"
+
+#: includes/functions/functions.php:2145
+msgid "Looks like you have this file in your server"
+msgstr "Parece que tienes este archivo en tu servidor"
+
+#: includes/diagnose/__class_bill_diagnose.php:722
+#: includes/diagnose/_class_bill_diagnose.php:722
 #: includes/diagnose/class_bill_diagnose.php:970
 msgid "Low WordPress Memory Limit (click to open)"
 msgstr "Límite de memoria bajo en WordPress (haga clic para abrir)"
@@ -1400,19 +1691,95 @@ msgstr "Límite de memoria bajo en WordPress (haga clic para abrir)"
 msgid "Low WordPress Memory Limit in wp-config file"
 msgstr "Límite de memoria bajo de WordPress en el archivo wp-config"
 
+#: includes/functions/functions.php:1003
+msgid ""
+"Malicious attack was detected and blocked because attempt to Login with Bot."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso debido al intento de iniciar sesión "
+"con un bot."
+
+#: includes/functions/functions.php:920
+msgid "Malicious attack was detected and blocked because attempt to Login."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso debido al intento de iniciar sesión."
+
+#: includes/functions/functions.php:957
+msgid "Malicious attack was detected and blocked because Blank User Agent."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso porque el agente de usuario estaba "
+"en blanco."
+
+#: includes/functions/functions.php:1040
+msgid ""
+"Malicious attack was detected and blocked because excedeed number page open "
+"limit"
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso porque se excedió el límite de "
+"páginas abiertas"
+
+#: includes/functions/functions.php:788
+msgid ""
+"Malicious attack was detected and blocked because is false Search Engine "
+"Google/Bing-Microsoft/Slurp."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso porque es un motor de búsqueda "
+"falso: Google/Bing-Microsoft/Slurp."
+
+#: includes/functions/functions.php:822
+msgid ""
+"Malicious attack was detected and blocked because previously it is looking "
+"for vulnerabilities in this site."
+msgstr ""
+"Se detectó y bloqueó el ataque malicioso porque anteriormente estaba "
+"buscando vulnerabilidades en este sitio."
+
+#: includes/functions/functions.php:884
+msgid "Malicious attack was detected and blocked because using HTTP Tools."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso porque se usaron herramientas HTTP."
+
+#: includes/functions/functions.php:653 includes/functions/functions.php:687
+msgid "Malicious attack was detected and blocked by firewall."
+msgstr "Se detectó y bloqueó el ataque malicioso mediante el firewall."
+
+#: includes/functions/functions.php:721
+msgid ""
+"Malicious attack was detected and blocked Looking for Plugin Vulnerabilities."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso. Buscando vulnerabilidades del "
+"complemento."
+
+#: includes/functions/functions.php:756
+msgid ""
+"Malicious attack was detected and blocked Looking for Theme Vulnerabilities."
+msgstr ""
+"Se detectó y bloqueó un ataque malicioso. Buscando vulnerabilidades del tema."
+
+#: includes/functions/functions.php:657
+msgid "Malicious String Found:"
+msgstr "Cadena maliciosa encontrada:"
+
+#: includes/functions/functions.php:691
+msgid "Malicious User Agent Found:"
+msgstr "Agente de usuario malicioso encontrado:"
+
 #: scan/scan_tab.php:45
 msgid "Malware Removal Guide"
 msgstr "Guía de eliminación de malware"
 
-#: scan/functions_scan.php:84
+#: scan/_functions_scan.php:83 scan/functions_scan.php:84
 msgid "Malware Table"
 msgstr "Tabla de malware"
 
+#: includes/diagnose/__class_bill_diagnose.php:864
+#: includes/diagnose/_class_bill_diagnose.php:864
 #: includes/diagnose/class_bill_diagnose.php:1111
 msgid "Many users will abandon the site before it fully loads."
 msgstr ""
 "Muchos usuarios abandonarán el sitio antes de que se cargue completamente."
 
+#: includes/diagnose/__class_bill_diagnose.php:88
+#: includes/diagnose/_class_bill_diagnose.php:88
 #: includes/diagnose/class_bill_diagnose.php:93
 msgid "Memory & Error Monitoring"
 msgstr "Monitoreo de memoria y errores"
@@ -1433,6 +1800,10 @@ msgstr "Uso de memoria"
 msgid "Memory Usage Now:"
 msgstr "Uso de memoria ahora:"
 
+#: includes/functions/functions.php:628 includes/functions/functions.php:2143
+msgid "Message from Anti Hacker Plugin"
+msgstr "Mensaje del complemento anti-hacker"
+
 #: includes/diagnose/class_bill_diagnose.php:1290
 msgid "minutes"
 msgstr "minutos"
@@ -1446,6 +1817,7 @@ msgid "Missing locally (exists in repository)"
 msgstr "Falta localmente (existe en el repositorio)"
 
 #: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:212
 msgid "Modified"
 msgstr "Modificado"
 
@@ -1501,10 +1873,20 @@ msgstr ""
 msgid "My Memory Test"
 msgstr "Mi prueba de memoria"
 
-#: includes/install/install.php:419
+#: includes/functions/functions.php:515
+msgid "My Wordpress user email:"
+msgstr "Mi correo electrónico de usuario de Wordpress:"
+
+#: includes/functions/functions.php:3500
+msgid "New Plugin Name: "
+msgstr "Nuevo nombre del complemento:"
+
+#: includes/_install/install.php:419 includes/install/install.php:419
 msgid "Next"
 msgstr "Próximo"
 
+#: includes/_install/install.php:346 includes/_install/install.php:360
+#: includes/_install/install.php:374 includes/_install/install.php:381
 #: includes/install/install.php:346 includes/install/install.php:360
 #: includes/install/install.php:374 includes/install/install.php:381
 #: settings/options/plugin_options_tabbed.php:77
@@ -1613,7 +1995,7 @@ msgstr "¡No se encontraron complementos!"
 msgid "No scan for malware made lasts 7 days."
 msgstr "Ningún análisis en busca de malware dura 7 días."
 
-#: scan/scan_debug.php:37 scan/scan_result.php:31 scan/scan_log.php:31
+#: scan/scan_debug.php:37 scan/scan_log.php:31 scan/scan_result.php:31
 msgid "No scan made yet."
 msgstr "Aún no se ha realizado ningún escaneo."
 
@@ -1659,6 +2041,10 @@ msgstr "DE ACUERDO"
 msgid "on file:"
 msgstr "fichado:"
 
+#: _antihacker.php:1375 antihacker.php:1542 dashboard/antihacker.php:1294
+msgid "Once Per Week"
+msgstr "Una vez por semana"
+
 #: guide/guide.php:84
 msgid "OnLine Guide"
 msgstr "Guía en línea"
@@ -1667,11 +2053,19 @@ msgstr "Guía en línea"
 msgid "OnLine Guide, Support, Faq..."
 msgstr "Guía en línea, soporte, preguntas frecuentes..."
 
+#: includes/functions/functions.php:614
+msgid "Only authenticated users can access API."
+msgstr "Sólo los usuarios autenticados pueden acceder a la API."
+
 #: dashboard/dashboard.php:104
 msgid "Only Partial Protection enabled!"
 msgstr "¡Sólo protección parcial habilitada!"
 
-#: includes/diagnose/class_bill_diagnose.php:1364
+#: includes/functions/function-site-integrity.php:209
+msgid "Original"
+msgstr "Original"
+
+#: includes/diagnose/class_bill_diagnose.php:1365
 #, php-format
 msgid ""
 "Our free <a href=\"%1$s\">antihacker</a> and <a href=\"%2$s\">AntiHacker</a> "
@@ -1680,6 +2074,8 @@ msgstr ""
 "Nuestros complementos <a href=\"%1$s\">antihacker</a> y <a href=\"%2$s\">"
 "AntiHacker</a> gratuitos ayudan a proteger su sitio."
 
+#: includes/diagnose/__class_bill_diagnose.php:928
+#: includes/diagnose/_class_bill_diagnose.php:928
 #: includes/diagnose/class_bill_diagnose.php:1177
 msgid ""
 "Our free AntiHacker plugin can even check for abandoned plugins that you are "
@@ -1693,6 +2089,8 @@ msgstr ""
 "ataques y posibles exploits, que pueden comprometer la integridad y los "
 "datos de tu sitio."
 
+#: includes/diagnose/__class_bill_diagnose.php:602
+#: includes/diagnose/_class_bill_diagnose.php:602
 #: includes/diagnose/class_bill_diagnose.php:833
 msgid "Our plugin"
 msgstr "Nuestro complemento"
@@ -1707,6 +2105,11 @@ msgstr ""
 "memoria de WordPress es demasiado bajo. Su sitio experimentará problemas "
 "graves, incluso si desactiva nuestro complemento."
 
+#: includes/functions/functions.php:3568 scan/_functions_scan.php:63
+#: scan/functions_scan.php:64
+msgid "Overview"
+msgstr "Descripción general"
+
 #: settings/options/plugin_options_tabbed.php:669
 msgid ""
 "Paste below the Item Purchase Code received by email from us when you bought "
@@ -1715,7 +2118,7 @@ msgstr ""
 "Pegue a continuación el código de compra del artículo que recibió por correo "
 "electrónico cuando compró la versión premium."
 
-#: includes/install/install.php:414
+#: includes/_install/install.php:414 includes/install/install.php:414
 msgid ""
 "Paste the Item Purchase Code received via email when you purchased the "
 "premium version. Or leave blank for the free version."
@@ -1727,15 +2130,15 @@ msgstr ""
 msgid "Pause"
 msgstr "Pausa"
 
-#: includes/chat/class_bill_chat.php:53
+#: includes/chat/_class_bill_chat.php:51 includes/chat/class_bill_chat.php:53
 msgid "Please enter a message!"
 msgstr "¡Por favor ingrese un mensaje!"
 
-#: includes/install/install.php:324
+#: includes/_install/install.php:324 includes/install/install.php:324
 msgid "Please fill in and answer all fields."
 msgstr "Por favor rellene y responda todos los campos."
 
-#: includes/install/install.php:257
+#: includes/_install/install.php:257 includes/install/install.php:257
 msgid ""
 "Please follow steps 1 through 4 to complete the plugin installation. This "
 "installer will allow you to install the software more securely, easily, and "
@@ -1753,13 +2156,30 @@ msgstr "Ayúdenos a mantener el complemento activo y actualizado."
 msgid "Please select a plugin to check."
 msgstr "Seleccione un complemento para comprobarlo."
 
-#: antihacker.php:101
+#: dashboard/mybanners.php:249
+msgid ""
+"Please support us by rating our plugin on WordPress.org. Help us keep this "
+"plugin live and updated."
+msgstr ""
+"Por favor, apóyanos calificando nuestro plugin en WordPress.org. Ayúdanos a "
+"mantenerlo activo y actualizado."
+
+#: _antihacker.php:100 antihacker.php:101 dashboard/antihacker.php:100
 msgid ""
 "Please, take a look in our site, FAQ page, item => How can i translate this "
 "plugin?"
 msgstr ""
 "Por favor, eche un vistazo a nuestro sitio, página de preguntas frecuentes, "
 "artículo => ¿Cómo puedo traducir este complemento?"
+
+#: includes/functions/functions.php:634
+msgid ""
+"Please, take a look in our site, FAQ page, item => Wordpress Debug Mode or "
+"disable this message at General Settings Tab. "
+msgstr ""
+"Por favor, eche un vistazo a nuestro sitio, página de preguntas frecuentes, "
+"elemento => Modo de depuración de Wordpress o deshabilite este mensaje en la "
+"pestaña de Configuración general."
 
 #: settings/options/plugin_options_tabbed.php:66
 msgid ""
@@ -1780,11 +2200,17 @@ msgstr "Por favor, espere...Descartando..."
 msgid "Plugin"
 msgstr "Complemento"
 
+#: includes/functions/functions.php:423
+msgid "Plugin Deactivated at"
+msgstr "Plugin desactivado en"
+
 #: dashboard/plugin_check_file_integrity.php:20
 msgid "Plugin Integrity Checker"
 msgstr "Comprobador de Integridad de Plugin"
 
-#: scan/functions_scan.php:19 scan/functions_scan.php:51
+#: includes/functions/functions.php:3537 scan/_functions_scan.php:18
+#: scan/_functions_scan.php:50 scan/functions_scan.php:19
+#: scan/functions_scan.php:51
 msgid "plugin site"
 msgstr "sitio de complementos"
 
@@ -1804,6 +2230,8 @@ msgstr "Plugins y temas desactivados"
 msgid "Plugins with Updates Available (click to open)"
 msgstr "Complementos con actualizaciones disponibles (haga clic para abrir)"
 
+#: includes/diagnose/__class_bill_diagnose.php:707
+#: includes/diagnose/_class_bill_diagnose.php:707
 #: includes/diagnose/class_bill_diagnose.php:941
 msgid "Potential Problems"
 msgstr "Problemas potenciales"
@@ -1816,6 +2244,8 @@ msgstr "Página Premium"
 msgid "Premium Protection Enabled"
 msgstr "Protección Premium habilitada"
 
+#: includes/diagnose/__class_bill_diagnose.php:874
+#: includes/diagnose/_class_bill_diagnose.php:874
 #: includes/diagnose/class_bill_diagnose.php:1121
 msgid ""
 "Protect against hackers: They use bots to search for vulnerabilities and "
@@ -1836,7 +2266,7 @@ msgstr "Estado de protección"
 msgid "Protection Status level:"
 msgstr "Nivel de estado de protección:"
 
-#: includes/install/install.php:413
+#: includes/_install/install.php:413 includes/install/install.php:413
 msgid "Purchase Code"
 msgstr "Código de compra"
 
@@ -1852,11 +2282,17 @@ msgstr "Tasa"
 msgid "Rate or Share"
 msgstr "Calificar o compartir"
 
-#: includes/install/install.php:438
+#: includes/functions/functions.php:3533
+msgid "Read the StartUp guide at Anti Hacker Settings page."
+msgstr "Lea la guía de inicio en la página de configuración anti-hackers."
+
+#: includes/_install/install.php:438 includes/install/install.php:438
 msgid "Ready for Manual Configuration"
 msgstr "Listo para la configuración manual"
 
+#: dashboard/check_file_integrity.php:61
 #: dashboard/plugin_check_file_integrity.php:317
+#: includes/functions/function-site-integrity.php:160
 msgid "Reason"
 msgstr "Razón"
 
@@ -1870,11 +2306,11 @@ msgstr ""
 msgid "reCAPTCHA extention not intalled!"
 msgstr "¡Extensión reCAPTCHA no instalada!"
 
-#: antihacker.php:2102
+#: _antihacker.php:1935 antihacker.php:2102 dashboard/antihacker.php:1854
 msgid "Reinstall Files"
 msgstr "Reinstalar archivos"
 
-#: includes/chat/class_bill_chat.php:50
+#: includes/chat/_class_bill_chat.php:48 includes/chat/class_bill_chat.php:50
 msgid "Response is not valid JSON."
 msgstr "La respuesta no es un JSON válido."
 
@@ -1882,9 +2318,22 @@ msgstr "La respuesta no es un JSON válido."
 msgid "Resume"
 msgstr "Reanudar"
 
+#: includes/functions/functions.php:656 includes/functions/functions.php:690
+#: includes/functions/functions.php:724 includes/functions/functions.php:759
+#: includes/functions/functions.php:791 includes/functions/functions.php:825
+#: includes/functions/functions.php:887 includes/functions/functions.php:923
+#: includes/functions/functions.php:960 includes/functions/functions.php:1006
+#: includes/functions/functions.php:1043 includes/functions/functions.php:1079
+msgid "Robot IP Address"
+msgstr "Dirección IP del robot"
+
 #: dashboard/dashboard.php:307
 msgid "Root Folder Extra Files"
 msgstr "Archivos adicionales de la carpeta raíz"
+
+#: dashboard/check_file_integrity.php:50
+msgid "Run Integrity Check"
+msgstr "Ejecutar comprobación de integridad"
 
 #: scan/scan_tab.php:79
 msgid ""
@@ -1915,7 +2364,7 @@ msgstr ""
 "instrucciones en la documentación oficial de WordPress (Aumentar la memoria "
 "asignada a PHP). Simplemente haga clic en el siguiente enlace:"
 
-#: scan/functions_scan.php:35
+#: scan/_functions_scan.php:34 scan/functions_scan.php:35
 msgid ""
 "Same thing if you run other malware software, maybe it can report malware in "
 "our plugin because we have malware sigature files."
@@ -1948,6 +2397,8 @@ msgstr "Analice su sitio en busca de malware"
 msgid "Search engine crawlers has unlimited access."
 msgstr "Los rastreadores de motores de búsqueda tienen acceso ilimitado."
 
+#: includes/diagnose/__class_bill_diagnose.php:866
+#: includes/diagnose/_class_bill_diagnose.php:866
 #: includes/diagnose/class_bill_diagnose.php:1113
 msgid ""
 "Search engines prioritize faster-loading pages, as they improve user "
@@ -1989,7 +2440,10 @@ msgstr ""
 "Marque Rápido o Muy rápido si tiene un servidor rápido y suficiente memoria "
 "libre; de lo contrario, su servidor puede sobrecargarse:"
 
+#: includes/diagnose/__class_bill_diagnose.php:679
+#: includes/diagnose/_class_bill_diagnose.php:679
 #: includes/diagnose/class_bill_diagnose.php:913
+#: includes/feedback-last/feedback-last.php:330
 msgid "Send"
 msgstr "Enviar"
 
@@ -2007,30 +2461,32 @@ msgstr ""
 "Mostrar el widget Anti Hacker en la página principal del panel (solo para "
 "usuarios administradores)."
 
-#: includes/install/install.php:378
+#: includes/_install/install.php:378 includes/install/install.php:378
 msgid "Show AntiHacker Widget on the main Dashboard (Admin users only)"
 msgstr ""
 "Mostrar el widget AntiHacker en el panel principal (solo usuarios "
 "administradores)"
 
+#: includes/functions/functions.php:2875
+msgid "Show support with a 5-star rating."
+msgstr "Muestre su apoyo con una calificación de 5 estrellas."
+
 #: dashboard/google_safe.php:42
 msgid "Site Blacklisted by Google"
 msgstr "Sitio incluido en la lista negra de Google"
 
+#: includes/diagnose/__class_bill_diagnose.php:976
+#: includes/diagnose/_class_bill_diagnose.php:976
 #: includes/diagnose/class_bill_diagnose.php:1429
 msgid "Site Errors"
 msgstr "Errores del sitio"
-
-#. Tab heading for Site Health navigation.
-#: includes/diagnose/class_bill_diagnose.php:858
-msgctxt "Site Health"
-msgid "Critical Issues"
-msgstr "Problemas críticos"
 
 #: dashboard/google_safe.php:48
 msgid "Site NOT Blacklisted by Google"
 msgstr "Sitio NO incluido en la lista negra de Google"
 
+#: includes/diagnose/__class_bill_diagnose.php:1087
+#: includes/diagnose/_class_bill_diagnose.php:1087
 #: includes/diagnose/class_bill_diagnose.php:1472
 msgid "Size not determined."
 msgstr "Tamaño no determinado."
@@ -2039,13 +2495,18 @@ msgstr "Tamaño no determinado."
 msgid "Slow"
 msgstr "Lento"
 
+#: dashboard/check_file_integrity.php:60
+msgid "Some core files may have been modified or are missing:"
+msgstr ""
+"Es posible que se hayan modificado algunos archivos principales o que falten:"
+
 #: dashboard/plugin_check_file_integrity.php:316
 msgid "Some plugin files may have been modified, are extra, or are missing:"
 msgstr ""
 "Es posible que algunos archivos del complemento se hayan modificado, sean "
 "adicionales o falten:"
 
-#: antihacker.php:1402
+#: _antihacker.php:1235 antihacker.php:1402 dashboard/antihacker.php:1154
 msgid "Some plugins on the site require attention."
 msgstr "Algunos complementos del sitio requieren atención."
 
@@ -2054,6 +2515,7 @@ msgid "Start Up Guide and Settings"
 msgstr "Guía de inicio y configuración"
 
 #: dashboard/must_use_plugins.php:45
+#: includes/functions/function-site-integrity.php:154
 msgid "Status"
 msgstr "Estado"
 
@@ -2075,6 +2537,8 @@ msgstr "Fortalezca la protección de su sitio de WordPress"
 msgid "String whitelist (no case sensitive)"
 msgstr "Lista blanca de cadenas (sin distinción entre mayúsculas y minúsculas)"
 
+#: includes/diagnose/__class_bill_diagnose.php:871
+#: includes/diagnose/_class_bill_diagnose.php:871
 #: includes/diagnose/class_bill_diagnose.php:1118
 msgid "Suggestions:"
 msgstr "Sugerencias:"
@@ -2091,7 +2555,7 @@ msgstr "Página de soporte"
 msgid "ten 404 pages"
 msgstr "diez páginas 404"
 
-#: includes/install/install.php:256
+#: includes/_install/install.php:256 includes/install/install.php:256
 msgid ""
 "Thank you for choosing AntiHacker plugin, your all-in-one security solution "
 "to harden and protect your WordPress site. It provides multi-layered defense "
@@ -2134,6 +2598,8 @@ msgid "The left column displays the last update date."
 msgstr ""
 "La columna de la izquierda muestra la fecha de la última actualización."
 
+#: includes/diagnose/__class_bill_diagnose.php:859
+#: includes/diagnose/_class_bill_diagnose.php:859
 #: includes/diagnose/class_bill_diagnose.php:1106
 msgid "The Load average of your front pages is: "
 msgstr "El promedio de carga de tus páginas de inicio es:"
@@ -2150,10 +2616,14 @@ msgstr ""
 "del repositorio. Esto puede generar muchas diferencias si no utiliza esa "
 "versión."
 
+#: includes/diagnose/__class_bill_diagnose.php:846
+#: includes/diagnose/_class_bill_diagnose.php:846
 #: includes/diagnose/class_bill_diagnose.php:1093
 msgid "The page load time is poor (click to open)"
 msgstr "El tiempo de carga de la página es deficiente (haga clic para abrir)"
 
+#: includes/diagnose/__class_bill_diagnose.php:848
+#: includes/diagnose/_class_bill_diagnose.php:848
 #: includes/diagnose/class_bill_diagnose.php:1095
 msgid "The page load time is very poor (click to open)"
 msgstr "El tiempo de carga de la página es muy pobre (haga clic para abrir)"
@@ -2172,7 +2642,7 @@ msgstr ""
 "no está instalada ni habilitada en su servidor. Póngase en contacto con el "
 "administrador del servidor."
 
-#: scan/functions_scan.php:27
+#: scan/_functions_scan.php:26 scan/functions_scan.php:27
 msgid ""
 "The plugin  doesn't fix or modify your files, only alert for possible "
 "malware."
@@ -2180,20 +2650,20 @@ msgstr ""
 "El complemento no repara ni modifica sus archivos, solo alerta sobre posible "
 "malware."
 
-#: antihacker.php:2174
+#: _antihacker.php:2007 antihacker.php:2174 dashboard/antihacker.php:1926
 #, php-format
 msgid "The plugin %s files have been reinstalled successfully."
 msgstr "Los archivos del plugin %s se han reinstalado con éxito."
 
-#: scan/functions_scan.php:59
+#: scan/_functions_scan.php:58 scan/functions_scan.php:59
 msgid "the plugin site"
 msgstr "El sitio del complemento"
 
-#: scan/functions_scan.php:23
+#: scan/_functions_scan.php:22 scan/functions_scan.php:23
 msgid "The plugin will check files up to 2 Gb."
 msgstr "El complemento comprobará archivos de hasta 2 Gb."
 
-#: scan/functions_scan.php:37
+#: scan/_functions_scan.php:36 scan/functions_scan.php:37
 msgid ""
 "The Scan Debug tab info is just in case you need contact our support "
 "otherwise you can ignore it."
@@ -2217,7 +2687,9 @@ msgstr ""
 msgid "Then, click save changes."
 msgstr "Luego, haga clic en guardar cambios."
 
-#: includes/diagnose/class_bill_diagnose.php:1889
+#: includes/diagnose/__class_bill_diagnose.php:1489
+#: includes/diagnose/_class_bill_diagnose.php:1489
+#: includes/diagnose/class_bill_diagnose.php:1890
 msgid ""
 "These are critical issues that can have a significant impact on your site's "
 "performance. They can cause many plugins and functionalities to malfunction "
@@ -2230,13 +2702,23 @@ msgstr ""
 "sitio completamente inoperativo, según su gravedad. Trate de solucionarlos "
 "de inmediato."
 
-#: antihacker.php:1399
+#: _antihacker.php:1232 antihacker.php:1399 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:307 includes/functions/functions.php:415
+#: includes/functions/functions.php:454 includes/functions/functions.php:497
+#: includes/functions/functions.php:534 includes/functions/functions.php:3512
 msgid "This email was sent from your website"
 msgstr "Este correo electrónico fue enviado desde su sitio web"
 
+#: includes/diagnose/__class_bill_diagnose.php:1070
+#: includes/diagnose/_class_bill_diagnose.php:1070
 #: includes/diagnose/class_bill_diagnose.php:1455
 msgid "This is a partial list of the errors found."
 msgstr "Esta es una lista parcial de los errores encontrados."
+
+#: includes/functions/function-site-integrity.php:109
+#: includes/functions/function-site-integrity.php:120
+msgid "This is an unknown file"
+msgstr "Este es un archivo desconocido"
 
 #: dashboard/plugin_check_file_integrity.php:192
 #, php-format
@@ -2249,7 +2731,7 @@ msgstr ""
 "servidor (%s), a la configuración del firewall o a que el enlace de descarga "
 "sea incorrecto o no esté disponible para esta versión."
 
-#: scan/functions_scan.php:11
+#: scan/_functions_scan.php:10 scan/functions_scan.php:11
 msgid "This option will run a manual scan on your site to look for malwares."
 msgstr ""
 "Esta opción ejecutará un análisis manual en su sitio para buscar malware."
@@ -2332,6 +2814,10 @@ msgstr ""
 msgid "To scan, go to"
 msgstr "Para escanear, vaya a"
 
+#: includes/functions/functions.php:860
+msgid "Tor IP Address"
+msgstr "Dirección IP de Tor"
+
 #: dashboard/memory.php:46
 msgid "Total (Server) PHP Memory Limit:"
 msgstr "Límite de memoria PHP total (servidor):"
@@ -2340,11 +2826,17 @@ msgstr "Límite de memoria PHP total (servidor):"
 msgid "Total Attacks Blocked Last 15 days"
 msgstr "Total de ataques bloqueados en los últimos 15 días"
 
+#: includes/diagnose/__class_bill_diagnose.php:740
+#: includes/diagnose/_class_bill_diagnose.php:740
 #: includes/diagnose/class_bill_diagnose.php:987
 msgid "Total Php Server Memory"
 msgstr "Memoria total del servidor PHP"
 
-#: scan/functions_scan.php:74
+#: includes/functions/functions.php:857
+msgid "Traffic from Tor detected and blocked."
+msgstr "Tráfico de Tor detectado y bloqueado."
+
+#: scan/_functions_scan.php:73 scan/functions_scan.php:74
 msgid "Troubleshooting"
 msgstr "Solución de problemas"
 
@@ -2386,6 +2878,14 @@ msgstr ""
 "a activar? Quizás deba eliminar las herramientas que no desea volver a "
 "bloquear."
 
+#: includes/functions/functions.php:726 includes/functions/functions.php:761
+#: includes/functions/functions.php:827 includes/functions/functions.php:862
+#: includes/functions/functions.php:889 includes/functions/functions.php:925
+#: includes/functions/functions.php:962 includes/functions/functions.php:1008
+#: includes/functions/functions.php:1045 includes/functions/functions.php:1081
+msgid "URL requested:"
+msgstr "URL solicitada:"
+
 #: dashboard/dashboard.php:273
 msgid ""
 "Use old WP version, Low memory, some plugin with Javascript error are some "
@@ -2393,6 +2893,22 @@ msgid ""
 msgstr ""
 "Usar una versión antigua de WP, poca memoria, algún complemento con error de "
 "Javascript son algunos de los posibles problemas."
+
+#: includes/functions/functions.php:313 includes/functions/functions.php:413
+#: includes/functions/functions.php:542
+msgid "User"
+msgstr "Usuario"
+
+#: includes/functions/functions.php:793 includes/functions/functions.php:829
+#: includes/functions/functions.php:864 includes/functions/functions.php:891
+#: includes/functions/functions.php:927 includes/functions/functions.php:1010
+#: includes/functions/functions.php:1047 includes/functions/functions.php:1083
+msgid "User Agent:"
+msgstr "Agente de usuario:"
+
+#: includes/functions/functions.php:465
+msgid "User Enumeration attempt was blocked"
+msgstr "El intento de enumeración de usuarios fue bloqueado"
 
 #: dashboard/plugin_check_file_integrity.php:333
 msgid "Verification Summary:"
@@ -2414,15 +2930,19 @@ msgstr "Muy lento"
 msgid "Visit our Premium Page for more details."
 msgstr "Visita nuestra página Premium para más detalles."
 
-#: scan/functions_scan.php:17
+#: includes/functions/functions.php:3535
+msgid "Visit the"
+msgstr "Visita el"
+
+#: scan/_functions_scan.php:16 scan/functions_scan.php:17
 msgid "Visit the Anti Hacker "
 msgstr "Visita el Anti Hacker"
 
-#: scan/functions_scan.php:57
+#: scan/_functions_scan.php:56 scan/functions_scan.php:57
 msgid "Visit the Anti Hacker Malware Table  Page at "
 msgstr "Visite la página de la tabla de malware anti-hackers en"
 
-#: antihacker.php:1404
+#: _antihacker.php:1237 antihacker.php:1404 dashboard/antihacker.php:1156
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
@@ -2430,7 +2950,7 @@ msgstr ""
 "Visita el panel del complemento Anti Hacker para obtener sugerencias "
 "adicionales sobre cómo mejorar la seguridad del sitio."
 
-#: scan/functions_scan.php:49
+#: scan/_functions_scan.php:48 scan/functions_scan.php:49
 msgid "Visit the Anti Hacker Scan Troubleshooting Page "
 msgstr "Visita la página de solución de problemas de escaneo anti-hackers"
 
@@ -2438,7 +2958,7 @@ msgstr "Visita la página de solución de problemas de escaneo anti-hackers"
 msgid "Visit the plugin site for a"
 msgstr "Visita el sitio del complemento para obtener más información."
 
-#: scan/functions_scan.php:31
+#: scan/_functions_scan.php:30 scan/functions_scan.php:31
 msgid "Visit the plugin site for tips how to remove the malware."
 msgstr ""
 "Visita el sitio del complemento para obtener sugerencias sobre cómo eliminar "
@@ -2458,7 +2978,7 @@ msgstr ""
 "Podemos limitar el número de visitas, simplemente elija las opciones a "
 "continuación."
 
-#: antihacker.php:1401
+#: _antihacker.php:1234 antihacker.php:1401 dashboard/antihacker.php:1153
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
@@ -2472,14 +2992,20 @@ msgstr ""
 msgid "We suggest click Yes for all. "
 msgstr "Le sugerimos hacer clic en Sí para todo."
 
+#: includes/functions/functions.php:2147
+msgid "We suggest you to remove it ASAP."
+msgstr "Le sugerimos que lo elimine lo antes posible."
+
 #: includes/diagnose/class_bill_diagnose.php:1296
 msgid "week(s)"
 msgstr "semana(s)"
 
-#: includes/install/install.php:255
+#: includes/_install/install.php:255 includes/install/install.php:255
 msgid "Welcome"
 msgstr "Bienvenido"
 
+#: includes/diagnose/__class_bill_diagnose.php:89
+#: includes/diagnose/_class_bill_diagnose.php:89
 #: includes/diagnose/class_bill_diagnose.php:94
 msgid "Welcome to plugin Insights!"
 msgstr "¡Bienvenido al complemento Insights!"
@@ -2495,7 +3021,7 @@ msgstr ""
 "¿Qué sucede si alguien que no está en la lista blanca intenta iniciar sesión "
 "(o cambio mi IP)?"
 
-#: includes/install/install.php:279
+#: includes/_install/install.php:279 includes/install/install.php:279
 msgid ""
 "What is your level of experience with WordPress? This will help us tailor "
 "the setup process for you. You can always change this in the future."
@@ -2503,7 +3029,7 @@ msgstr ""
 "¿Cuál es tu nivel de experiencia con WordPress? Esto nos ayudará a "
 "personalizar el proceso de configuración. Puedes cambiarlo en el futuro."
 
-#: scan/functions_scan.php:13
+#: scan/_functions_scan.php:12 scan/functions_scan.php:13
 msgid "When you click Run Scan Now, the plugin reset and erase the last Scan."
 msgstr ""
 "Al hacer clic en Ejecutar escaneo ahora, el complemento restablece y borra "
@@ -2523,11 +3049,11 @@ msgstr ""
 msgid "WordPress Help Page"
 msgstr "Página de ayuda de WordPress"
 
-#: antihacker.php:641
+#: _antihacker.php:545 antihacker.php:641 dashboard/antihacker.php:545
 msgid "Wrong Username or Password"
 msgstr "Nombre de usuario o contraseña incorrecto(s)"
 
-#: antihacker.php:570
+#: _antihacker.php:474 antihacker.php:570 dashboard/antihacker.php:474
 msgid "Wrong Username, Password or eMail"
 msgstr "Nombre de usuario, contraseña o correo electrónico incorrectos"
 
@@ -2543,6 +3069,8 @@ msgstr ""
 "XML_RPC está habilitado. Puede convertirse en una vulnerabilidad y un "
 "objetivo para ataques de fuerza bruta."
 
+#: includes/_install/install.php:345 includes/_install/install.php:359
+#: includes/_install/install.php:373 includes/_install/install.php:380
 #: includes/install/install.php:345 includes/install/install.php:359
 #: includes/install/install.php:373 includes/install/install.php:380
 #: settings/options/plugin_options_tabbed.php:114
@@ -2606,7 +3134,26 @@ msgstr ""
 "También puedes incluir direcciones IP en la lista blanca, mira la pestaña "
 "Lista blanca."
 
-#: antihacker.php:1405
+#: includes/functions/functions.php:457 includes/functions/functions.php:500
+msgid ""
+"You can disable it in Dashboard => Anti Hacker => Settings => Notifications"
+msgstr ""
+"Puedes desactivarlo en Panel de Control => Anti Hacker => Configuración => "
+"Notificaciones"
+
+#: includes/functions/functions.php:547 includes/functions/functions.php:661
+#: includes/functions/functions.php:695 includes/functions/functions.php:730
+#: includes/functions/functions.php:765 includes/functions/functions.php:797
+#: includes/functions/functions.php:833 includes/functions/functions.php:868
+#: includes/functions/functions.php:895 includes/functions/functions.php:931
+#: includes/functions/functions.php:966 includes/functions/functions.php:1014
+#: includes/functions/functions.php:1051 includes/functions/functions.php:1087
+msgid "You can stop emails at the Notifications Settings Tab."
+msgstr ""
+"Puede detener los correos electrónicos en la pestaña Configuración de "
+"notificaciones."
+
+#: _antihacker.php:1238 antihacker.php:1405 dashboard/antihacker.php:1157
 msgid "You can stop emails at the Notifications Tab."
 msgstr "Puede detener los correos electrónicos en la pestaña Notificaciones."
 
@@ -2620,6 +3167,10 @@ msgstr ""
 "en esa pestaña y otras opciones útiles para aumentar la seguridad del sitio. "
 "Te sugerimos marcar Sí para todo."
 
+#: includes/functions/function-site-integrity.php:197
+msgid "You do not have access to this file."
+msgstr "No tienes acceso a este archivo."
+
 #: settings/options/plugin_options_tabbed.php:671
 msgid "You don't need reinstall the plugin."
 msgstr "No es necesario reinstalar el complemento."
@@ -2632,8 +3183,7 @@ msgstr ""
 "Encontrará nuestra guía OnLine completa y actualizada, página de preguntas "
 "frecuentes, enlace a soporte y mucho más en nuestro sitio."
 
-#. %s: Current user IP address.
-#: includes/install/install.php:391
+#: includes/_install/install.php:391 includes/install/install.php:391
 #, php-format
 msgid ""
 "Your current IP address is %s. It has been automatically added to the "
@@ -2650,7 +3200,7 @@ msgstr "Tu ip actual es:"
 msgid "Your current theme was not updated last 2 years."
 msgstr "Su tema actual no se actualizó en los últimos 2 años."
 
-#: includes/install/install.php:278
+#: includes/_install/install.php:278 includes/install/install.php:278
 msgid "Your Experience Level"
 msgstr "Tu nivel de experiencia"
 
@@ -2668,6 +3218,8 @@ msgstr ""
 "de seguridad, no se mostrará tu correo electrónico de usuario de WordPress "
 "en tu página."
 
+#: includes/diagnose/__class_bill_diagnose.php:981
+#: includes/diagnose/_class_bill_diagnose.php:981
 #: includes/diagnose/class_bill_diagnose.php:1434
 msgid ""
 "Your site has experienced errors for the past 2 days. These errors, "
@@ -2682,6 +3234,8 @@ msgstr ""
 "sitio. Los errores de JavaScript pueden interrumpir la ejecución de "
 "JavaScript y dejar inoperativos todos los comandos posteriores."
 
+#: includes/diagnose/__class_bill_diagnose.php:736
+#: includes/diagnose/_class_bill_diagnose.php:736
 #: includes/diagnose/class_bill_diagnose.php:983
 msgid "Your usage now"
 msgstr "Su uso ahora"
@@ -2690,7 +3244,11 @@ msgstr "Su uso ahora"
 msgid "Your usage now:"
 msgstr "Su uso ahora:"
 
+#: includes/diagnose/__class_bill_diagnose.php:747
+#: includes/diagnose/_class_bill_diagnose.php:747
 #: includes/diagnose/class_bill_diagnose.php:995
+#: includes/install-checkup/_class_bill_install.php:306
+#: includes/install-checkup/class_bill_install.php:324
 msgid ""
 "Your WordPress Memory Limit is too low, which can lead to critical issues on "
 "your site due to insufficient resources. Promptly address this issue before "

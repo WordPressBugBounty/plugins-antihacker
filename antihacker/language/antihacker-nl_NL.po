@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Anti Hacker Plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-13 09:02+0100\n"
-"PO-Revision-Date: 2025-08-23 08:21+0000\n"
+"PO-Revision-Date: 2025-08-23 09:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -17,13 +17,17 @@ msgstr ""
 "X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: scan/functions_scan.php:21
+#: scan/_functions_scan.php:20 scan/functions_scan.php:21
 msgid " to learn more about malwares and look the malwares table."
 msgstr "voor meer informatie over malware en om de malwaretabel te bekijken."
 
 #: dashboard/memory.php:88
 msgid "(just copy and paste)"
 msgstr "(gewoon kopiëren en plakken)"
+
+#: includes/functions/function-site-integrity.php:87
+msgid "(View Diff)"
+msgstr "(Bekijk verschil)"
 
 #: dashboard/plugin_check_file_integrity.php:34
 msgid "-- Select --"
@@ -33,7 +37,7 @@ msgstr "-- Selecteer --"
 msgid "/* That's all, stop editing! Happy blogging. */"
 msgstr "/* Dat is alles, stop met bewerken! Veel plezier met bloggen. */"
 
-#: includes/install/install.php:401
+#: includes/_install/install.php:401 includes/install/install.php:401
 msgid "1 day"
 msgstr "1 dag"
 
@@ -49,7 +53,7 @@ msgstr "10 per minuut"
 msgid "100 per hour"
 msgstr "100 per uur"
 
-#: includes/install/install.php:404
+#: includes/_install/install.php:404 includes/install/install.php:404
 msgid "14 days"
 msgstr "14 dagen"
 
@@ -57,7 +61,7 @@ msgstr "14 dagen"
 msgid "15 per minute"
 msgstr "15 per minuut"
 
-#: includes/install/install.php:408
+#: includes/_install/install.php:408 includes/install/install.php:408
 msgid "180 days"
 msgstr "180 dagen"
 
@@ -69,15 +73,15 @@ msgstr "20 per uur"
 msgid "200 per hour"
 msgstr "200 per uur"
 
-#: includes/install/install.php:405
+#: includes/_install/install.php:405 includes/install/install.php:405
 msgid "21 days"
 msgstr "21 dagen"
 
-#: includes/install/install.php:402
+#: includes/_install/install.php:402 includes/install/install.php:402
 msgid "3 days"
 msgstr "3 dagen"
 
-#: includes/install/install.php:406
+#: includes/_install/install.php:406 includes/install/install.php:406
 msgid "30 days"
 msgstr "30 dagen"
 
@@ -85,7 +89,7 @@ msgstr "30 dagen"
 msgid "30 per minute"
 msgstr "30 per minuut"
 
-#: includes/install/install.php:409
+#: includes/_install/install.php:409 includes/install/install.php:409
 msgid "360 days"
 msgstr "360 dagen"
 
@@ -117,7 +121,7 @@ msgstr "500 per uur"
 msgid "6 per minute"
 msgstr "6 per minuut"
 
-#: includes/install/install.php:403
+#: includes/_install/install.php:403 includes/install/install.php:403
 msgid "7 days"
 msgstr "7 dagen"
 
@@ -133,7 +137,7 @@ msgstr "8 per minuut"
 msgid "9 per minute"
 msgstr "9 per minuut"
 
-#: includes/install/install.php:407
+#: includes/_install/install.php:407 includes/install/install.php:407
 msgid "90 days"
 msgstr "90 dagen"
 
@@ -152,7 +156,7 @@ msgid "Add IPs or strings to your whitelist, then click SAVE CHANGES."
 msgstr ""
 "Voeg IP's of strings toe aan uw whitelist en klik op WIJZIGINGEN OPSLAAN."
 
-#: includes/install/install.php:385
+#: includes/_install/install.php:385 includes/install/install.php:385
 msgid ""
 "Add IPs that can access the admin area without email authentication (one per "
 "line)."
@@ -160,8 +164,16 @@ msgstr ""
 "Voeg IP-adressen toe die zonder e-mailverificatie toegang hebben tot het "
 "beheerdersgedeelte (één per regel)."
 
-#: dashboard/plugin_check_file_integrity.php:323
+#: includes/functions/functions.php:315
+msgid ""
+"Add this IP to your whitelist to stop this email and change your "
+"Notification Settings."
+msgstr ""
+"Voeg dit IP-adres toe aan uw witte lijst om deze e-mail te stoppen en uw "
+"meldingsinstellingen te wijzigen."
+
 #: dashboard/check_file_integrity.php:71
+#: dashboard/plugin_check_file_integrity.php:323
 msgid "Additional issues not shown (limit reached)."
 msgstr "Er worden geen extra problemen weergegeven (limiet bereikt)."
 
@@ -187,7 +199,7 @@ msgstr ""
 msgid "After that, click SAVE CHANGES Button."
 msgstr "Klik daarna op de knop WIJZIGINGEN OPSLAAN."
 
-#: includes/chat/class_bill_chat.php:51
+#: includes/chat/_class_bill_chat.php:49 includes/chat/class_bill_chat.php:51
 msgid "AJAX request failed:"
 msgstr "AJAX-aanvraag mislukt:"
 
@@ -207,9 +219,39 @@ msgstr "Waarschuw mij Altijd Firewall Blokkeer Iets."
 msgid "Alert me All Times Plugin Blocks Something Else?"
 msgstr "Waarschuw mij Altijd Plugin Blokkeert Iets Anders?"
 
-#: includes/install/install.php:430
+#: includes/functions/functions.php:490
+msgid "Alert: Attack was blocked:"
+msgstr "Waarschuwing: Aanval geblokkeerd:"
+
+#: includes/functions/functions.php:3523
+msgid "Alert: New Plugin was installed at: "
+msgstr "Waarschuwing: Nieuwe plug-in is geïnstalleerd op:"
+
+#: includes/functions/functions.php:3498
+msgid "Alert: New Plugin was installed."
+msgstr "Waarschuwing: Nieuwe plug-in is geïnstalleerd."
+
+#: includes/functions/functions.php:408
+msgid "Alert: the Anti Hacker plugin was been deactivated from plugins page."
+msgstr "Let op: de Anti Hacker plugin is gedeactiveerd op de plugins pagina."
+
+#: includes/functions/functions.php:448
+msgid "Alert: User Enumeration attempt was blocked."
+msgstr "Waarschuwing: poging tot gebruikersopsomming is geblokkeerd."
+
+#: dashboard/check_file_integrity.php:58
+msgid "All core files passed the integrity check. Everything seems to be OK!"
+msgstr ""
+"Alle kernbestanden zijn geslaagd voor de integriteitscontrole. Alles lijkt "
+"in orde!"
+
+#: includes/_install/install.php:430 includes/install/install.php:430
 msgid "All Done!"
 msgstr "Alles klaar!"
+
+#: includes/functions/function-site-integrity.php:140
+msgid "All files passed the check. Everything seems to be OK!"
+msgstr "Alle bestanden zijn gecontroleerd. Alles lijkt in orde!"
 
 #: settings/options/plugin_options_tabbed.php:354
 msgid ""
@@ -237,18 +279,18 @@ msgstr "Anti-Hacker => Instellingen => Algemene instellingen"
 msgid "Anti Hacker Plugin Activated"
 msgstr "Anti-hacker-plug-in geactiveerd"
 
-#: antihacker.php:99
+#: _antihacker.php:98 antihacker.php:99 dashboard/antihacker.php:98
 msgid ""
 "Anti Hacker Plugin: Could not load the localization file (Language file)"
 msgstr ""
 "Anti Hacker Plugin: Het lokalisatiebestand kon niet worden geladen "
 "(taalbestand)"
 
-#. Name of the plugin
-msgid "AntiHacker"
-msgstr "Anti-hacker"
+#: includes/functions/functions.php:2885
+msgid "Anti Hackers Plugin. Its time to Get Pro Protection!"
+msgstr "Anti-hackersplugin. Tijd voor professionele bescherming!"
 
-#: includes/install/install.php:431
+#: includes/_install/install.php:431 includes/install/install.php:431
 #| msgid ""
 #| "AntiHacker plugin has been successfully configured with our recommended "
 #| "settings! You're all set. You can visit your dashboard or fine-tune the "
@@ -266,26 +308,46 @@ msgstr ""
 msgid "API Slug:"
 msgstr "API-slug:"
 
+#: includes/diagnose/__class_bill_diagnose.php:669
+#: includes/diagnose/_class_bill_diagnose.php:669
 #: includes/diagnose/class_bill_diagnose.php:903
+#: includes/feedback-last/feedback-last.php:319
 msgid "Artificial Intelligence Support Chat for Issues and Solutions"
 msgstr ""
 "Ondersteuningschat voor kunstmatige intelligentie voor problemen en "
 "oplossingen"
 
+#: includes/functions/functions.php:508
+msgid "Attack was blocked"
+msgstr "Aanval werd geblokkeerd"
+
+#: includes/functions/functions.php:1076
+msgid ""
+"Attack was detected and blocked because accessing xmlrpc.php file and it was "
+"blocked on settings page."
+msgstr ""
+"Aanval werd gedetecteerd en geblokkeerd omdat de toegang tot het xmlrpc.php-"
+"bestand werd geblokkeerd op de instellingenpagina."
+
+#: includes/diagnose/__class_bill_diagnose.php:688
+#: includes/diagnose/_class_bill_diagnose.php:688
 #: includes/diagnose/class_bill_diagnose.php:922
 msgid "Auto Checkup for Errors"
 msgstr "Automatische controle op fouten"
 
+#: includes/diagnose/__class_bill_diagnose.php:693
+#: includes/diagnose/_class_bill_diagnose.php:693
 #: includes/diagnose/class_bill_diagnose.php:927
 msgid "Auto Checkup Server "
 msgstr "Automatische controleserver"
 
-#: includes/install/install.php:418 includes/install/install.php:433
-#: includes/install/install.php:441
+#: includes/_install/install.php:418 includes/_install/install.php:433
+#: includes/_install/install.php:441 includes/install/install.php:418
+#: includes/install/install.php:433 includes/install/install.php:441
 msgid "Back"
 msgstr "Rug"
 
-#: includes/install/install.php:323
+#: includes/_install/install.php:323 includes/install/install.php:323
 msgid "Basic Information"
 msgstr "Basisgegevens"
 
@@ -310,15 +372,22 @@ msgstr ""
 "aan te passen \n"
 "om te voldoen aan de normen voor een moderne WordPress-installatie."
 
+#: includes/functions/functions.php:2883
+msgid "Become Pro: Increase your protection."
+msgstr "Word Pro: verbeter uw bescherming."
+
 #: dashboard/memory.php:96
 msgid "before this row:"
 msgstr "voor deze rij:"
 
-#. Author of the plugin
-msgid "Bill Minozzi"
-msgstr "Bill Minozzi"
+#: includes/functions/functions.php:2879
+msgid ""
+"BLACK FRIDAY 30% OFF! Use the coupon code: special-black_2019. Limited time!"
+msgstr ""
+"BLACK FRIDAY 30% KORTING! Gebruik de kortingscode: special-black_2019. "
+"Beperkte tijd!"
 
-#: includes/install/install.php:365
+#: includes/_install/install.php:365 includes/install/install.php:365
 #| msgid "Block All Feeds to avoid bots exploit."
 msgid "Block all Feeds to avoid bot exploitation"
 msgstr "Blokkeer alle feeds om bot-exploitatie te voorkomen"
@@ -341,6 +410,8 @@ msgstr ""
 msgid "Block all with Blank User Agent? -  (Premium Version Only)"
 msgstr "Alles blokkeren met lege gebruikersagent? - (Alleen Premium-versie)"
 
+#: includes/diagnose/__class_bill_diagnose.php:873
+#: includes/diagnose/_class_bill_diagnose.php:873
 #: includes/diagnose/class_bill_diagnose.php:1120
 msgid ""
 "Block bots: They overload the server and steal your content. Install our "
@@ -396,11 +467,11 @@ msgstr "Gebruikersopsomming blokkeren om de beveiliging te verbeteren?"
 msgid "Blocked Attacks by Type"
 msgstr "Geblokkeerde aanvallen per type"
 
-#: table/visitors_render.php:33
+#: includes/functions/functions.php:3573 table/visitors_render.php:33
 msgid "Blocked Visits Log"
 msgstr "Logboek geblokkeerde bezoeken"
 
-#: includes/install/install.php:371
+#: includes/_install/install.php:371 includes/install/install.php:371
 msgid ""
 "Blocking RSS/Atom feeds can prevent bots from scraping content and "
 "discovering usernames, slightly improving security if you don't use feeds "
@@ -430,7 +501,6 @@ msgstr "Bots en hackersaanvallen (klik om te openen)"
 msgid "Bots and Hackers can make a lot of visits in a short time period."
 msgstr "Bots en hackers kunnen in korte tijd veel bezoeken afleggen."
 
-#. echo '</strong>';
 #: includes/diagnose/class_bill_diagnose.php:1355
 msgid ""
 "Bots aren’t human—they’re automated scripts that visit your site. They steal "
@@ -441,11 +511,17 @@ msgstr ""
 "bezoeken. Ze stelen uw content, waardoor deze minder uniek wordt. Ze "
 "overbelasten uw server, vertragen deze en schaden uw SEO."
 
-#: antihacker.php:1399
+#: includes/functions/functions.php:416 includes/functions/functions.php:455
+#: includes/functions/functions.php:498 includes/functions/functions.php:3515
+msgid "by Anti Hacker plugin."
+msgstr "door de Anti Hacker-plugin."
+
+#: _antihacker.php:1232 antihacker.php:1399 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:308 includes/functions/functions.php:536
 msgid "by the AntiHacker plugin."
 msgstr "door de AntiHacker-plugin."
 
-#: includes/install/install.php:262
+#: includes/_install/install.php:262 includes/install/install.php:262
 #, php-format
 msgid ""
 "By using our plugins and themes, you agree to the <a href=\"%s\" "
@@ -463,6 +539,8 @@ msgstr "Annuleren"
 msgid "Cancel Scan"
 msgstr "Scannen annuleren"
 
+#: includes/diagnose/__class_bill_diagnose.php:604
+#: includes/diagnose/_class_bill_diagnose.php:604
 #: includes/diagnose/class_bill_diagnose.php:835
 msgid ""
 "cannot function properly because your WordPress Memory Limit is too low. "
@@ -471,11 +549,11 @@ msgstr ""
 "kan niet goed functioneren omdat uw WordPress-geheugenlimiet te laag is. Uw "
 "site zal ernstige problemen ondervinden, zelfs als u onze plugin deactiveert."
 
-#: scan/functions_scan.php:79
+#: scan/_functions_scan.php:78 scan/functions_scan.php:79
 msgid "Changing Speed"
 msgstr "Veranderende snelheid"
 
-#: includes/chat/class_bill_chat.php:45
+#: includes/chat/_class_bill_chat.php:43 includes/chat/class_bill_chat.php:45
 msgid "Chat messages reset successfully."
 msgstr "Chatberichten succesvol gereset."
 
@@ -503,6 +581,8 @@ msgstr ""
 "Controleer de status van Google Safe Browsing, gedeactiveerde plug-ins en "
 "thema's en onverwachte bestanden in uw hoofdmap en meer..."
 
+#: includes/diagnose/__class_bill_diagnose.php:876
+#: includes/diagnose/_class_bill_diagnose.php:876
 #: includes/diagnose/class_bill_diagnose.php:1123
 msgid ""
 "Check your site for errors with free plugin wpTools. Errors and warnings can "
@@ -528,6 +608,15 @@ msgstr ""
 msgid "Click Help Button to top right corner if necessary."
 msgstr "Klik indien nodig op de Help-knop in de rechterbovenhoek."
 
+#: dashboard/check_file_integrity.php:46
+msgid ""
+"Click the button below to verify the integrity of your WordPress core files."
+msgstr ""
+"Klik op de onderstaande knop om de integriteit van uw WordPress-"
+"kernbestanden te verifiëren."
+
+#: includes/diagnose/__class_bill_diagnose.php:662
+#: includes/diagnose/_class_bill_diagnose.php:662
 #: includes/diagnose/class_bill_diagnose.php:896
 msgid ""
 "Click the help button in the top right or go directly to the AI chat box "
@@ -535,6 +624,10 @@ msgid ""
 msgstr ""
 "Klik op de helpknop rechtsboven of ga direct naar het AI-chatvak hieronder "
 "voor meer specifieke informatie over de genoemde problemen."
+
+#: includes/functions/function-site-integrity.php:217
+msgid "Close"
+msgstr "Dichtbij"
 
 #: scan/functions_scan.php:1378
 msgid "Code:"
@@ -547,6 +640,10 @@ msgstr "Vergelijking met de repositoryversie:"
 #: scan/functions_scan.php:1377
 msgid "Condiction:"
 msgstr "Conditie:"
+
+#: includes/functions/function-site-integrity.php:85
+msgid "Content changed"
+msgstr "Inhoud gewijzigd"
 
 #: settings/options/plugin_options_tabbed.php:189
 msgid ""
@@ -565,6 +662,11 @@ msgstr "Kritisch"
 msgid "Critical Error:"
 msgstr "Kritieke fout:"
 
+#: includes/diagnose/__class_bill_diagnose.php:628
+#: includes/diagnose/__class_bill_diagnose.php:1494
+#: includes/diagnose/_class_bill_diagnose.php:628
+#: includes/diagnose/_class_bill_diagnose.php:1494
+#: includes/diagnose/class_bill_diagnose.php:859
 #: includes/diagnose/class_bill_diagnose.php:1895
 msgid "Critical Issues"
 msgstr "Kritieke Problemen"
@@ -573,16 +675,43 @@ msgstr "Kritieke Problemen"
 msgid "Current WordPress Memory Limit:"
 msgstr "Huidige geheugenlimiet voor WordPress:"
 
+#: includes/functions/functions.php:549
+msgid "Dashboard => Anti Hacker => Notifications Settings."
+msgstr "Dashboard => Anti-hacker => Meldingsinstellingen."
+
 #: dashboard/dashboard.php:254
 msgid "Dashboard => Anti Hacker => Settings"
 msgstr "Dashboard => Anti-Hacker => Instellingen"
 
-#: antihacker.php:1406
+#: _antihacker.php:1239 antihacker.php:1406 dashboard/antihacker.php:1158
 msgid "Dashboard => Anti Hacker => Settings => Notifications Settings (tab)"
 msgstr ""
 "Dashboard => Anti-hacker => Instellingen => Meldingsinstellingen (tabblad)"
 
-#: scan/scan_debug.php:61 scan/scan_result.php:54 scan/scan_log.php:53
+#: includes/functions/functions.php:664 includes/functions/functions.php:698
+#: includes/functions/functions.php:733 includes/functions/functions.php:768
+#: includes/functions/functions.php:800 includes/functions/functions.php:836
+#: includes/functions/functions.php:871 includes/functions/functions.php:898
+#: includes/functions/functions.php:934 includes/functions/functions.php:969
+#: includes/functions/functions.php:1017 includes/functions/functions.php:1054
+#: includes/functions/functions.php:1090
+msgid "Dashboard => Anti Hacker => Settings."
+msgstr "Dashboard => Anti-hacker => Instellingen."
+
+#: includes/functions/functions.php:310 includes/functions/functions.php:410
+#: includes/functions/functions.php:450 includes/functions/functions.php:493
+#: includes/functions/functions.php:538 includes/functions/functions.php:655
+#: includes/functions/functions.php:689 includes/functions/functions.php:723
+#: includes/functions/functions.php:758 includes/functions/functions.php:790
+#: includes/functions/functions.php:824 includes/functions/functions.php:859
+#: includes/functions/functions.php:886 includes/functions/functions.php:922
+#: includes/functions/functions.php:959 includes/functions/functions.php:1005
+#: includes/functions/functions.php:1042 includes/functions/functions.php:1078
+#: includes/functions/functions.php:3503
+msgid "Date"
+msgstr "Datum"
+
+#: scan/scan_debug.php:61 scan/scan_log.php:53 scan/scan_result.php:54
 msgid "DateScan : "
 msgstr "DatumScan :"
 
@@ -625,6 +754,23 @@ msgstr ""
 msgid "Description"
 msgstr "Beschrijving"
 
+#: includes/functions/functions.php:1002
+msgid "Detected  on "
+msgstr "Gedetecteerd op"
+
+#: includes/functions/functions.php:652 includes/functions/functions.php:686
+#: includes/functions/functions.php:720 includes/functions/functions.php:755
+#: includes/functions/functions.php:787 includes/functions/functions.php:821
+#: includes/functions/functions.php:883 includes/functions/functions.php:919
+#: includes/functions/functions.php:956 includes/functions/functions.php:1039
+#: includes/functions/functions.php:1075
+msgid "Detected on "
+msgstr "Gedetecteerd op"
+
+#: includes/functions/functions.php:856
+msgid "Detected Tor on "
+msgstr "Tor gedetecteerd op"
+
 #: dashboard/mybanners.php:247
 msgid "Did you like the AntiHacker Plugin?"
 msgstr "Vond je de AntiHacker Plugin leuk?"
@@ -643,7 +789,7 @@ msgstr ""
 msgid "Disable file editing within the WordPress dashboard"
 msgstr "Bestandsbewerking uitschakelen in het WordPress-dashboard"
 
-#: includes/install/install.php:351
+#: includes/_install/install.php:351 includes/install/install.php:351
 msgid "Disable JSON WordPress REST API"
 msgstr "Schakel JSON WordPress REST API uit"
 
@@ -665,7 +811,7 @@ msgstr ""
 "Wordpress native Xml Sitemap voor gebruikerslijsten uitgeschakeld.(Dit is "
 "niet over de belangrijkste Xml Sitemap van de site)"
 
-#: includes/install/install.php:337
+#: includes/_install/install.php:337 includes/install/install.php:337
 msgid "Disable XML-RPC"
 msgstr "XML-RPC uitschakelen"
 
@@ -678,6 +824,8 @@ msgstr ""
 "beveiliging van uw site aanzienlijk. Raadpleeg onze FAQ-pagina (op onze site)"
 " voor meer informatie."
 
+#: includes/diagnose/__class_bill_diagnose.php:660
+#: includes/diagnose/_class_bill_diagnose.php:660
 #: includes/diagnose/class_bill_diagnose.php:894
 msgid ""
 "Disabling our plugin does not stop the errors from occurring; it simply "
@@ -688,7 +836,7 @@ msgstr ""
 "het betekent alleen dat u hier niet langer op de hoogte wordt gesteld dat ze "
 "optreden, maar ze kunnen nog steeds schadelijk zijn voor uw site."
 
-#: includes/install/install.php:357
+#: includes/_install/install.php:357 includes/install/install.php:357
 msgid ""
 "Disabling the WordPress REST API is a drastic security step, often not "
 "recommended, as it breaks many core functions (like the Gutenberg editor). "
@@ -701,7 +849,7 @@ msgstr ""
 "uit als u de gevolgen begrijpt en uw site niet afhankelijk is van API-"
 "afhankelijke functies."
 
-#: includes/install/install.php:343
+#: includes/_install/install.php:343 includes/install/install.php:343
 msgid ""
 "Disabling XML-RPC in WordPress boosts security. It primarily stops brute-"
 "force login attacks and prevents DDoS attacks via pingbacks. Since the REST "
@@ -719,10 +867,13 @@ msgstr "Ontdek nieuwe GRATIS plug-ins"
 
 #: dashboard/notifications.php:116 dashboard/notifications.php:129
 #: dashboard/notifications.php:139 dashboard/notifications.php:156
-#: dashboard/notifications.php:168 includes/vendor/vendor.php:57
+#: dashboard/notifications.php:168 includes/functions/functions.php:3047
+#: includes/vendor/vendor.php:57
 msgid "Dismiss"
 msgstr "Afwijzen"
 
+#: includes/diagnose/__class_bill_diagnose.php:658
+#: includes/diagnose/_class_bill_diagnose.php:658
 #: includes/diagnose/class_bill_diagnose.php:892
 msgid ""
 "Displaying the latest recurring errors (Javascript Included) from your error "
@@ -737,6 +888,22 @@ msgstr ""
 msgid "Do you want receive email alerts? "
 msgstr "Wilt u e-mailmeldingen ontvangen?"
 
+#: includes/functions/functions.php:312 includes/functions/functions.php:412
+#: includes/functions/functions.php:452 includes/functions/functions.php:495
+#: includes/functions/functions.php:541 includes/functions/functions.php:3507
+msgid "Domain"
+msgstr "Domein"
+
+#: includes/functions/functions.php:659 includes/functions/functions.php:693
+#: includes/functions/functions.php:728 includes/functions/functions.php:763
+#: includes/functions/functions.php:795 includes/functions/functions.php:831
+#: includes/functions/functions.php:866 includes/functions/functions.php:893
+#: includes/functions/functions.php:929 includes/functions/functions.php:964
+#: includes/functions/functions.php:1012 includes/functions/functions.php:1049
+#: includes/functions/functions.php:1085
+msgid "eMail sent by Anti Hacker Plugin."
+msgstr "E-mail verzonden door Anti Hacker Plugin."
+
 #: guide/guide.php:39
 msgid ""
 "eMail Settings Tab: The email alert will be send to your wordpress user "
@@ -747,7 +914,7 @@ msgstr ""
 "gebruikerse-mail gestuurd. U kunt dit e-mailadres wijzigen door op het "
 "tabblad e-mailinstellingen op de pagina voor plug-inbeheer te klikken."
 
-#: includes/install/install.php:327
+#: includes/_install/install.php:327 includes/install/install.php:327
 #| msgid "Left Blank to use your default Wordpress email."
 msgid ""
 "Email to send notifications. Leave blank to use your default WordPress email."
@@ -755,7 +922,7 @@ msgstr ""
 "E-mailadres om meldingen te versturen. Laat dit veld leeg om uw standaard "
 "WordPress-e-mailadres te gebruiken."
 
-#: antihacker.php:610
+#: _antihacker.php:514 antihacker.php:610 dashboard/antihacker.php:514
 msgid "Empty email"
 msgstr "Lege e-mail"
 
@@ -779,6 +946,8 @@ msgstr ""
 msgid "Enable the Rate Limiting?"
 msgstr "Snelheidsbeperking inschakelen?"
 
+#: includes/diagnose/__class_bill_diagnose.php:682
+#: includes/diagnose/_class_bill_diagnose.php:682
 #: includes/diagnose/class_bill_diagnose.php:916
 msgid ""
 "Enter a message and click 'Send', or just click 'Auto Checkup' to analyze "
@@ -787,11 +956,18 @@ msgstr ""
 "Voer een bericht in en klik op 'Verzenden', of klik op 'Automatisch "
 "controleren' om de foutlogboek- of servergegevensconfiguratie te analyseren."
 
+#: includes/diagnose/__class_bill_diagnose.php:678
+#: includes/diagnose/_class_bill_diagnose.php:678
 #: includes/diagnose/class_bill_diagnose.php:912
+#: includes/feedback-last/feedback-last.php:329
 msgid "Enter your message..."
 msgstr "Voer uw bericht in..."
 
-#: includes/chat/class_bill_chat.php:278
+#: includes/functions/function-site-integrity.php:167
+msgid "Error"
+msgstr "Fout"
+
+#: includes/chat/_class_bill_chat.php:212 includes/chat/class_bill_chat.php:278
 msgid ""
 "Error contacting the Artificial Intelligence (API). Please try again later."
 msgstr ""
@@ -816,7 +992,7 @@ msgstr ""
 "mogelijk beschadigd, bevat een fout in de HTML-code (bijv. 404) of is "
 "ontoegankelijk."
 
-#: includes/chat/class_bill_chat.php:49
+#: includes/chat/_class_bill_chat.php:47 includes/chat/class_bill_chat.php:49
 msgid "Error processing server response:"
 msgstr "Fout bij het verwerken van serverrespons:"
 
@@ -833,15 +1009,15 @@ msgstr ""
 "Fout bij het lezen van de lokale plugin-directory (%s): %s. Controleer de "
 "serverrechten of -beperkingen (bijv. open_basedir)."
 
-#: includes/chat/class_bill_chat.php:46
+#: includes/chat/_class_bill_chat.php:44 includes/chat/class_bill_chat.php:46
 msgid "Error resetting chat messages."
 msgstr "Fout bij het opnieuw instellen van chatberichten."
 
-#: includes/chat/class_bill_chat.php:52
+#: includes/chat/_class_bill_chat.php:50 includes/chat/class_bill_chat.php:52
 msgid "Error sending the message. Please try again later."
 msgstr "Fout bij het verzenden van het bericht. Probeer het later opnieuw."
 
-#: includes/chat/class_bill_chat.php:411
+#: includes/chat/_class_bill_chat.php:242 includes/chat/class_bill_chat.php:411
 msgid "Error to get response from AI source!"
 msgstr "Fout bij het ontvangen van antwoord van AI-bron!"
 
@@ -861,9 +1037,23 @@ msgstr "Extra lokale bestanden:"
 msgid "Fail response from Google, please, try again later!"
 msgstr "Google heeft geen antwoord gekregen. Probeer het later opnieuw!"
 
-#: antihacker.php:2149
+#: includes/functions/functions.php:544
+msgid "Failed login"
+msgstr "Mislukte aanmelding"
+
+#: includes/functions/functions.php:556
+msgid "Failed Login at:"
+msgstr "Inloggen mislukt op:"
+
+#: _antihacker.php:1982 antihacker.php:2149 dashboard/antihacker.php:1901
 msgid "Failed to reinstall the plugin: "
 msgstr "Het is niet gelukt de plugin opnieuw te installeren:"
+
+#: dashboard/check_file_integrity.php:84
+msgid "Failed to retrieve file integrity data. Please try again later."
+msgstr ""
+"Het ophalen van de bestandsintegriteitsgegevens is mislukt. Probeer het "
+"later opnieuw."
 
 #: includes/functions/plugin-check-list.php:28
 msgid "Failed to retrieve plugins."
@@ -889,18 +1079,32 @@ msgstr "vijftien 404 pagina's"
 msgid "fifty 404 pages"
 msgstr "vijftig 404 pagina's"
 
+#: dashboard/check_file_integrity.php:61
 #: dashboard/plugin_check_file_integrity.php:317
+#: includes/functions/function-site-integrity.php:157
 msgid "File"
 msgstr "Bestand"
+
+#: includes/functions/function-site-integrity.php:204
+msgid "File Diff"
+msgstr "Bestandsdiff"
 
 #: dashboard/check_file_integrity.php:16
 msgid "File Integrity Checker"
 msgstr "File integriteit checker"
 
+#: includes/functions/function-site-integrity.php:90
+msgid "File not found"
+msgstr "Bestand niet gevonden"
+
+#: includes/diagnose/__class_bill_diagnose.php:1082
+#: includes/diagnose/_class_bill_diagnose.php:1082
 #: includes/diagnose/class_bill_diagnose.php:1467
 msgid "File not readable."
 msgstr "Bestand niet leesbaar."
 
+#: includes/diagnose/__class_bill_diagnose.php:1125
+#: includes/diagnose/_class_bill_diagnose.php:1125
 #: includes/diagnose/class_bill_diagnose.php:1517
 msgid "File Size: "
 msgstr "Bestandsgrootte:"
@@ -909,7 +1113,7 @@ msgstr "Bestandsgrootte:"
 msgid "File(s) found on site root folder"
 msgstr "Bestand(en) gevonden in de hoofdmap van de site"
 
-#: scan/functions_scan.php:25
+#: scan/_functions_scan.php:24 scan/functions_scan.php:25
 msgid ""
 "Files bigger than 2 Gb are suspicious and we suggest you inspect them by "
 "hand."
@@ -917,7 +1121,7 @@ msgstr ""
 "Bestanden groter dan 2 GB zijn verdacht en wij raden u aan deze handmatig te "
 "controleren."
 
-#: scan/functions_scan.php:39
+#: scan/_functions_scan.php:38 scan/functions_scan.php:39
 msgid "Files with size zero are reported on Scan Debug Tab."
 msgstr ""
 "Bestanden met grootte nul worden gerapporteerd op het tabblad Scan Debug."
@@ -937,6 +1141,10 @@ msgstr "Volg deze instructies om dit handmatig te doen:"
 #: dashboard/dashboard.php:46
 msgid "For details, click the Memory Check Up Tab above."
 msgstr "Klik op het tabblad Geheugencontrole hierboven voor meer informatie."
+
+#: includes/functions/functions.php:3539
+msgid "for more details."
+msgstr "voor meer details."
 
 #: scan/functions_scan.php:1357 scan/functions_scan.php:1376
 msgid "Found Possible Malware:"
@@ -974,25 +1182,29 @@ msgstr ""
 "Ga naar de pagina Anti-hackerinstellingen (tabblad Algemene instellingen) en "
 "markeer alles met Ja en voer Scannen op malware uit"
 
-#: includes/install/install.php:434
+#: includes/_install/install.php:434 includes/install/install.php:434
 #| msgid "Scan Dashboard"
 msgid "Go to Dashboard"
 msgstr "Ga naar Dashboard"
 
-#: scan/scan_debug.php:38 scan/scan_result.php:32 scan/scan_log.php:32
+#: scan/scan_debug.php:38 scan/scan_log.php:32 scan/scan_result.php:32
 msgid "Go to NEW SCAN tab to make a new scan."
 msgstr "Ga naar het tabblad NIEUWE SCAN om een nieuwe scan te maken."
 
-#: includes/install/install.php:442
+#: includes/_install/install.php:442 includes/install/install.php:442
 #| msgid "Go to the Settings Dashboard"
 msgid "Go to Settings Dashboard"
 msgstr "Ga naar het instellingendashboard"
+
+#: includes/functions/functions.php:3041
+msgid "Go to WordPress"
+msgstr "Ga naar WordPress"
 
 #: dashboard/dashboard.php:285
 msgid "Google Safe Browsing"
 msgstr "Veilig browsen van Google"
 
-#: includes/install/install.php:439
+#: includes/_install/install.php:439 includes/install/install.php:439
 msgid ""
 "Great! Your initial information has been saved. The basics are configured "
 "and ready to go. Please proceed to the settings dashboard to fine-tune "
@@ -1001,6 +1213,18 @@ msgstr ""
 "Geweldig! Je eerste gegevens zijn opgeslagen. De basisinstellingen zijn "
 "geconfigureerd en klaar voor gebruik. Ga naar het instellingendashboard om "
 "de opties te verfijnen en alle beschikbare functies te verkennen."
+
+#: includes/functions/functions.php:2863
+msgid ""
+"Hackers can do all sorts of nasty stuff and destroy your site and online "
+"reputation."
+msgstr ""
+"Hackers kunnen allerlei nare dingen doen en uw site en online reputatie "
+"vernietigen."
+
+#: includes/functions/functions.php:2867
+msgid "Hackers don’t play by the rules."
+msgstr "Hackers houden zich niet aan de regels."
 
 #: includes/diagnose/class_bill_diagnose.php:1357
 msgid ""
@@ -1013,11 +1237,21 @@ msgstr ""
 "versturen en anderen aan te vallen, waardoor uw IP-adres en e-mailreputatie "
 "wordt beschadigd."
 
+#: includes/functions/functions.php:2871
+msgid "Hackers stresses your Web servers."
+msgstr "Hackers belasten uw webservers."
+
+#: includes/functions/functions.php:3030
+msgid "Help keep Anti Hacker Plugin going strong!"
+msgstr "Help de Anti Hacker Plugin succesvol te houden!"
+
 #: dashboard/dashboard.php:241
 msgid "Help, Demo, Support, Troubleshooting:"
 msgstr "Help, demo, ondersteuning, probleemoplossing:"
 
-#: includes/diagnose/class_bill_diagnose.php:85
+#: includes/diagnose/__class_bill_diagnose.php:81
+#: includes/diagnose/_class_bill_diagnose.php:81
+#: includes/diagnose/class_bill_diagnose.php:86
 msgid ""
 "Here are some details about error and memory monitoring for your plugin. "
 "Errors and low memory can prevent your site from functioning properly. On "
@@ -1057,7 +1291,7 @@ msgstr ""
 "hebt, kies dan 1 dag. Uw keuzes kunnen de geblokkeerde bezoeken logs "
 "beïnvloeden."
 
-#: includes/install/install.php:398
+#: includes/_install/install.php:398 includes/install/install.php:398
 msgid "How long to keep visitor logs?"
 msgstr "Hoe lang moeten bezoekerslogboeken bewaard worden?"
 
@@ -1071,14 +1305,6 @@ msgstr ""
 "HTTP-hulpmiddelen zijn hulpmiddelen voor het uitvoeren van HTTP-verzoeken, "
 "die niet door mensen worden gebruikt."
 
-#. URI of the plugin
-msgid "http://antihackerplugin.com"
-msgstr "http://antihackerplugin.com"
-
-#. Author URI of the plugin
-msgid "http://billminozzi.com"
-msgstr "http://billminozzi.com"
-
 #: dashboard/botsgraph_pie2.php:17
 msgid "Humans"
 msgstr "Mensen"
@@ -1087,7 +1313,16 @@ msgstr "Mensen"
 msgid "Identical files:"
 msgstr "Identieke bestanden:"
 
-#: scan/functions_scan.php:69
+#: includes/functions/functions.php:632
+msgid ""
+"if enabled on a production website, it might cause information disclosure, "
+"allowing malicious users to view errors and additional logging information"
+msgstr ""
+"Als het op een productiewebsite is ingeschakeld, kan het leiden tot "
+"openbaarmaking van informatie, waardoor kwaadwillende gebruikers fouten en "
+"aanvullende loggegevens kunnen bekijken."
+
+#: scan/_functions_scan.php:68 scan/functions_scan.php:69
 msgid "If Freeze"
 msgstr "Als bevriezen"
 
@@ -1118,7 +1353,7 @@ msgstr "Als de verzoeken de"
 msgid "if requests exceed"
 msgstr "als de verzoeken groter zijn dan"
 
-#: scan/functions_scan.php:29
+#: scan/_functions_scan.php:28 scan/functions_scan.php:29
 msgid ""
 "if the plugin find possible malware, it will write at Scan Results (tab) the "
 "file name (and path) and the name of the malware."
@@ -1126,7 +1361,7 @@ msgstr ""
 "Als de plugin mogelijke malware vindt, worden in het tabblad Scanresultaten "
 "de bestandsnaam (en het pad) en de naam van de malware vermeld."
 
-#: scan/functions_scan.php:15
+#: scan/_functions_scan.php:14 scan/functions_scan.php:15
 msgid ""
 "If you click Cancel button in the middle of the scan, the plugin also reset "
 "all information."
@@ -1143,7 +1378,7 @@ msgstr ""
 "contact op met uw hostingprovider of controleer de IP's op de site https:"
 "//ipinfo.io."
 
-#: includes/install/install.php:399
+#: includes/_install/install.php:399 includes/install/install.php:399
 #| msgid ""
 #| "How long keep the visitors log file? If you have a very heavy traffic, "
 #| "select 1 day. Your choices can impact the Blocked Visits Log."
@@ -1154,7 +1389,7 @@ msgstr ""
 "Als u veel verkeer heeft, selecteert u 1 dag. Uw keuzes kunnen van invloed "
 "zijn op het logboek met geblokkeerde bezoeken."
 
-#: scan/functions_scan.php:33
+#: scan/_functions_scan.php:32 scan/functions_scan.php:33
 msgid ""
 "If you have other anti malware installed, maybe it will be reported for our "
 "plugin as possible malware."
@@ -1208,13 +1443,12 @@ msgstr ""
 "geïnstalleerde plugins, het \n"
 "thema dat u gebruikt en de site-inhoud."
 
-#. Description of the plugin
+#: includes/functions/functions.php:3531
 msgid ""
-"Improve security, prevent unauthorized access by restrict access to login to "
-"whitelisted IP, Firewall, Scanner and more."
+"Improve system security and help prevent unauthorized access to your account."
 msgstr ""
-"Verbeter de beveiliging, voorkom ongeautoriseerde toegang door de toegang "
-"tot IP-adressen, firewalls, scanners en meer te beperken."
+"Verbeter de beveiliging van uw systeem en voorkom ongeautoriseerde toegang "
+"tot uw account."
 
 #: dashboard/notifications.php:145
 msgid "Improve your protection level."
@@ -1230,26 +1464,43 @@ msgstr ""
 "WordPress en u vindt instructies ook in de officiële \n"
 "WordPress-documentatie (Het verhogen van het toegewezen geheugen aan PHP)."
 
-#: includes/install/install.php:339 includes/install/install.php:353
-#: includes/install/install.php:367
+#: includes/_install/install.php:339 includes/_install/install.php:353
+#: includes/_install/install.php:367 includes/install/install.php:339
+#: includes/install/install.php:353 includes/install/install.php:367
 msgid "Information icon"
 msgstr "Informatie-icoon"
+
+#: dashboard/dashboard.php:159 dashboard/dashboard.php:215
+msgid "Install with one click!"
+msgstr "Installeer met één klik!"
+
+#: settings/options/plugin_options_tabbed.php:381
+msgid "Instructions"
+msgstr "Instructies"
 
 #: settings/options/plugin_options_tabbed.php:493
 msgid "Instructions about to block HTTP tools (Only Premium)"
 msgstr "Instructies voor het blokkeren van HTTP-tools (alleen Premium)"
 
-#: includes/chat/class_bill_chat.php:47
+#: includes/chat/_class_bill_chat.php:45 includes/chat/class_bill_chat.php:47
 msgid "Invalid message received:"
 msgstr "Ongeldig bericht ontvangen:"
 
-#: includes/chat/class_bill_chat.php:48
+#: includes/chat/_class_bill_chat.php:46 includes/chat/class_bill_chat.php:48
 msgid "Invalid response format:"
 msgstr "Ongeldige antwoordopmaak:"
 
+#: includes/diagnose/__class_bill_diagnose.php:1101
+#: includes/diagnose/_class_bill_diagnose.php:1101
 #: includes/diagnose/class_bill_diagnose.php:1486
 msgid "Invalid size."
 msgstr "Ongeldige maat."
+
+#: includes/functions/functions.php:311 includes/functions/functions.php:411
+#: includes/functions/functions.php:451 includes/functions/functions.php:494
+#: includes/functions/functions.php:540
+msgid "Ip"
+msgstr "IP-adres"
 
 #: settings/options/plugin_options_tabbed.php:550
 msgid "IP whitelist"
@@ -1258,6 +1509,10 @@ msgstr "IP-witte lijst"
 #: settings/options/plugin_options_tabbed.php:378
 msgid "IP will be blocked by one hour."
 msgstr "IP wordt gedurende een uur geblokkeerd."
+
+#: includes/functions/function-site-integrity.php:146
+msgid "It appears some files may have been modified."
+msgstr "Het lijkt erop dat sommige bestanden zijn gewijzigd."
 
 #: settings/options/plugin_options_tabbed.php:61
 msgid "Just check yes or not. After that, click SAVE changes. "
@@ -1279,7 +1534,7 @@ msgstr "Klik gewoon op het tabblad Dashboard"
 msgid "Just Deactivate"
 msgstr "Gewoon deactiveren"
 
-#: dashboard/calcula_stats_pie2.php:21
+#: dashboard/attacksgraph_pie.php:23 dashboard/calcula_stats_pie2.php:21
 msgid ""
 "Just give us a little time to collect data so we can display it for you here."
 msgstr ""
@@ -1303,6 +1558,8 @@ msgstr ""
 "website en de snelheid van de server.\n"
 "Dit venster sluit automatisch wanneer de taak is voltooid."
 
+#: includes/diagnose/__class_bill_diagnose.php:925
+#: includes/diagnose/_class_bill_diagnose.php:925
 #: includes/diagnose/class_bill_diagnose.php:1174
 msgid ""
 "Keeping your plugins up to date is crucial for ensuring security, "
@@ -1316,33 +1573,48 @@ msgstr ""
 msgid "Last check for updates made (Y-M-D):"
 msgstr "Laatste controle op uitgevoerde updates (J-M-D):"
 
-#: dashboard/mybanners.php:49 dashboard/dashboard.php:98
-#: dashboard/dashboard.php:110 dashboard/dashboard.php:291
-#: dashboard/dashboard.php:303 dashboard/dashboard.php:317
-#: dashboard/memory.php:77 includes/vendor/vendor.php:55
+#: dashboard/dashboard.php:98 dashboard/dashboard.php:110
+#: dashboard/dashboard.php:291 dashboard/dashboard.php:303
+#: dashboard/dashboard.php:317 dashboard/memory.php:77
+#: dashboard/mybanners.php:49 includes/diagnose/__class_bill_diagnose.php:751
+#: includes/diagnose/__class_bill_diagnose.php:985
+#: includes/diagnose/_class_bill_diagnose.php:751
+#: includes/diagnose/_class_bill_diagnose.php:985
 #: includes/diagnose/class_bill_diagnose.php:999
 #: includes/diagnose/class_bill_diagnose.php:1438
+#: includes/functions/functions.php:3037
+#: includes/install-checkup/_class_bill_install.php:315
+#: includes/install-checkup/_class_bill_install.php:384
+#: includes/install-checkup/class_bill_install.php:333
+#: includes/install-checkup/class_bill_install.php:402
+#: includes/vendor/vendor.php:55
 msgid "Learn More"
 msgstr "Meer informatie"
 
+#: includes/_install/install.php:340 includes/_install/install.php:354
+#: includes/_install/install.php:368
+#: includes/diagnose/__class_bill_diagnose.php:610
+#: includes/diagnose/_class_bill_diagnose.php:610
 #: includes/diagnose/class_bill_diagnose.php:841
 #: includes/install/install.php:340 includes/install/install.php:354
 #: includes/install/install.php:368
 msgid "Learn more"
 msgstr "Meer informatie"
 
-#: includes/install/install.php:366
+#: includes/_install/install.php:366 includes/install/install.php:366
 msgid "Learn more about blocking feeds"
 msgstr "Meer informatie over het blokkeren van feeds"
 
-#: includes/install/install.php:352
+#: includes/_install/install.php:352 includes/install/install.php:352
 msgid "Learn more about disabling the REST API"
 msgstr "Meer informatie over het uitschakelen van de REST API"
 
-#: includes/install/install.php:338
+#: includes/_install/install.php:338 includes/install/install.php:338
 msgid "Learn more about disabling XML-RPC"
 msgstr "Meer informatie over het uitschakelen van XML-RPC"
 
+#: includes/diagnose/__class_bill_diagnose.php:881
+#: includes/diagnose/_class_bill_diagnose.php:881
 #: includes/diagnose/class_bill_diagnose.php:1128
 msgid ""
 "Learn more about Page Load Times and their negative impact on SEO and more"
@@ -1362,10 +1634,12 @@ msgid "Limit Visits: You can limit the number of visits by minute or Hour."
 msgstr ""
 "Bezoeken beperken: U kunt het aantal bezoeken beperken per minuut of per uur."
 
-#: includes/install/install.php:237
+#: includes/_install/install.php:237 includes/install/install.php:237
 msgid "Loading"
 msgstr "Bezig met laden"
 
+#: includes/diagnose/__class_bill_diagnose.php:862
+#: includes/diagnose/_class_bill_diagnose.php:862
 #: includes/diagnose/class_bill_diagnose.php:1109
 msgid "Loading time can significantly impact your SEO."
 msgstr "De laadtijd kan een grote impact hebben op uw SEO."
@@ -1379,6 +1653,20 @@ msgstr "Lokale plugin-map (%s) bestaat niet."
 msgid "Local Version:"
 msgstr "Lokale versie:"
 
+#: includes/functions/functions.php:322
+msgid "Login Successful at"
+msgstr "Inloggen succesvol bij"
+
+#: includes/functions/functions.php:630
+msgid "Looks like Debug mode is enabled. (WP_DEBUG is true)"
+msgstr "Het lijkt erop dat de debugmodus is ingeschakeld. (WP_DEBUG is true)"
+
+#: includes/functions/functions.php:2145
+msgid "Looks like you have this file in your server"
+msgstr "Het lijkt erop dat u dit bestand op uw server hebt"
+
+#: includes/diagnose/__class_bill_diagnose.php:722
+#: includes/diagnose/_class_bill_diagnose.php:722
 #: includes/diagnose/class_bill_diagnose.php:970
 msgid "Low WordPress Memory Limit (click to open)"
 msgstr "Lage WordPress-geheugenlimiet (klik om te openen)"
@@ -1387,18 +1675,96 @@ msgstr "Lage WordPress-geheugenlimiet (klik om te openen)"
 msgid "Low WordPress Memory Limit in wp-config file"
 msgstr "Lage WordPress-geheugenlimiet in wp-config-bestand"
 
+#: includes/functions/functions.php:1003
+msgid ""
+"Malicious attack was detected and blocked because attempt to Login with Bot."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd vanwege poging tot inloggen "
+"met bot."
+
+#: includes/functions/functions.php:920
+msgid "Malicious attack was detected and blocked because attempt to Login."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd vanwege een poging tot "
+"inloggen."
+
+#: includes/functions/functions.php:957
+msgid "Malicious attack was detected and blocked because Blank User Agent."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd omdat Blank User Agent."
+
+#: includes/functions/functions.php:1040
+msgid ""
+"Malicious attack was detected and blocked because excedeed number page open "
+"limit"
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd omdat het aantal geopende "
+"pagina's is overschreden"
+
+#: includes/functions/functions.php:788
+msgid ""
+"Malicious attack was detected and blocked because is false Search Engine "
+"Google/Bing-Microsoft/Slurp."
+msgstr ""
+"Kwaadaardige aanval is gedetecteerd en geblokkeerd omdat is een valse "
+"zoekmachine Google/Bing-Microsoft/Slurp."
+
+#: includes/functions/functions.php:822
+msgid ""
+"Malicious attack was detected and blocked because previously it is looking "
+"for vulnerabilities in this site."
+msgstr ""
+"Er is een kwaadaardige aanval gedetecteerd en geblokkeerd, omdat er eerder "
+"naar kwetsbaarheden op deze site werd gezocht."
+
+#: includes/functions/functions.php:884
+msgid "Malicious attack was detected and blocked because using HTTP Tools."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd omdat er gebruik werd "
+"gemaakt van HTTP Tools."
+
+#: includes/functions/functions.php:653 includes/functions/functions.php:687
+msgid "Malicious attack was detected and blocked by firewall."
+msgstr "Kwaadaardige aanval is gedetecteerd en geblokkeerd door de firewall."
+
+#: includes/functions/functions.php:721
+msgid ""
+"Malicious attack was detected and blocked Looking for Plugin Vulnerabilities."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd. Zoeken naar plug-"
+"inkwetsbaarheden."
+
+#: includes/functions/functions.php:756
+msgid ""
+"Malicious attack was detected and blocked Looking for Theme Vulnerabilities."
+msgstr ""
+"Kwaadaardige aanval gedetecteerd en geblokkeerd. Zoeken naar "
+"themakwetsbaarheden."
+
+#: includes/functions/functions.php:657
+msgid "Malicious String Found:"
+msgstr "Kwaadaardige string gevonden:"
+
+#: includes/functions/functions.php:691
+msgid "Malicious User Agent Found:"
+msgstr "Kwaadaardige gebruikersagent gevonden:"
+
 #: scan/scan_tab.php:45
 msgid "Malware Removal Guide"
 msgstr "Handleiding voor het verwijderen van malware"
 
-#: scan/functions_scan.php:84
+#: scan/_functions_scan.php:83 scan/functions_scan.php:84
 msgid "Malware Table"
 msgstr "Malware-tabel"
 
+#: includes/diagnose/__class_bill_diagnose.php:864
+#: includes/diagnose/_class_bill_diagnose.php:864
 #: includes/diagnose/class_bill_diagnose.php:1111
 msgid "Many users will abandon the site before it fully loads."
 msgstr "Veel gebruikers verlaten de site voordat deze volledig geladen is."
 
+#: includes/diagnose/__class_bill_diagnose.php:88
+#: includes/diagnose/_class_bill_diagnose.php:88
 #: includes/diagnose/class_bill_diagnose.php:93
 msgid "Memory & Error Monitoring"
 msgstr "Geheugen- en foutbewaking"
@@ -1419,6 +1785,10 @@ msgstr "Geheugengebruik"
 msgid "Memory Usage Now:"
 msgstr "Geheugengebruik nu:"
 
+#: includes/functions/functions.php:628 includes/functions/functions.php:2143
+msgid "Message from Anti Hacker Plugin"
+msgstr "Bericht van Anti Hacker Plugin"
+
 #: includes/diagnose/class_bill_diagnose.php:1290
 msgid "minutes"
 msgstr "notulen"
@@ -1432,6 +1802,7 @@ msgid "Missing locally (exists in repository)"
 msgstr "Lokaal ontbreekt (bestaat in de repository)"
 
 #: dashboard/plugin_check_file_integrity.php:294
+#: includes/functions/function-site-integrity.php:212
 msgid "Modified"
 msgstr "Gewijzigd"
 
@@ -1488,10 +1859,20 @@ msgstr ""
 msgid "My Memory Test"
 msgstr "Mijn geheugentest"
 
-#: includes/install/install.php:419
+#: includes/functions/functions.php:515
+msgid "My Wordpress user email:"
+msgstr "Mijn Wordpress-gebruikers-e-mailadres:"
+
+#: includes/functions/functions.php:3500
+msgid "New Plugin Name: "
+msgstr "Nieuwe plug-innaam:"
+
+#: includes/_install/install.php:419 includes/install/install.php:419
 msgid "Next"
 msgstr "Volgende"
 
+#: includes/_install/install.php:346 includes/_install/install.php:360
+#: includes/_install/install.php:374 includes/_install/install.php:381
 #: includes/install/install.php:346 includes/install/install.php:360
 #: includes/install/install.php:374 includes/install/install.php:381
 #: settings/options/plugin_options_tabbed.php:77
@@ -1599,7 +1980,7 @@ msgstr "Geen plug-ins gevonden!"
 msgid "No scan for malware made lasts 7 days."
 msgstr "Geen enkele scan op malware duurt 7 dagen."
 
-#: scan/scan_debug.php:37 scan/scan_result.php:31 scan/scan_log.php:31
+#: scan/scan_debug.php:37 scan/scan_log.php:31 scan/scan_result.php:31
 msgid "No scan made yet."
 msgstr "Er is nog geen scan gemaakt."
 
@@ -1644,6 +2025,10 @@ msgstr "OK"
 msgid "on file:"
 msgstr "in het bestand:"
 
+#: _antihacker.php:1375 antihacker.php:1542 dashboard/antihacker.php:1294
+msgid "Once Per Week"
+msgstr "Eenmaal per week"
+
 #: guide/guide.php:84
 msgid "OnLine Guide"
 msgstr "Online gids"
@@ -1652,11 +2037,19 @@ msgstr "Online gids"
 msgid "OnLine Guide, Support, Faq..."
 msgstr "Online handleiding, ondersteuning, veelgestelde vragen..."
 
+#: includes/functions/functions.php:614
+msgid "Only authenticated users can access API."
+msgstr "Alleen geauthenticeerde gebruikers hebben toegang tot de API."
+
 #: dashboard/dashboard.php:104
 msgid "Only Partial Protection enabled!"
 msgstr "Alleen gedeeltelijke bescherming ingeschakeld!"
 
-#: includes/diagnose/class_bill_diagnose.php:1364
+#: includes/functions/function-site-integrity.php:209
+msgid "Original"
+msgstr "Origineel"
+
+#: includes/diagnose/class_bill_diagnose.php:1365
 #, php-format
 msgid ""
 "Our free <a href=\"%1$s\">antihacker</a> and <a href=\"%2$s\">AntiHacker</a> "
@@ -1665,6 +2058,8 @@ msgstr ""
 "Onze gratis <a href=\"%1$s\">antihacker-</a> en <a href=\"%2$s\">"
 "AntiHacker</a> -plug-ins helpen uw site te beveiligen."
 
+#: includes/diagnose/__class_bill_diagnose.php:928
+#: includes/diagnose/_class_bill_diagnose.php:928
 #: includes/diagnose/class_bill_diagnose.php:1177
 msgid ""
 "Our free AntiHacker plugin can even check for abandoned plugins that you are "
@@ -1677,6 +2072,8 @@ msgstr ""
 "meer, waardoor uw site kwetsbaar wordt voor aanvallen en mogelijke exploits, "
 "die de integriteit en gegevens van uw site in gevaar kunnen brengen."
 
+#: includes/diagnose/__class_bill_diagnose.php:602
+#: includes/diagnose/_class_bill_diagnose.php:602
 #: includes/diagnose/class_bill_diagnose.php:833
 msgid "Our plugin"
 msgstr "Onze plug-in"
@@ -1691,6 +2088,11 @@ msgstr ""
 "laag is. Uw site zal ernstige problemen ondervinden, zelfs als u onze plugin "
 "deactiveert."
 
+#: includes/functions/functions.php:3568 scan/_functions_scan.php:63
+#: scan/functions_scan.php:64
+msgid "Overview"
+msgstr "Overzicht"
+
 #: settings/options/plugin_options_tabbed.php:669
 msgid ""
 "Paste below the Item Purchase Code received by email from us when you bought "
@@ -1699,7 +2101,7 @@ msgstr ""
 "Plak hieronder de aankoopcode voor het artikel die u per e-mail van ons "
 "heeft ontvangen toen u de premiumversie kocht."
 
-#: includes/install/install.php:414
+#: includes/_install/install.php:414 includes/install/install.php:414
 msgid ""
 "Paste the Item Purchase Code received via email when you purchased the "
 "premium version. Or leave blank for the free version."
@@ -1711,15 +2113,15 @@ msgstr ""
 msgid "Pause"
 msgstr "Pauze"
 
-#: includes/chat/class_bill_chat.php:53
+#: includes/chat/_class_bill_chat.php:51 includes/chat/class_bill_chat.php:53
 msgid "Please enter a message!"
 msgstr "Voer een bericht in!"
 
-#: includes/install/install.php:324
+#: includes/_install/install.php:324 includes/install/install.php:324
 msgid "Please fill in and answer all fields."
 msgstr "Vul alle velden in en beantwoord ze."
 
-#: includes/install/install.php:257
+#: includes/_install/install.php:257 includes/install/install.php:257
 msgid ""
 "Please follow steps 1 through 4 to complete the plugin installation. This "
 "installer will allow you to install the software more securely, easily, and "
@@ -1737,13 +2139,29 @@ msgstr "Help ons de plugin live en up-to-date te houden"
 msgid "Please select a plugin to check."
 msgstr "Selecteer een plug-in om te controleren."
 
-#: antihacker.php:101
+#: dashboard/mybanners.php:249
+msgid ""
+"Please support us by rating our plugin on WordPress.org. Help us keep this "
+"plugin live and updated."
+msgstr ""
+"Steun ons door onze plugin te beoordelen op WordPress.org. Help ons deze "
+"plugin live en up-to-date te houden."
+
+#: _antihacker.php:100 antihacker.php:101 dashboard/antihacker.php:100
 msgid ""
 "Please, take a look in our site, FAQ page, item => How can i translate this "
 "plugin?"
 msgstr ""
 "Kijk gerust op onze site, FAQ-pagina, item => Hoe kan ik deze plugin "
 "vertalen?"
+
+#: includes/functions/functions.php:634
+msgid ""
+"Please, take a look in our site, FAQ page, item => Wordpress Debug Mode or "
+"disable this message at General Settings Tab. "
+msgstr ""
+"Kijk op onze site, op de FAQ-pagina, onder het item => Wordpress Debug Mode, "
+"of schakel dit bericht uit op het tabblad Algemene instellingen."
 
 #: settings/options/plugin_options_tabbed.php:66
 msgid ""
@@ -1764,11 +2182,17 @@ msgstr "Even geduld... Bezig met afsluiten..."
 msgid "Plugin"
 msgstr "Plugin"
 
+#: includes/functions/functions.php:423
+msgid "Plugin Deactivated at"
+msgstr "Plugin gedeactiveerd op"
+
 #: dashboard/plugin_check_file_integrity.php:20
 msgid "Plugin Integrity Checker"
 msgstr "Plugin integriteit checker"
 
-#: scan/functions_scan.php:19 scan/functions_scan.php:51
+#: includes/functions/functions.php:3537 scan/_functions_scan.php:18
+#: scan/_functions_scan.php:50 scan/functions_scan.php:19
+#: scan/functions_scan.php:51
 msgid "plugin site"
 msgstr "plug-in site"
 
@@ -1788,6 +2212,8 @@ msgstr "Plugins en thema's gedeactiveerd"
 msgid "Plugins with Updates Available (click to open)"
 msgstr "Plugins met updates beschikbaar (klik om te openen)"
 
+#: includes/diagnose/__class_bill_diagnose.php:707
+#: includes/diagnose/_class_bill_diagnose.php:707
 #: includes/diagnose/class_bill_diagnose.php:941
 msgid "Potential Problems"
 msgstr "Mogelijke problemen"
@@ -1800,6 +2226,8 @@ msgstr "Premiumpagina"
 msgid "Premium Protection Enabled"
 msgstr "Premiumbescherming ingeschakeld"
 
+#: includes/diagnose/__class_bill_diagnose.php:874
+#: includes/diagnose/_class_bill_diagnose.php:874
 #: includes/diagnose/class_bill_diagnose.php:1121
 msgid ""
 "Protect against hackers: They use bots to search for vulnerabilities and "
@@ -1820,7 +2248,7 @@ msgstr "Beschermingsstatus"
 msgid "Protection Status level:"
 msgstr "Beschermingsstatusniveau:"
 
-#: includes/install/install.php:413
+#: includes/_install/install.php:413 includes/install/install.php:413
 #| msgid "Purchase Code:"
 msgid "Purchase Code"
 msgstr "Aankoopcode"
@@ -1837,12 +2265,18 @@ msgstr "Tarief"
 msgid "Rate or Share"
 msgstr "Beoordeel of deel"
 
-#: includes/install/install.php:438
+#: includes/functions/functions.php:3533
+msgid "Read the StartUp guide at Anti Hacker Settings page."
+msgstr "Lees de StartUp-gids op de pagina Anti-hackerinstellingen."
+
+#: includes/_install/install.php:438 includes/install/install.php:438
 #| msgid "Ready for Configuration"
 msgid "Ready for Manual Configuration"
 msgstr "Klaar voor configuratie"
 
+#: dashboard/check_file_integrity.php:61
 #: dashboard/plugin_check_file_integrity.php:317
+#: includes/functions/function-site-integrity.php:160
 msgid "Reason"
 msgstr "Reden"
 
@@ -1856,11 +2290,11 @@ msgstr ""
 msgid "reCAPTCHA extention not intalled!"
 msgstr "reCAPTCHA-extensie niet geïnstalleerd!"
 
-#: antihacker.php:2102
+#: _antihacker.php:1935 antihacker.php:2102 dashboard/antihacker.php:1854
 msgid "Reinstall Files"
 msgstr "Bestanden opnieuw installeren"
 
-#: includes/chat/class_bill_chat.php:50
+#: includes/chat/_class_bill_chat.php:48 includes/chat/class_bill_chat.php:50
 msgid "Response is not valid JSON."
 msgstr "Het antwoord is geen geldige JSON."
 
@@ -1868,9 +2302,22 @@ msgstr "Het antwoord is geen geldige JSON."
 msgid "Resume"
 msgstr "Cv"
 
+#: includes/functions/functions.php:656 includes/functions/functions.php:690
+#: includes/functions/functions.php:724 includes/functions/functions.php:759
+#: includes/functions/functions.php:791 includes/functions/functions.php:825
+#: includes/functions/functions.php:887 includes/functions/functions.php:923
+#: includes/functions/functions.php:960 includes/functions/functions.php:1006
+#: includes/functions/functions.php:1043 includes/functions/functions.php:1079
+msgid "Robot IP Address"
+msgstr "Robot IP-adres"
+
 #: dashboard/dashboard.php:307
 msgid "Root Folder Extra Files"
 msgstr "Extra bestanden in de hoofdmap"
+
+#: dashboard/check_file_integrity.php:50
+msgid "Run Integrity Check"
+msgstr "Integriteitscontrole uitvoeren"
 
 #: scan/scan_tab.php:79
 msgid ""
@@ -1901,7 +2348,7 @@ msgstr ""
 "instructies vinden in de officiële WordPress-documentatie (Geheugen verhogen "
 "dat is toegewezen aan PHP). Klik gewoon op de onderstaande link:"
 
-#: scan/functions_scan.php:35
+#: scan/_functions_scan.php:34 scan/functions_scan.php:35
 msgid ""
 "Same thing if you run other malware software, maybe it can report malware in "
 "our plugin because we have malware sigature files."
@@ -1934,6 +2381,8 @@ msgstr "Scan uw site op malware"
 msgid "Search engine crawlers has unlimited access."
 msgstr "Crawlers van zoekmachines hebben onbeperkte toegang."
 
+#: includes/diagnose/__class_bill_diagnose.php:866
+#: includes/diagnose/_class_bill_diagnose.php:866
 #: includes/diagnose/class_bill_diagnose.php:1113
 msgid ""
 "Search engines prioritize faster-loading pages, as they improve user "
@@ -1974,7 +2423,10 @@ msgstr ""
 "Selecteer Fast of Very Fast als u een snelle server en voldoende vrij "
 "geheugen hebt, anders kan uw server overbelast raken:"
 
+#: includes/diagnose/__class_bill_diagnose.php:679
+#: includes/diagnose/_class_bill_diagnose.php:679
 #: includes/diagnose/class_bill_diagnose.php:913
+#: includes/feedback-last/feedback-last.php:330
 msgid "Send"
 msgstr "Versturen"
 
@@ -1992,31 +2444,33 @@ msgstr ""
 "Toon Anti Hacker Widget op de hoofdpagina van het Dashboard (alleen voor "
 "beheerders)."
 
-#: includes/install/install.php:378
+#: includes/_install/install.php:378 includes/install/install.php:378
 #| msgid ""
 #| "Show Anti Hacker Widget at main Dashboard page (only for Admin users)."
 msgid "Show AntiHacker Widget on the main Dashboard (Admin users only)"
 msgstr ""
 "AntiHacker-widget weergeven op het hoofddashboard (alleen voor beheerders)"
 
+#: includes/functions/functions.php:2875
+msgid "Show support with a 5-star rating."
+msgstr "Toon uw steun met een 5-sterrenbeoordeling."
+
 #: dashboard/google_safe.php:42
 msgid "Site Blacklisted by Google"
 msgstr "Site op zwarte lijst van Google"
 
+#: includes/diagnose/__class_bill_diagnose.php:976
+#: includes/diagnose/_class_bill_diagnose.php:976
 #: includes/diagnose/class_bill_diagnose.php:1429
 msgid "Site Errors"
 msgstr "Sitefouten"
-
-#. Tab heading for Site Health navigation.
-#: includes/diagnose/class_bill_diagnose.php:858
-msgctxt "Site Health"
-msgid "Critical Issues"
-msgstr "Kritieke problemen"
 
 #: dashboard/google_safe.php:48
 msgid "Site NOT Blacklisted by Google"
 msgstr "Site NIET op de zwarte lijst van Google"
 
+#: includes/diagnose/__class_bill_diagnose.php:1087
+#: includes/diagnose/_class_bill_diagnose.php:1087
 #: includes/diagnose/class_bill_diagnose.php:1472
 msgid "Size not determined."
 msgstr "Grootte niet bepaald."
@@ -2025,11 +2479,15 @@ msgstr "Grootte niet bepaald."
 msgid "Slow"
 msgstr "Langzaam"
 
+#: dashboard/check_file_integrity.php:60
+msgid "Some core files may have been modified or are missing:"
+msgstr "Sommige kernbestanden zijn mogelijk gewijzigd of ontbreken:"
+
 #: dashboard/plugin_check_file_integrity.php:316
 msgid "Some plugin files may have been modified, are extra, or are missing:"
 msgstr "Sommige pluginbestanden zijn mogelijk gewijzigd, extra of ontbreken:"
 
-#: antihacker.php:1402
+#: _antihacker.php:1235 antihacker.php:1402 dashboard/antihacker.php:1154
 msgid "Some plugins on the site require attention."
 msgstr "Sommige plug-ins op de site vereisen aandacht."
 
@@ -2038,6 +2496,7 @@ msgid "Start Up Guide and Settings"
 msgstr "Opstartgids en instellingen"
 
 #: dashboard/must_use_plugins.php:45
+#: includes/functions/function-site-integrity.php:154
 msgid "Status"
 msgstr "Status"
 
@@ -2059,6 +2518,8 @@ msgstr "Versterk de beveiliging van uw WordPress-site"
 msgid "String whitelist (no case sensitive)"
 msgstr "String-whitelist (niet hoofdlettergevoelig)"
 
+#: includes/diagnose/__class_bill_diagnose.php:871
+#: includes/diagnose/_class_bill_diagnose.php:871
 #: includes/diagnose/class_bill_diagnose.php:1118
 msgid "Suggestions:"
 msgstr "Suggesties:"
@@ -2075,7 +2536,7 @@ msgstr "Supportsite."
 msgid "ten 404 pages"
 msgstr "tien 404 pagina's"
 
-#: includes/install/install.php:256
+#: includes/_install/install.php:256 includes/install/install.php:256
 msgid ""
 "Thank you for choosing AntiHacker plugin, your all-in-one security solution "
 "to harden and protect your WordPress site. It provides multi-layered defense "
@@ -2117,6 +2578,8 @@ msgstr ""
 msgid "The left column displays the last update date."
 msgstr "In de linkerkolom wordt de datum van de laatste update weergegeven."
 
+#: includes/diagnose/__class_bill_diagnose.php:859
+#: includes/diagnose/_class_bill_diagnose.php:859
 #: includes/diagnose/class_bill_diagnose.php:1106
 msgid "The Load average of your front pages is: "
 msgstr "De gemiddelde laadsnelheid van uw voorpagina's is:"
@@ -2133,10 +2596,14 @@ msgstr ""
 "repository. Dit kan tot grote verschillen leiden als u die versie niet "
 "gebruikt."
 
+#: includes/diagnose/__class_bill_diagnose.php:846
+#: includes/diagnose/_class_bill_diagnose.php:846
 #: includes/diagnose/class_bill_diagnose.php:1093
 msgid "The page load time is poor (click to open)"
 msgstr "De laadtijd van de pagina is slecht (klik om te openen)"
 
+#: includes/diagnose/__class_bill_diagnose.php:848
+#: includes/diagnose/_class_bill_diagnose.php:848
 #: includes/diagnose/class_bill_diagnose.php:1095
 msgid "The page load time is very poor (click to open)"
 msgstr "De laadtijd van de pagina is erg slecht (klik om te openen)"
@@ -2155,7 +2622,7 @@ msgstr ""
 "geïnstalleerd of ingeschakeld op uw server. Neem contact op met uw "
 "serverbeheerder."
 
-#: scan/functions_scan.php:27
+#: scan/_functions_scan.php:26 scan/functions_scan.php:27
 msgid ""
 "The plugin  doesn't fix or modify your files, only alert for possible "
 "malware."
@@ -2163,20 +2630,20 @@ msgstr ""
 "De plugin herstelt of wijzigt uw bestanden niet, maar waarschuwt alleen voor "
 "mogelijke malware."
 
-#: antihacker.php:2174
+#: _antihacker.php:2007 antihacker.php:2174 dashboard/antihacker.php:1926
 #, php-format
 msgid "The plugin %s files have been reinstalled successfully."
 msgstr "De Plugin% s-bestanden zijn met succes herinstalleerd."
 
-#: scan/functions_scan.php:59
+#: scan/_functions_scan.php:58 scan/functions_scan.php:59
 msgid "the plugin site"
 msgstr "de plugin-site"
 
-#: scan/functions_scan.php:23
+#: scan/_functions_scan.php:22 scan/functions_scan.php:23
 msgid "The plugin will check files up to 2 Gb."
 msgstr "De plugin controleert bestanden tot 2 Gb."
 
-#: scan/functions_scan.php:37
+#: scan/_functions_scan.php:36 scan/functions_scan.php:37
 msgid ""
 "The Scan Debug tab info is just in case you need contact our support "
 "otherwise you can ignore it."
@@ -2201,7 +2668,9 @@ msgstr ""
 msgid "Then, click save changes."
 msgstr "Klik vervolgens op Wijzigingen opslaan."
 
-#: includes/diagnose/class_bill_diagnose.php:1889
+#: includes/diagnose/__class_bill_diagnose.php:1489
+#: includes/diagnose/_class_bill_diagnose.php:1489
+#: includes/diagnose/class_bill_diagnose.php:1890
 msgid ""
 "These are critical issues that can have a significant impact on your site's "
 "performance. They can cause many plugins and functionalities to malfunction "
@@ -2213,13 +2682,23 @@ msgstr ""
 "functionaliteiten niet goed werken en in sommige gevallen uw site volledig "
 "onbruikbaar maken, afhankelijk van de ernst ervan. Pak ze snel aan."
 
-#: antihacker.php:1399
+#: _antihacker.php:1232 antihacker.php:1399 dashboard/antihacker.php:1151
+#: includes/functions/functions.php:307 includes/functions/functions.php:415
+#: includes/functions/functions.php:454 includes/functions/functions.php:497
+#: includes/functions/functions.php:534 includes/functions/functions.php:3512
 msgid "This email was sent from your website"
 msgstr "Deze e-mail is verzonden vanaf uw website"
 
+#: includes/diagnose/__class_bill_diagnose.php:1070
+#: includes/diagnose/_class_bill_diagnose.php:1070
 #: includes/diagnose/class_bill_diagnose.php:1455
 msgid "This is a partial list of the errors found."
 msgstr "Dit is een gedeeltelijke lijst van de gevonden fouten."
+
+#: includes/functions/function-site-integrity.php:109
+#: includes/functions/function-site-integrity.php:120
+msgid "This is an unknown file"
+msgstr "Dit is een onbekend bestand"
 
 #: dashboard/plugin_check_file_integrity.php:192
 #, php-format
@@ -2232,7 +2711,7 @@ msgstr ""
 "server (%s), firewallinstellingen of doordat de downloadlink voor deze "
 "versie onjuist/niet beschikbaar is."
 
-#: scan/functions_scan.php:11
+#: scan/_functions_scan.php:10 scan/functions_scan.php:11
 msgid "This option will run a manual scan on your site to look for malwares."
 msgstr "Met deze optie wordt uw site handmatig gescand op malware."
 
@@ -2313,6 +2792,10 @@ msgstr ""
 msgid "To scan, go to"
 msgstr "Om te scannen, ga naar"
 
+#: includes/functions/functions.php:860
+msgid "Tor IP Address"
+msgstr "Tor IP-adres"
+
 #: dashboard/memory.php:46
 msgid "Total (Server) PHP Memory Limit:"
 msgstr "Totale (server) PHP-geheugenlimiet:"
@@ -2321,11 +2804,17 @@ msgstr "Totale (server) PHP-geheugenlimiet:"
 msgid "Total Attacks Blocked Last 15 days"
 msgstr "Totaal aantal geblokkeerde aanvallen in de afgelopen 15 dagen"
 
+#: includes/diagnose/__class_bill_diagnose.php:740
+#: includes/diagnose/_class_bill_diagnose.php:740
 #: includes/diagnose/class_bill_diagnose.php:987
 msgid "Total Php Server Memory"
 msgstr "Totaal PHP-servergeheugen"
 
-#: scan/functions_scan.php:74
+#: includes/functions/functions.php:857
+msgid "Traffic from Tor detected and blocked."
+msgstr "Verkeer van Tor gedetecteerd en geblokkeerd."
+
+#: scan/_functions_scan.php:73 scan/functions_scan.php:74
 msgid "Troubleshooting"
 msgstr "Problemen oplossen"
 
@@ -2367,6 +2856,14 @@ msgstr ""
 "plugin wordt geactiveerd? Misschien moet u de tools verwijderen die u niet "
 "opnieuw wilt blokkeren."
 
+#: includes/functions/functions.php:726 includes/functions/functions.php:761
+#: includes/functions/functions.php:827 includes/functions/functions.php:862
+#: includes/functions/functions.php:889 includes/functions/functions.php:925
+#: includes/functions/functions.php:962 includes/functions/functions.php:1008
+#: includes/functions/functions.php:1045 includes/functions/functions.php:1081
+msgid "URL requested:"
+msgstr "URL opgevraagd:"
+
 #: dashboard/dashboard.php:273
 msgid ""
 "Use old WP version, Low memory, some plugin with Javascript error are some "
@@ -2374,6 +2871,22 @@ msgid ""
 msgstr ""
 "Mogelijke problemen zijn het gebruik van een oude WP-versie, te weinig "
 "geheugen en een plugin met Javascript-fouten."
+
+#: includes/functions/functions.php:313 includes/functions/functions.php:413
+#: includes/functions/functions.php:542
+msgid "User"
+msgstr "Gebruiker"
+
+#: includes/functions/functions.php:793 includes/functions/functions.php:829
+#: includes/functions/functions.php:864 includes/functions/functions.php:891
+#: includes/functions/functions.php:927 includes/functions/functions.php:1010
+#: includes/functions/functions.php:1047 includes/functions/functions.php:1083
+msgid "User Agent:"
+msgstr "Gebruikersagent:"
+
+#: includes/functions/functions.php:465
+msgid "User Enumeration attempt was blocked"
+msgstr "Poging tot gebruikersopsomming is geblokkeerd"
 
 #: dashboard/plugin_check_file_integrity.php:333
 msgid "Verification Summary:"
@@ -2395,15 +2908,19 @@ msgstr "Zeer langzaam"
 msgid "Visit our Premium Page for more details."
 msgstr "Bezoek onze Premiumpagina voor meer informatie."
 
-#: scan/functions_scan.php:17
+#: includes/functions/functions.php:3535
+msgid "Visit the"
+msgstr "Bezoek de"
+
+#: scan/_functions_scan.php:16 scan/functions_scan.php:17
 msgid "Visit the Anti Hacker "
 msgstr "Bezoek de Anti Hacker"
 
-#: scan/functions_scan.php:57
+#: scan/_functions_scan.php:56 scan/functions_scan.php:57
 msgid "Visit the Anti Hacker Malware Table  Page at "
 msgstr "Bezoek de Anti Hacker Malware Tabelpagina op"
 
-#: antihacker.php:1404
+#: _antihacker.php:1237 antihacker.php:1404 dashboard/antihacker.php:1156
 msgid ""
 "Visit the Anti Hacker plugin dashboard for additional tips on enhancing site "
 "security."
@@ -2411,7 +2928,7 @@ msgstr ""
 "Bezoek het Anti Hacker-plug-indashboard voor extra tips over het verbeteren "
 "van de sitebeveiliging."
 
-#: scan/functions_scan.php:49
+#: scan/_functions_scan.php:48 scan/functions_scan.php:49
 msgid "Visit the Anti Hacker Scan Troubleshooting Page "
 msgstr "Bezoek de Anti Hacker Scan Problemen Oplossen Pagina"
 
@@ -2419,7 +2936,7 @@ msgstr "Bezoek de Anti Hacker Scan Problemen Oplossen Pagina"
 msgid "Visit the plugin site for a"
 msgstr "Bezoek de plugin-site voor een"
 
-#: scan/functions_scan.php:31
+#: scan/_functions_scan.php:30 scan/functions_scan.php:31
 msgid "Visit the plugin site for tips how to remove the malware."
 msgstr "Bezoek de pluginsite voor tips over het verwijderen van de malware."
 
@@ -2436,7 +2953,7 @@ msgid "We can limit a number of visits, just choose the options below."
 msgstr ""
 "We kunnen het aantal bezoeken beperken, kies gewoon de onderstaande opties."
 
-#: antihacker.php:1401
+#: _antihacker.php:1234 antihacker.php:1401 dashboard/antihacker.php:1153
 msgid ""
 "We conducted tests on the WordPress repository, and it appears that some "
 "plugins are not being updated. Plugins not updated in the last year are "
@@ -2451,14 +2968,20 @@ msgstr ""
 msgid "We suggest click Yes for all. "
 msgstr "Wij raden aan om voor alles op Ja te klikken."
 
+#: includes/functions/functions.php:2147
+msgid "We suggest you to remove it ASAP."
+msgstr "Wij raden u aan deze zo snel mogelijk te verwijderen."
+
 #: includes/diagnose/class_bill_diagnose.php:1296
 msgid "week(s)"
 msgstr "week(en)"
 
-#: includes/install/install.php:255
+#: includes/_install/install.php:255 includes/install/install.php:255
 msgid "Welcome"
 msgstr "Welkom"
 
+#: includes/diagnose/__class_bill_diagnose.php:89
+#: includes/diagnose/_class_bill_diagnose.php:89
 #: includes/diagnose/class_bill_diagnose.php:94
 msgid "Welcome to plugin Insights!"
 msgstr "Welkom bij de plugin Insights!"
@@ -2474,7 +2997,7 @@ msgstr ""
 "Wat gebeurt er als iemand die niet op de witte lijst staat probeert in te "
 "loggen (of als ik mijn IP-adres wijzig)?"
 
-#: includes/install/install.php:279
+#: includes/_install/install.php:279 includes/install/install.php:279
 msgid ""
 "What is your level of experience with WordPress? This will help us tailor "
 "the setup process for you. You can always change this in the future."
@@ -2482,7 +3005,7 @@ msgstr ""
 "Wat is uw ervaring met WordPress? Dit helpt ons om het installatieproces op "
 "u af te stemmen. U kunt dit in de toekomst altijd wijzigen."
 
-#: scan/functions_scan.php:13
+#: scan/_functions_scan.php:12 scan/functions_scan.php:13
 msgid "When you click Run Scan Now, the plugin reset and erase the last Scan."
 msgstr ""
 "Wanneer u op Scan nu uitvoeren klikt, wordt de plug-in opnieuw ingesteld en "
@@ -2502,11 +3025,11 @@ msgstr ""
 msgid "WordPress Help Page"
 msgstr "WordPress Helppagina"
 
-#: antihacker.php:641
+#: _antihacker.php:545 antihacker.php:641 dashboard/antihacker.php:545
 msgid "Wrong Username or Password"
 msgstr "Verkeerde gebruikersnaam of wachtwoord"
 
-#: antihacker.php:570
+#: _antihacker.php:474 antihacker.php:570 dashboard/antihacker.php:474
 msgid "Wrong Username, Password or eMail"
 msgstr "Verkeerde gebruikersnaam, wachtwoord of e-mail"
 
@@ -2522,6 +3045,8 @@ msgstr ""
 "XML_RPC is ingeschakeld. Het kan een kwetsbaarheid en een doelwit voor brute-"
 "force-aanvallen worden."
 
+#: includes/_install/install.php:345 includes/_install/install.php:359
+#: includes/_install/install.php:373 includes/_install/install.php:380
 #: includes/install/install.php:345 includes/install/install.php:359
 #: includes/install/install.php:373 includes/install/install.php:380
 #: settings/options/plugin_options_tabbed.php:114
@@ -2584,7 +3109,24 @@ msgstr ""
 "U kunt IP-adressen ook op een witte lijst zetten. Kijk hiervoor op het "
 "tabblad Witte lijst."
 
-#: antihacker.php:1405
+#: includes/functions/functions.php:457 includes/functions/functions.php:500
+msgid ""
+"You can disable it in Dashboard => Anti Hacker => Settings => Notifications"
+msgstr ""
+"U kunt het uitschakelen in Dashboard => Anti-hacker => Instellingen => "
+"Meldingen"
+
+#: includes/functions/functions.php:547 includes/functions/functions.php:661
+#: includes/functions/functions.php:695 includes/functions/functions.php:730
+#: includes/functions/functions.php:765 includes/functions/functions.php:797
+#: includes/functions/functions.php:833 includes/functions/functions.php:868
+#: includes/functions/functions.php:895 includes/functions/functions.php:931
+#: includes/functions/functions.php:966 includes/functions/functions.php:1014
+#: includes/functions/functions.php:1051 includes/functions/functions.php:1087
+msgid "You can stop emails at the Notifications Settings Tab."
+msgstr "U kunt e-mails stopzetten via het tabblad Meldingsinstellingen."
+
+#: _antihacker.php:1238 antihacker.php:1405 dashboard/antihacker.php:1157
 msgid "You can stop emails at the Notifications Tab."
 msgstr "U kunt e-mails stopzetten via het tabblad Meldingen."
 
@@ -2598,6 +3140,10 @@ msgstr ""
 "uit in dat tabblad en andere nuttige opties om de sitebeveiliging te "
 "verhogen. Wij raden aan om voor alles 'ja' aan te vinken."
 
+#: includes/functions/function-site-integrity.php:197
+msgid "You do not have access to this file."
+msgstr "U hebt geen toegang tot dit bestand."
+
 #: settings/options/plugin_options_tabbed.php:671
 msgid "You don't need reinstall the plugin."
 msgstr "U hoeft de plugin niet opnieuw te installeren."
@@ -2610,8 +3156,7 @@ msgstr ""
 "Op onze site vindt u onze volledige en bijgewerkte online gids, een pagina "
 "met veelgestelde vragen, een link naar ondersteuning en meer."
 
-#. %s: Current user IP address.
-#: includes/install/install.php:391
+#: includes/_install/install.php:391 includes/install/install.php:391
 #, php-format
 msgid ""
 "Your current IP address is %s. It has been automatically added to the "
@@ -2628,7 +3173,7 @@ msgstr "Uw huidige IP is:"
 msgid "Your current theme was not updated last 2 years."
 msgstr "Uw huidige thema is de afgelopen 2 jaar niet bijgewerkt."
 
-#: includes/install/install.php:278
+#: includes/_install/install.php:278 includes/install/install.php:278
 msgid "Your Experience Level"
 msgstr "Jouw ervaringsniveau"
 
@@ -2645,6 +3190,8 @@ msgstr ""
 "veiligheidsredenen, zal uw wordpress gebruikers e-mail niet op uw pagina "
 "getoond worden."
 
+#: includes/diagnose/__class_bill_diagnose.php:981
+#: includes/diagnose/_class_bill_diagnose.php:981
 #: includes/diagnose/class_bill_diagnose.php:1434
 msgid ""
 "Your site has experienced errors for the past 2 days. These errors, "
@@ -2659,6 +3206,8 @@ msgstr ""
 "sitestoringen. JavaScript-fouten kunnen de uitvoering van JavaScript "
 "beëindigen, waardoor alle daaropvolgende opdrachten niet meer werken."
 
+#: includes/diagnose/__class_bill_diagnose.php:736
+#: includes/diagnose/_class_bill_diagnose.php:736
 #: includes/diagnose/class_bill_diagnose.php:983
 msgid "Your usage now"
 msgstr "Uw gebruik nu"
@@ -2667,7 +3216,11 @@ msgstr "Uw gebruik nu"
 msgid "Your usage now:"
 msgstr "Uw gebruik nu:"
 
+#: includes/diagnose/__class_bill_diagnose.php:747
+#: includes/diagnose/_class_bill_diagnose.php:747
 #: includes/diagnose/class_bill_diagnose.php:995
+#: includes/install-checkup/_class_bill_install.php:306
+#: includes/install-checkup/class_bill_install.php:324
 msgid ""
 "Your WordPress Memory Limit is too low, which can lead to critical issues on "
 "your site due to insufficient resources. Promptly address this issue before "
