@@ -3596,8 +3596,18 @@ function antihacker_response($antihacker_why_block)
     global $antihacker_ip;
     global $antihacker_amy_whitelist;
     global $antihacker_debug;
-
     global $antihacker_ua, $antihacker_string_whitelist;
+
+
+    if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
+    return;
+
+// if ($antihacker_is_admin or is_super_admin())
+//     return;
+if (antihacker_maybe_search_engine())
+    return;
+if (antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist))
+    return;
 
     if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
         return;
