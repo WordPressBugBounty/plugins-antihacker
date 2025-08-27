@@ -7,13 +7,21 @@ if (!defined("ABSPATH")) {
 if (!function_exists('wptools_enqueue_scripts_with_nonce')) {
     function wptools_enqueue_scripts_with_nonce()
     {
-        // Enfileirar seu script no frontend
-        wp_enqueue_script('wptools-loading-time-admin-js', plugin_dir_url(__FILE__) . 'loading-time.js', array('jquery'), null, true);
+
+        if ( !defined('NONCE_SALT') ) {
+            return false;
+        }
 
         // $nonce = wp_create_nonce('wptools-add-loading-info');
-        $nonce = substr(NONCE_SALT, 0, 10);
-        wp_localize_script('wptools-loading-time-admin-js', 'wptools_ajax_object', array('ajax_nonce' => $nonce));
-        do_action('wptools_enqueue_additional_scripts');
+        if ( defined('NONCE_SALT') ) {
+            // Enfileirar seu script no frontend
+            wp_enqueue_script('wptools-loading-time-admin-js', plugin_dir_url(__FILE__) . 'loading-time.js', array('jquery'), null, true);
+
+            $nonce = substr(NONCE_SALT, 0, 10);
+            // Faça algo com $nonce
+            wp_localize_script('wptools-loading-time-admin-js', 'wptools_ajax_object', array('ajax_nonce' => $nonce));
+            do_action('wptools_enqueue_additional_scripts');
+        }
     }
 }
 add_action('wp_enqueue_scripts', 'wptools_enqueue_scripts_with_nonce');
@@ -45,6 +53,9 @@ if (!function_exists('wptools_register_loading_time')) {
     {
         global $wpdb;
         // Verify nonce
+        if ( !defined('NONCE_SALT') ) {
+            return false;
+        }
         $nonce = sanitize_text_field($_POST['nonce']);
         if (!$nonce === substr(NONCE_SALT, 0, 10)) {
             wp_send_json_error('Invalid nonce.');
