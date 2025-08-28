@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.91
+version: 5.92
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -560,6 +560,14 @@ if (!$antihacker_is_admin) {
         antihacker_response('Firewall');
       }
     }
+
+
+
+
+
+
+
+
   }
 }
 // End Firewall
@@ -1811,19 +1819,7 @@ add_action('antihacker_cron_event_clean_db', 'antihacker_cron_function_clean_db'
 
 
 
-function antihacker_check_wordpress_logged_in_cookie()
-{
-  // Percorre todos os cookies definidos
-  foreach ($_COOKIE as $key => $value) {
-    // Verifica se algum cookie começa com 'wordpress_logged_in_'
-    if (strpos($key, 'wordpress_logged_in_') === 0) {
-      // Cookie encontrado
-      return true;
-    }
-  }
-  // Cookie não encontrado
-  return false;
-}
+
 
 function antihacker_findip()
 {
@@ -2184,4 +2180,100 @@ if ($antihacker_enable_reinstall == 'yes') {
     }
   }
   add_action('admin_notices', 'antihacker_show_reinstall_message');
+}
+
+function antihacker_check_wordpress_logged_in_cookie()
+{
+    /**
+     * Use a static variable to cache the result ONLY IF it's TRUE.
+     * This ensures the full logic is re-executed if the previous result was FALSE
+     * or if there was an error, forcing a fresh check.
+     */
+    static $is_admin_cached_true = null;
+
+    // If the previous result was TRUE, return immediately from cache.
+    if ($is_admin_cached_true === true) {
+        return true;
+    }
+
+    // --- Start of Full Verification Logic ---
+
+    $current_is_admin_status = false; // Default status for this execution.
+
+    /**
+     * Optimization: Fast path for the majority of users (non-logged-in visitors).
+     * If no cookie with the 'wordpress_logged_in_' prefix exists, it's impossible
+     * for the user to be a logged-in admin.
+     */
+    $has_auth_cookie = false;
+    if (!empty($_COOKIE)) {
+        foreach ($_COOKIE as $key => $value) {
+            // Check if any cookie name starts with the WordPress logged-in prefix.
+            if (strpos($key, 'wordpress_logged_in_') === 0) {
+                $has_auth_cookie = true;
+                break; // Found one, no need to check the rest.
+            }
+        }
+    }
+
+    // If no potential authentication cookie was found, the user is definitely not an admin.
+    if (!$has_auth_cookie) {
+        // Not an admin, do not cache (as cache is only for TRUE results).
+        return $current_is_admin_status; // Returns false.
+    }
+
+    /**
+     * If we reach this point, a cookie exists. Now, we must validate it securely.
+     * The only reliable way is to use WordPress's own functions.
+     * First, we check if the required function has been loaded by WordPress yet.
+     */
+	if (!function_exists('current_user_can') || !function_exists('wp_get_current_user') ) {
+        /**
+         * The function does not exist yet. This means we are running too early in the
+         * WordPress load order.
+         * The solution is to manually load the file where this function is defined.
+         */
+        try {
+            require_once ABSPATH . WPINC . '/pluggable.php';
+        } catch (Throwable $e) {
+            // Log the error or handle it as appropriate for your application.
+            // For example, you might log to a file or an error tracking service.
+            error_log("Failed to include pluggable.php in antihacker: " . $e->getMessage());
+            // In case of failure to load, assume non-admin for safety.
+            // Do not cache, allowing a retry on the next function call.
+            return $current_is_admin_status; // Returns false.
+        }
+    }
+
+    /**
+     * Now that we have explicitly loaded the file (if it wasn't already),
+     * we can be certain that the current_user_can() function is available.
+     * We can now perform the secure check.
+     */
+
+	 // wp_get_current_user()
+	if (!function_exists('current_user_can') || !function_exists('wp_get_current_user') ) {
+        // If, for some reason, current_user_can still does not exist (critical error or unusual environment),
+        // assume non-admin. Do not cache.
+		return $current_is_admin_status; // Returns false.
+	}
+
+    if (current_user_can('manage_options')) {
+        // The secure check passed. The user is a confirmed administrator.
+        $current_is_admin_status = true;
+    } else {
+        // The cookie exists, but the secure check failed.
+        // This could be a forged cookie from an attacker or an expired session.
+        $current_is_admin_status = false;
+    }
+
+    // --- End of Full Verification Logic ---
+
+    // If the current result is TRUE, then cache it for future calls within this request.
+    if ($current_is_admin_status === true) {
+        $is_admin_cached_true = true;
+    }
+
+    // Return the final, securely determined result.
+    return $current_is_admin_status;
 }
