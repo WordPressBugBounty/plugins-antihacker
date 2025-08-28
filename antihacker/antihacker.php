@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.92
+version: 5.93
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -492,6 +492,7 @@ if (!$antihacker_is_admin) {
     }
 
 
+    /*
     // Array original de assinaturas, AGORA CORRIGIDO para não ter elementos vazios.
     $antihacker_request_uri_array  = array('@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer');
 
@@ -560,6 +561,119 @@ if (!$antihacker_is_admin) {
         antihacker_response('Firewall');
       }
     }
+    */
+
+    
+
+    // Array of rules for the request URI.
+    // This array now combines original rules, additional generic attack patterns,
+    // and detailed new signatures for sensitive files.
+    $antihacker_request_uri_array   = array(
+        // ORIGINAL RULES (from your old code)
+        '@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer', '\/\.env',
+
+        // --- ADDITIONAL GENERIC ATTACK PATTERNS (from old code's 'suggested additions') ---
+        // Blocks access to common backups and configuration files
+        '\.bak', '\.conf', '\.cfg', '\.ds_store',
+        // Blocks access to compressed backups in the site root
+        '\/(db|master|sql|wp|www|wwwroot)\.(gz|zip)',
+        // Blocks generic patterns for command execution and dangerous functions
+        '((curl_|shell_)?exec|(f|p)open|passthru|phpinfo|proc_open|system)(.*)(\()(.*)(\))',
+
+        // --- NEW DETAILED SIGNATURES (from your 'new code's $antihacker_new_signatures array) ---
+        // Apache (precise versions)
+        '\.htaccess', '\.htdigest', '\.htpasswd',
+        // Other version control systems
+        '\/\.gitignore', '\/\.hg', '\/\.hgignore',
+        // WordPress configuration backups
+        'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
+        // Frameworks and CMS configuration files
+        '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
+        '\/app\/etc\/local\.xml', // Magento 1
+        '\/Web\.config', // ASP.NET
+        // Development tools and dependency files
+        '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
+        '\/composer\.json', '\/composer\.lock', '\/packages\.json',
+    );
+
+    // Array of rules for the Query String.
+    // This array now includes the strong SQL Injection and XSS protections
+    // that were present in the old code's 'suggested additions'.
+    $antihacker_query_string_array  = array(
+        // ORIGINAL RULES (from your old code)
+        '@@', '\(0x', '0x3c62723e', '\;\!--\=', '\(\)\}', '\:\;\}\;', '\.\.\/', '127\.0\.0\.1', 'UNION(.*)SELECT', '@eval', 'eval\(', 'base64_', 'localhost', 'loopback', '\%0A', '\%0D', '\%00', '\%2e\%2e', 'allow_url_include', 'auto_prepend_file', 'disable_functions', 'input_file', 'execute', 'file_get_contents', 'mosconfig', 'open_basedir', '(benchmark|sleep)(\s|%20)*\(', 'phpinfo\(', 'shell_exec\(', '\/wwwroot', '\/makefile', 'path\=\.', 'mod\=\.', 'wp-config\.php', '\/config\.', '\$_session', '\$_request', '\$_env', '\$_server', '\$_post', '\$_get', 'indoxploi', 'xrumer',
+
+        // --- REINTRODUCED STRONG PROTECTIONS (from old code's 'suggested additions') ---
+        // Blocks attempts to manipulate global variables more comprehensively
+        '(globals|request)(=|\[)',
+        // Powerful rule that blocks a wide range of SQL Injection and XSS attacks
+        '(<|>|\'|")(.*)(\/\*|alter|base64|benchmark|cast|char|concat|create|declare|delete|drop|exec|function|html|insert|md5|request|script|select|set|union|update)'
+    );
+
+    // Array of rules for the User Agent (unchanged from your new code).
+    $antihacker_user_agent_array   = array('drivermysqli', 'acapbot', '\/bin\/bash', 'binlar', 'casper', 'cmswor', 'diavol', 'dotbot', 'finder', 'flicky', 'md5sum', 'morfeus', 'nutch', 'planet', 'purebot', 'pycurl', 'semalt', 'shellshock', 'skygrid', 'snoopy', 'sucker', 'turnit', 'vikspi', 'zmeu');
+
+    // --- START OF UPDATED FIREWALL LOGIC ---
+
+    // REINTRODUCED: Check for excessively long request URI (from old code).
+    // This helps prevent certain denial-of-service (DoS) attacks or attempts
+    // to pass large malicious payloads via the URI.
+    $request_uri_length_limit = 2048; // Adjust this value as needed.
+    if (isset($_SERVER['REQUEST_URI']) && strlen($_SERVER['REQUEST_URI']) > $request_uri_length_limit) {
+        antihacker_response('URI Length Exceeded');
+    }
+
+    // RAW variables for firewall security checks.
+    // IMPORTANT: NO SANITIZATION HERE. The firewall must operate on raw, unmodified data
+    // to effectively detect malicious patterns that might be masked by sanitization.
+    $firewall_raw_request_uri  = '';
+    $firewall_raw_query_string = '';
+    $firewall_raw_user_agent   = '';
+
+    // Populate RAW variables for the firewall.
+    if (isset($_SERVER['REQUEST_URI']) && !empty($_SERVER['REQUEST_URI'])) {
+        $firewall_raw_request_uri = $_SERVER['REQUEST_URI'];
+    }
+    if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+        $firewall_raw_query_string = $_SERVER['QUERY_STRING'];
+    }
+    if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) {
+        $firewall_raw_user_agent = $_SERVER['HTTP_USER_AGENT'];
+    }
+
+    // The firewall detection logic now uses the RAW variables to detect threats.
+    if ($firewall_raw_request_uri || $firewall_raw_query_string || $firewall_raw_user_agent) {
+        if (
+            ($firewall_raw_request_uri  && preg_match('/' . implode('|', $antihacker_request_uri_array)  . '/i', $firewall_raw_request_uri,  $matches))
+            ||
+            ($firewall_raw_query_string && preg_match('/' . implode('|', $antihacker_query_string_array) . '/i', $firewall_raw_query_string, $matches2))
+            ||
+            ($firewall_raw_user_agent   && preg_match('/' . implode('|', $antihacker_user_agent_array)   . '/i', $firewall_raw_user_agent,   $matches3))
+        ) {
+            // If a match is found, trigger alerts and block the request.
+            if (isset($antihacker_Blocked_Firewall) && $antihacker_Blocked_Firewall == 'yes') { // Added isset check for $antihacker_Blocked_Firewall
+                if (isset($matches) && is_array($matches) && count($matches) > 0) {
+                    antihacker_alertme3($matches[0]);
+                }
+                if (isset($matches2) && is_array($matches2) && count($matches2) > 0) {
+                    antihacker_alertme3($matches2[0]);
+                }
+                if (isset($matches3) && is_array($matches3) && count($matches3) > 0) {
+                    antihacker_alertme4($matches3[0]);
+                }
+            }
+            antihacker_stats_moreone('qfire');
+            antihacker_response('Firewall'); // Trigger the blocking response
+        } // Endif match...
+    } // end if ($firewall_raw_request_uri || $firewall_raw_query_string || $firewall_raw_user_agent)
+
+    // IMPORTANT NOTE: The SANITIZED variables ($antihacker_request_uri_string, $antihacker_query_string_string, $antihacker_user_agent_string)
+    // and their population using sanitize_text_field() have been REMOVED from this firewall logic.
+    // This ensures the firewall always operates on raw data.
+    // If you need sanitized versions of these variables for OTHER parts of your code (e.g., logging, database insertion),
+    // you must create them AFTER the firewall execution, or in a different scope where sanitization is appropriate.
+
+
 
 
 
