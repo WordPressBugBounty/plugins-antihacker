@@ -2,7 +2,7 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
-5.93 25-08-27 improved security.
+5.94 25-08-27 improved security.
 
 5.91 25-08-27 improved security.
 
