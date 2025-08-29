@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.94
+version: 5.95
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -54,6 +54,12 @@ $antihacker_request_url = trim(sanitize_url($_SERVER['REQUEST_URI']));
 $antihacker_method = antihacker_get_request_method();
 
 $antihacker_is_admin = antihacker_check_wordpress_logged_in_cookie();
+//debug4($antihacker_is_admin);
+//die(var_dump($antihacker_is_admin));
+
+
+
+// die(var_dump($antihacker_is_admin));
 
 if (isset($_SERVER['HTTP_REFERER']))
   $antihacker_referer = sanitize_text_field($_SERVER['HTTP_REFERER']);
@@ -210,7 +216,7 @@ function antihacker_localization_init()
 //add_action('wp_ajax_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
 //add_action('wp_ajax_nopriv_antihacker_grava_fingerprint', 'antihacker_grava_fingerprint');
 
-
+//die(var_dump($antihacker_is_admin));
 if ($antihacker_is_admin) {
 
   require_once(ANTIHACKERPATH . "includes/functions/plugin-check-list.php");
@@ -485,8 +491,8 @@ if (!$antihacker_is_admin) {
   if ($antihacker_firewall != 'no') {
 
     if (!isset($_SERVER['HTTP_ACCEPT'])) {
-			antihacker_response('Not Human');
-		}
+      antihacker_response('Not Human');
+    }
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'HEAD') {
       antihacker_response('Not Human');
     }
@@ -563,51 +569,51 @@ if (!$antihacker_is_admin) {
     }
     */
 
-    
+
 
     // Array of rules for the request URI.
     // This array now combines original rules, additional generic attack patterns,
     // and detailed new signatures for sensitive files.
     $antihacker_request_uri_array   = array(
-        // ORIGINAL RULES (from your old code)
-        '@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer', '\/\.env',
+      // ORIGINAL RULES (from your old code)
+      '@eval', 'eval\(', 'UNION(.*)SELECT', '\(null\)', 'base64_', '\/localhost', '\%2Flocalhost', '\/pingserver', 'wp-config\.php', '\/config\.', '\/wwwroot', '\/makefile', 'crossdomain\.', 'proc\/self\/environ', 'usr\/bin\/perl', 'var\/lib\/php', 'etc\/passwd', '\/https\:', '\/http\:', '\/ftp\:', '\/file\:', '\/php\:', '\/cgi\/', '\.cgi', '\.cmd', '\.bat', '\.exe', '\.sql', '\.ini', '\.dll', '\.pass', '\.asp', '\.jsp', '\.bash', '\/\.git', '\/\.svn', ' ', '\<', '\>', '\/\=', '\.\.\.', '\+\+\+', '@@', '\/&&', '\/Nt\.', '\;Nt\.', '\=Nt\.', '\,Nt\.', '\.exec\(', '\)\.html\(', '\{x\.html\(', '\(function\(', '\.php\([0-9]+\)', '(benchmark|sleep)(\s|%20)*\(', 'indoxploi', 'xrumer', '\/\.env',
 
-        // --- ADDITIONAL GENERIC ATTACK PATTERNS (from old code's 'suggested additions') ---
-        // Blocks access to common backups and configuration files
-        '\.bak', '\.conf', '\.cfg', '\.ds_store',
-        // Blocks access to compressed backups in the site root
-        '\/(db|master|sql|wp|www|wwwroot)\.(gz|zip)',
-        // Blocks generic patterns for command execution and dangerous functions
-        '((curl_|shell_)?exec|(f|p)open|passthru|phpinfo|proc_open|system)(.*)(\()(.*)(\))',
+      // --- ADDITIONAL GENERIC ATTACK PATTERNS (from old code's 'suggested additions') ---
+      // Blocks access to common backups and configuration files
+      '\.bak', '\.conf', '\.cfg', '\.ds_store',
+      // Blocks access to compressed backups in the site root
+      '\/(db|master|sql|wp|www|wwwroot)\.(gz|zip)',
+      // Blocks generic patterns for command execution and dangerous functions
+      '((curl_|shell_)?exec|(f|p)open|passthru|phpinfo|proc_open|system)(.*)(\()(.*)(\))',
 
-        // --- NEW DETAILED SIGNATURES (from your 'new code's $antihacker_new_signatures array) ---
-        // Apache (precise versions)
-        '\.htaccess', '\.htdigest', '\.htpasswd',
-        // Other version control systems
-        '\/\.gitignore', '\/\.hg', '\/\.hgignore',
-        // WordPress configuration backups
-        'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
-        // Frameworks and CMS configuration files
-        '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
-        '\/app\/etc\/local\.xml', // Magento 1
-        '\/Web\.config', // ASP.NET
-        // Development tools and dependency files
-        '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
-        '\/composer\.json', '\/composer\.lock', '\/packages\.json',
+      // --- NEW DETAILED SIGNATURES (from your 'new code's $antihacker_new_signatures array) ---
+      // Apache (precise versions)
+      '\.htaccess', '\.htdigest', '\.htpasswd',
+      // Other version control systems
+      '\/\.gitignore', '\/\.hg', '\/\.hgignore',
+      // WordPress configuration backups
+      'wp-config\.bak', 'wp-config\.old', 'wp-config\.temp', 'wp-config\.tmp', 'wp-config\.txt',
+      // Frameworks and CMS configuration files
+      '\/sites\/default\/default\.settings\.php', '\/sites\/default\/settings\.php', // Drupal
+      '\/app\/etc\/local\.xml', // Magento 1
+      '\/Web\.config', // ASP.NET
+      // Development tools and dependency files
+      '\/sftp-config\.json', '\/gruntfile\.js', '\/npm-debug\.log',
+      '\/composer\.json', '\/composer\.lock', '\/packages\.json',
     );
 
     // Array of rules for the Query String.
     // This array now includes the strong SQL Injection and XSS protections
     // that were present in the old code's 'suggested additions'.
     $antihacker_query_string_array  = array(
-        // ORIGINAL RULES (from your old code)
-        '@@', '\(0x', '0x3c62723e', '\;\!--\=', '\(\)\}', '\:\;\}\;', '\.\.\/', '127\.0\.0\.1', 'UNION(.*)SELECT', '@eval', 'eval\(', 'base64_', 'localhost', 'loopback', '\%0A', '\%0D', '\%00', '\%2e\%2e', 'allow_url_include', 'auto_prepend_file', 'disable_functions', 'input_file', 'execute', 'file_get_contents', 'mosconfig', 'open_basedir', '(benchmark|sleep)(\s|%20)*\(', 'phpinfo\(', 'shell_exec\(', '\/wwwroot', '\/makefile', 'path\=\.', 'mod\=\.', 'wp-config\.php', '\/config\.', '\$_session', '\$_request', '\$_env', '\$_server', '\$_post', '\$_get', 'indoxploi', 'xrumer',
+      // ORIGINAL RULES (from your old code)
+      '@@', '\(0x', '0x3c62723e', '\;\!--\=', '\(\)\}', '\:\;\}\;', '\.\.\/', '127\.0\.0\.1', 'UNION(.*)SELECT', '@eval', 'eval\(', 'base64_', 'localhost', 'loopback', '\%0A', '\%0D', '\%00', '\%2e\%2e', 'allow_url_include', 'auto_prepend_file', 'disable_functions', 'input_file', 'execute', 'file_get_contents', 'mosconfig', 'open_basedir', '(benchmark|sleep)(\s|%20)*\(', 'phpinfo\(', 'shell_exec\(', '\/wwwroot', '\/makefile', 'path\=\.', 'mod\=\.', 'wp-config\.php', '\/config\.', '\$_session', '\$_request', '\$_env', '\$_server', '\$_post', '\$_get', 'indoxploi', 'xrumer',
 
-        // --- REINTRODUCED STRONG PROTECTIONS (from old code's 'suggested additions') ---
-        // Blocks attempts to manipulate global variables more comprehensively
-        '(globals|request)(=|\[)',
-        // Powerful rule that blocks a wide range of SQL Injection and XSS attacks
-        '(<|>|\'|")(.*)(\/\*|alter|base64|benchmark|cast|char|concat|create|declare|delete|drop|exec|function|html|insert|md5|request|script|select|set|union|update)'
+      // --- REINTRODUCED STRONG PROTECTIONS (from old code's 'suggested additions') ---
+      // Blocks attempts to manipulate global variables more comprehensively
+      '(globals|request)(=|\[)',
+      // Powerful rule that blocks a wide range of SQL Injection and XSS attacks
+      '(<|>|\'|")(.*)(\/\*|alter|base64|benchmark|cast|char|concat|create|declare|delete|drop|exec|function|html|insert|md5|request|script|select|set|union|update)'
     );
 
     // Array of rules for the User Agent (unchanged from your new code).
@@ -620,7 +626,7 @@ if (!$antihacker_is_admin) {
     // to pass large malicious payloads via the URI.
     $request_uri_length_limit = 2048; // Adjust this value as needed.
     if (isset($_SERVER['REQUEST_URI']) && strlen($_SERVER['REQUEST_URI']) > $request_uri_length_limit) {
-        antihacker_response('URI Length Exceeded');
+      antihacker_response('URI Length Exceeded');
     }
 
     // RAW variables for firewall security checks.
@@ -632,39 +638,39 @@ if (!$antihacker_is_admin) {
 
     // Populate RAW variables for the firewall.
     if (isset($_SERVER['REQUEST_URI']) && !empty($_SERVER['REQUEST_URI'])) {
-        $firewall_raw_request_uri = $_SERVER['REQUEST_URI'];
+      $firewall_raw_request_uri = $_SERVER['REQUEST_URI'];
     }
     if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
-        $firewall_raw_query_string = $_SERVER['QUERY_STRING'];
+      $firewall_raw_query_string = $_SERVER['QUERY_STRING'];
     }
     if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) {
-        $firewall_raw_user_agent = $_SERVER['HTTP_USER_AGENT'];
+      $firewall_raw_user_agent = $_SERVER['HTTP_USER_AGENT'];
     }
 
     // The firewall detection logic now uses the RAW variables to detect threats.
     if ($firewall_raw_request_uri || $firewall_raw_query_string || $firewall_raw_user_agent) {
-        if (
-            ($firewall_raw_request_uri  && preg_match('/' . implode('|', $antihacker_request_uri_array)  . '/i', $firewall_raw_request_uri,  $matches))
-            ||
-            ($firewall_raw_query_string && preg_match('/' . implode('|', $antihacker_query_string_array) . '/i', $firewall_raw_query_string, $matches2))
-            ||
-            ($firewall_raw_user_agent   && preg_match('/' . implode('|', $antihacker_user_agent_array)   . '/i', $firewall_raw_user_agent,   $matches3))
-        ) {
-            // If a match is found, trigger alerts and block the request.
-            if (isset($antihacker_Blocked_Firewall) && $antihacker_Blocked_Firewall == 'yes') { // Added isset check for $antihacker_Blocked_Firewall
-                if (isset($matches) && is_array($matches) && count($matches) > 0) {
-                    antihacker_alertme3($matches[0]);
-                }
-                if (isset($matches2) && is_array($matches2) && count($matches2) > 0) {
-                    antihacker_alertme3($matches2[0]);
-                }
-                if (isset($matches3) && is_array($matches3) && count($matches3) > 0) {
-                    antihacker_alertme4($matches3[0]);
-                }
-            }
-            antihacker_stats_moreone('qfire');
-            antihacker_response('Firewall'); // Trigger the blocking response
-        } // Endif match...
+      if (
+        ($firewall_raw_request_uri  && preg_match('/' . implode('|', $antihacker_request_uri_array)  . '/i', $firewall_raw_request_uri,  $matches))
+        ||
+        ($firewall_raw_query_string && preg_match('/' . implode('|', $antihacker_query_string_array) . '/i', $firewall_raw_query_string, $matches2))
+        ||
+        ($firewall_raw_user_agent   && preg_match('/' . implode('|', $antihacker_user_agent_array)   . '/i', $firewall_raw_user_agent,   $matches3))
+      ) {
+        // If a match is found, trigger alerts and block the request.
+        if (isset($antihacker_Blocked_Firewall) && $antihacker_Blocked_Firewall == 'yes') { // Added isset check for $antihacker_Blocked_Firewall
+          if (isset($matches) && is_array($matches) && count($matches) > 0) {
+            antihacker_alertme3($matches[0]);
+          }
+          if (isset($matches2) && is_array($matches2) && count($matches2) > 0) {
+            antihacker_alertme3($matches2[0]);
+          }
+          if (isset($matches3) && is_array($matches3) && count($matches3) > 0) {
+            antihacker_alertme4($matches3[0]);
+          }
+        }
+        antihacker_stats_moreone('qfire');
+        antihacker_response('Firewall'); // Trigger the blocking response
+      } // Endif match...
     } // end if ($firewall_raw_request_uri || $firewall_raw_query_string || $firewall_raw_user_agent)
 
     // IMPORTANT NOTE: The SANITIZED variables ($antihacker_request_uri_string, $antihacker_query_string_string, $antihacker_user_agent_string)
@@ -1979,7 +1985,7 @@ function antihacker_findip()
 
 
 
-
+/*
 // more...
 function antihacker_bill_more()
 {
@@ -1997,10 +2003,11 @@ function antihacker_bill_more()
   //}
 }
 add_action("init", "antihacker_bill_more");
-
+*/
 
 function antihacker_new_more_plugins()
 {
+  require_once dirname(__FILE__) . "/includes/more-tools/class_bill_more.php";
   $plugin = new antihacker_Bill_show_more_plugins();
   $plugin->bill_show_plugins();
 }
@@ -2304,12 +2311,15 @@ function antihacker_check_wordpress_logged_in_cookie()
    * or if there was an error, forcing a fresh check.
    */
   static $is_admin_cached_true = null;
+  //debug4("Bill");
 
   // If the previous result was TRUE, return immediately from cache.
   if ($is_admin_cached_true === true) {
-      return true;
+    //debug4($is_admin_cached_true);
+    return true;
+  } else {
+    //  debug4();
   }
-
   // --- Start of Full Verification Logic ---
 
   $current_is_admin_status = false; // Default status for this execution.
@@ -2321,19 +2331,19 @@ function antihacker_check_wordpress_logged_in_cookie()
    */
   $has_auth_cookie = false;
   if (!empty($_COOKIE)) {
-      foreach ($_COOKIE as $key => $value) {
-          // Check if any cookie name starts with the WordPress logged-in prefix.
-          if (strpos($key, 'wordpress_logged_in_') === 0) {
-              $has_auth_cookie = true;
-              break; // Found one, no need to check the rest.
-          }
+    foreach ($_COOKIE as $key => $value) {
+      // Check if any cookie name starts with the WordPress logged-in prefix.
+      if (strpos($key, 'wordpress_logged_in_') === 0) {
+        $has_auth_cookie = true;
+        break; // Found one, no need to check the rest.
       }
+    }
   }
-
+  //debug4();
   // If no potential authentication cookie was found, the user is definitely not an admin.
   if (!$has_auth_cookie) {
-      // Not an admin, do not cache (as cache is only for TRUE results).
-      return $current_is_admin_status; // Returns false.
+    // Not an admin, do not cache (as cache is only for TRUE results).
+    return $current_is_admin_status; // Returns false.
   }
 
   /**
@@ -2342,70 +2352,94 @@ function antihacker_check_wordpress_logged_in_cookie()
    * First, we check if the required function has been loaded by WordPress yet.
    */
   if (!function_exists('current_user_can') || !function_exists('wp_get_current_user')) {
-      /**
-       * The function does not exist yet. This means we are running too early in the
-       * WordPress load order.
-       * The solution is to manually load the file where this function is defined.
-       */
-      
-      $max_attempts = 15;
-      $attempt = 0;
-      
-      // Try multiple times before loading the file
-      while (!function_exists('current_user_can') && $attempt < $max_attempts) {
-          $attempt++;
-          usleep(150000); // Wait 150ms between attempts
-          clearstatcache(); // Clear file cache
-          
-          // Check if functions exist naturally (without loading)
-          if (function_exists('current_user_can') && function_exists('wp_get_current_user')) {
-              break; // Functions are now available, no need to load manually
-          }
-      }
-      
-      // Only load the file if functions still don't exist after all attempts
-      if (!function_exists('current_user_can') && !function_exists('wp_get_current_user')) {
-          if (defined('ABSPATH') && defined('WPINC')) {
-              try {
-                  $pluggable_file = ABSPATH . WPINC . '/pluggable.php';
-                  if (file_exists($pluggable_file)) {
-                      require_once $pluggable_file;
-                  }
-              } catch (Throwable $e) {
-                  // Silently continue if loading fails
-              }
-          }
-      }
-  }
+    //debug4();
+    /**
+     * The function does not exist yet. This means we are running too early in the
+     * WordPress load order.
+     * The solution is to manually load the file where this function is defined.
+     */
 
+    //$max_attempts = 15;
+    //$attempt = 0;
+    //debug4();
+
+    /*
+    // Try multiple times before loading the file
+    while (!function_exists('current_user_can') && $attempt < $max_attempts) {
+      $attempt++;
+      usleep(150000); // Wait 150ms between attempts
+      clearstatcache(); // Clear file cache
+
+      // Check if functions exist naturally (without loading)
+      if (function_exists('current_user_can') && function_exists('wp_get_current_user')) {
+        break; // Functions are now available, no need to load manually
+      }
+    }
+    */
+
+    // Only load the file if functions still don't exist after all attempts
+    if (!function_exists('current_user_can') || !function_exists('wp_get_current_user')) {
+      // debug4();
+      if (defined('ABSPATH') && defined('WPINC')) {
+        try {
+          $pluggable_file = ABSPATH . WPINC . '/pluggable.php';
+          if (file_exists($pluggable_file)) {
+            require_once $pluggable_file;
+            // debug4();
+          }
+        } catch (Throwable $e) {
+          // Silently continue if loading fails
+        }
+      }
+    }
+  }
+  //
+  //
+  //
+  // debug4();
   /**
    * Now that we have attempted to load the file (if it wasn't already),
    * we can check if the current_user_can() function is available.
    * We can now perform the secure check.
    */
 
+
+  //if (!function_exists('current_user_can'))
+  //debug4();
+
+
+
+
+  //if (!function_exists('wp_get_current_user'))
+  // debug4();
+
+
+
+
   if (!function_exists('current_user_can') || !function_exists('wp_get_current_user')) {
-      // If, for some reason, current_user_can still does not exist (critical error or unusual environment),
-      // assume non-admin. Do not cache.
-      return $current_is_admin_status; // Returns false.
+    // If, for some reason, current_user_can still does not exist (critical error or unusual environment),
+    // assume non-admin. Do not cache.
+    return $current_is_admin_status; // Returns false.
   }
+
+  // debug4();
 
   if (current_user_can('manage_options')) {
-      // The secure check passed. The user is a confirmed administrator.
-      $current_is_admin_status = true;
+    // The secure check passed. The user is a confirmed administrator.
+    $current_is_admin_status = true;
   } else {
-      // The cookie exists, but the secure check failed.
-      // This could be a forged cookie from an attacker or an expired session.
-      $current_is_admin_status = false;
+    // The cookie exists, but the secure check failed.
+    // This could be a forged cookie from an attacker or an expired session.
+    $current_is_admin_status = false;
   }
-
+  //debug4();
   // --- End of Full Verification Logic ---
 
   // If the current result is TRUE, then cache it for future calls within this request.
   if ($current_is_admin_status === true) {
-      $is_admin_cached_true = true;
+    $is_admin_cached_true = true;
   }
-
+  //debug4();
   // Return the final, securely determined result.
   return $current_is_admin_status;
 }
