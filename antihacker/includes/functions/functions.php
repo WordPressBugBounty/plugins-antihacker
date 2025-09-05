@@ -1552,12 +1552,12 @@ function antihacker_activated()
     global $wpdb;
 
 
-	// testar aqui se table exist...
-	$antihacker_main_table_name = $wpdb->prefix . 'ah_stats';
-    if ( $wpdb->get_var("SHOW TABLES LIKE '$antihacker_main_table_name'") === $antihacker_main_table_name ) {
-       update_option('antihacker_setup_complete', true);
-	  // error_log(__LINE__);
-	}
+    // testar aqui se table exist...
+    $antihacker_main_table_name = $wpdb->prefix . 'ah_stats';
+    if ($wpdb->get_var("SHOW TABLES LIKE '$antihacker_main_table_name'") === $antihacker_main_table_name) {
+        update_option('antihacker_setup_complete', true);
+        // error_log(__LINE__);
+    }
 
 
 
@@ -2392,7 +2392,11 @@ function antihacker_create_httptools()
         'Wget',
         'Wolfram',
         'Zend_Http_Client',
-        'ZendHttpClient'
+        'ZendHttpClient',
+        'Mozlila',
+        'ALittle Client',
+        'wp_is_mobile',
+        'colonel'
     );
     $text = '';
     for ($i = 0; $i < count($tools_list); $i++) {
@@ -3600,14 +3604,14 @@ function antihacker_response($antihacker_why_block)
 
 
     if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
-    return;
+        return;
 
-// if ($antihacker_is_admin or is_super_admin())
-//     return;
-if (antihacker_maybe_search_engine())
-    return;
-if (antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist))
-    return;
+    // if ($antihacker_is_admin or is_super_admin())
+    //     return;
+    if (antihacker_maybe_search_engine())
+        return;
+    if (antihacker_ah_whitelisted($antihacker_ip, $antihacker_amy_whitelist))
+        return;
 
     if (antihacker_string_whitelisted($antihacker_ua, $antihacker_string_whitelist))
         return;
@@ -3773,5 +3777,22 @@ function antihacker_sizeFilter($bytes)
 }
 
 
+/**
+ * Returns the sanitized host header of the current request.
+ *
+ * Checks if the server variable is set to prevent errors.
+ *
+ * @return string|false The sanitized host header, or false if the variable is not set.
+ */
+function antihacker_get_current_host()
+{
+    // Checks if the HTTP_HOST variable is set to prevent errors.
+    if (isset($_SERVER['HTTP_HOST'])) {
+        // Sanitizes the host header to remove any malicious code
+        // and returns the clean value.
+        return sanitize_text_field($_SERVER['HTTP_HOST']);
+    }
 
-?>
+    // Returns 'false' if the variable is not found.
+    return false;
+}

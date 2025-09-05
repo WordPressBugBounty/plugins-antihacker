@@ -64,6 +64,7 @@ $antihacker_option_name[] = 'antihacker_string_whitelist'; // <-- ADICIONADO
 $antihacker_option_name[] = 'antihacker_enable_reinstall'; // <-- CORRIGIDO (de 'disable_reinstall')
 $antihacker_option_name[] = 'antihacker_checkbox_all_failed'; // <-- CORRIGIDO (de 'checkbox_all_fail')
 $antihacker_option_name[] = 'antihacker_Blocked_Else_email'; // <-- NOME CORRIGIDO (estava Blocked_else_email)
+$antihacker_option_name[] = 'antihacker_host_header_is_ip';
 
 
 

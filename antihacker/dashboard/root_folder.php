@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly 
 // Define a function to output files in a directory
 
 global $antihacker_report_files;
@@ -60,9 +60,9 @@ function antihacker_outputFiles($path)
                     // outputFiles("$path/$file");
                 }
             }
-        } 
+        }
     } else {
-        echo esc_attr__('ERROR on Search the root folder. Maybe no Hosting permissions.','antihacker');
+        echo esc_attr__('ERROR on Search the root folder. Maybe no Hosting permissions.', 'antihacker');
     }
     return;
 }
@@ -70,25 +70,28 @@ function antihacker_outputFiles($path)
 antihacker_outputFiles(ABSPATH);
 
 if (count($antihacker_report_files) > 0) {
-
-    echo esc_attr__('File(s) found on site root folder', 'antihacker').':';
+?>
+    <span class="dashicons dashicons-warning" style="color: red; font-size: 20px; margin-right: 1px;"></span>
+<?php
+    echo esc_attr__('Malware risk. Click File Integrity Checker above to check all WordPress core files.', 'antihacker');
+    echo '<br>';
+    echo '<br>';
+    echo esc_attr__('File(s) found on site root folder', 'antihacker') . ':';
     echo '<br>';
 
     for ($i = 0; $i < count($antihacker_report_files); $i++) {
 
-        if($i > 9)
-        continue;
-        
+        if ($i > 9)
+            continue;
+
         echo esc_attr($antihacker_report_files[$i]);
         echo '<br>';
-
-
     }
-    if($i > 9){
+    if ($i > 9) {
         echo '<br>';
-        echo esc_attr__('More files found', 'antihacker').'...';
+        echo esc_attr__('More files found', 'antihacker') . '...';
     }
 } else
-    echo esc_attr__('No extra files found! All Right.', 'antihacker').'...';
+    echo esc_attr__('No extra files found! All Right.', 'antihacker') . '...';
 
 return;

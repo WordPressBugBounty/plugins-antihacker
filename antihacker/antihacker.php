@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.95
+version: 5.96
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -355,7 +355,7 @@ $antihacker_notif_visit = sanitize_text_field(get_option('antihacker_notif_visit
 $antihacker_last_theme_scan = sanitize_text_field(get_option('antihacker_notif_visit', '0'));
 $antihacker_last_theme_update = sanitize_text_field(get_option('antihacker_last_theme_update', '0'));
 $antihacker_disable_sitemap = sanitize_text_field(get_option('antihacker_disable_sitemap', 'no'));
-
+$antihacker_host_header_is_ip = sanitize_text_field(get_option('antihacker_host_header_is_ip', 'yes'));
 
 
 $antihacker_plugin_abandoned_email = sanitize_text_field(get_option('antihacker_plugin_abandoned_email', 'yes'));
@@ -491,9 +491,11 @@ if (!$antihacker_is_admin) {
   if ($antihacker_firewall != 'no') {
 
     if (!isset($_SERVER['HTTP_ACCEPT'])) {
+      antihacker_stats_moreone('qfire');
       antihacker_response('Not Human');
     }
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'HEAD') {
+      antihacker_stats_moreone('qfire');
       antihacker_response('Not Human');
     }
 
@@ -626,8 +628,29 @@ if (!$antihacker_is_admin) {
     // to pass large malicious payloads via the URI.
     $request_uri_length_limit = 2048; // Adjust this value as needed.
     if (isset($_SERVER['REQUEST_URI']) && strlen($_SERVER['REQUEST_URI']) > $request_uri_length_limit) {
+      antihacker_stats_moreone('qfire');
       antihacker_response('URI Length Exceeded');
     }
+
+
+    
+    if($antihacker_host_header_is_ip  == 'yes')
+    {
+      $antihacker_current_host = antihacker_get_current_host();
+      if ($antihacker_current_host && filter_var($antihacker_current_host, FILTER_VALIDATE_IP)) {
+          antihacker_stats_moreone('qfire');
+          antihacker_response('Not Human');
+      }
+    }
+ 
+
+
+if ($antihacker_current_host && filter_var($antihacker_current_host, FILTER_VALIDATE_IP)) {
+    header('HTTP/1.1 403 Forbidden');
+    exit('Acesso Negado: O acesso por endereço IP não é permitido.');
+}
+
+
 
     // RAW variables for firewall security checks.
     // IMPORTANT: NO SANITIZATION HERE. The firewall must operate on raw, unmodified data
@@ -2443,3 +2466,8 @@ function antihacker_check_wordpress_logged_in_cookie()
   // Return the final, securely determined result.
   return $current_is_admin_status;
 }
+
+
+
+
+

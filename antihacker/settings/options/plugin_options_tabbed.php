@@ -250,6 +250,16 @@ $fields[] = array(
 );
 
 
+$fields[] = array(
+	'type' 	=> 'radio',
+	'name' 	=> 'antihacker_host_header_is_ip',
+	'label' => esc_attr__('Block visits when your domain name is replaced by an IP address. -  (Premium Version Only)', 'antihacker'),
+	'radio_options' => array(
+		array('value' => 'yes', 'label' => esc_attr__('yes', "antihacker")),
+		array('value' => 'no', 'label' => esc_attr__('no', "antihacker"))
+	)
+);
+
 // For example, to completely disable Application Passwords add the following 
 // code snippet to your site.
 
