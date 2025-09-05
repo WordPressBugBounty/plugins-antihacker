@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 5.96
+version: 5.97
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -73,13 +73,31 @@ $antihacker_ip = trim(antihacker_findip());
 // require_once(ANTIHACKERPATH . "debug.php");
 // add_action('shutdown', 'mostra_log', 999);
 // Add settings link on plugin page
-function antihacker_plugin_settings_link($links)
+function antihacker_plugin_settings_link_old($links)
 {
   // $settings_link = '<a href="options-general.php?page=anti-hacker">Settings</a>'; 
   $settings_link = '<a href="admin.php?page=anti-hacker">Settings</a>';
   array_unshift($links, $settings_link);
   return $links;
 }
+
+
+
+function antihacker_plugin_settings_link($links)
+{
+  $settings_link = '<a href="admin.php?page=anti-hacker">Settings</a>';
+  $dashboard_link = '<a href="admin.php?page=anti_hacker_plugin">Dashboard</a>';
+
+  // Adiciona o link do Dashboard no início
+  array_unshift($links, $dashboard_link);
+
+  // Adiciona o link de Settings após o Dashboard
+  array_unshift($links, $settings_link);
+
+  return $links;
+}
+
+
 $plugin = plugin_basename(__FILE__);
 add_filter("plugin_action_links_$plugin", 'antihacker_plugin_settings_link');
 
@@ -1257,6 +1275,8 @@ function antihacker_custom_toolbar_link($wp_admin_bar)
       'title' => ''
     )
   );
+
+
   $wp_admin_bar->add_node($args);
   echo '<style>';
   echo '#wpadminbar .antihacker  {
