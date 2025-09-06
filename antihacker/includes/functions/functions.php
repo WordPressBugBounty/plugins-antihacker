@@ -1259,7 +1259,7 @@ function antihacker_populate_rules()
 }
 
 
-function antihacker_stats_moreone($qtype)
+function antihacker_stats_moreone_old($qtype)
 {
     global $wpdb;
     $qtoday = date("m") + date("d");
@@ -1348,6 +1348,42 @@ function antihacker_stats_moreone($qtype)
     if (!empty($wpdb->last_error))
         antihacker_upgrade_db();
 }
+
+function antihacker_stats_moreone($qtype)
+{
+    global $wpdb;
+
+    // lista de colunas permitidas (protege contra injection)
+    $allowed = [
+        'qfire', 'qenum', 'qlogin', 'qtor', 'qplugin', 'qfalseg',
+        'qtema', 'qtotal', 'qtools', 'qrate', 'qnoref', 'qblank',
+        'xmlrpc', 'qblack'
+    ];
+
+    if (!in_array($qtype, $allowed, true)) {
+        return;
+    }
+
+    // data no formato MMDD
+    $qtoday = date("md");
+
+    $table_name = $wpdb->prefix . "ah_stats";
+
+    // atualiza contadores
+    $sql = "
+        UPDATE `$table_name`
+        SET `$qtype` = `$qtype` + 1,
+            qtotal   = qtotal + 1
+        WHERE date = %s
+    ";
+
+    $wpdb->query($wpdb->prepare($sql, $qtoday));
+
+    if (!empty($wpdb->last_error)) {
+        antihacker_upgrade_db();
+    }
+}
+
 function antihacker_create_db_stats()
 {
     global $wpdb;
