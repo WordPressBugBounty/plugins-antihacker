@@ -83,7 +83,25 @@ update_option('antihacker_notif_visit', time());
                 <span class="dashicons dashicons-warning" style="color: #FF0000; font-size: 20px; margin-right: 1px;"></span>
             <?php echo esc_html__("XML_RPC is Enabled. It can become a vulnerability and a target for brute-force attacks.", "antihacker");
             }
-            //echo '<br /> <br />';
+
+            // $antihacker_firewall != 'no'
+            $antihacker_firewall = sanitize_text_field(get_option('antihacker_firewall', 'yes'));
+            if ($antihacker_firewall == "yes") {
+            ?>
+                <br /> <br />
+                <span class="dashicons dashicons-warning" style="color: green; font-size: 20px; margin-right: 1px;"></span>
+            <?php echo esc_html__("Firewall Enabled.", "antihacker");
+            } else {
+            ?>
+                <br /> <br />
+                <span class="dashicons dashicons-warning" style="color: #FF0000; font-size: 20px; margin-right: 1px;"></span>
+            <?php echo esc_html__("Firewall is Disabled. Enable it at Settings page.", "antihacker");
+            }
+
+
+
+
+            echo '<br /> <br />';
             ?>
         </div> <!-- "columns 2">  -->
         <div class="antihacker-help-column antihacker-help-column-2">
