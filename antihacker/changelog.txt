@@ -2,7 +2,7 @@
 This file contains changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 
 == Changelog ==
-6.03 25-09-15 Removed warning.
+6.05 25-09-15 Removed warning.
 
 6.00 25-09-14 improved Install.
 

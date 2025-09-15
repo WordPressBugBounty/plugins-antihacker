@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 6.03
+version: 6.05
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -56,8 +56,6 @@ $antihacker_method = antihacker_get_request_method();
 $antihacker_is_admin = antihacker_check_wordpress_logged_in_cookie();
 //debug4($antihacker_is_admin);
 //die(var_dump($antihacker_is_admin));
-
-
 
 // die(var_dump($antihacker_is_admin));
 
@@ -914,11 +912,13 @@ function antihacker_load_files()
   }
   // If setup is not complete, load the installer file.
   if (!get_option('antihacker_setup_complete', false)) {
-    add_option('antihacker_installed', time());
-    update_option('antihacker_installed', time());
+
+    // Tenta recuperar a opção 'antihacker_installed'.
+  $antihacker_installed_api = get_option('antihacker_installed_api','');
+  if (empty($antihacker_installed_api)) {
     // Definir as variáveis necessárias
     $data = [
-      'product' => 'stopbadbots', // Nome do produto
+      'product' => 'antihacker', // Nome do produto
       'version' => ANTIHACKERVERSION, // Versão do plugin
       'wpversion' => get_bloginfo('version'), // Versão do WordPress instalada
       'dom' => get_site_url(), // Domínio
@@ -932,6 +932,9 @@ function antihacker_load_files()
       ],
       'body' => json_encode($data),
     ]);
+    add_option('antihacker_installed_api', time());
+    update_option('antihacker_installed_api', time());
+
     // Verificar se houve erro na requisição
     if (is_wp_error($response)) {
       $error_message = $response->get_error_message();
@@ -940,6 +943,7 @@ function antihacker_load_files()
     } else {
       // Processar a resposta se necessário
     }
+  }
     require_once ANTIHACKERPATH . 'includes/install/install.php';
   }
 }
