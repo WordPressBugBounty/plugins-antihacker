@@ -1640,43 +1640,6 @@ function antihacker_activated()
             }
         }
     }
-    $antihacker_installed = trim(get_option('antihacker_installed', ''));
-    if (empty($antihacker_installed)) {
-        add_option('antihacker_installed', time());
-        update_option('antihacker_installed', time());
-
-        		// Definir as variáveis necessárias
-		$data = [
-			'product' => 'stopbadbots', // Nome do produto
-			'version' => ANTIHACKERVERSION, // Versão do plugin
-			'wpversion' => get_bloginfo('version'), // Versão do WordPress instalada
-			'dom' => get_site_url(), // Domínio
-			'status' => 98 // Status
-		];
-
-		// Fazer a chamada POST
-		$response = wp_remote_post('https://BillMinozzi.com/API/api.php', [
-			'timeout' => 10,
-			'headers' => [
-				'Content-Type' => 'application/json',
-			],
-			'body' => json_encode($data),
-		]);
-
-		// Verificar se houve erro na requisição
-		if (is_wp_error($response)) {
-			$error_message = $response->get_error_message();
-			// Tratar o erro conforme necessário
-			error_log('Error requesting api: ' . $error_message);
-		} else {
-			// Processar a resposta se necessário
-		}
-
-
-
-    }
-
-
 
     // Pointer
 

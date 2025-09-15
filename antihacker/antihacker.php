@@ -2,7 +2,7 @@
 Plugin Name: AntiHacker 
 Plugin URI: http://antihackerplugin.com
 Description: Improve security, prevent unauthorized access by restrict access to login to whitelisted IP, Firewall, Scanner and more.
-version: 6.02
+version: 6.03
 Text Domain: antihacker
 Domain Path: /language
 Author: Bill Minozzi
@@ -651,16 +651,15 @@ if (!$antihacker_is_admin) {
     }
 
 
-    
-    if($antihacker_host_header_is_ip  == 'yes')
-    {
+
+    if ($antihacker_host_header_is_ip  == 'yes') {
       $antihacker_current_host = antihacker_get_current_host();
       if ($antihacker_current_host && filter_var($antihacker_current_host, FILTER_VALIDATE_IP)) {
-          antihacker_stats_moreone('qfire');
-          antihacker_response('Not Human');
+        antihacker_stats_moreone('qfire');
+        antihacker_response('Not Human');
       }
     }
- 
+
 
 
     // RAW variables for firewall security checks.
@@ -891,41 +890,56 @@ add_action('plugins_loaded', 'antihacker_handle_debug_reset');
  */
 function antihacker_load_files()
 {
-
   global $antihacker_is_admin;
-
   // We only care about this logic in the admin area.
   if (!$antihacker_is_admin) {
     return;
   }
-
   if (function_exists('is_multisite') && is_multisite()) {
     return;
   }
-
   /*
   if (!empty(trim(ANTIHACKERVERSIONANT))) {
     // OLD INSTALL
    // update_option('antihacker_setup_complete', true);
   }
   */
-
-
   // Se o cookie de instalação abortada existir...
   if (isset($_COOKIE['antihacker_setup_aborted']) && $_COOKIE['antihacker_setup_aborted'] === 'true') {
-
     // 1. Atualiza a opção para marcar a instalação como concluída.
     update_option('antihacker_setup_complete', true);
-
     // 2. Limpa o cookie para não executar esta lógica novamente.
     unset($_COOKIE['antihacker_setup_aborted']);
     setcookie('antihacker_setup_aborted', '', time() - 3600, '/');
   }
-
-
-
   // If setup is not complete, load the installer file.
   if (!get_option('antihacker_setup_complete', false)) {
+    add_option('antihacker_installed', time());
+    update_option('antihacker_installed', time());
+    // Definir as variáveis necessárias
+    $data = [
+      'product' => 'stopbadbots', // Nome do produto
+      'version' => ANTIHACKERVERSION, // Versão do plugin
+      'wpversion' => get_bloginfo('version'), // Versão do WordPress instalada
+      'dom' => get_site_url(), // Domínio
+      'status' => 98 // Status
+    ];
+    // Fazer a chamada POST
+    $response = wp_remote_post('https://BillMinozzi.com/API/api.php', [
+      'timeout' => 10,
+      'headers' => [
+        'Content-Type' => 'application/json',
+      ],
+      'body' => json_encode($data),
+    ]);
+    // Verificar se houve erro na requisição
+    if (is_wp_error($response)) {
+      $error_message = $response->get_error_message();
+      // Tratar o erro conforme necessário
+      error_log('Error requesting api: ' . $error_message);
+    } else {
+      // Processar a resposta se necessário
+    }
     require_once ANTIHACKERPATH . 'includes/install/install.php';
   }
 }
@@ -2479,8 +2493,3 @@ function antihacker_check_wordpress_logged_in_cookie()
   // Return the final, securely determined result.
   return $current_is_admin_status;
 }
-
-
-
-
-
